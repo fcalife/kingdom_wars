@@ -1,0 +1,43 @@
+"DOTAHeroes"
+{
+	"Version"		"1"
+
+	"npc_dota_hero_wisp"
+	{
+		"ModelScale"		"0.01"
+
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability5"					""
+		"Ability6"					""
+		"Ability7"					""
+		"Ability8"					""
+		"Ability9"					""
+		"Ability18"					""
+		"Ability10"					""
+		"Ability11"					""
+		"Ability12"					""
+		"Ability13"					""
+		"Ability14"					""
+		"Ability15"					""
+		"Ability16"					""
+		"Ability17"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0.0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0.0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0.0"
+
+		"MovementSpeed"				"550"
+		"MovementTurnRate"			"1.0"
+	}
+}

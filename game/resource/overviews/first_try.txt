@@ -1,0 +1,8 @@
+first_try
+{
+	material materials/overviews/first_try.vmat
+	pos_x -16384
+	pos_y 16384
+	scale 32.000
+}
+

@@ -1,0 +1,24 @@
+"DOTAAbilities"
+{
+	"kingdom_unit_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"units/abilities.lua"
+		"AbilityTextureName"			"custom/opm_pushups"
+
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"12 10 8 6"
+		"AbilityManaCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_as"				"3"
+			}
+		}
+	}
+}

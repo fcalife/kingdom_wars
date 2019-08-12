@@ -1,0 +1,10 @@
+"addon"
+{
+	"Unassigned"      								"Unassigned"
+	"Spectator"       								"Spectators"
+	"Neutrals"        								"Neutrals"
+	"NoTeam"          								"No Team"
+
+	"DOTA_GoodGuys"   								"Player 1"
+	"DOTA_BadGuys"    								"Player 2"
+}
