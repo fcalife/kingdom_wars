@@ -8,11 +8,11 @@ function GameMode:_InitGameMode()
 	-- Setup game rules
 	
 	-- Should the heroes automatically respawn on a timer or stay dead until manually respawned?
-	GameRules:SetHeroRespawnEnabled(true)
+	GameRules:SetHeroRespawnEnabled(false)
 	-- Should the main shop contain Secret Shop items as well as regular items?
 	GameRules:SetUseUniversalShopMode(true)
 	-- Should we let people select the same hero as each other?
-	GameRules:SetSameHeroSelectionEnabled(false)
+	GameRules:SetSameHeroSelectionEnabled(true)
 	-- How long should we let people select their hero?
 	GameRules:SetHeroSelectionTime(60)
 	-- How long should strategy time last?
@@ -20,21 +20,21 @@ function GameMode:_InitGameMode()
 	-- How long should showcase time last?
 	GameRules:SetShowcaseTime(0)
 	-- How long after people select their heroes should the horn blow and the game start?
-	GameRules:SetPreGameTime(60)
+	GameRules:SetPreGameTime(20)
 	-- How long should we let people look at the scoreboard before closing the server automatically?
 	GameRules:SetPostGameTime(60)
 	-- How long should it take individual trees to respawn after being cut down/destroyed?
 	GameRules:SetTreeRegrowTime(180)
 	-- Should we use custom XP values to level up heroes, or the default Dota numbers?
-	GameRules:SetUseCustomHeroXPValues(false)
+	GameRules:SetUseCustomHeroXPValues(true)
 	-- How much gold should players get per tick?
-	GameRules:SetGoldPerTick(1)
+	GameRules:SetGoldPerTick(0)
 	-- How long should we wait in seconds between gold ticks?
-	GameRules:SetGoldTickTime(0.2)
+	GameRules:SetGoldTickTime(1.0)
 	-- How long in seconds should we wait between rune spawns?
 	GameRules:SetRuneSpawnTime(120)
 	-- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
-	GameRules:SetUseBaseGoldBountyOnHeroes(true)
+	GameRules:SetUseBaseGoldBountyOnHeroes(false)
 	-- What icon size should we use for our heroes?
 	GameRules:SetHeroMinimapIconScale(1)
 	-- What icon size should we use for creeps?
@@ -42,7 +42,7 @@ function GameMode:_InitGameMode()
 	-- What icon size should we use for runes?
 	GameRules:SetRuneMinimapIconScale(1)
 	-- Should we enable first blood for the first kill in this game?
-	GameRules:SetFirstBloodActive(true)
+	GameRules:SetFirstBloodActive(false)
 	-- Should we hide the kill banners that show when a player is killed?
 	GameRules:SetHideKillMessageHeaders(true)
 	-- How long should we wait after the game winner is set to display the victory banner and End Screen?  Use -1 to keep the default (about 10 seconds)
@@ -50,27 +50,33 @@ function GameMode:_InitGameMode()
 	-- How long should we wait after the victory message displays to show the End Screen?
 	GameRules:SetCustomVictoryMessageDuration(5)
 	-- How much starting gold should we give to each player?
-	GameRules:SetStartingGold(600)
+	GameRules:SetStartingGold(20)
 
 
 	-- How long should the default team selection launch timer be? The default for custom games is 30.  Setting to 0 will skip team selection.
-	GameRules:SetCustomGameSetupAutoLaunchDelay(30)
+	GameRules:SetCustomGameSetupAutoLaunchDelay(15)
 	-- Should we lock the teams initially? Note that the host can still unlock the teams.
-	GameRules:LockCustomGameSetupTeamAssignment(false)
+	GameRules:LockCustomGameSetupTeamAssignment(true)
 	-- Should we automatically have the game complete team setup after the automatic launch delay?
 	GameRules:EnableCustomGameSetupAutoLaunch(true)
 
 
 	-- Team player count configuration
-	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 5)
-	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 5)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_1, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_2, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_3, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_4, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_5, 1)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_6, 1)
 
 	-- Team color configuration
 	--SetTeamCustomHealthbarColor(DOTA_TEAM_GOODGUYS, 50, 220, 50)
 
 	-- Testing adjustments
 	if IsInToolsMode() then
-		--GameRules:SetPreGameTime(3)
+		GameRules:SetPreGameTime(3)
 	end
 
 	print("Game rules (part 1) have been set...")
@@ -128,14 +134,14 @@ function GameMode:_CaptureGameMode()
 		mode = GameRules:GetGameModeEntity()
 
 		-- Should we disable the recommended builds for heroes?
-		mode:SetRecommendedItemsDisabled(false)
+		mode:SetRecommendedItemsDisabled(true)
 		-- How far out should we allow the camera to go? Default is 1134.
 		mode:SetCameraDistanceOverride(1500)
 		-- SHould we use default rune spawn rules?
-		mode:SetUseDefaultDOTARuneSpawnLogic(true)
+		mode:SetUseDefaultDOTARuneSpawnLogic(false)
 
 		-- Should we allow people to buyback when they die?
-		mode:SetBuybackEnabled(true)
+		mode:SetBuybackEnabled(false)
 		-- Should we use a custom buyback cost setting?
 		mode:SetCustomBuybackCostEnabled(false)
 		-- Should we use a custom buyback time?
@@ -144,20 +150,20 @@ function GameMode:_CaptureGameMode()
 		-- Should we do customized top bar values or use the default kill count per team?
 		mode:SetTopBarTeamValuesOverride(false)
 		-- Should we display the top bar score/count at all?
-		mode:SetTopBarTeamValuesVisible(true)
+		mode:SetTopBarTeamValuesVisible(false)
 
 		-- Should we allow heroes to have custom levels?
-		mode:SetUseCustomHeroLevels(false)
+		mode:SetUseCustomHeroLevels(true)
 		-- Insert a custom XP table here if necessary
 		--mode:SetCustomXPRequiredToReachNextLevel()
 
 		-- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
-		mode:SetBotThinkingEnabled(true)
+		mode:SetBotThinkingEnabled(false)
 		-- Should we enable backdoor protection for our towers?
-		mode:SetTowerBackdoorProtectionEnabled(true)
+		mode:SetTowerBackdoorProtectionEnabled(false)
 
 		-- Should we disable fog of war entirely for both teams?
-		mode:SetFogOfWarDisabled(false)
+		mode:SetFogOfWarDisabled(true)
 		-- Should we make unseen and fogged areas of the map completely black until uncovered by each team? 
 		mode:SetUnseenFogOfWarEnabled(false)
 
@@ -169,7 +175,7 @@ function GameMode:_CaptureGameMode()
 		-- Should we only allow players to see their own inventory even when selecting other units?
 		mode:SetAlwaysShowPlayerInventory(false)
 		-- Should we disable the announcer from working in the game?
-		mode:SetAnnouncerDisabled(false)
+		mode:SetAnnouncerDisabled(true)
 
 		-- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe"). Use nil to allow players to pick their own hero.
 		local force_pick_hero = "npc_dota_hero_wisp"
@@ -187,7 +193,7 @@ function GameMode:_CaptureGameMode()
 		mode:SetFountainPercentageManaRegen(-1)
 
 		-- Should we have players lose the normal amount of dota gold on death?
-		mode:SetLoseGoldOnDeath(true)
+		mode:SetLoseGoldOnDeath(false)
 
 		-- What should we use for the maximum attack speed?
 		mode:SetMaximumAttackSpeed(10000)
@@ -200,7 +206,7 @@ function GameMode:_CaptureGameMode()
 		-- Should we disable the day/night cycle from naturally occurring?
 		mode:SetDaynightCycleDisabled(false)
 		-- Shuold we disable the killing spree announcer?
-		mode:SetKillingSpreeAnnouncerDisabled(false)
+		mode:SetKillingSpreeAnnouncerDisabled(true)
 		-- Should we disable the sticky item button in the quick buy area?
 		mode:SetStickyItemDisabled(false)
 

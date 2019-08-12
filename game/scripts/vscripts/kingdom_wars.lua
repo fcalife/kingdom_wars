@@ -69,6 +69,7 @@ end
 function GameMode:ExpFilter(keys)
 	--keys.experience: 40
 	--keys.player_id_const: 1
+	--keys.hero_entindex_const: 
 	--keys.reason_const: 1
 	--keys.experience = keys.experience * GAME_SPEED_MULTIPLIER
 

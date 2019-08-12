@@ -4,7 +4,7 @@
 
 	"npc_dota_hero_wisp"
 	{
-		"ModelScale"		"0.01"
+		"ModelScale"		"1.0"
 
 		"Ability1"					""
 		"Ability2"					""
@@ -30,11 +30,11 @@
 		"AttackDamageMin"			"0"
 		"AttackDamageMax"			"0"
 
-		"AttributeBaseStrength"		"0"
+		"AttributeBaseStrength"		"1"
 		"AttributeStrengthGain"		"0.0"
-		"AttributeBaseAgility"		"0"
+		"AttributeBaseAgility"		"1"
 		"AttributeAgilityGain"		"0.0"
-		"AttributeBaseIntelligence"	"0"
+		"AttributeBaseIntelligence"	"1"
 		"AttributeIntelligenceGain"	"0.0"
 
 		"MovementSpeed"				"550"
