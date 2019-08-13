@@ -9,8 +9,8 @@ require('internal/events')
 require('internal/util')
 require('events')
 
--- Kingdom files
---require('')
+-- Initialize Kingdom core
+require('kingdom/core')
 
 function Precache(context)
 

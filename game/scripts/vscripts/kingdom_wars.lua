@@ -120,3 +120,47 @@ function GameMode:OrderFilter(keys)
 
 	return true
 end
+
+-- Called right after the game setup is finished, as the first player finishes loading into the game
+function GameMode:OnFirstPlayerLoaded()
+	print("First player has finished loading the gamemode")
+
+end
+
+function GameMode:OnGameStatePlayersLoading()
+	print("Game state is now: players loading")
+end
+
+function GameMode:OnGameStateGameSetup()
+	print("Game state is now: game setup")
+end
+
+-- Called during hero select, performs additional precaching
+function GameMode:PostLoadPrecache()
+	print("Performing post-load precache...")    
+	--PrecacheItemByNameAsync("item_example_item", function(...) end)
+	--PrecacheItemByNameAsync("example_ability", function(...) end)
+	--PrecacheUnitByNameAsync("npc_dota_hero_viper", function(...) end)
+end
+
+function GameMode:OnGameStateHeroSelect()
+	print("Game state is now: hero selection")
+	Kingdom:Init()
+end
+
+function GameMode:OnGameStateStrategyTime()
+	print("Game state is now: strategy time")
+end
+
+function GameMode:OnGameStateShowcaseTime()
+	print("Game state is now: showcase time")
+end
+function GameMode:OnGameStatePreGame()
+	print("Game state is now: pre-game")
+end
+
+function GameMode:OnGameInProgress()
+	if IsServer() then
+		print("The game has officially begun")
+	end
+end

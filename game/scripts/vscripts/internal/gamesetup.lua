@@ -155,7 +155,10 @@ function GameMode:_CaptureGameMode()
 		-- Should we allow heroes to have custom levels?
 		mode:SetUseCustomHeroLevels(true)
 		-- Insert a custom XP table here if necessary
-		--mode:SetCustomXPRequiredToReachNextLevel()
+		local exp_table = {}
+		exp_table[1] = 0
+		exp_table[2] = 100
+		mode:SetCustomXPRequiredToReachNextLevel(exp_table)
 
 		-- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 		mode:SetBotThinkingEnabled(false)
