@@ -107,52 +107,75 @@ function MapManager:SetCityOwner(region, city, player)
 	self.city_owners[region][city] = player
 end
 
+-- Requires n regions with n cities each, to be distributed amongst n players
 function MapManager:PerformInitialCityDistribution()
 	local player_count = Kingdom:GetPlayerCount()
-	local max_total_cities = math.ceil(self:GetCityCount() / player_count)
-	local remaining_players = {}
-	local total_city_count = {}
+	local city_count = {}
 	for player = 1, player_count do
-		table.insert(remaining_players, player)
-		total_city_count[player] = 0
+		city_count[player] = {}
 	end
-	print("max total cities per player: "..max_total_cities)
-	print("total cities to distribute: "..self:GetCityCount())
 
+	-- Give each player one city per region
 	for region = 1, self:GetRegionCount() do
-		local max_region_cities = math.ceil(self:GetRegionCityCount(region) / player_count) + 1
 		local remaining_region_players = {}
-		local region_city_count = {}
-		for _, player in pairs(remaining_players) do
-			table.insert(remaining_region_players, player)
-			region_city_count[player] = 0
+		for player = 1, player_count do
+			remaining_region_players[player] = player
+			city_count[player][region] = 0
 		end
-
-		print("distributing cities on region "..region)
-		print("max cities per player in this region: "..max_region_cities)
-		print("player city count:")
-		PrintTable(total_city_count)
-		print("players still receiving cities:")
-		PrintTable(remaining_players)
-
 		for city, owner in pairs(self.city_owners[region]) do
 			local random_player = remaining_region_players[RandomInt(1, #remaining_region_players)]
 			self:SetCityOwner(region, city, random_player)
-			total_city_count[random_player] = total_city_count[random_player] + 1
-			region_city_count[random_player] = region_city_count[random_player] + 1
-			if total_city_count[random_player] >= max_total_cities then
-				table.remove(remaining_players, random_player)
-				table.remove(remaining_region_players, random_player)
-			elseif region_city_count[random_player] >= max_region_cities then
-				table.remove(remaining_region_players, random_player)
+			city_count[random_player][region] = city_count[random_player][region] + 1
+			for player_key, player in pairs(remaining_region_players) do
+				if player == random_player then
+					table.remove(remaining_region_players, player_key)
+				end
 			end
-			print("giving city "..city.." to player "..random_player)
-			print("players still receiving cities:")
-			PrintTable(remaining_players)
-			print("players still receiving cities on this region:")
-			PrintTable(remaining_region_players)
-			print("player city count on this region:")
-			PrintTable(region_city_count)
+			print("giving city "..city.." of region "..region.." to player "..random_player)
 		end
 	end
+
+	-- Perform several random swaps while respecting limits
+	local swap_count = 100
+	local region_count = self:GetRegionCount()
+	local region_max = 2
+	local sequential_fails = 0
+	while swap_count > 0 do
+		local player_1 = RandomInt(1, player_count)
+		local player_2 = RandomInt(1, player_count)
+		local region_1 = RandomInt(1, region_count)
+		local region_2 = RandomInt(1, region_count)
+		if city_count[player_1][region_1] > 0 and city_count[player_2][region_1] < region_max and city_count[player_1][region_2] < region_max and city_count[player_2][region_2] > 0 then
+			swap_count = swap_count - 1
+			sequential_fails = 0
+			city_count[player_1][region_1] = city_count[player_1][region_1] - 1
+			city_count[player_2][region_1] = city_count[player_2][region_1] + 1
+			city_count[player_1][region_2] = city_count[player_1][region_2] + 1
+			city_count[player_2][region_2] = city_count[player_2][region_2] - 1
+			print("swaps remaining: "..swap_count)
+			for city, owner in pairs(self.city_owners[region_1]) do
+				if owner == player_1 then
+					print("swapped city "..city.." from region "..region_1.." from player "..player_1.." to player "..player_2)
+					self:SetCityOwner(region_1, city, player_2)
+					break
+				end
+			end
+			for city, owner in pairs(self.city_owners[region_2]) do
+				if owner == player_2 then
+					print("swapped city "..city.." from region "..region_2.." from player "..player_2.." to player "..player_1)
+					self:SetCityOwner(region_2, city, player_1)
+					break
+				end
+			end
+		else
+			print("swap failed! trying again")
+			sequential_fails = sequential_fails + 1
+		end
+
+		if sequential_fails >= 10 then
+			print("too many swap failures, stopping")
+			swap_count = 0
+		end
+	end
+	PrintTable(city_count)
 end
