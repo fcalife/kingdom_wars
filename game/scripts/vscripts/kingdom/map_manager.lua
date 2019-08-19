@@ -40,13 +40,17 @@ function MapManager:Init()
 	-- Distribute cities amongst players randomly
 	print("- Map manager: distributing cities amongst players")
 	self:PerformInitialCityDistribution()
-	PrintTable(self.city_owners)
 
-	-- Spawn towers for each city
-	print("- Map manager: spawning city towers")
+	-- Spawn towers and cities for each player
+	print("- Map manager: spawning cities and towers")
 	for region = 1, self:GetRegionCount() do
 		for city = 1, self:GetRegionCityCount(region) do
-			--self:GetCityTowerSpawnPoint(region, city)
+			local city_loc = self:GetCityOrigin(region, city)
+			local city_facing = self:GetCityFacing(region, city)
+			local city_race = self:GetCityRace(region, city)
+			local tower_loc = self:GetCityTowerSpawnPoint(region, city)
+			local player = self:GetCityOwner(region, city)
+			self:SpawnTower(tower_loc.x, tower_loc.y, city_race, player)
 		end
 	end
 
@@ -76,16 +80,24 @@ function MapManager:GetCityHero(region, city)
 	return self.map_info[tostring(region)][tostring(city)]["hero"]
 end
 
+function MapManager:GetCityOrigin(region, city)
+	return Vector(self.map_info[tostring(region)][tostring(city)]["city"]["x"], self.map_info[tostring(region)][tostring(city)]["city"]["y"], 0)
+end
+
+function MapManager:GetCityFacing(region, city)
+	return Vector(self.map_info[tostring(region)][tostring(city)]["city"]["x_angle"], self.map_info[tostring(region)][tostring(city)]["city"]["y_angle"], 0)
+end
+
 function MapManager:GetCityTowerSpawnPoint(region, city)
 	return Vector(self.map_info[tostring(region)][tostring(city)]["tower"]["x"], self.map_info[tostring(region)][tostring(city)]["tower"]["y"], 0)
 end
 
 function MapManager:GetCityMeleeSpawnPoint(region, city)
-	return Vector(self.map_info[tostring(region)][tostring(city)]["melee_spawn"]["x"], self.map_info[tostring(region)][tostring(city)]["melee_spawn"]["y"], 0)
+	return Vector(self.map_info[tostring(region)][tostring(city)]["capture_zone"]["x"], self.map_info[tostring(region)][tostring(city)]["capture_zone"]["y"], 0)
 end
 
 function MapManager:GetCityRangedSpawnPoint(region, city)
-	return Vector(self.map_info[tostring(region)][tostring(city)]["ranged_spawn"]["x"], self.map_info[tostring(region)][tostring(city)]["ranged_spawn"]["y"], 0)
+	return self:GetCityMeleeSpawnPoint(region, city) + Vector(-192, 192, 0)
 end
 
 function MapManager:GetCityCaptureZoneCenter(region, city)
@@ -105,6 +117,19 @@ end
 
 function MapManager:SetCityOwner(region, city, player)
 	self.city_owners[region][city] = player
+end
+
+
+
+-- Spawners
+function MapManager:SpawnTower(x, y, race, player)
+	local tower_name = "npc_kingdom_tower_"..race
+	local player_id = Kingdom:GetPlayerID(player)
+	local player_color = Kingdom:GetKingdomPlayerColor(player)
+	local tower = CreateUnitByName(tower_name, Vector(x, y, 0), true, nil, nil, PlayerResource:GetTeam(player_id))
+	tower:FaceTowards(tower:GetAbsOrigin() + Vector(0, -100, 0))
+	tower:SetControllableByPlayer(player_id, true)
+	tower:SetRenderColor(player_color.x, player_color.y, player_color.z)
 end
 
 -- Requires n regions with n cities each, to be distributed amongst n players
@@ -152,30 +177,29 @@ function MapManager:PerformInitialCityDistribution()
 			city_count[player_2][region_1] = city_count[player_2][region_1] + 1
 			city_count[player_1][region_2] = city_count[player_1][region_2] + 1
 			city_count[player_2][region_2] = city_count[player_2][region_2] - 1
-			print("swaps remaining: "..swap_count)
+			--print("swaps remaining: "..swap_count)
 			for city, owner in pairs(self.city_owners[region_1]) do
 				if owner == player_1 then
-					print("swapped city "..city.." from region "..region_1.." from player "..player_1.." to player "..player_2)
+					--print("swapped city "..city.." from region "..region_1.." from player "..player_1.." to player "..player_2)
 					self:SetCityOwner(region_1, city, player_2)
 					break
 				end
 			end
 			for city, owner in pairs(self.city_owners[region_2]) do
 				if owner == player_2 then
-					print("swapped city "..city.." from region "..region_2.." from player "..player_2.." to player "..player_1)
+					--print("swapped city "..city.." from region "..region_2.." from player "..player_2.." to player "..player_1)
 					self:SetCityOwner(region_2, city, player_1)
 					break
 				end
 			end
 		else
-			print("swap failed! trying again")
+			--print("swap failed! trying again")
 			sequential_fails = sequential_fails + 1
 		end
 
 		if sequential_fails >= 10 then
-			print("too many swap failures, stopping")
+			--print("too many swap failures, stopping")
 			swap_count = 0
 		end
 	end
-	PrintTable(city_count)
 end

@@ -41,6 +41,12 @@ function Kingdom:Init()
 		self.player_ids[8] = 8
 	end
 
+	-- Set up player colors
+	for player_number, player_id in pairs(self:GetAllPlayerIDs()) do
+		local color = self:GetKingdomPlayerColor(player_number)
+		PlayerResource:SetCustomPlayerColor(player_id, color.x, color.y, color.z)
+	end
+
 	-- Initialize the territory manager
 	MapManager:Init()
 
@@ -50,6 +56,9 @@ function Kingdom:Init()
 	print("Kingdom core: finished initializing")
 end
 
+
+
+-- Player information
 function Kingdom:GetPlayerCount()
 	return #self.player_ids
 end
@@ -60,4 +69,8 @@ end
 
 function Kingdom:GetAllPlayerIDs()
 	return self.player_ids
+end
+
+function Kingdom:GetKingdomPlayerColor(player_number)
+	return PLAYER_COLOR_LIST[player_number]
 end
