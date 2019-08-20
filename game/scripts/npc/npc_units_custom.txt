@@ -3,6 +3,279 @@
 	"Version"	"1"
 
 	//=================================================================================
+	//	Cities
+	//=================================================================================
+	"npc_kingdom_human_city"
+	{										
+		"Model"						"models/props_structures/good_barracks_melee001.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Good_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.4"
+
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"300"
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"1"
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"256"
+		"HealthBarOffset"			"500"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"5000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_elf_city"
+	{										
+		"Model"						"models/props_structures/good_ancient001.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Good_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"300"
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"1"
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"256"
+		"HealthBarOffset"			"500"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"5000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_undead_city"
+	{										
+		"Model"						"models/items/pugna/ward/draining_wight/draining_wight.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Pugna_NetherWard"
+		"Level"						"1"
+		"ModelScale" 				"2.6"
+
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"300"
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"1"
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"256"
+		"HealthBarOffset"			"500"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"5000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_keen_city"
+	{										
+		"Model"						"models/items/witchdoctor/wd_ward/teller_of_the_auspice_ability/teller_of_the_auspice_ability.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Bad_Melee"
+		"Level"						"1"
+		"ModelScale" 				"3.0"
+
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"300"
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"1"
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"256"
+		"HealthBarOffset"			"500"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"5000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_orc_city"
+	{										
+		"Model"						"models/props_structures/dire_ancient_base001.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Bad_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"300"
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"1"
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"256"
+		"HealthBarOffset"			"500"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"5000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	//=================================================================================
 	//	Towers
 	//=================================================================================
 	"npc_kingdom_tower_human"
@@ -11,7 +284,10 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Tower.Water"
 		"Level"						"1"
-		"ModelScale" 				"2.7"
+		"ModelScale" 				"2.3"
+
+		"MinimapIcon"				"minimap_tower"
+		"MinimapIconSize"			"250"
 
 		"Ability1"					""
 
@@ -54,14 +330,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-		//"Creature"
-		//{
-		//	"AttachWearables"
-		//	{
-		//		"Wearable1"	{	"ItemDef"	"589"	}	// arms
-		//	}
-		//	}
 	}
 
 	"npc_kingdom_tower_elf"
@@ -72,6 +340,9 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
+		"MinimapIcon"				"minimap_tower"
+		"MinimapIconSize"			"250"
+
 		"Ability1"					""
 
 		"ArmorPhysical"				"0"
@@ -113,14 +384,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-		//"Creature"
-		//{
-		//	"AttachWearables"
-		//	{
-		//		"Wearable1"	{	"ItemDef"	"589"	}	// arms
-		//	}
-		//	}
 	}
 
 	"npc_kingdom_tower_undead"
@@ -130,6 +393,9 @@
 		"SoundSet"					"Tower.Fire"
 		"Level"						"1"
 		"ModelScale" 				"1"
+
+		"MinimapIcon"				"minimap_tower"
+		"MinimapIconSize"			"250"
 
 		"Ability1"					""
 
@@ -172,14 +438,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-		//"Creature"
-		//{
-		//	"AttachWearables"
-		//	{
-		//		"Wearable1"	{	"ItemDef"	"589"	}	// arms
-		//	}
-		//	}
 	}
 
 	"npc_kingdom_tower_keen"
@@ -189,6 +447,9 @@
 		"SoundSet"					"Hero_Razor"
 		"Level"						"1"
 		"ModelScale" 				"3.5"
+
+		"MinimapIcon"				"minimap_tower"
+		"MinimapIconSize"			"250"
 
 		"Ability1"					""
 
@@ -202,7 +463,7 @@
 		"AttackAcquisitionRange"	"800"
 		"AttackRange"				"800"
 		"ProjectileModel"			"particles/econ/items/razor/razor_ti6/razor_base_attack_ti6.vpcf"
-		"ProjectileSpeed"			"2000"
+		"ProjectileSpeed"			"5000"
 
 		"ConsideredHero"			"1"
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
@@ -231,14 +492,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-		//"Creature"
-		//{
-		//	"AttachWearables"
-		//	{
-		//		"Wearable1"	{	"ItemDef"	"589"	}	// arms
-		//	}
-		//	}
 	}
 
 	"npc_kingdom_tower_orc"
@@ -248,6 +501,9 @@
 		"SoundSet"					"Tower.Fire"
 		"Level"						"1"
 		"ModelScale" 				"1"
+
+		"MinimapIcon"				"minimap_tower"
+		"MinimapIconSize"			"250"
 
 		"Ability1"					""
 

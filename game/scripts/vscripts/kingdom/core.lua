@@ -15,7 +15,8 @@ function Kingdom:Init()
 	self.unit_stats = LoadKeyValues("scripts/npc/npc_units_custom.txt")
 
 	-- Universal modifiers
-	--LinkLuaModifier("modifier_kingdom_modifier", "kingdom/modifiers/universal_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_undead_city_animation", "kingdom/modifiers/general/undead_city_animation", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_keen_city_animation", "kingdom/modifiers/general/keen_city_animation", LUA_MODIFIER_MOTION_NONE)
 
 	-- Listeners
 	--CustomGameEventManager:RegisterListener("mouse_position_think", Dynamic_Wrap(Kingdom, "MousePositionThink"))
