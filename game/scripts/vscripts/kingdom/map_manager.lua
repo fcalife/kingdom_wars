@@ -40,17 +40,20 @@ function MapManager:Init()
 	-- Distribute cities amongst players randomly
 	print("- Map manager: distributing cities amongst players")
 	self:PerformInitialCityDistribution()
+	PrintTable(self.city_owners)
 
 	-- Spawn towers and cities for each player
 	print("- Map manager: spawning cities and towers")
-	for region = 1, self:GetRegionCount() do
+	--for region = 1, self:GetRegionCount() do
+	for region = 1, 1 do
 		for city = 1, self:GetRegionCityCount(region) do
 			local city_loc = self:GetCityOrigin(region, city)
-			local city_facing = self:GetCityFacing(region, city)
+			local city_angle = self:GetCityFacing(region, city)
 			local city_race = self:GetCityRace(region, city)
 			local tower_loc = self:GetCityTowerSpawnPoint(region, city)
 			local player = self:GetCityOwner(region, city)
 			self:SpawnTower(tower_loc.x, tower_loc.y, city_race, player)
+			self:SpawnCity(city_loc.x, city_loc.y, city_angle, city_race, player)
 		end
 	end
 
@@ -85,7 +88,7 @@ function MapManager:GetCityOrigin(region, city)
 end
 
 function MapManager:GetCityFacing(region, city)
-	return Vector(self.map_info[tostring(region)][tostring(city)]["city"]["x_angle"], self.map_info[tostring(region)][tostring(city)]["city"]["y_angle"], 0)
+	return self.map_info[tostring(region)][tostring(city)]["city"]["angle"]
 end
 
 function MapManager:GetCityTowerSpawnPoint(region, city)
@@ -126,10 +129,35 @@ function MapManager:SpawnTower(x, y, race, player)
 	local tower_name = "npc_kingdom_tower_"..race
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_color = Kingdom:GetKingdomPlayerColor(player)
-	local tower = CreateUnitByName(tower_name, Vector(x, y, 0), true, nil, nil, PlayerResource:GetTeam(player_id))
+	local tower = CreateUnitByName(tower_name, Vector(x, y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
+	ResolveNPCPositions(Vector(x, y, 0), 128)
 	tower:FaceTowards(tower:GetAbsOrigin() + Vector(0, -100, 0))
 	tower:SetControllableByPlayer(player_id, true)
 	tower:SetRenderColor(player_color.x, player_color.y, player_color.z)
+
+	-- Race-specific stuff
+	if race == "orc" then
+		tower:SetRenderColor(74, 59, 65)
+	end
+end
+
+function MapManager:SpawnCity(x, y, angle, race, player)
+	local city_name = "npc_kingdom_"..race.."_city"
+	local player_id = Kingdom:GetPlayerID(player)
+	local player_color = Kingdom:GetKingdomPlayerColor(player)
+	local facing_position = RotatePosition(Vector(x, y, 0), QAngle(0, angle, 0), Vector(x, y, 0) + Vector(100, 0, 0))
+	local city = CreateUnitByName(city_name, Vector(x, y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
+	city:FaceTowards(facing_position)
+	city:SetControllableByPlayer(player_id, true)
+
+	-- Race-specific stuff
+	if race == "orc" then
+		city:SetRenderColor(74, 59, 65)
+	elseif race == "undead" then
+		city:AddNewModifier(city, nil, "modifier_kingdom_undead_city_animation", {})
+	elseif race == "keen" then
+		city:AddNewModifier(city, nil, "modifier_kingdom_keen_city_animation", {})
+	end
 end
 
 -- Requires n regions with n cities each, to be distributed amongst n players
@@ -156,7 +184,6 @@ function MapManager:PerformInitialCityDistribution()
 					table.remove(remaining_region_players, player_key)
 				end
 			end
-			print("giving city "..city.." of region "..region.." to player "..random_player)
 		end
 	end
 
