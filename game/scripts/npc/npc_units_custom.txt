@@ -119,7 +119,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Pugna_NetherWard"
 		"Level"						"1"
-		"ModelScale" 				"2.6"
+		"ModelScale" 				"3.0"
 
 		"MinimapIcon"				"minimap_ancient"
 		"MinimapIconSize"			"300"
@@ -546,13 +546,72 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
 
-		//"Creature"
-		//{
-		//	"AttachWearables"
-		//	{
-		//		"Wearable1"	{	"ItemDef"	"589"	}	// arms
-		//	}
-		//	}
+	//=================================================================================
+	//	Units
+	//=================================================================================
+	"npc_kingdom_human_melee"
+	{										
+		"Model"						"models/heroes/dragon_knight/dragon_knight.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_DragonKnight"
+		"Level"						"1"
+		"ModelScale" 				"1"
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"6.5"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"15"
+		"AttackDamageMax"			"15"
+		"AttackRate"				"2.0"
+		"AttackAnimationPoint"		"0.5"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"				"48"
+		"HealthBarOffset"			"200"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"270"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"50"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"63"	}
+				"Wearable2"	{	"ItemDef"	"64"	}
+				"Wearable3"	{	"ItemDef"	"65"	}
+				"Wearable4"	{	"ItemDef"	"66"	}
+				"Wearable5"	{	"ItemDef"	"67"	}
+				"Wearable6"	{	"ItemDef"	"68"	}
+			}
+		}
 	}
 }

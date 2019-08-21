@@ -57,6 +57,24 @@ function MapManager:Init()
 		end
 	end
 
+	print("units on the map: ")
+	local units = 0
+	Timers:CreateTimer(5, function()
+		for city = 1, self:GetRegionCityCount(1) do
+			local player = self:GetCityOwner(1, city)
+			local player_id = Kingdom:GetPlayerID(player)
+			local player_color = Kingdom:GetKingdomPlayerColor(player)
+			local spawn_loc = self:GetCityMeleeSpawnPoint(1, city)
+			local unit = CreateUnitByName("npc_kingdom_human_melee", spawn_loc, true, nil, nil, PlayerResource:GetTeam(player_id))
+			ResolveNPCPositions(unit:GetAbsOrigin(), 128)
+			unit:SetControllableByPlayer(player_id, true)
+			unit:SetRenderColor(player_color.x, player_color.y, player_color.z)
+			units = units + 1
+			print("units on the map: "..units)
+		end
+		return 1
+	end)
+
 	print("Map manager: finished initializing")
 end
 
@@ -130,7 +148,7 @@ function MapManager:SpawnTower(x, y, race, player)
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_color = Kingdom:GetKingdomPlayerColor(player)
 	local tower = CreateUnitByName(tower_name, Vector(x, y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
-	ResolveNPCPositions(Vector(x, y, 0), 128)
+	--ResolveNPCPositions(Vector(x, y, 0), 128)
 	tower:FaceTowards(tower:GetAbsOrigin() + Vector(0, -100, 0))
 	tower:SetControllableByPlayer(player_id, true)
 	tower:SetRenderColor(player_color.x, player_color.y, player_color.z)
