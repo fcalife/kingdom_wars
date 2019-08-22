@@ -5,6 +5,7 @@ end
 
 -- Other modules initialization
 require('kingdom/map_manager')
+require('kingdom/production_manager')
 
 -- Core kingdom functions
 function Kingdom:Init()
