@@ -6,6 +6,7 @@ end
 -- Other modules initialization
 require('kingdom/map_manager')
 require('kingdom/production_manager')
+require('kingdom/units')
 
 -- Core kingdom functions
 function Kingdom:Init()
@@ -58,6 +59,11 @@ function Kingdom:Init()
 	print("Kingdom core: finished initializing")
 end
 
+
+-- Game start
+function Kingdom:StartMatch()
+	MapManager:StartMatch()
+end
 
 
 -- Player information

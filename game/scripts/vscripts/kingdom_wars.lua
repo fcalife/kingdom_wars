@@ -155,6 +155,7 @@ end
 function GameMode:OnGameStateShowcaseTime()
 	print("Game state is now: showcase time")
 end
+
 function GameMode:OnGameStatePreGame()
 	print("Game state is now: pre-game")
 end
@@ -162,5 +163,6 @@ end
 function GameMode:OnGameInProgress()
 	if IsServer() then
 		print("The game has officially begun")
+		Kingdom:StartMatch()
 	end
 end
