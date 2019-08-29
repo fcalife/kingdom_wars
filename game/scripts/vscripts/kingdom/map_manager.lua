@@ -3,6 +3,7 @@ if MapManager == nil then
 	_G.MapManager = class({})
 end
 
+-- Map initialization
 function MapManager:Init()
 	print("--- Map manager: initializing")
 
@@ -30,8 +31,12 @@ function MapManager:Init()
 
 	-- Generate city owner information
 	self.city_owners = {}
+	self.cities = {}
+	self.towers = {}
 	for region = 1, self:GetRegionCount() do
 		self.city_owners[region] = {}
+		self.cities[region] = {}
+		self.towers[region] = {}
 		for city = 1, self:GetRegionCityCount(region) do
 			self.city_owners[region][city] = 0
 		end
@@ -44,37 +49,24 @@ function MapManager:Init()
 
 	-- Spawn towers and cities for each player
 	print("- Map manager: spawning cities and towers")
-	--for region = 1, self:GetRegionCount() do
-	for region = 1, 1 do
+	for region = 1, self:GetRegionCount() do
 		for city = 1, self:GetRegionCityCount(region) do
-			local city_loc = self:GetCityOrigin(region, city)
-			local city_angle = self:GetCityFacing(region, city)
-			local city_race = self:GetCityRace(region, city)
-			local tower_loc = self:GetCityTowerSpawnPoint(region, city)
-			local player = self:GetCityOwner(region, city)
-			self:SpawnTower(tower_loc.x, tower_loc.y, city_race, player)
-			self:SpawnCity(city_loc.x, city_loc.y, city_angle, city_race, player)
+			self:SpawnTower(city, region)
+			self:SpawnCity(city, region)
 		end
 	end
-
-	print("units on the map: ")
-	local units = 0
-	Timers:CreateTimer(5, function()
-		for city = 1, self:GetRegionCityCount(1) do
-			local rand = {"melee", "ranged", "cavalry"}
-			ProductionManager:SpawnUnit(1, city, rand[RandomInt(1, 3)])
-			units = units + 1
-			print("units on the map: "..units)
-		end
-		if units < 200 then
-			return 1
-		end
-	end)
 
 	print("Map manager: finished initializing")
 end
 
-
+-- Map startup (at match start)
+function MapManager:StartMatch()
+	for region = 1, self:GetRegionCount() do
+		for city = 1, self:GetRegionCityCount(region) do
+			self:SetCityControllable(region, city, self:GetCityOwner(region, city))
+		end
+	end
+end
 
 -- Geographical information
 function MapManager:GetRegionCount()
@@ -125,6 +117,14 @@ function MapManager:GetCityCaptureZoneRadius(region, city)
 	return self.map_info[tostring(region)][tostring(city)]["capture_zone"]["radius"]
 end
 
+function MapManager:GetCityByNumber(region, city)
+	return self.cities[region][city]
+end
+
+function MapManager:GetTowerByNumber(region, city)
+	return self.towers[region][city]
+end
+
 
 
 -- City ownership
@@ -136,41 +136,71 @@ function MapManager:SetCityOwner(region, city, player)
 	self.city_owners[region][city] = player
 end
 
+function MapManager:SetCityControllable(region, city, player)
+	local player_id = Kingdom:GetPlayerID(player)
+	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
+	local city_unit = self:GetCityByNumber(region, city)
+	local tower_unit = self:GetTowerByNumber(region, city)
+	city_unit:SetOwner(player_hero)
+	city_unit:SetControllableByPlayer(player_id, true)
+	tower_unit:SetOwner(player_hero)
+	tower_unit:SetControllableByPlayer(player_id, true)
+end
+
 
 
 -- Spawners
-function MapManager:SpawnTower(x, y, race, player)
+function MapManager:SpawnTower(city, region)
+	local race = self:GetCityRace(region, city)
+	local tower_loc = self:GetCityTowerSpawnPoint(region, city)
+	local player = self:GetCityOwner(region, city)
 	local tower_name = "npc_kingdom_tower_"..race
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_color = Kingdom:GetKingdomPlayerColor(player)
-	local tower = CreateUnitByName(tower_name, Vector(x, y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
-	--ResolveNPCPositions(Vector(x, y, 0), 128)
-	tower:FaceTowards(tower:GetAbsOrigin() + Vector(0, -100, 0))
-	tower:SetControllableByPlayer(player_id, true)
-	tower:SetRenderColor(player_color.x, player_color.y, player_color.z)
+
+	-- Spawn tower
+	local unit = CreateUnitByName(tower_name, Vector(tower_loc.x, tower_loc.y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
+	--ResolveNPCPositions(Vector(tower_loc.x, tower_loc.y, 0), 128)
+	unit:FaceTowards(unit:GetAbsOrigin() + Vector(0, -100, 0))
+	unit:SetRenderColor(player_color.x, player_color.y, player_color.z)
+
+	-- Tower meta-information
+	self.towers[region][city] = unit
+	unit.region = region
+	unit.city = city
 
 	-- Race-specific stuff
 	if race == "orc" then
-		tower:SetRenderColor(74, 59, 65)
+		unit:SetRenderColor(74, 59, 65)
 	end
 end
 
-function MapManager:SpawnCity(x, y, angle, race, player)
+function MapManager:SpawnCity(city, region)
+	local city_loc = self:GetCityOrigin(region, city)
+	local angle = self:GetCityFacing(region, city)
+	local race = self:GetCityRace(region, city)
+	local player = self:GetCityOwner(region, city)
 	local city_name = "npc_kingdom_"..race.."_city"
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_color = Kingdom:GetKingdomPlayerColor(player)
-	local facing_position = RotatePosition(Vector(x, y, 0), QAngle(0, angle, 0), Vector(x, y, 0) + Vector(100, 0, 0))
-	local city = CreateUnitByName(city_name, Vector(x, y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
-	city:FaceTowards(facing_position)
-	city:SetControllableByPlayer(player_id, true)
+	local facing_position = RotatePosition(Vector(city_loc.x, city_loc.y, 0), QAngle(0, angle, 0), Vector(city_loc.x, city_loc.y, 0) + Vector(100, 0, 0))
+
+	-- Spawn city
+	local unit = CreateUnitByName(city_name, Vector(city_loc.x, city_loc.y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
+	unit:FaceTowards(facing_position)
+
+	-- Tower meta-information
+	self.cities[region][city] = unit
+	unit.region = region
+	unit.city = city
 
 	-- Race-specific stuff
 	if race == "orc" then
-		city:SetRenderColor(74, 59, 65)
+		unit:SetRenderColor(74, 59, 65)
 	elseif race == "undead" then
-		city:AddNewModifier(city, nil, "modifier_kingdom_undead_city_animation", {})
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_undead_city_animation", {})
 	elseif race == "keen" then
-		city:AddNewModifier(city, nil, "modifier_kingdom_keen_city_animation", {})
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_keen_city_animation", {})
 	end
 end
 

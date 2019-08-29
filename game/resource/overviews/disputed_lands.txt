@@ -1,0 +1,8 @@
+disputed_lands
+{
+	material materials/overviews/disputed_lands.vmat
+	pos_x -16392
+	pos_y 16365
+	scale 32.000
+}
+

@@ -16,7 +16,9 @@
 		"MinimapIcon"				"minimap_ancient"
 		"MinimapIconSize"			"300"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_buy_human_melee"
+		"Ability2"					"kingdom_buy_human_ranged"
+		"Ability3"					"kingdom_buy_human_cavalry"
 
 		"ArmorPhysical"				"0"
 
@@ -44,7 +46,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"5000"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -70,7 +72,9 @@
 		"MinimapIcon"				"minimap_ancient"
 		"MinimapIconSize"			"300"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_buy_elf_melee"
+		"Ability2"					"kingdom_buy_elf_ranged"
+		"Ability3"					"kingdom_buy_elf_cavalry"
 
 		"ArmorPhysical"				"0"
 
@@ -98,7 +102,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"5000"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -124,7 +128,9 @@
 		"MinimapIcon"				"minimap_ancient"
 		"MinimapIconSize"			"300"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_buy_undead_melee"
+		"Ability2"					"kingdom_buy_undead_ranged"
+		"Ability3"					"kingdom_buy_undead_cavalry"
 
 		"ArmorPhysical"				"0"
 
@@ -152,7 +158,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"5000"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -178,7 +184,9 @@
 		"MinimapIcon"				"minimap_ancient"
 		"MinimapIconSize"			"300"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_buy_keen_melee"
+		"Ability2"					"kingdom_buy_keen_ranged"
+		"Ability3"					"kingdom_buy_keen_cavalry"
 
 		"ArmorPhysical"				"0"
 
@@ -206,7 +214,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"5000"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -232,7 +240,9 @@
 		"MinimapIcon"				"minimap_ancient"
 		"MinimapIconSize"			"300"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_buy_orc_melee"
+		"Ability2"					"kingdom_buy_orc_ranged"
+		"Ability3"					"kingdom_buy_orc_cavalry"
 
 		"ArmorPhysical"				"0"
 
@@ -260,7 +270,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"5000"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -296,7 +306,7 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"250"
 		"AttackDamageMax"			"250"
-		"AttackRate"				"0.5"
+		"AttackRate"				"2.5"
 		"AttackAnimationPoint"		"0.6"
 		"AttackAcquisitionRange"	"1500"
 		"AttackRange"				"900"
@@ -317,7 +327,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"500"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -348,9 +358,9 @@
 		"ArmorPhysical"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"250"
-		"AttackDamageMax"			"250"
-		"AttackRate"				"0.5"
+		"AttackDamageMin"			"115"
+		"AttackDamageMax"			"125"
+		"AttackRate"				"1.2"
 		"AttackAnimationPoint"		"0.6"
 		"AttackAcquisitionRange"	"1500"
 		"AttackRange"				"900"
@@ -371,7 +381,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"500"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -402,9 +412,9 @@
 		"ArmorPhysical"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"250"
-		"AttackDamageMax"			"250"
-		"AttackRate"				"0.5"
+		"AttackDamageMin"			"130"
+		"AttackDamageMax"			"170"
+		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.6"
 		"AttackAcquisitionRange"	"1500"
 		"AttackRange"				"900"
@@ -425,7 +435,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"500"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -456,9 +466,9 @@
 		"ArmorPhysical"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"250"
-		"AttackDamageMax"			"250"
-		"AttackRate"				"0.5"
+		"AttackDamageMin"			"40"
+		"AttackDamageMax"			"40"
+		"AttackRate"				"0.4"
 		"AttackAnimationPoint"		"0.2"
 		"AttackAcquisitionRange"	"1500"
 		"AttackRange"				"900"
@@ -479,7 +489,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"500"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -510,9 +520,9 @@
 		"ArmorPhysical"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"250"
-		"AttackDamageMax"			"250"
-		"AttackRate"				"0.5"
+		"AttackDamageMin"			"140"
+		"AttackDamageMax"			"160"
+		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.6"
 		"AttackAcquisitionRange"	"1500"
 		"AttackRange"				"900"
@@ -533,7 +543,7 @@
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"500"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -563,12 +573,12 @@
 
 		"Ability1"					""
 
-		"ArmorPhysical"				"10"
+		"ArmorPhysical"				"6"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"15"
-		"AttackDamageMax"			"15"
-		"AttackRate"				"2.0"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
+		"AttackRate"				"2.2"
 		"AttackAnimationPoint"		"0.5"
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"150"
@@ -576,7 +586,7 @@
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 
@@ -585,11 +595,11 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"270"
+		"MovementSpeed"				"285"
 		"MovementTurnRate"			"1.0"
 
-		"StatusHealth"				"50"
-		"StatusHealthRegen"			"0"
+		"StatusHealth"				"390"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -630,8 +640,8 @@
 		"ArmorPhysical"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"20"
-		"AttackDamageMax"			"20"
+		"AttackDamageMin"			"110"
+		"AttackDamageMax"			"130"
 		"AttackRate"				"1.8"
 		"AttackAnimationPoint"		"0.75"
 		"AttackAcquisitionRange"	"1200"
@@ -640,7 +650,7 @@
 		"ProjectileSpeed"			"1000"
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 
@@ -649,11 +659,11 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"295"
 		"MovementTurnRate"			"1.0"
 
-		"StatusHealth"				"35"
-		"StatusHealthRegen"			"0"
+		"StatusHealth"				"325"
+		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -690,12 +700,12 @@
 
 		"Ability1"					""
 
-		"ArmorPhysical"				"12"
+		"ArmorPhysical"				"10"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"
-		"AttackDamageMax"			"30"
-		"AttackRate"				"2.0"
+		"AttackDamageMin"			"150"
+		"AttackDamageMax"			"160"
+		"AttackRate"				"2.4"
 		"AttackAnimationPoint"		"0.3"
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"200"
@@ -703,7 +713,7 @@
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 
@@ -712,11 +722,11 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"375"
+		"MovementSpeed"				"350"
 		"MovementTurnRate"			"1.0"
 
-		"StatusHealth"				"75"
-		"StatusHealthRegen"			"0"
+		"StatusHealth"				"505"
+		"StatusHealthRegen"			"1.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 
@@ -758,17 +768,17 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"20"
-		"AttackDamageMax"			"20"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"7"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"60"
+		"StatusHealth"				"470"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"				"300"
@@ -778,14 +788,14 @@
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -821,34 +831,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"20"
-		"AttackDamageMax"			"20"
+		"AttackDamageMin"			"125"
+		"AttackDamageMax"			"145"
 
 		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"25"
+		"StatusHealth"				"255"
 
 		"AttackAcquisitionRange"	"1200"
-		"AttackRange"				"750"
+		"AttackRange"				"900"
 
-		"AttackRate"				"1.8"
+		"AttackRate"				"1.6"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"330"
+		"MovementSpeed"				"325"
 
 		"AttackAnimationPoint"		"0.4"
 		"ProjectileModel"			"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"			"1250"
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -883,15 +893,15 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"
-		"AttackDamageMax"			"30"
+		"AttackDamageMin"			"135"
+		"AttackDamageMax"			"145"
 
-		"ArmorPhysical"				"12"
+		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"75"
+		"StatusHealth"				"435"
 
 		"AttackAcquisitionRange"	"1200"
-		"AttackRange"				"200"
+		"AttackRange"				"250"
 
 		"AttackRate"				"2.0"
 
@@ -903,14 +913,14 @@
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -944,17 +954,17 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_Undying"
 		"Level"						"1"
-		"ModelScale" 				"1"
+		"ModelScale" 				"0.8"
 
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"20"
-		"AttackDamageMax"			"20"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"4"
+		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"40"
+		"StatusHealth"				"350"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"150"
@@ -962,21 +972,21 @@
 		"AttackRate"				"2.4"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"270"
+		"MovementSpeed"				"275"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1010,34 +1020,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"20"
-		"AttackDamageMax"			"20"
+		"AttackDamageMin"			"120"
+		"AttackDamageMax"			"140"
 
 		"ArmorPhysical"				"0"
 
-		"StatusHealth"				"35"
+		"StatusHealth"				"275"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"600"
 
-		"AttackRate"				"1.4"
+		"AttackRate"				"1.8"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"290"
 
 		"AttackAnimationPoint"		"0.7"
 		"ProjectileModel"			"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
 		"ProjectileSpeed"			"900"
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1074,34 +1084,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"
-		"AttackDamageMax"			"30"
+		"AttackDamageMin"			"155"
+		"AttackDamageMax"			"165"
 
-		"ArmorPhysical"				"9"
+		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"75"
+		"StatusHealth"				"560"
 
 		"AttackAcquisitionRange"	"1200"
-		"AttackRange"				"200"
+		"AttackRange"				"250"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"2.4"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"375"
+		"MovementSpeed"				"330"
 
 		"AttackAnimationPoint"		"0.56"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1140,12 +1150,12 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"15"
-		"AttackDamageMax"			"15"
+		"AttackDamageMin"			"75"
+		"AttackDamageMax"			"85"
 
-		"ArmorPhysical"				"10"
+		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"60"
+		"StatusHealth"				"450"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"150"
@@ -1153,21 +1163,21 @@
 		"AttackRate"				"2.4"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"270"
+		"MovementSpeed"				"280"
 
 		"AttackAnimationPoint"		"0.33"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1201,34 +1211,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"25"
-		"AttackDamageMax"			"25"
+		"AttackDamageMin"			"140"
+		"AttackDamageMax"			"160"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"35"
+		"StatusHealth"				"330"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"450"
 
-		"AttackRate"				"2.1"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"285"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			"particles/units/heroes/hero_techies/techies_base_attack.vpcf"
 		"ProjectileSpeed"			"900"
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1264,34 +1274,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"
-		"AttackDamageMax"			"30"
+		"AttackDamageMin"			"145"
+		"AttackDamageMax"			"155"
 
-		"ArmorPhysical"				"9"
+		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"90"
+		"StatusHealth"				"660"
 
 		"AttackAcquisitionRange"	"1200"
-		"AttackRange"				"200"
+		"AttackRange"				"250"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"2.2"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"375"
+		"MovementSpeed"				"340"
 
 		"AttackAnimationPoint"		"0.35"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1333,34 +1343,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"20"
-		"AttackDamageMax"			"20"
+		"AttackDamageMin"			"115"
+		"AttackDamageMax"			"125"
 
-		"ArmorPhysical"				"7"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"60"
+		"StatusHealth"				"500"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"2.4"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"270"
+		"MovementSpeed"				"290"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1395,12 +1405,12 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"25"
-		"AttackDamageMax"			"25"
+		"AttackDamageMin"			"130"
+		"AttackDamageMax"			"150"
 
-		"ArmorPhysical"				"0"
+		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"35"
+		"StatusHealth"				"300"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"450"
@@ -1408,21 +1418,21 @@
 		"AttackRate"				"1.8"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"315"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
 		"ProjectileSpeed"			"1200"
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
@@ -1457,34 +1467,34 @@
 		"Ability1"					""
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"30"
-		"AttackDamageMax"			"30"
+		"AttackDamageMin"			"160"
+		"AttackDamageMax"			"170"
 
-		"ArmorPhysical"				"9"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"75"
+		"StatusHealth"				"590"
 
 		"AttackAcquisitionRange"	"1200"
 		"AttackRange"				"450"
 
-		"AttackRate"				"1.7"
+		"AttackRate"				"2.2"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"335"
+		"MovementSpeed"				"320"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			"particles/units/heroes/hero_batrider/batrider_base_attack.vpcf"
 		"ProjectileSpeed"			"900"
 
 		"ConsideredHero"			"0"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
 		"RingRadius"				"48"
 		"HealthBarOffset"			"200"
 		"BountyXP"					"0"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
-		"StatusHealthRegen"			"0"
+		"StatusHealthRegen"			"1.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"

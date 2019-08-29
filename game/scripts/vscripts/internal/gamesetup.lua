@@ -94,6 +94,7 @@ function GameMode:_InitGameMode()
 	-- Testing adjustments
 	if IsInToolsMode() then
 		GameRules:SetPreGameTime(3)
+		GameRules:SetStartingGold(10000)
 	end
 
 	print("Game rules (part 1) have been set...")
