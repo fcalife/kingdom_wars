@@ -53,6 +53,7 @@ function Precache(context)
 
 	-- Core particles
 	PrecacheResource("particle", "particles/econ/items/razor/razor_ti6/razor_base_attack_ti6.vpcf", context)
+	PrecacheResource("particle", "particles/capture_ring.vpcf", context)
 
 	-- We done
 	print("Finished pre-load precache")

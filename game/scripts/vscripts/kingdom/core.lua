@@ -5,7 +5,7 @@ end
 
 -- Other modules initialization
 require('kingdom/map_manager')
-require('kingdom/production_manager')
+require('kingdom/economy_manager')
 require('kingdom/units')
 
 -- Core kingdom functions
@@ -19,6 +19,9 @@ function Kingdom:Init()
 	-- Universal modifiers
 	LinkLuaModifier("modifier_kingdom_undead_city_animation", "kingdom/modifiers/general/undead_city_animation", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_keen_city_animation", "kingdom/modifiers/general/keen_city_animation", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_city", "kingdom/modifiers/general/city", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_tower", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_hero", "kingdom/modifiers/general/hero", LUA_MODIFIER_MOTION_NONE)
 
 	-- Listeners
 	--CustomGameEventManager:RegisterListener("mouse_position_think", Dynamic_Wrap(Kingdom, "MousePositionThink"))
@@ -26,22 +29,31 @@ function Kingdom:Init()
 	-- Globals
 	--SendToConsole("dota_create_fake_clients")
 
-	-- Set up proper player ids
+	-- Set up proper player ids and teams
 	self.player_ids = {}
+	self.team_by_player = {}
 	for id = 0, 40 do
 		if PlayerResource:IsValidPlayer(id) then
+			self.team_by_player[PlayerResource:GetTeam(id)] = #self.player_ids + 1
 			self.player_ids[#self.player_ids + 1] = id
 		end
 	end
 
-	if IsInToolsMode() then
-		self.player_ids[2] = 2
-		self.player_ids[3] = 3
-		self.player_ids[4] = 4
-		self.player_ids[5] = 5
-		self.player_ids[6] = 6
-		self.player_ids[7] = 7
-		self.player_ids[8] = 8
+	local computer_team_order = {
+		DOTA_TEAM_BADGUYS,
+		DOTA_TEAM_CUSTOM_1,
+		DOTA_TEAM_CUSTOM_2,
+		DOTA_TEAM_CUSTOM_3,
+		DOTA_TEAM_CUSTOM_4,
+		DOTA_TEAM_CUSTOM_5,
+		DOTA_TEAM_CUSTOM_6
+	}
+	local human_player_count = self:GetPlayerCount()
+	if human_player_count < 8 then
+		for player_number = (human_player_count + 1), 8 do
+			self.player_ids[player_number] = player_number
+			self.team_by_player[computer_team_order[player_number - 1]] = player_number
+		end
 	end
 
 	-- Set up player colors
@@ -54,7 +66,7 @@ function Kingdom:Init()
 	MapManager:Init()
 
 	-- Initialize the economy manager
-	--EconomyManager:Init()
+	EconomyManager:Init()
 
 	print("Kingdom core: finished initializing")
 end
@@ -81,4 +93,12 @@ end
 
 function Kingdom:GetKingdomPlayerColor(player_number)
 	return PLAYER_COLOR_LIST[player_number]
+end
+
+function Kingdom:GetPlayerByTeam(team)
+	return self.team_by_player[team]
+end
+
+function Kingdom:GetKingdomPlayerTeam(player)
+	return PlayerResource:GetTeam(self.player_ids[player])
 end

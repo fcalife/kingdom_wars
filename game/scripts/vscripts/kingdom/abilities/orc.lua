@@ -3,7 +3,7 @@
 kingdom_buy_orc_melee = class({})
 
 function kingdom_buy_orc_melee:OnSpellStart()
-	ProductionManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
+	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
 end
 
 function kingdom_buy_orc_melee:GetGoldCost(level)
@@ -15,7 +15,7 @@ end
 kingdom_buy_orc_ranged = class({})
 
 function kingdom_buy_orc_ranged:OnSpellStart()
-	ProductionManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
+	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
 end
 
 function kingdom_buy_orc_ranged:GetGoldCost(level)
@@ -27,7 +27,7 @@ end
 kingdom_buy_orc_cavalry = class({})
 
 function kingdom_buy_orc_cavalry:OnSpellStart()
-	ProductionManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
+	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
 end
 
 function kingdom_buy_orc_cavalry:GetGoldCost(level)

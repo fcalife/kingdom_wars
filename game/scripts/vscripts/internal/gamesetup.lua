@@ -50,7 +50,7 @@ function GameMode:_InitGameMode()
 	-- How long should we wait after the victory message displays to show the End Screen?
 	GameRules:SetCustomVictoryMessageDuration(5)
 	-- How much starting gold should we give to each player?
-	GameRules:SetStartingGold(20)
+	GameRules:SetStartingGold(0)
 
 
 	-- How long should the default team selection launch timer be? The default for custom games is 30.  Setting to 0 will skip team selection.
@@ -94,7 +94,7 @@ function GameMode:_InitGameMode()
 	-- Testing adjustments
 	if IsInToolsMode() then
 		GameRules:SetPreGameTime(3)
-		GameRules:SetStartingGold(10000)
+		GameRules:SetStartingGold(0)
 	end
 
 	print("Game rules (part 1) have been set...")

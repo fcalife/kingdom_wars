@@ -23,6 +23,7 @@ end
 
 function GameMode:OnHeroInGame(hero)
 	print(hero:GetUnitName() .. " spawned in game for the first time.")
+	hero:AddNewModifier(hero, nil, "modifier_kingdom_hero", {})
 end
 
 function GameMode:OnGameInProgress()

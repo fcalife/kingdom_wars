@@ -3,7 +3,7 @@
 kingdom_buy_undead_melee = class({})
 
 function kingdom_buy_undead_melee:OnSpellStart()
-	ProductionManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
+	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
 end
 
 function kingdom_buy_undead_melee:GetGoldCost(level)
@@ -15,7 +15,7 @@ end
 kingdom_buy_undead_ranged = class({})
 
 function kingdom_buy_undead_ranged:OnSpellStart()
-	ProductionManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
+	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
 end
 
 function kingdom_buy_undead_ranged:GetGoldCost(level)
@@ -27,7 +27,7 @@ end
 kingdom_buy_undead_cavalry = class({})
 
 function kingdom_buy_undead_cavalry:OnSpellStart()
-	ProductionManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
+	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
 end
 
 function kingdom_buy_undead_cavalry:GetGoldCost(level)
