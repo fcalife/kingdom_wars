@@ -571,7 +571,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_human_melee_ability"
 
 		"ArmorPhysical"				"6"
 
@@ -635,7 +635,8 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_human_ranged_ability"
+		"Ability2"					"kingdom_magic_attack_ability"
 
 		"ArmorPhysical"				"0"
 
@@ -698,7 +699,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_human_cavalry_ability"
 
 		"ArmorPhysical"				"10"
 
@@ -765,7 +766,8 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_elf_melee_ability"
+		"Ability2"					"kingdom_magic_attack_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"95"

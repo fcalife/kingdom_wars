@@ -69,6 +69,18 @@ function Kingdom:Init()
 	EconomyManager:Init()
 
 	print("Kingdom core: finished initializing")
+
+	if IsInToolsMode() then
+		EconomyManager:SpawnUnit(1, 3, "melee")
+		EconomyManager:SpawnUnit(1, 3, "melee")
+		EconomyManager:SpawnUnit(1, 3, "melee")
+		EconomyManager:SpawnUnit(1, 3, "melee")
+
+		EconomyManager:SpawnUnit(1, 6, "ranged")
+		EconomyManager:SpawnUnit(1, 6, "ranged")
+		EconomyManager:SpawnUnit(1, 6, "ranged")
+		EconomyManager:SpawnUnit(1, 6, "ranged")
+	end
 end
 
 
