@@ -830,18 +830,18 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_elf_ranged_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"125"
-		"AttackDamageMax"			"145"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
 		"ArmorPhysical"				"2"
 
 		"StatusHealth"				"255"
 
 		"AttackAcquisitionRange"	"1200"
-		"AttackRange"				"900"
+		"AttackRange"				"600"
 
 		"AttackRate"				"1.6"
 
@@ -892,7 +892,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_elf_cavalry_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"135"
@@ -958,7 +958,7 @@
 		"Level"						"1"
 		"ModelScale" 				"0.8"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_undead_melee_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"95"
@@ -1019,7 +1019,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_undead_ranged_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"120"
@@ -1083,7 +1083,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_undead_cavalry_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"155"
@@ -1149,7 +1149,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_keen_melee_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"75"
@@ -1208,9 +1208,9 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_Techies"
 		"Level"						"1"
-		"ModelScale" 				"1"
+		"ModelScale" 				"0.7"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_keen_ranged_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"140"
@@ -1273,7 +1273,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_keen_cavalry_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"145"
@@ -1333,7 +1333,7 @@
 
 
 
-	// Orc
+	// Orcs
 	"npc_kingdom_orc_melee"
 	{										
 		"Model"						"models/heroes/axe/axe.vmdl"
@@ -1342,7 +1342,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_orc_melee_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"115"
@@ -1402,9 +1402,9 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_TrollWarlord"
 		"Level"						"1"
-		"ModelScale" 				"1"
+		"ModelScale" 				"0.9"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_orc_ranged_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"130"
@@ -1466,7 +1466,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_orc_cavalry_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"160"
@@ -1487,6 +1487,196 @@
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			"particles/units/heroes/hero_batrider/batrider_base_attack.vpcf"
 		"ProjectileSpeed"			"900"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"RingRadius"				"48"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"375"	}
+				"Wearable2"	{	"ItemDef"	"376"	}
+				"Wearable3"	{	"ItemDef"	"377"	}
+				"Wearable4"	{	"ItemDef"	"378"	}
+			}
+		}
+	}
+
+
+
+	// Demons
+	"npc_kingdom_demon_melee"
+	{										
+		"Model"						"models/heroes/axe/axe.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_NightStalker"
+		"Level"						"1"
+		"ModelScale" 				"1"
+
+		"Ability1"					"kingdom_demon_melee_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"105"
+		"AttackDamageMax"			"115"
+
+		"ArmorPhysical"				"4"
+
+		"StatusHealth"				"415"
+
+		"AttackAcquisitionRange"	"1200"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.2"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"295"
+
+		"AttackAnimationPoint"		"0.5"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"RingRadius"				"48"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"2"	}
+				"Wearable2"	{	"ItemDef"	"3"	}
+				"Wearable3"	{	"ItemDef"	"4"	}
+				"Wearable4"	{	"ItemDef"	"5"	}
+				"Wearable5"	{	"ItemDef"	"8653"	}
+			}
+		}
+	}
+
+	"npc_kingdom_demon_ranged"
+	{										
+		"Model"						"models/heroes/troll_warlord/troll_warlord.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_ShadowDemon"
+		"Level"						"1"
+		"ModelScale" 				"0.9"
+
+		"Ability1"					"kingdom_demon_ranged_ability"
+		"Ability2"					"kingdom_magic_attack_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"120"
+		"AttackDamageMax"			"130"
+
+		"ArmorPhysical"				"2"
+
+		"StatusHealth"				"300"
+
+		"AttackAcquisitionRange"	"1200"
+		"AttackRange"				"750"
+
+		"AttackRate"				"2.0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"305"
+
+		"AttackAnimationPoint"		"0.3"
+		"ProjectileModel"			"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+		"ProjectileSpeed"			"1200"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		"RingRadius"				"48"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"0.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"373"	}
+				"Wearable2"	{	"ItemDef"	"374"	}
+				"Wearable3"	{	"ItemDef"	"410"	}
+				"Wearable4"	{	"ItemDef"	"411"	}
+				"Wearable5"	{	"ItemDef"	"412"	}
+			}
+		}
+	}
+
+	"npc_kingdom_demon_cavalry"
+	{										
+		"Model"						"models/heroes/batrider/batrider.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Batrider"
+		"Level"						"1"
+		"ModelScale" 				"1"
+
+		"Ability1"					"kingdom_demon_cavalry_ability"
+		"Ability2"					"kingdom_magic_attack_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"160"
+		"AttackDamageMax"			"180"
+
+		"ArmorPhysical"				"8"
+
+		"StatusHealth"				"530"
+
+		"AttackAcquisitionRange"	"1200"
+		"AttackRange"				"250"
+
+		"AttackRate"				"2.4"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"360"
+
+		"AttackAnimationPoint"		"0.3"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
 
 		"ConsideredHero"			"0"
 		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"

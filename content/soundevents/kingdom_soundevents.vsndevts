@@ -1,4 +1,4 @@
-"Memeor.Launch"
+"Return.Reincarnation"
 {
 	"operator_stacks"
 	{
@@ -14,13 +14,173 @@
 					{
 						"value"
 						{
-							"value0"	"sounds/items/meteor_hammer_channel.vsnd"
+							"value0"	"sounds/music/stingers/reincarnate_03.vsnd"
+						}
+					}
+					"volume"			{   "value"     "0.600000"  }
+					"pitch_rand_min"	{   "value"     "0.000000"  }
+					"pitch_rand_max"	{   "value"     "0.030000"  }
+					"pitch"				{   "value"     "1.400000"  }
+					"soundlevel"		{   "value"     "100.00000" }
+					"distance_max"		{   "value"     "1600.000"  }
+					"event_type"		{   "value"     "1.000000"  }
+				}
+			}
+		}
+	}
+}
+
+"Hookshot.Launch"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"	"sounds/weapons/hero/rattletrap/hookshot_fire.vsnd"
+						}
+					}
+					"volume"			{   "value"     "0.750000"  }
+					"pitch_rand_min"	{   "value"     "0.000000"  }
+					"pitch_rand_max"	{   "value"     "0.030000"  }
+					"pitch"				{   "value"     "1.300000"  }
+					"soundlevel"		{   "value"     "100.00000" }
+					"distance_max"		{   "value"     "1600.000"  }
+					"event_type"		{   "value"     "1.000000"  }
+				}
+			}
+		}
+	}
+}
+
+"Hookshot.Hit"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"	"sounds/weapons/hero/rattletrap/hookshot_impact.vsnd"
+						}
+					}
+					"volume"			{   "value"     "0.800000"  }
+					"pitch_rand_min"	{   "value"     "0.000000"  }
+					"pitch_rand_max"	{   "value"     "0.030000"  }
+					"pitch"				{   "value"     "1.100000"  }
+					"soundlevel"		{   "value"     "100.00000" }
+					"distance_max"		{   "value"     "1600.000"  }
+					"event_type"		{   "value"     "1.000000"  }
+				}
+			}
+		}
+	}
+}
+
+"Hookshot.Damage"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"	"sounds/weapons/hero/rattletrap/hookshot_damage.vsnd"
+						}
+					}
+					"volume"			{   "value"     "0.500000"  }
+					"pitch_rand_min"	{   "value"     "0.000000"  }
+					"pitch_rand_max"	{   "value"     "0.030000"  }
+					"pitch"				{   "value"     "1.300000"  }
+					"soundlevel"		{   "value"     "100.00000" }
+					"distance_max"		{   "value"     "1600.000"  }
+					"event_type"		{   "value"     "1.000000"  }
+				}
+			}
+		}
+	}
+}
+
+"ChemicalRage.Start"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"	"sounds/weapons/hero/alchemist/chemical_rage_cast.vsnd"
+						}
+					}
+					"volume"			{   "value"     "0.700000"  }
+					"pitch_rand_min"	{   "value"     "0.000000"  }
+					"pitch_rand_max"	{   "value"     "0.030000"  }
+					"pitch"				{   "value"     "1.100000"  }
+					"soundlevel"		{   "value"     "100.00000" }
+					"distance_max"		{   "value"     "1600.000"  }
+					"event_type"		{   "value"     "1.000000"  }
+				}
+			}
+		}
+	}
+}
+
+"BattleReflexes.Proc"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"				"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"	"sounds/weapons/hero/axe/counterhelix.vsnd"
 						}
 					}
 					"volume"			{   "value"     "0.650000"  }
 					"pitch_rand_min"	{   "value"     "0.000000"  }
 					"pitch_rand_max"	{   "value"     "0.030000"  }
-					"pitch"				{   "value"     "1.000000"  }
+					"pitch"				{   "value"     "1.100000"  }
 					"soundlevel"		{   "value"     "100.00000" }
 					"distance_max"		{   "value"     "1600.000"  }
 					"event_type"		{   "value"     "1.000000"  }
@@ -30,7 +190,7 @@
 	}
 }
 
-"Memeor.Fall"
+"StickyNapalm.Hit"
 {
 	"operator_stacks"
 	{
@@ -46,45 +206,13 @@
 					{
 						"value"
 						{
-							"value0"	"sounds/items/meteor_fall.vsnd"
+							"value0"	"sounds/weapons/hero/batrider/batrider_sticky_napalm_impact_01.vsnd"
 						}
 					}
-					"volume"			{   "value"     "0.700000"  }
+					"volume"			{   "value"     "0.450000"  }
 					"pitch_rand_min"	{   "value"     "0.000000"  }
 					"pitch_rand_max"	{   "value"     "0.030000"  }
-					"pitch"				{   "value"     "1.000000"  }
-					"soundlevel"		{   "value"     "100.00000" }
-					"distance_max"		{   "value"     "1600.000"  }
-					"event_type"		{   "value"     "1.000000"  }
-				}
-			}
-		}
-	}
-}
-
-"Memeor.Impact"
-{
-	"operator_stacks"
-	{
-		"update_stack"
-		{
-			"reference_operator"
-			{
-				"operator"				"sos_reference_stack"
-				"reference_stack"		"dota_update_default"
-				"operator_variables"
-				{
-					"vsnd_files"
-					{
-						"value"
-						{
-							"value0"	"sounds/items/meteor_impact.vsnd"
-						}
-					}
-					"volume"			{   "value"     "0.700000"  }
-					"pitch_rand_min"	{   "value"     "0.000000"  }
-					"pitch_rand_max"	{   "value"     "0.030000"  }
-					"pitch"				{   "value"     "1.000000"  }
+					"pitch"				{   "value"     "1.400000"  }
 					"soundlevel"		{   "value"     "100.00000" }
 					"distance_max"		{   "value"     "1600.000"  }
 					"event_type"		{   "value"     "1.000000"  }

@@ -53,7 +53,14 @@ function Precache(context)
 
 	-- Core particles
 	PrecacheResource("particle", "particles/econ/items/razor/razor_ti6/razor_base_attack_ti6.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_luna/luna_moon_glaive_bounce.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_rattletrap/rattletrap_hookshot.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_batrider/batrider_stickynapalm_debuff.vpcf", context)
+	PrecacheResource("particle", "particles/status_fx/status_effect_stickynapalm.vpcf", context)
+
 	PrecacheResource("particle", "particles/capture_ring.vpcf", context)
+	PrecacheResource("particle", "particles/returned.vpcf", context)
+	PrecacheResource("particle", "particles/shrapnel.vpcf", context)
 
 	-- We done
 	print("Finished pre-load precache")
