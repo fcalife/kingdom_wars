@@ -1524,7 +1524,7 @@
 	// Demons
 	"npc_kingdom_demon_melee"
 	{										
-		"Model"						"models/heroes/axe/axe.vmdl"
+		"Model"						"models/heroes/nightstalker/nightstalker.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_NightStalker"
 		"Level"						"1"
@@ -1548,7 +1548,7 @@
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"				"295"
 
-		"AttackAnimationPoint"		"0.5"
+		"AttackAnimationPoint"		"0.55"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
@@ -1575,18 +1575,18 @@
 		{
 			"AttachWearables"
 			{
-				"Wearable1"	{	"ItemDef"	"2"	}
-				"Wearable2"	{	"ItemDef"	"3"	}
-				"Wearable3"	{	"ItemDef"	"4"	}
-				"Wearable4"	{	"ItemDef"	"5"	}
-				"Wearable5"	{	"ItemDef"	"8653"	}
+				"Wearable1"	{	"ItemDef"	"337"	}
+				"Wearable2"	{	"ItemDef"	"338"	}
+				"Wearable3"	{	"ItemDef"	"339"	}
+				"Wearable4"	{	"ItemDef"	"8661"	}
+				"Wearable5"	{	"ItemDef"	"8662"	}
 			}
 		}
 	}
 
 	"npc_kingdom_demon_ranged"
 	{										
-		"Model"						"models/heroes/troll_warlord/troll_warlord.vmdl"
+		"Model"						"models/heroes/shadow_demon/shadow_demon.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_ShadowDemon"
 		"Level"						"1"
@@ -1611,9 +1611,9 @@
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"				"305"
 
-		"AttackAnimationPoint"		"0.3"
-		"ProjectileModel"			"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-		"ProjectileSpeed"			"1200"
+		"AttackAnimationPoint"		"0.35"
+		"ProjectileModel"			"particles/units/heroes/hero_shadow_demon/shadow_demon_base_attack.vpcf"
+		"ProjectileSpeed"			"900"
 
 		"ConsideredHero"			"0"
 		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
@@ -1638,20 +1638,20 @@
 		{
 			"AttachWearables"
 			{
-				"Wearable1"	{	"ItemDef"	"373"	}
-				"Wearable2"	{	"ItemDef"	"374"	}
-				"Wearable3"	{	"ItemDef"	"410"	}
-				"Wearable4"	{	"ItemDef"	"411"	}
-				"Wearable5"	{	"ItemDef"	"412"	}
+				"Wearable1"	{	"ItemDef"	"396"	}
+				"Wearable2"	{	"ItemDef"	"397"	}
+				"Wearable3"	{	"ItemDef"	"398"	}
+				"Wearable4"	{	"ItemDef"	"399"	}
+				"Wearable5"	{	"ItemDef"	"545"	}
 			}
 		}
 	}
 
 	"npc_kingdom_demon_cavalry"
 	{										
-		"Model"						"models/heroes/batrider/batrider.vmdl"
+		"Model"						"models/heroes/chaos_knight/chaos_knight.vmdl"
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Hero_Batrider"
+		"SoundSet"					"Hero_ChaosKnight"
 		"Level"						"1"
 		"ModelScale" 				"1"
 
@@ -1674,7 +1674,7 @@
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"				"360"
 
-		"AttackAnimationPoint"		"0.3"
+		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
@@ -1701,10 +1701,11 @@
 		{
 			"AttachWearables"
 			{
-				"Wearable1"	{	"ItemDef"	"375"	}
-				"Wearable2"	{	"ItemDef"	"376"	}
-				"Wearable3"	{	"ItemDef"	"377"	}
-				"Wearable4"	{	"ItemDef"	"378"	}
+				"Wearable1"	{	"ItemDef"	"181"	}
+				"Wearable2"	{	"ItemDef"	"183"	}
+				"Wearable3"	{	"ItemDef"	"184"	}
+				"Wearable4"	{	"ItemDef"	"185"	}
+				"Wearable5"	{	"ItemDef"	"186"	}
 			}
 		}
 	}

@@ -51,12 +51,17 @@ function Precache(context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts", context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts", context)
 
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts", context)
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts", context)
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts", context)
+
 	-- Core particles
 	PrecacheResource("particle", "particles/econ/items/razor/razor_ti6/razor_base_attack_ti6.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_luna/luna_moon_glaive_bounce.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_rattletrap/rattletrap_hookshot.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_batrider/batrider_stickynapalm_debuff.vpcf", context)
 	PrecacheResource("particle", "particles/status_fx/status_effect_stickynapalm.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_4stack.vpcf", context)
 
 	PrecacheResource("particle", "particles/capture_ring.vpcf", context)
 	PrecacheResource("particle", "particles/returned.vpcf", context)

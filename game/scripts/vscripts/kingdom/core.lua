@@ -70,17 +70,23 @@ function Kingdom:Init()
 
 	print("Kingdom core: finished initializing")
 
-	if IsInToolsMode() then
-		EconomyManager:SpawnUnit(1, 3, "melee")
-		EconomyManager:SpawnUnit(1, 3, "melee")
-		EconomyManager:SpawnUnit(1, 3, "melee")
-		EconomyManager:SpawnUnit(1, 3, "melee")
-
-		EconomyManager:SpawnUnit(1, 6, "ranged")
-		EconomyManager:SpawnUnit(1, 6, "ranged")
-		EconomyManager:SpawnUnit(1, 6, "ranged")
-		EconomyManager:SpawnUnit(1, 6, "ranged")
-	end
+	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	Timers:CreateTimer(0.1, function()
+		ResolveNPCPositions(Vector(0, 0, 0), 500)
+		ResolveNPCPositions(Vector(500, 0, 0), 500)
+		ResolveNPCPositions(Vector(1000, 0, 0), 500)
+	end)
 end
 
 
