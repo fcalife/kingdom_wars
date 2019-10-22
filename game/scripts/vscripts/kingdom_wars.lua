@@ -41,7 +41,7 @@ function GameMode:InitGameMode()
 	-- Global filter setup
 	--GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "GoldFilter"), self)
 	--GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ExpFilter"), self)
-	--GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(GameMode, "DamageFilter"), self)
+	GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(GameMode, "DamageFilter"), self)
 	--GameRules:GetGameModeEntity():SetModifierGainedFilter(Dynamic_Wrap(GameMode, "ModifierFilter"), self)
 	--GameRules:GetGameModeEntity():SetExecuteOrderFilter(Dynamic_Wrap(GameMode, "OrderFilter"), self)
 
@@ -86,6 +86,31 @@ function GameMode:DamageFilter(keys)
 	-- keys.entindex_inflictor_const: 801	--optional
 	-- keys.entindex_attacker_const: 172
 	-- keys.entindex_victim_const: 379
+
+	local attacker = EntIndexToHScript(keys.entindex_attacker_const)
+	local victim = EntIndexToHScript(keys.entindex_victim_const)
+
+	if attacker and victim and attacker.type and victim.type then
+		if attacker.type == KINGDOM_UNIT_TYPE_MELEE and victim.type == KINGDOM_UNIT_TYPE_RANGED then
+			keys.damage = keys.damage * 1.2
+			return true
+		end
+
+		if attacker.type == KINGDOM_UNIT_TYPE_RANGED and victim.type == KINGDOM_UNIT_TYPE_BEAST then
+			keys.damage = keys.damage * 1.2
+			return true
+		end
+
+		if attacker.type == KINGDOM_UNIT_TYPE_BEAST and victim.type == KINGDOM_UNIT_TYPE_CAVALRY then
+			keys.damage = keys.damage * 1.2
+			return true
+		end
+
+		if attacker.type == KINGDOM_UNIT_TYPE_CAVALRY and victim.type == KINGDOM_UNIT_TYPE_MELEE then
+			keys.damage = keys.damage * 1.2
+			return true
+		end
+	end
 
 	return true
 end

@@ -4,6 +4,7 @@ kingdom_buy_keen_melee = class({})
 
 function kingdom_buy_keen_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 3)
 end
 
 function kingdom_buy_keen_melee:GetGoldCost(level)
@@ -16,6 +17,7 @@ kingdom_buy_keen_ranged = class({})
 
 function kingdom_buy_keen_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 4)
 end
 
 function kingdom_buy_keen_ranged:GetGoldCost(level)
@@ -28,10 +30,131 @@ kingdom_buy_keen_cavalry = class({})
 
 function kingdom_buy_keen_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
 end
 
 function kingdom_buy_keen_cavalry:GetGoldCost(level)
 	return 5
+end
+
+
+
+kingdom_buy_hero_bounty_hunter = class({})
+
+function kingdom_buy_hero_bounty_hunter:OnSpellStart()
+	local caster = self:GetCaster()
+	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
+	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
+end
+
+function kingdom_buy_hero_bounty_hunter:OnChannelFinish(interrupted)
+	if not interrupted then
+		local caster = self:GetCaster()
+		local region = caster:GetRegion()
+		local city = caster:GetCity()
+		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
+		if PlayerResource:GetGold(player_id) >= 60 then
+			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
+			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
+
+			local hero = EconomyManager:SpawnHero(region, city)
+
+			hero:EmitSound("Hero_BountyHunter.WindWalk")
+
+			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
+			ParticleManager:ReleaseParticleIndex(spawn_pfx)
+		end
+	end
+end
+
+function kingdom_buy_hero_bounty_hunter:GetGoldCost(level)
+	return 60
+end
+
+
+
+kingdom_buy_hero_tinker = class({})
+
+function kingdom_buy_hero_tinker:OnSpellStart()
+	local caster = self:GetCaster()
+	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
+	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
+end
+
+function kingdom_buy_hero_tinker:OnChannelFinish(interrupted)
+	if not interrupted then
+		local caster = self:GetCaster()
+		local region = caster:GetRegion()
+		local city = caster:GetCity()
+		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
+		if PlayerResource:GetGold(player_id) >= 60 then
+			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
+			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
+
+			local hero = EconomyManager:SpawnHero(region, city)
+
+			hero:EmitSound("Hero_Tinker.March_of_the_Machines.Cast")
+
+			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_tinker/tinker_motm.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
+			ParticleManager:ReleaseParticleIndex(spawn_pfx)
+
+			hero:AddNewModifier(hero, self, "modifier_hero_tinker_spawn_fx", {duration = 4})
+		end
+	end
+end
+
+function kingdom_buy_hero_tinker:GetGoldCost(level)
+	return 60
+end
+
+LinkLuaModifier("modifier_hero_tinker_spawn_fx", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+
+modifier_hero_tinker_spawn_fx = class({})
+
+function modifier_hero_tinker_spawn_fx:IsHidden() return true end
+function modifier_hero_tinker_spawn_fx:IsDebuff() return false end
+function modifier_hero_tinker_spawn_fx:IsPurgable() return false end
+function modifier_hero_tinker_spawn_fx:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_hero_tinker_spawn_fx:GetEffectName()
+	return "particles/units/heroes/hero_tinker/tinker_rearm.vpcf"
+end
+
+
+
+kingdom_buy_hero_engineer = class({})
+
+function kingdom_buy_hero_engineer:OnSpellStart()
+	local caster = self:GetCaster()
+	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
+	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
+end
+
+function kingdom_buy_hero_engineer:OnChannelFinish(interrupted)
+	if not interrupted then
+		local caster = self:GetCaster()
+		local region = caster:GetRegion()
+		local city = caster:GetCity()
+		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
+		if PlayerResource:GetGold(player_id) >= 60 then
+			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
+			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
+
+			local hero = EconomyManager:SpawnHero(region, city)
+
+			hero:EmitSound("Hero_Gyrocopter.CallDown.Fire")
+
+			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_gyrocopter/gyro_calldown_explosion.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControl(spawn_pfx, 3, hero:GetAbsOrigin())
+			ParticleManager:ReleaseParticleIndex(spawn_pfx)
+		end
+	end
+end
+
+function kingdom_buy_hero_engineer:GetGoldCost(level)
+	return 60
 end
 
 
@@ -314,3 +437,107 @@ end
 function modifier_keen_cavalry_ability_effect:HeroEffectPriority()
 	return 10
 end
+
+
+
+kingdom_keen_bounty_hunter_ability = class({})
+
+function kingdom_keen_bounty_hunter_ability:GetIntrinsicModifierName()
+	return "modifier_keen_bounty_hunter_ability"
+end
+
+LinkLuaModifier("modifier_keen_bounty_hunter_ability", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+
+modifier_keen_bounty_hunter_ability = class({})
+
+function modifier_keen_bounty_hunter_ability:IsHidden() return true end
+function modifier_keen_bounty_hunter_ability:IsDebuff() return false end
+function modifier_keen_bounty_hunter_ability:IsPurgable() return false end
+function modifier_keen_bounty_hunter_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_keen_bounty_hunter_ability:DeclareFunctions()
+	local funcs = {
+		MODIFIER_EVENT_ON_DEATH
+	}
+	return funcs
+end
+
+function modifier_keen_bounty_hunter_ability:OnDeath(keys)
+	if IsServer() then
+		if keys.attacker == self:GetParent() then
+			local player = Kingdom:GetPlayerByTeam(keys.attacker:GetTeam())
+			local player_id = Kingdom:GetPlayerID(player)
+			local gold = self:GetAbility():GetSpecialValueFor("unit_gold")
+
+			if keys.unit:HasModifier("modifier_kingdom_hero_bonuses") then
+				gold = self:GetAbility():GetSpecialValueFor("hero_gold")
+			end
+
+			PlayerResource:ModifyGold(player_id, gold, true, DOTA_ModifyGold_HeroKill)
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD , keys.attacker, gold, nil)
+		end
+	end
+end
+
+
+
+kingdom_keen_tinker_ability = class({})
+
+function kingdom_keen_tinker_ability:GetIntrinsicModifierName()
+	return "modifier_keen_tinker_ability"
+end
+
+LinkLuaModifier("modifier_keen_tinker_ability", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_keen_tinker_ability_effect", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+
+modifier_keen_tinker_ability = class({})
+
+function modifier_keen_tinker_ability:IsDebuff() return false end
+function modifier_keen_tinker_ability:IsHidden() return true end
+function modifier_keen_tinker_ability:IsPurgable() return false end
+function modifier_keen_tinker_ability:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+
+function modifier_keen_tinker_ability:IsAura()
+	return true
+end
+
+function modifier_keen_tinker_ability:GetAuraRadius() return 1200 end
+function modifier_keen_tinker_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
+function modifier_keen_tinker_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
+function modifier_keen_tinker_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
+function modifier_keen_tinker_ability:GetModifierAura() return "modifier_keen_tinker_ability_effect" end
+
+modifier_keen_tinker_ability_effect = class({})
+
+function modifier_keen_tinker_ability_effect:IsHidden() return false end
+function modifier_keen_tinker_ability_effect:IsDebuff() return false end
+function modifier_keen_tinker_ability_effect:IsPurgable() return false end
+function modifier_keen_tinker_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+
+function modifier_keen_tinker_ability_effect:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE
+	}
+	return funcs
+end
+
+function modifier_keen_tinker_ability_effect:GetModifierExtraHealthPercentage()
+	return self:GetAbility():GetSpecialValueFor("bonus_health") * 0.01
+end
+
+
+
+kingdom_keen_engineer_ability = class({})
+
+function kingdom_keen_engineer_ability:GetIntrinsicModifierName()
+	return "modifier_keen_engineer_ability"
+end
+
+LinkLuaModifier("modifier_keen_engineer_ability", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+
+modifier_keen_engineer_ability = class({})
+
+function modifier_keen_engineer_ability:IsDebuff() return false end
+function modifier_keen_engineer_ability:IsHidden() return true end
+function modifier_keen_engineer_ability:IsPurgable() return false end
+function modifier_keen_engineer_ability:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end

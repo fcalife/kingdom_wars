@@ -34,7 +34,11 @@ end
 function modifier_kingdom_tower:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
-			ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = keys.target:GetMaxHealth() * self.dmg_pct[self:GetParent():GetLevel()], damage_type = DAMAGE_TYPE_PURE})
+			local damage = keys.target:GetMaxHealth() * self.dmg_pct[self:GetParent():GetLevel()]
+			if keys.target:HasModifier("modifier_kingdom_hero_bonuses") then
+				damage = damage * 0.1
+			end
+			ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = damage, damage_type = DAMAGE_TYPE_PURE})
 		end
 	end
 end

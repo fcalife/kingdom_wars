@@ -22,11 +22,17 @@ function Kingdom:Init()
 	LinkLuaModifier("modifier_kingdom_city", "kingdom/modifiers/general/city", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_tower", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_hero", "kingdom/modifiers/general/hero", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_hero_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 
 	-- Listeners
 	--CustomGameEventManager:RegisterListener("mouse_position_think", Dynamic_Wrap(Kingdom, "MousePositionThink"))
 
 	-- Globals
+	KINGDOM_UNIT_TYPE_MELEE = 0
+	KINGDOM_UNIT_TYPE_RANGED = 1
+	KINGDOM_UNIT_TYPE_CAVALRY = 2
+	KINGDOM_UNIT_TYPE_BEAST = 3
+
 	--SendToConsole("dota_create_fake_clients")
 
 	-- Set up proper player ids and teams
@@ -70,23 +76,80 @@ function Kingdom:Init()
 
 	print("Kingdom core: finished initializing")
 
-	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_melee", Vector(0, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_ranged", Vector(500, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	CreateUnitByName("npc_kingdom_demon_cavalry", Vector(1000, 0, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
-	Timers:CreateTimer(0.1, function()
-		ResolveNPCPositions(Vector(0, 0, 0), 500)
-		ResolveNPCPositions(Vector(500, 0, 0), 500)
-		ResolveNPCPositions(Vector(1000, 0, 0), 500)
-	end)
+	local test_unit_table = {
+		"npc_kingdom_hero_paladin",
+		"npc_kingdom_hero_mage",
+		"npc_kingdom_hero_commander",
+		"npc_kingdom_hero_ranger",
+		"npc_kingdom_hero_druid",
+		"npc_kingdom_hero_assassin",
+		"npc_kingdom_hero_necromancer",
+		"npc_kingdom_hero_wraith_king",
+		"npc_kingdom_hero_butcher",
+		"npc_kingdom_hero_bounty_hunter",
+		"npc_kingdom_hero_tinker",
+		"npc_kingdom_hero_engineer",
+		"npc_kingdom_hero_incursor",
+		"npc_kingdom_hero_warlord",
+		"npc_kingdom_hero_blademaster",
+		"npc_kingdom_hero_nevermore",
+		"npc_kingdom_hero_duchess",
+		"npc_kingdom_hero_doom"
+	}
+
+	local x_test_offset = 800
+	--for _, unit in pairs(test_unit_table) do
+	--	CreateUnitByName(unit, Vector(x_test_offset, 1000, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	--	x_test_offset = x_test_offset + 175
+	--end
+
+	test_unit_table = {
+		"npc_kingdom_human_melee",
+		"npc_kingdom_elf_melee",
+		"npc_kingdom_undead_melee",
+		"npc_kingdom_keen_melee",
+		"npc_kingdom_orc_melee",
+		"npc_kingdom_demon_melee"
+	}
+
+	x_test_offset = 800
+	--for _, unit in pairs(test_unit_table) do
+	--	local unit_handle = CreateUnitByName(unit, Vector(x_test_offset, 600, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	--	unit_handle.type = KINGDOM_UNIT_TYPE_MELEE
+	--	x_test_offset = x_test_offset + 175
+	--end
+
+	test_unit_table = {
+		"npc_kingdom_human_ranged",
+		"npc_kingdom_elf_ranged",
+		"npc_kingdom_undead_ranged",
+		"npc_kingdom_keen_ranged",
+		"npc_kingdom_orc_ranged",
+		"npc_kingdom_demon_ranged"
+	}
+
+	x_test_offset = 800
+	--for _, unit in pairs(test_unit_table) do
+	--	local unit_handle = CreateUnitByName(unit, Vector(x_test_offset, 900, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	--	unit_handle.type = KINGDOM_UNIT_TYPE_RANGED
+	--	x_test_offset = x_test_offset + 175
+	--end
+
+	test_unit_table = {
+		"npc_kingdom_human_cavalry",
+		"npc_kingdom_elf_cavalry",
+		"npc_kingdom_undead_cavalry",
+		"npc_kingdom_keen_cavalry",
+		"npc_kingdom_orc_cavalry",
+		"npc_kingdom_demon_cavalry"
+	}
+
+	x_test_offset = 800
+	--for _, unit in pairs(test_unit_table) do
+	--	local unit_handle = CreateUnitByName(unit, Vector(x_test_offset, 1200, 0), true, nil, nil, DOTA_TEAM_CUSTOM_3)
+	--	unit_handle.type = KINGDOM_UNIT_TYPE_CAVALRY
+	--	x_test_offset = x_test_offset + 175
+	--end
 end
 
 

@@ -59,8 +59,8 @@ function MapManager:Init()
 	print("- Map manager: spawning cities and towers")
 	for region = 1, self:GetRegionCount() do
 		for city = 1, self:GetRegionCityCount(region) do
-			self:SpawnTower(city, region)
-			self:SpawnCity(city, region)
+			self:SpawnTower(region, city)
+			self:SpawnCity(region, city)
 		end
 	end
 
@@ -252,6 +252,11 @@ function MapManager:UpdatePlayerCityCounts()
 			end
 		end
 	end
+
+	for player = 1, Kingdom:GetPlayerCount() do
+		local player_id = Kingdom:GetPlayerID(player)
+		CustomNetTables:SetTableValue("player_info", "player_cities_"..player_id, {city_amount = self.player_city_count[player]})
+	end
 end
 
 function MapManager:SetCityControllable(region, city, player)
@@ -276,15 +281,28 @@ function MapManager:StartCaptureTracking(region, city)
 		local allies = FindUnitsInLine(city_team, start_point, end_point, nil, 288, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE)
 		local enemies = FindUnitsInLine(city_team, start_point, end_point, nil, 288, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
 		local attacking_player = 0
+		local engineer_present = false
+		local bounty_hunter_present = nil
+
 		if #enemies > 0 then
 			attacking_player = Kingdom:GetPlayerByTeam(enemies[1]:GetTeam())
 		end
-		self:ProcessCapture(region, city, #allies, #enemies, attacking_player, owner_player)
+
+		for _, enemy in pairs(enemies) do
+			if enemy:HasModifier("modifier_keen_engineer_ability") and enemy:IsAlive() then
+				engineer_present = true
+			end
+			if enemy:HasModifier("modifier_keen_bounty_hunter_ability") and enemy:IsAlive() then
+				bounty_hunter_present = enemy
+			end
+		end
+
+		self:ProcessCapture(region, city, #allies, #enemies, attacking_player, owner_player, engineer_present, bounty_hunter_present)
 		return 0.5
 	end)
 end
 
-function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attacking_player, owner_player)
+function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attacking_player, owner_player, engineer_present, bounty_hunter_present)
 
 	-- If there are both allies and enemies in the capture point, nothing changes
 	if ally_count > 0 and enemy_count > 0 then
@@ -301,7 +319,13 @@ function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attack
 	-- If a capture attempt is in progress, continue with it
 	elseif enemy_count > 0 and self.capture_info[region][city].status then
 		local city_level = self:GetCityByNumber(region, city):GetLevel()
-		self.capture_info[region][city].progress = self.capture_info[region][city].progress + 0.5 / self.city_capture_time[city_level]
+
+		-- Engineer ability
+		if engineer_present then
+			self.capture_info[region][city].progress = self.capture_info[region][city].progress + 0.75 / self.city_capture_time[city_level]
+		else
+			self.capture_info[region][city].progress = self.capture_info[region][city].progress + 0.5 / self.city_capture_time[city_level]
+		end
 
 		local ring_color = self.capture_info[region][city].progress * Vector(attacker_color.x, attacker_color.y, attacker_color.z) + (1 - self.capture_info[region][city].progress) * Vector(owner_color.x, owner_color.y, owner_color.z)
 		ParticleManager:DestroyParticle(self.capture_info[region][city].particle, false)
@@ -315,7 +339,19 @@ function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attack
 			self.capture_info[region][city].status = false
 			self.capture_info[region][city].progress = 0
 
+			if not engineer_present then
+				self:RazeCity(region, city)
+			end
+
+			if bounty_hunter_present then
+				PlayerResource:ModifyGold(Kingdom:GetPlayerID(attacking_player), 10, true, DOTA_ModifyGold_HeroKill)
+				SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD , bounty_hunter_present, 10, nil)
+			end
+
 			self:CaptureCity(region, city, attacking_player)
+			EconomyManager:UpdateIncomeForPlayer(attacking_player)
+			EconomyManager:UpdateIncomeForPlayer(owner_player)
+
 			print(region..", "..city.." city captured by player"..attacking_player)
 			return nil
 		end
@@ -353,8 +389,38 @@ end
 
 
 
+-- City upgrades
+function MapManager:RazeCity(region, city)
+	local city_unit = self:GetCityByNumber(region, city)
+	local tower_unit = self:GetTowerByNumber(region, city)
+	city_unit:CreatureLevelUp(1 - city_unit:GetLevel())
+	tower_unit:CreatureLevelUp(1 - city_unit:GetLevel())
+
+	if city_unit.upgrade_pfx then
+		ParticleManager:DestroyParticle(city_unit.upgrade_pfx, false)
+		ParticleManager:ReleaseParticleIndex(city_unit.upgrade_pfx)
+	end
+end
+
+function MapManager:UpgradeCity(region, city)
+	local city_unit = self:GetCityByNumber(region, city)
+	local tower_unit = self:GetTowerByNumber(region, city)
+	city_unit:CreatureLevelUp(1)
+	tower_unit:CreatureLevelUp(1)
+
+	if city_unit.upgrade_pfx then
+		ParticleManager:SetParticleControl(city_unit.upgrade_pfx, 1, Vector(400, 0, 0))
+	else
+		city_unit.upgrade_pfx = ParticleManager:CreateParticle("particles/items_fx/gem_truesight_aura.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(city_unit.upgrade_pfx, 0, city_unit:GetAbsOrigin())
+		ParticleManager:SetParticleControl(city_unit.upgrade_pfx, 1, Vector(300, 0, 0))
+	end
+end
+
+
+
 -- Spawners
-function MapManager:SpawnTower(city, region)
+function MapManager:SpawnTower(region, city)
 	local race = self:GetCityRace(region, city)
 	local tower_loc = self:GetCityTowerSpawnPoint(region, city)
 	local player = self:GetCityOwner(region, city)
@@ -378,12 +444,13 @@ function MapManager:SpawnTower(city, region)
 	end
 end
 
-function MapManager:SpawnCity(city, region)
+function MapManager:SpawnCity(region, city)
 	local city_loc = self:GetCityOrigin(region, city)
 	local angle = self:GetCityFacing(region, city)
 	local race = self:GetCityRace(region, city)
+	local hero = self:GetCityHero(region, city)
 	local player = self:GetCityOwner(region, city)
-	local city_name = "npc_kingdom_"..race.."_city"
+	local city_name = "npc_kingdom_city_"..region.."_"..city
 	local player_id = Kingdom:GetPlayerID(player)
 	local facing_position = RotatePosition(Vector(city_loc.x, city_loc.y, 0), QAngle(0, angle, 0), Vector(city_loc.x, city_loc.y, 0) + Vector(100, 0, 0))
 
@@ -391,6 +458,11 @@ function MapManager:SpawnCity(city, region)
 	local unit = CreateUnitByName(city_name, Vector(city_loc.x, city_loc.y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
 	unit:FaceTowards(facing_position)
 	unit:AddNewModifier(unit, nil, "modifier_kingdom_city", {})
+
+	-- Add hero spawning ability, if applicable
+	if hero then
+		unit:AddAbility("kingdom_buy_hero_"..hero):SetLevel(1)
+	end
 
 	-- Tower meta-information
 	self.cities[region][city] = unit

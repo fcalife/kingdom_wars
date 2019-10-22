@@ -154,7 +154,7 @@ function GameMode:_CaptureGameMode()
 		-- Should we disable the recommended builds for heroes?
 		mode:SetRecommendedItemsDisabled(true)
 		-- How far out should we allow the camera to go? Default is 1134.
-		mode:SetCameraDistanceOverride(1500)
+		mode:SetCameraDistanceOverride(1850)
 		-- SHould we use default rune spawn rules?
 		mode:SetUseDefaultDOTARuneSpawnLogic(false)
 

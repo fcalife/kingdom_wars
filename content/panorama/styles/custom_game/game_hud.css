@@ -1,0 +1,224 @@
+#income_container
+{
+	width: 300px;
+	height: 42px;
+	x: 1601px;
+	y: 20px;
+	flow-children: right;
+	border-radius: 16px;
+	background-image: url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+	background-size: 100%;
+	box-shadow: fill #000000ff -3px -3px 10px 6px;
+}
+
+.AspectRatio4x3  #income_container
+{
+	x: 1121px;
+}
+
+.AspectRatio16x10  #income_container
+{
+	x: 1409px;
+}
+
+#income_timer_container
+{
+	height: 100%;
+	width: 54px;
+	margin-left: 14px;
+}
+
+#income_timer_label
+{
+	color: #FFFFFFFF;
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 24;
+	font-weight: bold;
+	font-family: "DejaVu Sans";
+	text-shadow: 2px 2px 8px 3.0 #000000FF;
+}
+
+#income_description_container
+{
+	height: 100%;
+	horizontal-align: center;
+	flow-children: right;
+}
+
+#income_description_label
+{
+	color: #FFFFFFFF;
+	horizontal-align: left;
+	vertical-align: center;
+	font-size: 18;
+	font-family: "DejaVu Sans";
+	text-shadow: 2px 2px 8px 3.0 #000000FF;
+}
+
+#income_amount_label
+{
+	color: #F3CE4CFF;
+	margin-left: 6px;
+	horizontal-align: left;
+	vertical-align: center;
+	font-size: 18;
+	font-family: "DejaVu Sans";
+	text-shadow: 2px 2px 8px 3.0 #000000FF;
+}
+
+#income_gold_icon
+{
+	height: 30px;
+	width: 30px;
+	margin-left: 2px;
+	horizontal-align: left;
+	vertical-align: center;
+}
+
+
+
+
+
+#income_scoreboard_container
+{
+	width: 300px;
+	x: 1601px;
+	y: 82px;
+	flow-children: down;
+	border-radius: 16px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #00000080 ), to( #000000d0 ) );
+	box-shadow: #000000ff -3px -3px 10px 6px;
+}
+
+.AspectRatio4x3  #income_scoreboard_container
+{
+	x: 1121px;
+}
+
+.AspectRatio16x10  #income_scoreboard_container
+{
+	x: 1409px;
+}
+
+#income_header_container
+{
+	width: 100%;
+	height: 24px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	flow-children: right;
+}
+
+.income_header_label
+{
+	color: #F3CE4CFF;
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 18;
+	font-family: "DejaVu Sans";
+	text-shadow: 2px 2px 8px 3.0 #000000FF;
+}
+
+#income_header_container_player
+{
+	width: 140px;
+	height: 100%;
+	margin-left: 10px;
+}
+
+#income_header_container_cities
+{
+	width: 60px;
+	height: 100%;
+}
+
+#income_header_container_income
+{
+	width: 80px;
+	height: 100%;
+	margin-right: 10px;
+}
+
+.income_player_container
+{
+	width: 100%;
+	height: 24px;
+	margin-bottom: 4px;
+	flow-children: right;
+	background-color: #ff000080;
+}
+
+.income_player_player_avatar
+{
+	height: 24px;
+	width: 24px;
+	margin-left: 6px;
+	horizontal-align: left;
+	vertical-align: center;
+}
+
+.income_player_container_player
+{
+	width: 118px;
+	height: 100%;
+	margin-left: 6px;
+}
+
+.income_player_container_cities
+{
+	width: 60px;
+	height: 100%;
+}
+
+.income_player_container_income
+{
+	width: 80px;
+	height: 100%;
+	margin-right: 10px;
+}
+
+.income_player_subcontainer_income
+{
+	height: 100%;
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.income_player_player_label
+{
+	color: #FFFFFFFF;
+	horizontal-align: left;
+	vertical-align: center;
+	font-size: 14;
+	font-family: "DejaVu Sans";
+	font-weight: Bold;
+}
+
+.income_player_cities_label
+{
+	color: #FFFFFFFF;
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 14;
+	font-family: "DejaVu Sans";
+	font-weight: Bold;
+	text-shadow: 1px 1px 4px 3.0 #000000FF;
+}
+
+.income_player_gold_label
+{
+	color: #F3CE4CFF;
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 14;
+	font-family: "DejaVu Sans";
+	font-weight: Bold;
+	text-shadow: 1px 1px 4px 3.0 #000000FF;
+}
+
+#income_container_bottom_marginator
+{
+	width: 100%;
+	height: 12px;
+}
