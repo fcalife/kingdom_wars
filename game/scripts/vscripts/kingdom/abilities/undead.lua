@@ -4,11 +4,11 @@ kingdom_buy_undead_melee = class({})
 
 function kingdom_buy_undead_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 3)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
 end
 
 function kingdom_buy_undead_melee:GetGoldCost(level)
-	return 3
+	return 6
 end
 
 
@@ -17,11 +17,11 @@ kingdom_buy_undead_ranged = class({})
 
 function kingdom_buy_undead_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 4)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
 end
 
 function kingdom_buy_undead_ranged:GetGoldCost(level)
-	return 4
+	return 8
 end
 
 
@@ -30,11 +30,11 @@ kingdom_buy_undead_cavalry = class({})
 
 function kingdom_buy_undead_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
 end
 
 function kingdom_buy_undead_cavalry:GetGoldCost(level)
-	return 5
+	return 10
 end
 
 
@@ -43,31 +43,15 @@ kingdom_buy_hero_necromancer = class({})
 
 function kingdom_buy_hero_necromancer:OnSpellStart()
 	local caster = self:GetCaster()
-	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
-	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
-end
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 40)
 
-function kingdom_buy_hero_necromancer:OnChannelFinish(interrupted)
-	if not interrupted then
-		local caster = self:GetCaster()
-		local region = caster:GetRegion()
-		local city = caster:GetCity()
-		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
-		if PlayerResource:GetGold(player_id) >= 60 then
-			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
-			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
-
-			local hero = EconomyManager:SpawnHero(region, city)
-
-			hero:EmitSound("Hero_Necrolyte.SpiritForm.Cast")
-
-			hero:AddNewModifier(hero, self, "modifier_hero_necromancer_spawn_fx", {duration = 4})
-		end
-	end
+	local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
+	hero:EmitSound("Hero_Necrolyte.SpiritForm.Cast")
+	hero:AddNewModifier(hero, self, "modifier_hero_necromancer_spawn_fx", {duration = 4})
 end
 
 function kingdom_buy_hero_necromancer:GetGoldCost(level)
-	return 60
+	return 40
 end
 
 LinkLuaModifier("modifier_hero_necromancer_spawn_fx", "kingdom/abilities/undead", LUA_MODIFIER_MOTION_NONE)
@@ -89,34 +73,19 @@ kingdom_buy_hero_wraith_king = class({})
 
 function kingdom_buy_hero_wraith_king:OnSpellStart()
 	local caster = self:GetCaster()
-	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
-	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
-end
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 40)
 
-function kingdom_buy_hero_wraith_king:OnChannelFinish(interrupted)
-	if not interrupted then
-		local caster = self:GetCaster()
-		local region = caster:GetRegion()
-		local city = caster:GetCity()
-		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
-		if PlayerResource:GetGold(player_id) >= 60 then
-			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
-			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
+	local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
+	hero:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
 
-			local hero = EconomyManager:SpawnHero(region, city)
-
-			hero:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
-
-			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf", PATTACH_CUSTOMORIGIN, nil)
-			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
-			ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(2, 0, 0))
-			ParticleManager:ReleaseParticleIndex(spawn_pfx)
-		end
-	end
+	local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
+	ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(2, 0, 0))
+	ParticleManager:ReleaseParticleIndex(spawn_pfx)
 end
 
 function kingdom_buy_hero_wraith_king:GetGoldCost(level)
-	return 60
+	return 40
 end
 
 
@@ -125,38 +94,23 @@ kingdom_buy_hero_butcher = class({})
 
 function kingdom_buy_hero_butcher:OnSpellStart()
 	local caster = self:GetCaster()
-	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
-	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
-end
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 40)
 
-function kingdom_buy_hero_butcher:OnChannelFinish(interrupted)
-	if not interrupted then
-		local caster = self:GetCaster()
-		local region = caster:GetRegion()
-		local city = caster:GetCity()
-		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
-		if PlayerResource:GetGold(player_id) >= 60 then
-			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
-			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
+	local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
+	hero:EmitSound("Hero_Pudge.DismemberSwings")
 
-			local hero = EconomyManager:SpawnHero(region, city)
+	local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
+	ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(256, 0, 0))
 
-			hero:EmitSound("Hero_Pudge.DismemberSwings")
-
-			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf", PATTACH_CUSTOMORIGIN, nil)
-			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
-			ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(256, 0, 0))
-
-			Timers:CreateTimer(4, function()
-				ParticleManager:DestroyParticle(spawn_pfx, false)
-				ParticleManager:ReleaseParticleIndex(spawn_pfx)
-			end)
-		end
-	end
+	Timers:CreateTimer(4, function()
+		ParticleManager:DestroyParticle(spawn_pfx, false)
+		ParticleManager:ReleaseParticleIndex(spawn_pfx)
+	end)
 end
 
 function kingdom_buy_hero_butcher:GetGoldCost(level)
-	return 60
+	return 40
 end
 
 
@@ -168,55 +122,87 @@ function kingdom_undead_melee_ability:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier("modifier_undead_melee_ability", "kingdom/abilities/undead", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_undead_melee_ability_effect", "kingdom/abilities/undead", LUA_MODIFIER_MOTION_NONE)
 
 modifier_undead_melee_ability = class({})
 
-function modifier_undead_melee_ability:IsHidden() return false end
+function modifier_undead_melee_ability:IsHidden() return true end
 function modifier_undead_melee_ability:IsDebuff() return false end
 function modifier_undead_melee_ability:IsPurgable() return false end
 function modifier_undead_melee_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
-function modifier_undead_melee_ability:OnCreated(keys)
-	if IsServer() then
-		self.stacks = 0
-		self:StartIntervalThink(1.0)
-	end
-end
-
-function modifier_undead_melee_ability:OnIntervalThink()
-	if IsServer() then
-		local parent = self:GetParent()
-		local zombies = 0
-		local allies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, 900, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-		for _, ally in pairs(allies) do
-			if ally:HasModifier("modifier_undead_melee_ability") then
-				zombies = zombies + 1
-			end
-		end
-		self:SetStackCount(zombies)
-		if zombies ~= self.stacks then
-			parent:SetBaseMaxHealth(350 * (1 + 0.01 * zombies))
-			parent:SetMaxHealth(350 * (1 + 0.01 * zombies))
-			parent:SetHealth(parent:GetHealth() * (1 + 0.01 * zombies) / (1 + 0.01 * self.stacks))
-			self.stacks = zombies
-		end
-	end
-end
-
 function modifier_undead_melee_ability:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_MODEL_SCALE,
-		MODIFIER_PROPERTY_TOOLTIP
+		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
 	return funcs
 end
 
-function modifier_undead_melee_ability:GetModifierModelScale()
-	return math.min(self:GetStackCount() * 2, 130)
+function modifier_undead_melee_ability:OnAttackLanded(keys)
+	if IsServer() then
+		if keys.attacker == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
+			keys.target:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_undead_melee_ability_effect", {duration = self:GetAbility():GetSpecialValueFor("plague_duration")})
+		end
+	end
 end
 
-function modifier_undead_melee_ability:OnTooltip()
-	return self:GetStackCount() * 1
+modifier_undead_melee_ability_effect = class({})
+
+function modifier_undead_melee_ability_effect:IsHidden() return false end
+function modifier_undead_melee_ability_effect:IsDebuff() return true end
+function modifier_undead_melee_ability_effect:IsPurgable() return false end
+function modifier_undead_melee_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_undead_melee_ability_effect:DeclareFunctions()
+	local funcs = {
+		MODIFIER_EVENT_ON_DEATH
+	}
+	return funcs
+end
+
+function modifier_undead_melee_ability_effect:OnDeath(keys)
+	if IsServer() then
+		if keys.unit == self:GetParent() then
+			local unit_name = keys.unit:GetUnitName()
+			local should_count = true
+
+			local undead_units = {
+				"npc_kingdom_undead_melee",
+				"npc_kingdom_undead_ranged",
+				"npc_kingdom_undead_cavalry",
+				"npc_kingdom_hero_necromancer",
+				"npc_kingdom_hero_wraith_king",
+				"npc_kingdom_hero_butcher"
+			}
+
+			for _, undead_unit_name in pairs(undead_units) do
+				if unit_name == undead_unit_name then
+					should_count = false
+				end
+			end
+
+			if should_count then
+				local player = Kingdom:GetPlayerByTeam(self:GetCaster():GetTeam())
+				local player_id = Kingdom:GetPlayerID(player)
+				local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
+
+				Timers:CreateTimer(3, function()
+					local unit = CreateUnitByName("npc_kingdom_undead_melee", self:GetParent():GetAbsOrigin(), true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+					unit:SetHealth(unit:GetMaxHealth() * self:GetAbility():GetSpecialValueFor("zombie_health") * 0.01)
+					unit:SetControllableByPlayer(player_id, true)
+					Timers:CreateTimer(0.1, function()
+						ResolveNPCPositions(unit:GetAbsOrigin(), 128)
+					end)
+				end)
+			end
+		end
+	end
 end
 
 
@@ -246,6 +232,12 @@ end
 function modifier_undead_ranged_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
 			if RollPercentage(self:GetAbility():GetSpecialValueFor("proc_chance")) then
 				local parent = self:GetParent()
 				local enemies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, 700, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_ANY_ORDER, false)
@@ -287,10 +279,17 @@ end
 function modifier_undead_cavalry_ability:OnDeath(keys)
 	if IsServer() then
 		if keys.unit == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
 			local spawn_loc = self:GetParent():GetAbsOrigin()
 			local new_health = self:GetParent():GetMaxHealth() * self:GetAbility():GetSpecialValueFor("return_health") * 0.01
 			local player_id = self:GetParent():GetOwnerEntity():GetPlayerID()
 			local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
+
 			Timers:CreateTimer(3, function()
 				local return_pfx = ParticleManager:CreateParticle("particles/returned.vpcf", PATTACH_CUSTOMORIGIN, nil)
 				ParticleManager:SetParticleControl(return_pfx, 0, spawn_loc)

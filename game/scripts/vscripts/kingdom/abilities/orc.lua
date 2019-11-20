@@ -4,11 +4,11 @@ kingdom_buy_orc_melee = class({})
 
 function kingdom_buy_orc_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 3)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
 end
 
 function kingdom_buy_orc_melee:GetGoldCost(level)
-	return 3
+	return 5
 end
 
 
@@ -17,11 +17,11 @@ kingdom_buy_orc_ranged = class({})
 
 function kingdom_buy_orc_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 4)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
 end
 
 function kingdom_buy_orc_ranged:GetGoldCost(level)
-	return 4
+	return 8
 end
 
 
@@ -30,11 +30,11 @@ kingdom_buy_orc_cavalry = class({})
 
 function kingdom_buy_orc_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
 end
 
 function kingdom_buy_orc_cavalry:GetGoldCost(level)
-	return 5
+	return 10
 end
 
 
@@ -195,6 +195,12 @@ end
 function modifier_orc_melee_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.target == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
 			if RollPercentage(self:GetAbility():GetSpecialValueFor("proc_chance")) then
 				local parent = self:GetParent()
 				local ability = self:GetAbility()
@@ -257,6 +263,12 @@ end
 function modifier_orc_ranged_ability:OnAttackStart(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
 			if RollPercentage(self:GetAbility():GetSpecialValueFor("crit_chance")) then
 				self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_orc_ranged_ability_effect", {})
 			end
@@ -318,6 +330,12 @@ end
 function modifier_orc_cavalry_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
 			local ability = self:GetAbility()
 			keys.target:EmitSound("StickyNapalm.Hit")
 			keys.target:AddNewModifier(self:GetParent(), ability, "modifier_orc_cavalry_ability_effect", {duration = ability:GetSpecialValueFor("duration")})

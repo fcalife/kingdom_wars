@@ -8,6 +8,13 @@
 	</scripts>
 
 	<Panel hittest="false">
+		<Panel id="main_message_container">
+			<DOTAAvatarImage id="main_message_player_avatar" steamid="local" />
+			<Label id="main_message_pre_label" class="main_message_label" text="Black Ocelot's "/>
+			<DOTAHeroImage id="main_message_hero_image" heroname="npc_dota_hero_nevermore" heroimagestyle="icon" scaling="stretch-to-fit-x-preserve-aspect" />
+			<Label id="main_message_post_label" class="main_message_label" text=" Nevermore has been killed!"/>
+		</Panel>
+
 		<Panel id="income_container">
 			<Panel id="income_timer_container">
 				<Label id="income_timer_label" text="45s"/>
@@ -154,5 +161,11 @@
 
 			<Panel id="income_container_bottom_marginator" />
 		</Panel>
+
+		<Panel id="gold_container">
+			<Image id="gold_gold_icon" src="file://{images}/hud/reborn/gold_large.png" scaling="stretch-to-fit-y-preserve-aspect" />
+			<Label id="gold_amount_label" text="0"/>
+		</Panel>
+
 	</Panel>
 </root>

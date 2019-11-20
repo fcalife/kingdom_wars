@@ -25,7 +25,7 @@
 		"AttackDamageMax"			"65"
 		"AttackRate"				"2.2"
 		"AttackAnimationPoint"		"0.5"
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
@@ -58,7 +58,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_melee"
 
 		"Creature"
 		{
@@ -93,7 +92,7 @@
 		"AttackDamageMax"			"85"
 		"AttackRate"				"1.8"
 		"AttackAnimationPoint"		"0.75"
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 		"ProjectileModel"			"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
 		"ProjectileSpeed"			"1000"
@@ -126,7 +125,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_ranged"
 
 		"Creature"
 		{
@@ -159,7 +157,7 @@
 		"AttackDamageMax"			"110"
 		"AttackRate"				"2.4"
 		"AttackAnimationPoint"		"0.3"
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"200"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
@@ -174,7 +172,7 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"350"
+		"MovementSpeed"				"335"
 		"MovementTurnRate"			"1.0"
 
 		"StatusHealth"				"600"
@@ -192,7 +190,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_cavalry"
 
 		"Creature"
 		{
@@ -225,9 +222,9 @@
 
 		"ArmorPhysical"				"10"
 
-		"StatusHealth"				"1275"
+		"StatusHealth"				"1700"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.85"
@@ -292,9 +289,9 @@
 
 		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"790"
+		"StatusHealth"				"1050"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
 		"AttackRate"				"2.0"
@@ -357,9 +354,9 @@
 
 		"ArmorPhysical"				"12"
 
-		"StatusHealth"				"1175"
+		"StatusHealth"				"1575"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.6"
@@ -428,7 +425,7 @@
 
 		"StatusHealth"				"425"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
 		"AttackRate"				"2.0"
@@ -459,7 +456,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_melee"
 
 		"Creature"
 		{
@@ -494,7 +490,7 @@
 
 		"StatusHealth"				"275"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
 		"AttackRate"				"1.6"
@@ -525,7 +521,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_ranged"
 
 		"Creature"
 		{
@@ -559,7 +554,7 @@
 
 		"StatusHealth"				"550"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.0"
@@ -590,7 +585,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_cavalry"
 
 		"Creature"
 		{
@@ -618,14 +612,14 @@
 		"Ability1"					"kingdom_elf_ranger_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"235"
-		"AttackDamageMax"			"255"
+		"AttackDamageMin"			"270"
+		"AttackDamageMax"			"290"
 
 		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"690"
+		"StatusHealth"				"925"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"900"
 
 		"AttackRate"				"1.2"
@@ -689,9 +683,9 @@
 
 		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"900"
+		"StatusHealth"				"1200"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"450"
 
 		"AttackRate"				"1.8"
@@ -754,9 +748,9 @@
 
 		"ArmorPhysical"				"7"
 
-		"StatusHealth"				"1100"
+		"StatusHealth"				"1475"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.3"
@@ -821,9 +815,9 @@
 
 		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"450"
+		"StatusHealth"				"400"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
 		"AttackRate"				"2.4"
@@ -854,7 +848,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_melee"
 
 		"Creature"
 		{
@@ -887,7 +880,7 @@
 
 		"StatusHealth"				"300"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
 		"AttackRate"				"1.8"
@@ -918,7 +911,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_ranged"
 
 		"Creature"
 		{
@@ -954,7 +946,7 @@
 
 		"StatusHealth"				"650"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.4"
@@ -985,7 +977,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_cavalry"
 
 		"Creature"
 		{
@@ -1018,9 +1009,9 @@
 
 		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"875"
+		"StatusHealth"				"1175"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
 		"AttackRate"				"2.0"
@@ -1083,9 +1074,9 @@
 
 		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"1350"
+		"StatusHealth"				"1800"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.5"
@@ -1149,9 +1140,9 @@
 
 		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"1875"
+		"StatusHealth"				"2500"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.9"
@@ -1204,12 +1195,12 @@
 	// Keen
 	"npc_kingdom_keen_melee"
 	{
-		"Model"						"models/heroes/rattletrap/rattletrap.vmdl"
+		"Model"						"models/heroes/shredder/shredder.vmdl"
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Hero_Rattletrap"
-		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
+		"SoundSet"					"Hero_Shredder"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_shredder.vsndevts"
 		"Level"						"1"
-		"ModelScale" 				"0.9"
+		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_keen_melee_ability"
 
@@ -1221,7 +1212,7 @@
 
 		"StatusHealth"				"500"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
 		"AttackRate"				"2.4"
@@ -1252,16 +1243,19 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_melee"
 
 		"Creature"
 		{
 			"AttachWearables"
 			{
-				"Wearable1"	{	"ItemDef"	"231"	}
-				"Wearable2"	{	"ItemDef"	"446"	}
-				"Wearable3"	{	"ItemDef"	"484"	}
-				"Wearable4"	{	"ItemDef"	"485"	}
+				"Wearable1"	{	"ItemDef"	"386"	}
+				"Wearable2"	{	"ItemDef"	"388"	}
+				"Wearable3"	{	"ItemDef"	"389"	}
+				"Wearable4"	{	"ItemDef"	"390"	}
+				"Wearable5"	{	"ItemDef"	"400"	}
+				"Wearable6"	{	"ItemDef"	"401"	}
+				"Wearable7"	{	"ItemDef"	"402"	}
+				"Wearable8"	{	"ItemDef"	"537"	}
 			}
 		}
 	}
@@ -1285,7 +1279,7 @@
 
 		"StatusHealth"				"325"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"450"
 
 		"AttackRate"				"2.0"
@@ -1316,7 +1310,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_ranged"
 
 		"Creature"
 		{
@@ -1351,7 +1344,7 @@
 
 		"StatusHealth"				"700"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.2"
@@ -1382,7 +1375,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_cavalry"
 
 		"Creature"
 		{
@@ -1418,9 +1410,9 @@
 
 		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"1075"
+		"StatusHealth"				"1425"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.4"
@@ -1484,9 +1476,9 @@
 
 		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"850"
+		"StatusHealth"				"1125"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"700"
 
 		"AttackRate"				"2.0"
@@ -1551,9 +1543,9 @@
 
 		"ArmorPhysical"				"9"
 
-		"StatusHealth"				"1125"
+		"StatusHealth"				"1500"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.2"
@@ -1622,7 +1614,7 @@
 
 		"StatusHealth"				"475"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
 		"AttackRate"				"2.4"
@@ -1653,7 +1645,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_melee"
 
 		"Creature"
 		{
@@ -1687,7 +1678,7 @@
 
 		"StatusHealth"				"300"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"450"
 
 		"AttackRate"				"1.8"
@@ -1718,7 +1709,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_ranged"
 
 		"Creature"
 		{
@@ -1752,7 +1742,7 @@
 
 		"StatusHealth"				"575"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"450"
 
 		"AttackRate"				"2.2"
@@ -1783,7 +1773,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_cavalry"
 
 		"Creature"
 		{
@@ -1814,9 +1803,9 @@
 
 		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"1250"
+		"StatusHealth"				"1675"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.0"
@@ -1880,9 +1869,9 @@
 
 		"ArmorPhysical"				"9"
 
-		"StatusHealth"				"1325"
+		"StatusHealth"				"1775"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.9"
@@ -1944,9 +1933,9 @@
 
 		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"1225"
+		"StatusHealth"				"1625"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"1.1"
@@ -2006,17 +1995,17 @@
 		"Ability1"					"kingdom_demon_melee_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"85"
-		"AttackDamageMax"			"95"
+		"AttackDamageMin"			"80"
+		"AttackDamageMax"			"90"
 
 		"ArmorPhysical"				"3"
 
 		"StatusHealth"				"625"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"1.8"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"				"295"
@@ -2044,7 +2033,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_melee"
 
 		"Creature"
 		{
@@ -2079,7 +2067,7 @@
 
 		"StatusHealth"				"400"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"750"
 
 		"AttackRate"				"2.0"
@@ -2110,7 +2098,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_ranged"
 
 		"Creature"
 		{
@@ -2138,14 +2125,14 @@
 		"Ability2"					"kingdom_magic_attack_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"165"
-		"AttackDamageMax"			"175"
+		"AttackDamageMin"			"175"
+		"AttackDamageMax"			"185"
 
 		"ArmorPhysical"				"4"
 
 		"StatusHealth"				"875"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.4"
@@ -2176,7 +2163,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"SelectionGroup"			"kingdom_cavalry"
 
 		"Creature"
 		{
@@ -2208,9 +2194,9 @@
 
 		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"975"
+		"StatusHealth"				"1300"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
 		"AttackRate"				"1.7"
@@ -2267,14 +2253,14 @@
 		"Ability2"					"kingdom_magic_attack_ability"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"270"
-		"AttackDamageMax"			"290"
+		"AttackDamageMin"			"285"
+		"AttackDamageMax"			"295"
 
 		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"925"
+		"StatusHealth"				"1225"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"450"
 
 		"AttackRate"				"1.4"
@@ -2335,9 +2321,9 @@
 
 		"ArmorPhysical"				"11"
 
-		"StatusHealth"				"1400"
+		"StatusHealth"				"1875"
 
-		"AttackAcquisitionRange"	"1200"
+		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
 		"AttackRate"				"2.5"
@@ -2385,6 +2371,526 @@
 	}
 
 	//=================================================================================
+	//	Beasts
+	//=================================================================================
+	"npc_kingdom_beast_1"
+	{
+		"Model"						"models/heroes/sand_king/sand_king.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Sandking"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_sandking.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.75"
+
+		"Ability1"					"kingdom_beast_1_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
+
+		"ArmorPhysical"				"2"
+
+		"StatusHealth"				"475"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.2"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"295"
+
+		"AttackAnimationPoint"		"0.53"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"180"	}
+				"Wearable2"	{	"ItemDef"	"198"	}
+				"Wearable3"	{	"ItemDef"	"199"	}
+				"Wearable4"	{	"ItemDef"	"200"	}
+				"Wearable5"	{	"ItemDef"	"201"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_2"
+	{
+		"Model"						"models/heroes/centaur/centaur.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Centaur"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.72"
+
+		"Ability1"					"kingdom_beast_2_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"65"
+		"AttackDamageMax"			"75"
+
+		"ArmorPhysical"				"2"
+
+		"StatusHealth"				"525"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.4"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"300"
+
+		"AttackAnimationPoint"		"0.3"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"358"	}
+				"Wearable2"	{	"ItemDef"	"359"	}
+				"Wearable3"	{	"ItemDef"	"360"	}
+				"Wearable4"	{	"ItemDef"	"361"	}
+				"Wearable5"	{	"ItemDef"	"362"	}
+				"Wearable6"	{	"ItemDef"	"363"	}
+				"Wearable7"	{	"ItemDef"	"364"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_3"
+	{
+		"Model"						"models/heroes/enchantress/enchantress.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Enchantress"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.8"
+
+		"Ability1"					"kingdom_beast_3_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"60"
+		"AttackDamageMax"			"70"
+
+		"ArmorPhysical"				"0"
+
+		"StatusHealth"				"350"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"600"
+
+		"AttackRate"				"1.6"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"305"
+
+		"AttackAnimationPoint"		"0.3"
+		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"
+		"ProjectileSpeed"			"900"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"0.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"286"	}
+				"Wearable2"	{	"ItemDef"	"287"	}
+				"Wearable3"	{	"ItemDef"	"288"	}
+				"Wearable4"	{	"ItemDef"	"289"	}
+				"Wearable5"	{	"ItemDef"	"290"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_4"
+	{
+		"Model"						"models/heroes/meepo/meepo.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Meepo"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.85"
+
+		"Ability1"					"kingdom_beast_4_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
+
+		"ArmorPhysical"				"3"
+
+		"StatusHealth"				"450"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.2"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"305"
+
+		"AttackAnimationPoint"		"0.38"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"104"	}
+				"Wearable2"	{	"ItemDef"	"296"	}
+				"Wearable3"	{	"ItemDef"	"297"	}
+				"Wearable4"	{	"ItemDef"	"298"	}
+				"Wearable5"	{	"ItemDef"	"299"	}
+				"Wearable6"	{	"ItemDef"	"300"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_5"
+	{
+		"Model"						"models/heroes/ogre_magi/ogre_magi.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_OgreMagi"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.8"
+
+		"Ability1"					"kingdom_beast_5_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"65"
+		"AttackDamageMax"			"75"
+
+		"ArmorPhysical"				"2"
+
+		"StatusHealth"				"500"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.4"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"285"
+
+		"AttackAnimationPoint"		"0.3"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"105"	}
+				"Wearable2"	{	"ItemDef"	"133"	}
+				"Wearable3"	{	"ItemDef"	"134"	}
+				"Wearable4"	{	"ItemDef"	"135"	}
+				"Wearable5"	{	"ItemDef"	"136"	}
+				"Wearable6"	{	"ItemDef"	"534"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_6"
+	{
+		"Model"						"models/heroes/viper/viper.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Viper"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.8"
+
+		"Ability1"					"kingdom_beast_6_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"65"
+		"AttackDamageMax"			"75"
+
+		"ArmorPhysical"				"1"
+
+		"StatusHealth"				"325"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"550"
+
+		"AttackRate"				"1.8"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"325"
+
+		"AttackAnimationPoint"		"0.33"
+		"ProjectileModel"			"particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+		"ProjectileSpeed"			"1200"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"0.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"519"	}
+				"Wearable2"	{	"ItemDef"	"611"	}
+				"Wearable3"	{	"ItemDef"	"623"	}
+				"Wearable4"	{	"ItemDef"	"654"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_7"
+	{
+		"Model"						"models/heroes/slardar/slardar.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Slardar"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.75"
+
+		"Ability1"					"kingdom_beast_7_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"60"
+		"AttackDamageMax"			"70"
+
+		"ArmorPhysical"				"2"
+
+		"StatusHealth"				"450"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.2"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"290"
+
+		"AttackAnimationPoint"		"0.36"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"273"	}
+				"Wearable2"	{	"ItemDef"	"274"	}
+				"Wearable3"	{	"ItemDef"	"275"	}
+				"Wearable4"	{	"ItemDef"	"276"	}
+				"Wearable5"	{	"ItemDef"	"512"	}
+			}
+		}
+	}
+
+	"npc_kingdom_beast_8"
+	{
+		"Model"						"models/heroes/tuskarr/tuskarr.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Tusk"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_tusk.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.8"
+
+		"Ability1"					"kingdom_beast_8_ability"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"75"
+		"AttackDamageMax"			"85"
+
+		"ArmorPhysical"				"1"
+
+		"StatusHealth"				"575"
+
+		"AttackAcquisitionRange"	"950"
+		"AttackRange"				"150"
+
+		"AttackRate"				"2.8"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"280"
+
+		"AttackAnimationPoint"		"0.36"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			""
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"32"
+		"HealthBarOffset"			"200"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"MovementTurnRate"			"1.0"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		"HasInventory"				"0"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"IgnoreAddSummonedToSelection"	"1"
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{	"ItemDef"	"413"	}
+				"Wearable2"	{	"ItemDef"	"414"	}
+				"Wearable3"	{	"ItemDef"	"415"	}
+				"Wearable4"	{	"ItemDef"	"416"	}
+				"Wearable5"	{	"ItemDef"	"417"	}
+				"Wearable6"	{	"ItemDef"	"418"	}
+				"Wearable7"	{	"ItemDef"	"541"	}
+			}
+		}
+	}
+
+	//=================================================================================
 	//	Cities
 	//=================================================================================
 	"npc_kingdom_city_1_1"
@@ -2395,13 +2901,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2442,7 +2949,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_2"
@@ -2453,13 +2959,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2500,7 +3007,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_3"
@@ -2511,13 +3017,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2558,7 +3065,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_4"
@@ -2569,13 +3075,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2616,7 +3123,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_5"
@@ -2627,13 +3133,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2674,7 +3181,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_6"
@@ -2685,13 +3191,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2732,7 +3239,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_7"
@@ -2743,13 +3249,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2790,7 +3297,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_1_8"
@@ -2801,13 +3307,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2848,7 +3355,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_1"
@@ -2859,13 +3365,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2906,7 +3413,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_2"
@@ -2917,13 +3423,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -2964,7 +3471,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_3"
@@ -2975,13 +3481,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3022,7 +3529,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_4"
@@ -3033,13 +3539,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3080,7 +3587,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_5"
@@ -3091,13 +3597,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3138,7 +3645,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_6"
@@ -3149,13 +3655,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3196,7 +3703,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_7"
@@ -3207,13 +3713,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3254,7 +3761,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_2_8"
@@ -3265,13 +3771,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3312,7 +3819,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_1"
@@ -3323,13 +3829,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3370,7 +3877,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_2"
@@ -3381,13 +3887,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3428,7 +3935,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_3"
@@ -3439,13 +3945,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3486,7 +3993,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_4"
@@ -3497,13 +4003,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3544,7 +4051,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_5"
@@ -3555,13 +4061,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3602,7 +4109,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_6"
@@ -3613,13 +4119,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3660,7 +4167,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_7"
@@ -3671,13 +4177,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3718,7 +4225,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_3_8"
@@ -3729,13 +4235,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3776,7 +4283,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_1"
@@ -3787,13 +4293,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3834,7 +4341,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_2"
@@ -3845,13 +4351,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3892,7 +4399,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_3"
@@ -3903,13 +4409,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -3950,7 +4457,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_4"
@@ -3961,13 +4467,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4008,7 +4515,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_5"
@@ -4019,13 +4525,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4066,7 +4573,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_6"
@@ -4077,13 +4583,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4124,7 +4631,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_7"
@@ -4135,13 +4641,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4182,7 +4689,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_4_8"
@@ -4193,13 +4699,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4240,7 +4747,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_1"
@@ -4251,13 +4757,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4298,7 +4805,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_2"
@@ -4309,13 +4815,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4356,7 +4863,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_3"
@@ -4367,13 +4873,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4414,7 +4921,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_4"
@@ -4425,13 +4931,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4472,7 +4979,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_5"
@@ -4483,13 +4989,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4530,7 +5037,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_6"
@@ -4541,13 +5047,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4588,7 +5095,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_7"
@@ -4599,13 +5105,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4646,7 +5153,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_5_8"
@@ -4657,13 +5163,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4704,7 +5211,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_1"
@@ -4715,13 +5221,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4762,7 +5269,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_2"
@@ -4773,13 +5279,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4820,7 +5327,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_3"
@@ -4831,13 +5337,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4878,24 +5385,24 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_4"
 	{
-		"Model"						"models/props_structures/dire_ancient_base001.vmdl"
+		"Model"						"models/items/pugna/ward/draining_wight/draining_wight.vmdl"
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Creep_Bad_Melee"
+		"SoundSet"					"Pugna_NetherWard"
 		"Level"						"1"
-		"ModelScale" 				"1.0"
+		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
-		"Ability1"					"kingdom_buy_orc_melee"
-		"Ability2"					"kingdom_buy_orc_ranged"
-		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability1"					"kingdom_buy_undead_melee"
+		"Ability2"					"kingdom_buy_undead_ranged"
+		"Ability3"					"kingdom_buy_undead_cavalry"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4936,7 +5443,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_5"
@@ -4947,13 +5453,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -4994,7 +5501,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_6"
@@ -5005,13 +5511,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5052,7 +5559,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_7"
@@ -5063,13 +5569,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5110,24 +5617,24 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_6_8"
 	{
-		"Model"						"models/items/pugna/ward/draining_wight/draining_wight.vmdl"
+		"Model"						"models/props_structures/dire_ancient_base001.vmdl"
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Pugna_NetherWard"
+		"SoundSet"					"Creep_Bad_Melee"
 		"Level"						"1"
-		"ModelScale" 				"3.0"
+		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
-		"Ability1"					"kingdom_buy_undead_melee"
-		"Ability2"					"kingdom_buy_undead_ranged"
-		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability1"					"kingdom_buy_orc_melee"
+		"Ability2"					"kingdom_buy_orc_ranged"
+		"Ability3"					"kingdom_buy_orc_cavalry"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5168,7 +5675,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_1"
@@ -5179,13 +5685,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5226,7 +5733,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_2"
@@ -5237,13 +5743,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5284,7 +5791,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_3"
@@ -5295,13 +5801,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5342,7 +5849,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_4"
@@ -5353,13 +5859,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5400,7 +5907,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_5"
@@ -5411,13 +5917,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5458,7 +5965,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_6"
@@ -5469,13 +5975,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5516,7 +6023,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_7"
@@ -5527,13 +6033,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5574,7 +6081,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_7_8"
@@ -5585,13 +6091,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5632,7 +6139,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_1"
@@ -5643,13 +6149,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5690,7 +6197,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_2"
@@ -5701,13 +6207,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5748,7 +6255,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_3"
@@ -5759,13 +6265,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_elf_melee"
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5806,7 +6313,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_4"
@@ -5817,13 +6323,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_keen_melee"
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5864,7 +6371,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_5"
@@ -5875,13 +6381,14 @@
 		"Level"						"1"
 		"ModelScale" 				"3.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_undead_melee"
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5922,7 +6429,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_6"
@@ -5933,13 +6439,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -5980,7 +6487,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_7"
@@ -5991,13 +6497,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.0"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_orc_melee"
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -6038,7 +6545,6 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
 	}
 
 	"npc_kingdom_city_8_8"
@@ -6049,13 +6555,14 @@
 		"Level"						"1"
 		"ModelScale" 				"1.4"
 
-		"MinimapIcon"				"minimap_ancient"
-		"MinimapIconSize"			"300"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
 
 		"Ability1"					"kingdom_buy_human_melee"
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
-		"Ability4"					"kingdom_upgrade_city"
+		"Ability4"					"kingdom_rally_point"
+		"Ability5"					"kingdom_upgrade_city"
 
 		"ArmorPhysical"				"0"
 
@@ -6096,7 +6603,67 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		"SelectionGroup"			"kingdom_cities"
+	}
+
+	"npc_kingdom_city_demon"
+	{
+		"Model"						"models/items/warlock/golem/ti_8_warlock_darkness_apostate_golem/ti_8_warlock_darkness_apostate_golem.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Creep_Good_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.9"
+
+		"MinimapIcon"				""
+		"MinimapIconSize"			"400"
+
+		"Ability1"					"kingdom_buy_demon_melee"
+		"Ability2"					"kingdom_buy_demon_ranged"
+		"Ability3"					"kingdom_buy_demon_cavalry"
+		"Ability4"					"kingdom_portal_rally_point"
+		"Ability5"					"kingdom_upgrade_portal"
+		"Ability6"					"kingdom_buy_hero_nevermore"
+		"Ability7"					"kingdom_buy_hero_duchess"
+		"Ability8"					"kingdom_buy_hero_doom"
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"1"
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"256"
+		"HealthBarOffset"			"500"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"5000"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	}
 
 	//=================================================================================
@@ -6109,9 +6676,6 @@
 		"SoundSet"					"Tower.Water"
 		"Level"						"1"
 		"ModelScale" 				"2.3"
-
-		"MinimapIcon"				"minimap_tower"
-		"MinimapIconSize"			"250"
 
 		"Ability1"					""
 
@@ -6164,9 +6728,6 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"MinimapIcon"				"minimap_tower"
-		"MinimapIconSize"			"250"
-
 		"Ability1"					""
 
 		"ArmorPhysical"				"0"
@@ -6217,9 +6778,6 @@
 		"SoundSet"					"Tower.Fire"
 		"Level"						"1"
 		"ModelScale" 				"1"
-
-		"MinimapIcon"				"minimap_tower"
-		"MinimapIconSize"			"250"
 
 		"Ability1"					""
 
@@ -6273,9 +6831,6 @@
 		"Level"						"1"
 		"ModelScale" 				"3.5"
 
-		"MinimapIcon"				"minimap_tower"
-		"MinimapIconSize"			"250"
-
 		"Ability1"					""
 
 		"ArmorPhysical"				"0"
@@ -6327,9 +6882,6 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"MinimapIcon"				"minimap_tower"
-		"MinimapIconSize"			"250"
-
 		"Ability1"					""
 
 		"ArmorPhysical"				"0"
@@ -6364,6 +6916,165 @@
 
 		"VisionDaytimeRange"		"1800"
 		"VisionNighttimeRange"		"1200"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_tower_base"
+	{
+		"Model"						"models/props_structures/radiant_tower_base002.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					""
+		"Level"						"1"
+		"ModelScale" 				"1.6"
+
+		"MinimapIcon"				""
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"2.0"
+		"AttackAnimationPoint"		"0.6"
+		"AttackAcquisitionRange"	"1500"
+		"AttackRange"				"900"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"250"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_regional_spawner_base"
+	{
+		"Model"						"models/props_teams/logo_radiant_winter.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					""
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+
+		"MinimapIcon"				""
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"2.0"
+		"AttackAnimationPoint"		"0.6"
+		"AttackAcquisitionRange"	"1500"
+		"AttackRange"				"900"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"250"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+
+		"HasInventory"				"0"
+
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_kingdom_regional_spawner"
+	{
+		"Model"						"models/props_structures/obelisk001.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					""
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+
+		"MinimapIcon"				""
+
+		"Ability1"					""
+
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"2.0"
+		"AttackAnimationPoint"		"0.6"
+		"AttackAcquisitionRange"	"1500"
+		"AttackRange"				"900"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"1000"
+
+		"ConsideredHero"			"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"250"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"
+
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"1.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
 
 		"HasInventory"				"0"
 

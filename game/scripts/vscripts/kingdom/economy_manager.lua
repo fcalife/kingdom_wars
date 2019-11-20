@@ -12,29 +12,43 @@ function EconomyManager:Init()
 	self.turn_timer = 10
 	self.turn_duration = 45
 
-	self.starting_gold = 0
+	self.starting_gold = 35
 	self.base_income = 5
-	self.city_income = {2, 3, 5}
+	self.city_income = {1, 3, 5}
+	self.keen_city_bonus = 3
 	self.lost_city_income = 10
 	self.region_income = 10
-	self.base_interest = 0.2
+	self.base_interest = 0.1
+	self.max_interest = 10
+	self.beast_spawns = 3
+	self.max_beast_spawns = 10
+	self.current_beasts = {}
+	for region = 1, MapManager:GetRegionCount() do
+		self.current_beasts[region] = 0
+	end
 
 	self.player_current_city_amount = {}
 	for player = 1, Kingdom:GetPlayerCount() do
 		self.player_current_city_amount[player] = MapManager:GetPlayerCityCount(player)
 	end
 
-	-- Tools mode test gold
 	if IsInToolsMode() then
-		self.base_income = 60
+		self.starting_gold = 1000
+	end
+
+	-- Player starting gold
+	for player = 1, Kingdom:GetPlayerCount() do
+		local player_id = Kingdom:GetPlayerID(player)
+		PlayerResource:ModifyGold(player_id, math.floor(self.starting_gold), true, DOTA_ModifyGold_HeroKill)
 	end
 
 	-- Initialize scoreboard nettable
 	CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_timer})
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
-		CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = self.base_income + 8 * self.city_income[1]})
+		CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = self.base_income})
 		CustomNetTables:SetTableValue("player_info", "player_steam_id_"..player_id, {player_steam_id = PlayerResource:GetSteamID(player_id)})
+		self:UpdateIncomeForPlayer(player)
 	end
 
 	print("- Economy manager: starting game turns")
@@ -58,13 +72,14 @@ function EconomyManager:GrantPlayerTurnIncome()
 	self.turn_count = self.turn_count + 1
 
 	print("- Economy manager: TURN "..self.turn_count.." INCOME")
+	EmitGlobalSound("Round.Income")
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		local current_gold = PlayerResource:GetGold(player_id)
 
 		-- Income calculation
 		local turn_income = self.base_income
-		local interest = current_gold * self.base_interest
+		local interest = math.min(math.floor(current_gold * self.base_interest), self.max_interest)
 		local region_income = MapManager:GetPlayerRegionCount(player) * self.region_income
 		local lost_city_income = math.max(self.player_current_city_amount[player] - MapManager:GetPlayerCityCount(player), 0) * self.lost_city_income
 		self.player_current_city_amount[player] = MapManager:GetPlayerCityCount(player)
@@ -74,6 +89,9 @@ function EconomyManager:GrantPlayerTurnIncome()
 			for city = 1, MapManager:GetRegionCityCount(region) do
 				if MapManager:GetCityOwner(region, city) == player then
 					city_income = city_income + self.city_income[MapManager:GetCityByNumber(region, city):GetLevel()]
+					if MapManager:GetCityRace(region, city) == "keen" then
+						city_income = city_income + self.keen_city_bonus
+					end
 				end
 			end
 		end
@@ -83,6 +101,13 @@ function EconomyManager:GrantPlayerTurnIncome()
 		print("Player "..player.." received "..total_income.." total income, "..turn_income.." base, "..interest.." from interest, "..region_income.." from owned regions, "..city_income.." from owned cities, "..lost_city_income.." from cities lost since the last turn.")
 		self:UpdateIncomeForPlayer(player)
 	end
+
+	-- Spawn region ownership units
+	for region = 1, MapManager:GetRegionCount() do
+		if MapManager:GetRegionOwner(region) > 0 then
+			self:SpawnBeasts(region)
+		end
+	end
 end
 
 function EconomyManager:UpdateIncomeForPlayer(player)
@@ -91,7 +116,7 @@ function EconomyManager:UpdateIncomeForPlayer(player)
 
 	-- Income calculation
 	local turn_income = self.base_income
-	local interest = current_gold * self.base_interest
+	local interest = math.min(math.floor(current_gold * self.base_interest), self.max_interest)
 	local region_income = MapManager:GetPlayerRegionCount(player) * self.region_income
 	local lost_city_income = math.max(self.player_current_city_amount[player] - MapManager:GetPlayerCityCount(player), 0) * self.lost_city_income
 
@@ -100,6 +125,9 @@ function EconomyManager:UpdateIncomeForPlayer(player)
 		for city = 1, MapManager:GetRegionCityCount(region) do
 			if MapManager:GetCityOwner(region, city) == player then
 				city_income = city_income + self.city_income[MapManager:GetCityByNumber(region, city):GetLevel()]
+				if MapManager:GetCityRace(region, city) == "keen" then
+					city_income = city_income + self.keen_city_bonus
+				end
 			end
 		end
 	end
@@ -113,6 +141,21 @@ function EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, gold_spen
 	local current_income = CustomNetTables:GetTableValue("player_info", "player_"..player_id).income
 	local new_income = current_income - gold_spent * self.base_interest
 	CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = new_income})
+end
+
+function EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(caster, gold_spent)
+	local player_id = Kingdom:GetPlayerID(MapManager.demon_portals[caster.portal_number]["owner_player"])
+	local current_income = CustomNetTables:GetTableValue("player_info", "player_"..player_id).income
+	local new_income = current_income - gold_spent * self.base_interest
+	CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = new_income})
+end
+
+function EconomyManager:Rally(unit, city)
+	if city.rally_point then
+		Timers:CreateTimer(0.1, function()
+			unit:MoveToPositionAggressive(city.rally_point)
+		end)
+	end
 end
 
 
@@ -137,12 +180,66 @@ function EconomyManager:SpawnUnit(region, city, unit_type)
 		unit.type = KINGDOM_UNIT_TYPE_RANGED
 	elseif unit_type == "cavalry" then
 		unit.type = KINGDOM_UNIT_TYPE_CAVALRY
-	elseif unit_type == "beast" then
-		unit.type = KINGDOM_UNIT_TYPE_BEAST
 	end
 
 	Timers:CreateTimer(0.1, function()
 		ResolveNPCPositions(unit:GetAbsOrigin(), 128)
+
+		local rally_point = MapManager:GetRallyPoint(region, city)
+		if rally_point then
+			unit:MoveToPositionAggressive(rally_point)
+		end
+	end)
+end
+
+function EconomyManager:SpawnBeasts(region)
+	local player = MapManager:GetRegionOwner(region)
+	local player_id = Kingdom:GetPlayerID(player)
+	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
+	local spawn_loc = MapManager:GetBeastSpawnPoint(region)
+	local beasts_to_spawn = math.min(self.beast_spawns, self.max_beast_spawns - self.current_beasts[region])
+
+	if beasts_to_spawn >= 1 then
+		for i = 1, beasts_to_spawn do
+			local unit = CreateUnitByName("npc_kingdom_beast_"..region, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_beast_marker", {region = region})
+			unit:SetControllableByPlayer(player_id, true)
+			unit.type = KINGDOM_UNIT_TYPE_BEAST
+		end
+	end
+
+	Timers:CreateTimer(0.1, function()
+		ResolveNPCPositions(spawn_loc, 128)
+	end)
+end
+
+function EconomyManager:SpawnDemon(portal, unit_type)
+	local player = MapManager.demon_portals[portal]["owner_player"]
+	local player_id = Kingdom:GetPlayerID(player)
+	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
+	local spawn_loc = MapManager.demon_portals[portal]["capture_point"]
+	if unit_type == "ranged" then
+		spawn_loc = spawn_loc + Vector(-192, 192, 0)
+	end
+
+	local unit = CreateUnitByName("npc_kingdom_demon_"..unit_type, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+	unit:SetControllableByPlayer(player_id, true)
+
+	if unit_type == "melee" then
+		unit.type = KINGDOM_UNIT_TYPE_MELEE
+	elseif unit_type == "ranged" then
+		unit.type = KINGDOM_UNIT_TYPE_RANGED
+	elseif unit_type == "cavalry" then
+		unit.type = KINGDOM_UNIT_TYPE_CAVALRY
+	end
+
+	Timers:CreateTimer(0.1, function()
+		ResolveNPCPositions(unit:GetAbsOrigin(), 128)
+
+		local rally_point = MapManager:GetPortalRallyPoint(portal)
+		if rally_point then
+			unit:MoveToPositionAggressive(rally_point)
+		end
 	end)
 end
 
@@ -156,8 +253,55 @@ function EconomyManager:SpawnHero(region, city)
 	unit:SetControllableByPlayer(player_id, true)
 	unit:AddNewModifier(unit, nil, "modifier_kingdom_hero_marker", {ability_name = "kingdom_buy_hero_"..city_hero, region = region, city = city})
 	unit:SetHullRadius(48)
+
 	Timers:CreateTimer(0.1, function()
 		ResolveNPCPositions(unit:GetAbsOrigin(), 128)
+
+		local rally_point = MapManager:GetRallyPoint(region, city)
+		if rally_point then
+			unit:MoveToPositionAggressive(rally_point)
+		end
 	end)
+
+	local event = {}
+	event.playerid = player_id
+	event.playername = PlayerResource:GetPlayerName(player_id)
+	event.steamid = PlayerResource:GetSteamID(player_id)
+	event.unitname = "npc_kingdom_hero_"..city_hero
+	event.heroname = Kingdom:GetDotaNameFromHeroName(event.unitname)
+
+	CustomGameEventManager:Send_ServerToAllClients("kingdom_hero_recruited", {event})
+
+	return unit
+end
+
+function EconomyManager:SpawnDemonHero(portal, hero_name)
+	local player = MapManager.demon_portals[portal]["owner_player"]
+	local player_id = Kingdom:GetPlayerID(player)
+	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
+	local spawn_loc = MapManager.demon_portals[portal]["capture_point"]
+
+	local unit = CreateUnitByName("npc_kingdom_hero_"..hero_name, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+	unit:SetControllableByPlayer(player_id, true)
+	unit:AddNewModifier(unit, nil, "modifier_kingdom_demon_hero_marker", {ability_name = "kingdom_buy_hero_"..hero_name})
+	unit:SetHullRadius(48)
+	Timers:CreateTimer(0.1, function()
+		ResolveNPCPositions(unit:GetAbsOrigin(), 128)
+
+		local rally_point = MapManager:GetPortalRallyPoint(portal)
+		if rally_point then
+			unit:MoveToPositionAggressive(rally_point)
+		end
+	end)
+
+	local event = {}
+	event.playerid = player_id
+	event.playername = PlayerResource:GetPlayerName(player_id)
+	event.steamid = PlayerResource:GetSteamID(player_id)
+	event.unitname = "npc_kingdom_hero_"..hero_name
+	event.heroname = Kingdom:GetDotaNameFromHeroName(event.unitname)
+
+	CustomGameEventManager:Send_ServerToAllClients("kingdom_hero_recruited", {event})
+
 	return unit
 end

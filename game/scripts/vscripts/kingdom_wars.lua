@@ -43,7 +43,7 @@ function GameMode:InitGameMode()
 	--GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ExpFilter"), self)
 	GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(GameMode, "DamageFilter"), self)
 	--GameRules:GetGameModeEntity():SetModifierGainedFilter(Dynamic_Wrap(GameMode, "ModifierFilter"), self)
-	--GameRules:GetGameModeEntity():SetExecuteOrderFilter(Dynamic_Wrap(GameMode, "OrderFilter"), self)
+	GameRules:GetGameModeEntity():SetExecuteOrderFilter(Dynamic_Wrap(GameMode, "OrderFilter"), self)
 
 	-- Custom console commands
 	--Convars:RegisterCommand("runes_on", Dynamic_Wrap(GameMode, 'EnableAllRunes'), "Enables all runes", FCVAR_CHEAT )
@@ -143,6 +143,42 @@ function GameMode:OrderFilter(keys)
 	-- keys.issuer_player_id_const	 ==> 	0
 
 	local order_type = keys.order_type
+	if keys.entindex_ability then
+		local ability = EntIndexToHScript(keys.entindex_ability)
+		if ability and ability.GetAbilityName then
+			if ability:GetAbilityName() == "kingdom_rally_point" then
+				local caster = ability:GetCaster()
+				local target_loc = Vector(keys.position_x, keys.position_y, keys.position_z)
+
+				MapManager:SetRallyPoint(caster.region, caster.city, target_loc)
+
+				EmitSoundOnLocationWithCaster(target_loc, "General.PingAttack", caster)
+
+				local ping_pfx = ParticleManager:CreateParticleForTeam("particles/ui_mouseactions/ping_waypoint.vpcf", PATTACH_CUSTOMORIGIN, nil, caster:GetTeam())
+				ParticleManager:SetParticleControl(ping_pfx, 0, target_loc)
+				ParticleManager:SetParticleControl(ping_pfx, 5, Vector(3, 0, 0))
+				ParticleManager:SetParticleControl(ping_pfx, 7, Vector(255, 0, 0))
+				ParticleManager:ReleaseParticleIndex(ping_pfx)
+
+				return false
+			elseif ability:GetAbilityName() == "kingdom_portal_rally_point" then
+				local caster = ability:GetCaster()
+				local target_loc = Vector(keys.position_x, keys.position_y, keys.position_z)
+
+				MapManager:SetPortalRallyPoint(caster.portal_number, target_loc)
+
+				EmitSoundOnLocationWithCaster(target_loc, "General.PingAttack", caster)
+
+				local ping_pfx = ParticleManager:CreateParticleForTeam("particles/ui_mouseactions/ping_waypoint.vpcf", PATTACH_CUSTOMORIGIN, nil, caster:GetTeam())
+				ParticleManager:SetParticleControl(ping_pfx, 0, target_loc)
+				ParticleManager:SetParticleControl(ping_pfx, 5, Vector(3, 0, 0))
+				ParticleManager:SetParticleControl(ping_pfx, 7, Vector(255, 0, 0))
+				ParticleManager:ReleaseParticleIndex(ping_pfx)
+
+				return false
+			end
+		end
+	end
 
 	return true
 end
@@ -159,6 +195,9 @@ end
 
 function GameMode:OnGameStateGameSetup()
 	print("Game state is now: game setup")
+	if IsInToolsMode() then
+		SendToServerConsole("dota_create_fake_clients 8")
+	end
 end
 
 -- Called during hero select, performs additional precaching

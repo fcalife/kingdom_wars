@@ -1,15 +1,10 @@
 "AddonInfo"
 {
 	"TeamCount"					"8"
-	"maps"						"first_try disputed_lands"
+	"maps"						"disputed_lands"
 	"IsPlayable"				"1"
 	"HeroGuidesSupported"		"1"
 	"ShouldForceDefaultGuide"	"1"
-	
-	"first_try"
-	{
-		"MaxPlayers"	"8"
-	}
 
 	"disputed_lands"
 	{

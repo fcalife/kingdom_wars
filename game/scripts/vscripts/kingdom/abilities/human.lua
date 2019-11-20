@@ -4,11 +4,11 @@ kingdom_buy_human_melee = class({})
 
 function kingdom_buy_human_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 3)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
 end
 
 function kingdom_buy_human_melee:GetGoldCost(level)
-	return 3
+	return 6
 end
 
 
@@ -17,11 +17,11 @@ kingdom_buy_human_ranged = class({})
 
 function kingdom_buy_human_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 4)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
 end
 
 function kingdom_buy_human_ranged:GetGoldCost(level)
-	return 4
+	return 8
 end
 
 
@@ -30,11 +30,11 @@ kingdom_buy_human_cavalry = class({})
 
 function kingdom_buy_human_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 9)
 end
 
 function kingdom_buy_human_cavalry:GetGoldCost(level)
-	return 5
+	return 9
 end
 
 
@@ -174,6 +174,12 @@ end
 function modifier_human_melee_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.target == self:GetParent() then
+
+			-- If broken, do nothing
+			if self:GetParent():PassivesDisabled() then
+				return nil
+			end
+
 			if keys.attacker:IsRangedAttacker() then
 				self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_human_melee_ability_effect", {duration = 0.03})
 			end
@@ -229,6 +235,12 @@ function modifier_human_ranged_ability:OnAttackStart(keys)
 		if keys.attacker == self:GetParent() then
 			local parent = self:GetParent()
 			local ability = self:GetAbility()
+
+			-- If broken, do nothing
+			if parent:PassivesDisabled() then
+				return nil
+			end
+
 			if RollPercentage(ability:GetSpecialValueFor("proc_chance")) then
 				parent:AddNewModifier(parent, ability, "modifier_human_ranged_ability_effect", {duration = ability:GetSpecialValueFor("duration")})
 			end
@@ -263,47 +275,71 @@ function kingdom_human_cavalry_ability:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier("modifier_human_cavalry_ability", "kingdom/abilities/human", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_human_cavalry_ability_marker", "kingdom/abilities/human", LUA_MODIFIER_MOTION_NONE)
 
 modifier_human_cavalry_ability = class({})
 
-function modifier_human_cavalry_ability:IsHidden() return false end
+function modifier_human_cavalry_ability:IsHidden() return true end
 function modifier_human_cavalry_ability:IsDebuff() return false end
 function modifier_human_cavalry_ability:IsPurgable() return false end
 function modifier_human_cavalry_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
+function modifier_human_cavalry_ability:OnCreated(keys)
+	if IsServer() then
+		self:SetStackCount(self:GetAbility():GetSpecialValueFor("bonus_ms"))
+	end
+end
+
 function modifier_human_cavalry_ability:DeclareFunctions()
 	local funcs = {
-		MODIFIER_EVENT_ON_UNIT_MOVED,
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
-		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
 	return funcs
-end
-
-function modifier_human_cavalry_ability:OnUnitMoved(keys)
-	if IsServer() then
-		if keys.unit == self:GetParent() then
-			if self:GetStackCount() < 100 then
-				self:IncrementStackCount()
-			end
-		end
-	end
 end
 
 function modifier_human_cavalry_ability:GetModifierMoveSpeedBonus_Constant()
 	return self:GetStackCount()
 end
 
-function modifier_human_cavalry_ability:GetModifierDamageOutgoing_Percentage()
-	return self:GetStackCount()
-end
-
 function modifier_human_cavalry_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
-			self:SetStackCount(0)
+			local caster = self:GetParent()
+			local ability = self:GetAbility()
+
+			-- If broken, do nothing
+			if caster:PassivesDisabled() then
+				return nil
+			end
+
+			if ability:IsCooldownReady() then
+				local duration = self:GetAbility():GetSpecialValueFor("stun_duration")
+				if keys.target:IsKingdomHero() then
+					duration = duration * 0.5
+				end
+
+				ApplyDamage({victim = keys.target, attacker = caster, damage = ability:GetSpecialValueFor("bonus_damage"), damage_type = DAMAGE_TYPE_PHYSICAL})
+				caster:AddNewModifier(caster, ability, "modifier_human_cavalry_ability_marker", {duration = 18})
+				keys.target:AddNewModifier(caster, ability, "modifier_stunned", {duration = duration})
+
+				self:SetStackCount(0)
+				ability:UseResources(true, false, true)
+			end
 		end
+	end
+end
+
+modifier_human_cavalry_ability_marker = class({})
+
+function modifier_human_cavalry_ability_marker:IsHidden() return true end
+function modifier_human_cavalry_ability_marker:IsDebuff() return false end
+function modifier_human_cavalry_ability_marker:IsPurgable() return false end
+function modifier_human_cavalry_ability_marker:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_human_cavalry_ability_marker:OnDestroy()
+	if IsServer() then
+		self:GetParent():FindModifierByName("modifier_human_cavalry_ability"):SetStackCount(self:GetAbility():GetSpecialValueFor("bonus_ms"))
 	end
 end
 

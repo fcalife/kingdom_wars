@@ -4,11 +4,11 @@ kingdom_buy_keen_melee = class({})
 
 function kingdom_buy_keen_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 3)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
 end
 
 function kingdom_buy_keen_melee:GetGoldCost(level)
-	return 3
+	return 6
 end
 
 
@@ -17,11 +17,11 @@ kingdom_buy_keen_ranged = class({})
 
 function kingdom_buy_keen_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 4)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
 end
 
 function kingdom_buy_keen_ranged:GetGoldCost(level)
-	return 4
+	return 8
 end
 
 
@@ -30,11 +30,11 @@ kingdom_buy_keen_cavalry = class({})
 
 function kingdom_buy_keen_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
 end
 
 function kingdom_buy_keen_cavalry:GetGoldCost(level)
-	return 5
+	return 10
 end
 
 
@@ -321,6 +321,11 @@ function modifier_keen_ranged_ability:OnAttackLanded(keys)
 			local splash_radius = ability:GetSpecialValueFor("splash_radius")
 			local target_loc = keys.target:GetAbsOrigin()
 
+			-- If broken, do nothing
+			if parent:PassivesDisabled() then
+				return nil
+			end
+
 			local blast_pfx = ParticleManager:CreateParticle("particles/shrapnel.vpcf", PATTACH_CUSTOMORIGIN, nil)
 			ParticleManager:SetParticleControl(blast_pfx, 0, target_loc)
 			ParticleManager:ReleaseParticleIndex(blast_pfx)
@@ -365,6 +370,12 @@ function modifier_keen_cavalry_ability:OnTakeDamage(keys)
 		if keys.unit == self:GetParent() then
 			local parent = self:GetParent()
 			local ability = self:GetAbility()
+
+			-- If broken, do nothing
+			if parent:PassivesDisabled() then
+				return nil
+			end
+
 			if parent:GetHealth() < parent:GetMaxHealth() * ability:GetSpecialValueFor("health_threshold") * 0.01 then
 				parent:EmitSound("ChemicalRage.Start")
 				parent:AddNewModifier(parent, ability, "modifier_keen_cavalry_ability_effect", {})
@@ -469,7 +480,7 @@ function modifier_keen_bounty_hunter_ability:OnDeath(keys)
 			local player_id = Kingdom:GetPlayerID(player)
 			local gold = self:GetAbility():GetSpecialValueFor("unit_gold")
 
-			if keys.unit:HasModifier("modifier_kingdom_hero_bonuses") then
+			if keys.unit:HasModifier("modifier_kingdom_hero_marker") or keys.unit:HasModifier("modifier_kingdom_demon_hero_marker") then
 				gold = self:GetAbility():GetSpecialValueFor("hero_gold")
 			end
 

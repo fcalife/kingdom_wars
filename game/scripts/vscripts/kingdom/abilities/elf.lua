@@ -4,11 +4,11 @@ kingdom_buy_elf_melee = class({})
 
 function kingdom_buy_elf_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 3)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
 end
 
 function kingdom_buy_elf_melee:GetGoldCost(level)
-	return 3
+	return 6
 end
 
 
@@ -17,11 +17,11 @@ kingdom_buy_elf_ranged = class({})
 
 function kingdom_buy_elf_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 4)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 7)
 end
 
 function kingdom_buy_elf_ranged:GetGoldCost(level)
-	return 4
+	return 7
 end
 
 
@@ -30,11 +30,11 @@ kingdom_buy_elf_cavalry = class({})
 
 function kingdom_buy_elf_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
 end
 
 function kingdom_buy_elf_cavalry:GetGoldCost(level)
-	return 5
+	return 10
 end
 
 
@@ -225,6 +225,12 @@ function modifier_elf_ranged_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
 			local parent = self:GetParent()
+
+			-- If broken, do nothing
+			if parent:PassivesDisabled() then
+				return nil
+			end
+
 			local bonus_damage = self:GetAbility():GetSpecialValueFor("bonus_damage") * math.min(1, (parent:GetAbsOrigin() - keys.target:GetAbsOrigin()):Length2D() / 900)
 			ApplyDamage({victim = keys.target, attacker = parent, damage = bonus_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
 		end
@@ -241,7 +247,7 @@ end
 
 function kingdom_elf_cavalry_ability:OnProjectileHit(target, location)
 	if IsServer() then
-		ApplyDamage({victim = target, attacker = self:GetCaster(), damage = 140 * self:GetSpecialValueFor("bounce_damage") * 0.01, damage_type = DAMAGE_TYPE_PHYSICAL})
+		ApplyDamage({victim = target, attacker = self:GetCaster(), damage = 95 * self:GetSpecialValueFor("bounce_damage") * 0.01, damage_type = DAMAGE_TYPE_PHYSICAL})
 	end
 end
 
@@ -266,6 +272,12 @@ function modifier_elf_cavalry_ability:OnAttackLanded(keys)
 		if keys.attacker == self:GetParent() then
 			local parent = self:GetParent()
 			local ability = self:GetAbility()
+
+			-- If broken, do nothing
+			if parent:PassivesDisabled() then
+				return nil
+			end
+
 			local enemies = FindUnitsInRadius(parent:GetTeamNumber(), keys.target:GetAbsOrigin(), nil, ability:GetSpecialValueFor("bounce_radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_ANY_ORDER, false)
 			for _, enemy in pairs(enemies) do
 				if enemy ~= keys.target then

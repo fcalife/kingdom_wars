@@ -10,7 +10,7 @@
 		"MaxLevel"						"2"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
-		"AbilityChannelTime"			"20 40"
+		"AbilityChannelTime"			"10 20"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
 		"AbilityGoldCost"				"40 80"
@@ -20,7 +20,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_time"			"20 40"
+				"upgrade_time"			"10 20"
 			}
 			"02"
 			{
@@ -30,19 +30,79 @@
 		}
 	}
 
-	"kingdom_buy_human_melee"
+	"kingdom_upgrade_portal"
 	{
 		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"attribute_bonus"
+
+		"MaxLevel"						"2"
+		"AbilityCastRange"				"25000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityChannelTime"			"10 20"
+		"AbilityCooldown"				"0.01"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"40 80"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_time"			"10 20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"40 80"
+			}
+		}
+	}
+
+	"kingdom_rally_point"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"legion_commander_duel"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"3"
+		"AbilityGoldCost"				"0"
+	}
+
+	"kingdom_portal_rally_point"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"legion_commander_duel"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"25000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.01"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+	}
+
+	"kingdom_buy_human_melee"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/human.lua"
+		"AbilityTextureName"			"custom/human_m"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"25000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.01"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"6"
 	}
 
 	"kingdom_buy_human_ranged"
@@ -50,14 +110,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/human_r"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"4"
+		"AbilityGoldCost"				"8"
 	}
 
 	"kingdom_buy_human_cavalry"
@@ -65,14 +125,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/human_c"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_hero_paladin"
@@ -80,7 +140,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"omniknight_purification"
+		"AbilityTextureName"			"custom/hero_paladin"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -96,7 +156,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"crystal_maiden_crystal_nova"
+		"AbilityTextureName"			"custom/hero_mage"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -112,7 +172,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"legion_commander_overwhelming_odds"
+		"AbilityTextureName"			"custom/hero_commander"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -128,14 +188,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/elf.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/elf_m"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"3"
+		"AbilityGoldCost"				"6"
 	}
 
 	"kingdom_buy_elf_ranged"
@@ -143,14 +203,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/elf.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/elf_r"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"4"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_elf_cavalry"
@@ -158,14 +218,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/elf.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/elf_c"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"10"
 	}
 
 	"kingdom_buy_hero_ranger"
@@ -173,7 +233,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/elf.lua"
-		"AbilityTextureName"			"drow_ranger_marksmanship"
+		"AbilityTextureName"			"custom/hero_ranger"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -189,7 +249,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/elf.lua"
-		"AbilityTextureName"			"furion_wrath_of_nature"
+		"AbilityTextureName"			"custom/hero_druid"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -205,7 +265,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/elf.lua"
-		"AbilityTextureName"			"phantom_assassin_coup_de_grace"
+		"AbilityTextureName"			"custom/hero_assassin"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -221,14 +281,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/undead_m"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"3"
+		"AbilityGoldCost"				"6"
 	}
 
 	"kingdom_buy_undead_ranged"
@@ -236,14 +296,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/undead_r"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"4"
+		"AbilityGoldCost"				"8"
 	}
 
 	"kingdom_buy_undead_cavalry"
@@ -251,62 +311,59 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/undead_c"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"10"
 	}
 
 	"kingdom_buy_hero_necromancer"
 	{
 		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"necrolyte_sadist"
+		"AbilityTextureName"			"custom/hero_necromancer"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
-		"AbilityChannelTime"			"10.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"60"
+		"AbilityGoldCost"				"40"
 	}
 
 	"kingdom_buy_hero_wraith_king"
 	{
 		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"skeleton_king_vampiric_aura"
+		"AbilityTextureName"			"custom/hero_wraith_king"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
-		"AbilityChannelTime"			"10.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"60"
+		"AbilityGoldCost"				"40"
 	}
 
 	"kingdom_buy_hero_butcher"
 	{
 		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"pudge_flesh_heap"
+		"AbilityTextureName"			"custom/hero_butcher"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
-		"AbilityChannelTime"			"10.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"60"
+		"AbilityGoldCost"				"40"
 	}
 
 	"kingdom_buy_keen_melee"
@@ -314,14 +371,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/keen_m"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"3"
+		"AbilityGoldCost"				"6"
 	}
 
 	"kingdom_buy_keen_ranged"
@@ -329,14 +386,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/keen_r"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"4"
+		"AbilityGoldCost"				"8"
 	}
 
 	"kingdom_buy_keen_cavalry"
@@ -344,14 +401,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/keen_c"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"10"
 	}
 
 	"kingdom_buy_hero_bounty_hunter"
@@ -359,7 +416,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"bounty_hunter_jinada"
+		"AbilityTextureName"			"custom/hero_bounty_hunter"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -375,7 +432,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"tinker_rearm"
+		"AbilityTextureName"			"custom/hero_tinker"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -391,7 +448,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"gyrocopter_flak_cannon"
+		"AbilityTextureName"			"custom/hero_engineer"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -407,37 +464,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/orc.lua"
-		"AbilityTextureName"			"backdoor_protection"
-
-		"MaxLevel"						"1"
-		"AbilityCastRange"				"25000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.01"
-		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"3"
-	}
-
-	"kingdom_buy_orc_ranged"
-	{
-		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"ScriptFile"					"kingdom/abilities/orc.lua"
-		"AbilityTextureName"			"backdoor_protection"
-
-		"MaxLevel"						"1"
-		"AbilityCastRange"				"25000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.01"
-		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"4"
-	}
-
-	"kingdom_buy_orc_cavalry"
-	{
-		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"ScriptFile"					"kingdom/abilities/orc.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/orc_m"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -447,12 +474,42 @@
 		"AbilityGoldCost"				"5"
 	}
 
+	"kingdom_buy_orc_ranged"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/orc.lua"
+		"AbilityTextureName"			"custom/orc_r"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"25000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.01"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"8"
+	}
+
+	"kingdom_buy_orc_cavalry"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/orc.lua"
+		"AbilityTextureName"			"custom/orc_c"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"25000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.01"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"10"
+	}
+
 	"kingdom_buy_hero_incursor"
 	{
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/orc.lua"
-		"AbilityTextureName"			"disruptor_thunder_strike"
+		"AbilityTextureName"			"custom/hero_incursor"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -468,7 +525,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/orc.lua"
-		"AbilityTextureName"			"elder_titan_ancestral_spirit"
+		"AbilityTextureName"			"custom/hero_warlord"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -484,7 +541,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/orc.lua"
-		"AbilityTextureName"			"juggernaut_blade_dance"
+		"AbilityTextureName"			"custom/hero_blademaster"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -500,14 +557,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/demon_m"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"10"
 	}
 
 	"kingdom_buy_demon_ranged"
@@ -515,14 +572,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/demon_r"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"15"
 	}
 
 	"kingdom_buy_demon_cavalry"
@@ -530,14 +587,14 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"backdoor_protection"
+		"AbilityTextureName"			"custom/demon_c"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"20"
 	}
 
 	"kingdom_buy_hero_nevermore"
@@ -545,7 +602,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"nevermore_dark_lord"
+		"AbilityTextureName"			"custom/hero_nevermore"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -561,7 +618,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"queenofpain_shadow_strike"
+		"AbilityTextureName"			"custom/hero_duchess"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -577,7 +634,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"doom_bringer_doom"
+		"AbilityTextureName"			"custom/hero_doom"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"25000"
@@ -674,7 +731,7 @@
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.0"
+		"AbilityCooldown"				"18"
 		"AbilityManaCost"				"0"
 		"AbilityGoldCost"				"0"
 
@@ -683,7 +740,17 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"max_stacks"			"100"
+				"bonus_ms"				"65"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"90"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"1.4"
 			}
 		}
 	}
@@ -910,7 +977,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_as"				"15"
+				"bonus_as"				"25"
 			}
 			"02"
 			{
@@ -973,7 +1040,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"1" // hardcoded on ability
+				"plague_duration"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_health"			"50"
 			}
 		}
 	}
@@ -1130,39 +1202,32 @@
 
 	"kingdom_keen_melee_ability"
 	{
-		"BaseClass"						"ability_lua"
+		"BaseClass"						"shredder_reactive_armor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ScriptFile"					"kingdom/abilities/keen.lua"
-		"AbilityTextureName"			"rattletrap_hookshot"
-
 		"MaxLevel"						"1"
-		"AbilityCastRange"				"1000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"12.0"
-		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"0"
 
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"latch_range"			"1000"
+				"bonus_armor"			"2"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"latch_speed"			"3000"
+				"bonus_hp_regen"		"0"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"75"
+				"stack_limit"			"5"
+				"LinkedSpecialBonus"	"special_bonus_unique_timbersaw_2"
 			}
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_duration"			"1.5"
+				"var_type"				"FIELD_INTEGER"
+				"stack_duration"		"10"
 			}
 		}
 	}
@@ -1220,17 +1285,17 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"25"
+				"bonus_damage"			"40"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_as"				"50"
+				"bonus_as"				"40"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_ms"				"15"
+				"bonus_ms"				"40"
 			}
 		}
 	}
@@ -1559,7 +1624,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"as_slow"				"20"
+				"slow"					"-20"
 			}
 			"02"
 			{
@@ -1579,7 +1644,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/abilities/demon.lua"
-		"AbilityTextureName"			"death_prophet_witchcraft"
+		"AbilityTextureName"			"death_prophet_spirit_siphon"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"0"
@@ -1593,7 +1658,27 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lifesteal_pct"			"20"
+				"heal_pct"				"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_as"				"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_ms"				"12"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"12"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_stacks"			"3"
 			}
 		}
 	}
@@ -1646,7 +1731,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lifesteal_pct"			"15"
+				"lifesteal_pct"			"20"
 			}
 			"02"
 			{
@@ -1675,12 +1760,257 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"dps"					"8"
+				"dps"					"12"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"effect_radius"			"400"
+			}
+		}
+	}
+
+	"kingdom_beast_1_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"sandking_sand_storm"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"15"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_threshold"		"35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"250"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"3"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dps"					"30"
+			}
+		}
+	}
+
+	"kingdom_beast_2_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"centaur_double_edge"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"proc_chance"			"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"proc_duration"			"1.5"
+			}
+		}
+	}
+
+	"kingdom_beast_3_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"enchantress_natures_attendants"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_regen"			"13"
+			}
+		}
+	}
+
+	"kingdom_beast_4_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"slardar_amplify_damage"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_reduction"		"-3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"12"
+			}
+		}
+	}
+
+	"kingdom_beast_5_ability"
+	{
+		"BaseClass"						"sven_great_cleave"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_starting_width"	"175"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_ending_width"	"250"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_distance"		"350"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"great_cleave_damage"	"50"
+			}
+		}
+	}
+
+	"kingdom_beast_6_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"viper_corrosive_skin"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"4"
+			}
+		}
+	}
+
+	"kingdom_beast_7_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"silencer_last_word"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"4"
+			}
+		}
+	}
+
+	"kingdom_beast_8_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/beast.lua"
+		"AbilityTextureName"			"winter_wyvern_cold_embrace"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"15"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_threshold"		"35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"3"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"regen"					"7"
 			}
 		}
 	}

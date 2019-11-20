@@ -14,3 +14,14 @@ function modifier_kingdom_city:CheckState()
 	}
 	return states
 end
+
+function modifier_kingdom_city:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_IGNORE_CAST_ANGLE
+	}
+	return funcs
+end
+
+function modifier_kingdom_city:GetModifierIgnoreCastAngle()
+	return 1
+end
