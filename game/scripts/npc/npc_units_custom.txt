@@ -3008,7 +3008,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3066,7 +3068,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3124,7 +3128,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3182,7 +3188,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3240,7 +3248,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3298,7 +3308,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3356,7 +3368,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3414,7 +3428,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3472,7 +3488,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3530,7 +3548,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3588,7 +3608,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3646,7 +3668,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3704,7 +3728,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3762,7 +3788,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3820,7 +3848,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3878,7 +3908,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3936,7 +3968,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -3994,7 +4028,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4052,7 +4088,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4110,7 +4148,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4168,7 +4208,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4226,7 +4268,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4284,7 +4328,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4342,7 +4388,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4400,7 +4448,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4458,7 +4508,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4516,7 +4568,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4574,7 +4628,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4632,7 +4688,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4690,7 +4748,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4748,7 +4808,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4806,7 +4868,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4864,7 +4928,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4922,7 +4988,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -4980,7 +5048,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5038,7 +5108,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5096,7 +5168,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5154,7 +5228,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5212,7 +5288,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5270,7 +5348,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5328,7 +5408,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5386,7 +5468,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5444,7 +5528,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5502,7 +5588,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5560,7 +5648,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5618,7 +5708,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5676,7 +5768,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5734,7 +5828,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5792,7 +5888,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5850,7 +5948,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5908,7 +6008,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -5966,7 +6068,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6024,7 +6128,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6082,7 +6188,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6140,7 +6248,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6198,7 +6308,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6256,7 +6368,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6314,7 +6428,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6372,7 +6488,9 @@
 		"Ability2"					"kingdom_buy_elf_ranged"
 		"Ability3"					"kingdom_buy_elf_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6430,7 +6548,9 @@
 		"Ability2"					"kingdom_buy_keen_ranged"
 		"Ability3"					"kingdom_buy_keen_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6488,7 +6608,9 @@
 		"Ability2"					"kingdom_buy_undead_ranged"
 		"Ability3"					"kingdom_buy_undead_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6546,7 +6668,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6604,7 +6728,9 @@
 		"Ability2"					"kingdom_buy_orc_ranged"
 		"Ability3"					"kingdom_buy_orc_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6662,7 +6788,9 @@
 		"Ability2"					"kingdom_buy_human_ranged"
 		"Ability3"					"kingdom_buy_human_cavalry"
 		"Ability4"					"kingdom_rally_point"
-		"Ability5"					"kingdom_upgrade_city"
+		"Ability5"					"kingdom_upgrade_city_2"
+		"Ability6"					"generic_hidden"
+		"Ability7"					"kingdom_city_1"
 
 		"ArmorPhysical"				"0"
 
@@ -6723,6 +6851,7 @@
 		"Ability5"					"kingdom_buy_hero_nevermore"
 		"Ability6"					"kingdom_buy_hero_duchess"
 		"Ability7"					"kingdom_buy_hero_doom"
+		"Ability8"					"kingdom_city_portal"
 
 		"ArmorPhysical"				"0"
 

@@ -10,6 +10,7 @@
 			m_bAdditive = true
 			m_hTexture = resource:"materials/particle/auras/aura_endurance.vtex"
 			m_nOrientationType = 2
+			m_flOverbrightFactor = 15.0
 		},
 	]
 	m_Operators = 
@@ -40,14 +41,15 @@
 			_class = "C_OP_FadeIn"
 			m_flFadeInTimeMin = 2.5
 			m_flFadeInTimeMax = 2.5
+			m_bProportional = false
 		},
 	]
 	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 200.0
-			m_flRadiusMin = 200.0
+			m_flRadiusMax = 500.0
+			m_flRadiusMin = 500.0
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"

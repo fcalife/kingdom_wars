@@ -431,8 +431,8 @@ function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attack
 			self.capture_info[region][city].status = false
 			self.capture_info[region][city].progress = 0
 
-			self:RazeCity(region, city)
 			self:CaptureCity(region, city, attacking_player)
+			self:RazeCity(region, city)
 			EconomyManager:UpdateIncomeForPlayer(attacking_player)
 			EconomyManager:UpdateIncomeForPlayer(owner_player)
 
@@ -572,22 +572,55 @@ end
 function MapManager:RazeCity(region, city)
 	local city_unit = self:GetCityByNumber(region, city)
 	local tower_unit = self:GetTowerByNumber(region, city)
-	city_unit:CreatureLevelUp(1 - city_unit:GetLevel())
-	tower_unit:CreatureLevelUp(1 - city_unit:GetLevel())
+	local player_color = Kingdom:GetKingdomPlayerColor(MapManager:GetCityOwner(region, city))
 
-	if city_unit.upgrade_pfx then
-		ParticleManager:DestroyParticle(city_unit.upgrade_pfx, false)
-		ParticleManager:ReleaseParticleIndex(city_unit.upgrade_pfx)
+	if city_unit:GetLevel() == 3 then
+		city_unit:CreatureLevelUp(-1)
+		tower_unit:CreatureLevelUp(-1)
+
+		-- Remove level 3 effects
+		ParticleManager:DestroyParticle(city_unit.level_3_pfx, false)
+		ParticleManager:ReleaseParticleIndex(city_unit.level_3_pfx)
+
+		-- Re-add level 2 effects
+		city_unit.level_2_pfx = ParticleManager:CreateParticle("particles/upgraded_aura.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(city_unit.level_2_pfx, 0, city_unit:GetAbsOrigin() + Vector(0, 0, 10))
+		ParticleManager:SetParticleControl(city_unit.level_2_pfx, 1, player_color)
+
+		-- Adjust abilities
+		local next_ability = city_unit:AddAbility("kingdom_upgrade_city_3")
+		next_ability:SetLevel(1)
+
+		if not self:IsCapital(region, city) then
+			next_ability:SetActivated(false)
+		end
+
+		city_unit:RemoveAbility("kingdom_city_3")
+		city_unit:AddAbility("kingdom_city_2"):SetLevel(1)
+
+	elseif city_unit:GetLevel() == 2 then
+		city_unit:CreatureLevelUp(-1)
+		tower_unit:CreatureLevelUp(-1)
+
+		-- Remove level 2 effects
+		ParticleManager:DestroyParticle(city_unit.level_2_pfx, false)
+		ParticleManager:ReleaseParticleIndex(city_unit.level_2_pfx)
+
+		-- Adjust abilities
+		city_unit:RemoveAbility("kingdom_upgrade_city_3")
+		city_unit:AddAbility("kingdom_upgrade_city_2"):SetLevel(1)
+		city_unit:RemoveAbility("kingdom_city_2")
+		city_unit:AddAbility("kingdom_city_1"):SetLevel(1)
 	end
 
-	if city_unit.upgrade_pfx_2 then
-		ParticleManager:DestroyParticle(city_unit.upgrade_pfx_2, false)
-		ParticleManager:ReleaseParticleIndex(city_unit.upgrade_pfx_2)
-	end
+	-- Update capital particle
+	if self:IsCapital(region, city) then
+		ParticleManager:DestroyParticle(city_unit.capital_pfx, false)
+		ParticleManager:ReleaseParticleIndex(city_unit.capital_pfx)
 
-	if city_unit:HasModifier("modifier_kingdom_capital") then
-		city_unit:RemoveAbility("kingdom_capital")
-		city_unit:RemoveModifierByName("modifier_kingdom_capital")
+		city_unit.capital_pfx = ParticleManager:CreateParticle("particles/capital_aura.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(city_unit.capital_pfx, 0, city_unit:GetAbsOrigin() + Vector(0, 0, 10))
+		ParticleManager:SetParticleControl(city_unit.capital_pfx, 1, player_color)
 	end
 end
 
@@ -596,6 +629,11 @@ function MapManager:UpgradeCity(region, city)
 	local tower_unit = self:GetTowerByNumber(region, city)
 	city_unit:CreatureLevelUp(1)
 	tower_unit:CreatureLevelUp(1)
+end
+
+function MapManager:UpgradeCapitalTower(region, city)
+	local tower_unit = self:GetTowerByNumber(region, city)
+	tower_unit:AddNewModifier(tower_unit, nil, "modifier_kingdom_capital_tower", {})
 end
 
 function MapManager:PingMinimap(region, city)
@@ -679,6 +717,7 @@ function MapManager:SpawnCity(region, city)
 
 	-- Add hero spawning ability, if applicable
 	if hero then
+		unit:RemoveAbility("generic_hidden")
 		unit:AddAbility("kingdom_buy_hero_"..hero):SetLevel(1)
 	end
 

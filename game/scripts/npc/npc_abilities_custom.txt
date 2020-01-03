@@ -401,7 +401,123 @@
 		}
 	}
 
-	"kingdom_upgrade_city_1"
+	"kingdom_city_2"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"custom/castle_2"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"income"				"3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"conquest_time"			"5"
+			}
+		}
+	}
+
+	"kingdom_city_3"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"custom/castle_3"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"income"				"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"conquest_time"			"10"
+			}
+		}
+	}
+
+	"kingdom_city_portal"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"custom/race_demon"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"conquest_time"			"10"
+			}
+		}
+	}
+
+	"kingdom_capital"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"custom/capital_city"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.0"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"income"				"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"conquest_time"			"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tower_as"				"50"
+			}
+		}
+	}
+
+	"kingdom_upgrade_city_2"
 	{
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
@@ -431,6 +547,36 @@
 		}
 	}
 
+	"kingdom_upgrade_city_3"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"					"kingdom/abilities/cities.lua"
+		"AbilityTextureName"			"custom/castle_3"
+
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"25000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityChannelTime"			"20"
+		"AbilityCooldown"				"0.01"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"80"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_time"			"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"80"
+			}
+		}
+	}
+
 	"kingdom_upgrade_to_capital"
 	{
 		"BaseClass"						"ability_lua"
@@ -448,36 +594,25 @@
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
 		"AbilityGoldCost"				"0"
-	}
 
-	"kingdom_upgraded_city"
-	{
-		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ScriptFile"					"kingdom/abilities/cities.lua"
-		"AbilityTextureName"			"custom/upgrade_city_2"
-
-		"MaxLevel"						"1"
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.0"
-		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"0"
-	}
-
-	"kingdom_capital"
-	{
-		"BaseClass"						"ability_lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ScriptFile"					"kingdom/abilities/cities.lua"
-		"AbilityTextureName"			"custom/capital_city"
-
-		"MaxLevel"						"1"
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.0"
-		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"0"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"income"				"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"conquest_time"			"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tower_as"				"50"
+			}
+		}
 	}
 
 	"kingdom_rally_point"

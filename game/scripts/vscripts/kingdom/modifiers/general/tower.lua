@@ -52,6 +52,27 @@ end
 
 
 
+-- Capital tower bonus
+modifier_kingdom_capital_tower = class({})
+
+function modifier_kingdom_capital_tower:IsDebuff() return false end
+function modifier_kingdom_capital_tower:IsHidden() return true end
+function modifier_kingdom_capital_tower:IsPurgable() return false end
+function modifier_kingdom_capital_tower:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE + MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_kingdom_capital_tower:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+	}
+	return funcs
+end
+
+function modifier_kingdom_capital_tower:GetModifierAttackSpeedBonus_Constant()
+	return 50
+end
+
+
+
 --	Tower base default state
 
 modifier_kingdom_tower_base = class({})
