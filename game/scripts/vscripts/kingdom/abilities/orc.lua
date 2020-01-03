@@ -4,11 +4,16 @@ kingdom_buy_orc_melee = class({})
 
 function kingdom_buy_orc_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 5)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_orc_melee:GetGoldCost(level)
-	return 5
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
+		return 4
+	else
+		return 5
+	end
 end
 
 
@@ -17,11 +22,16 @@ kingdom_buy_orc_ranged = class({})
 
 function kingdom_buy_orc_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_orc_ranged:GetGoldCost(level)
-	return 8
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
+		return 6
+	else
+		return 7
+	end
 end
 
 
@@ -30,11 +40,16 @@ kingdom_buy_orc_cavalry = class({})
 
 function kingdom_buy_orc_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_orc_cavalry:GetGoldCost(level)
-	return 10
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
+		return 8
+	else
+		return 9
+	end
 end
 
 
@@ -243,7 +258,6 @@ function kingdom_orc_ranged_ability:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier("modifier_orc_ranged_ability", "kingdom/abilities/orc", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_orc_ranged_ability_effect", "kingdom/abilities/orc", LUA_MODIFIER_MOTION_NONE)
 
 modifier_orc_ranged_ability = class({})
 
@@ -254,13 +268,12 @@ function modifier_orc_ranged_ability:GetAttributes() return MODIFIER_ATTRIBUTE_P
 
 function modifier_orc_ranged_ability:DeclareFunctions()
 	local funcs = {
-		MODIFIER_EVENT_ON_ATTACK_START,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
 	return funcs
 end
 
-function modifier_orc_ranged_ability:OnAttackStart(keys)
+function modifier_orc_ranged_ability:OnAttackLanded(keys)
 	if IsServer() then
 		if keys.attacker == self:GetParent() then
 
@@ -269,37 +282,24 @@ function modifier_orc_ranged_ability:OnAttackStart(keys)
 				return nil
 			end
 
+			-- Proc!
 			if RollPercentage(self:GetAbility():GetSpecialValueFor("crit_chance")) then
-				self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_orc_ranged_ability_effect", {})
+				local base_damage = 0.5 * (keys.attacker:GetBaseDamageMax() + keys.attacker:GetBaseDamageMin())
+				local bonus_damage = base_damage * (self:GetAbility():GetSpecialValueFor("crit_damage") * 0.01 - 1)
+
+				local actual_damage = ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = bonus_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
+				SendOverheadEventMessage(nil, OVERHEAD_ALERT_CRITICAL, keys.target, actual_damage * 2, nil)
+
+				local duration = self:GetAbility():GetSpecialValueFor("duration")
+				if keys.target:IsKingdomHero() then
+					duration = duration * 0.5
+				end
+
+				keys.target:EmitSound("Hero_TrollWarlord.BerserkersRage.Stun")
+				keys.target:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_stunned", {duration = duration})
 			end
 		end
 	end
-end
-
-function modifier_orc_ranged_ability:OnAttackLanded(keys)
-	if IsServer() then
-		if keys.attacker == self:GetParent() then
-			self:GetParent():RemoveModifierByName("modifier_orc_ranged_ability_effect")
-		end
-	end
-end
-
-modifier_orc_ranged_ability_effect = class({})
-
-function modifier_orc_ranged_ability_effect:IsHidden() return true end
-function modifier_orc_ranged_ability_effect:IsDebuff() return false end
-function modifier_orc_ranged_ability_effect:IsPurgable() return false end
-function modifier_orc_ranged_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
-
-function modifier_orc_ranged_ability_effect:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE
-	}
-	return funcs
-end
-
-function modifier_orc_ranged_ability_effect:GetModifierPreAttack_CriticalStrike()
-	return self:GetAbility():GetSpecialValueFor("crit_damage")
 end
 
 
@@ -338,7 +338,11 @@ function modifier_orc_cavalry_ability:OnAttackLanded(keys)
 
 			local ability = self:GetAbility()
 			keys.target:EmitSound("StickyNapalm.Hit")
-			keys.target:AddNewModifier(self:GetParent(), ability, "modifier_orc_cavalry_ability_effect", {duration = ability:GetSpecialValueFor("duration")})
+			local napalm_modifier = keys.target:AddNewModifier(self:GetParent(), ability, "modifier_orc_cavalry_ability_effect", {duration = ability:GetSpecialValueFor("duration")})
+
+			if napalm_modifier:GetStackCount() < ability:GetSpecialValueFor("max_stacks") then
+				napalm_modifier:IncrementStackCount()
+			end
 		end
 	end
 end
@@ -359,11 +363,11 @@ function modifier_orc_cavalry_ability_effect:DeclareFunctions()
 end
 
 function modifier_orc_cavalry_ability_effect:GetModifierMoveSpeedBonus_Percentage()
-	return (-1) * self:GetAbility():GetSpecialValueFor("move_slow")
+	return (-1) * self:GetAbility():GetSpecialValueFor("move_slow") * self:GetStackCount()
 end
 
 function modifier_orc_cavalry_ability_effect:GetModifierAttackSpeedBonus_Constant()
-	return (-1) * self:GetAbility():GetSpecialValueFor("as_slow")
+	return (-1) * self:GetAbility():GetSpecialValueFor("as_slow") * self:GetStackCount()
 end
 
 function modifier_orc_cavalry_ability_effect:GetEffectName()

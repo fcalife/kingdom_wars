@@ -6,7 +6,7 @@
 	{
 		"ModelScale"		"1.0"
 
-		"Ability1"					""
+		"Ability1"					"kingdom_upgrade_to_capital"
 		"Ability2"					""
 		"Ability3"					""
 		"Ability4"					""

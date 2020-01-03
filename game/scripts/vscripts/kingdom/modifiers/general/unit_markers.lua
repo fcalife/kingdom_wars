@@ -103,3 +103,42 @@ function modifier_kingdom_beast_marker:OnDestroy()
 		EconomyManager.current_beasts[self.region] = EconomyManager.current_beasts[self.region] - 1
 	end
 end
+
+
+
+modifier_kingdom_unit_movement = class({})
+
+function modifier_kingdom_unit_movement:IsHidden() return true end
+function modifier_kingdom_unit_movement:IsDebuff() return false end
+function modifier_kingdom_unit_movement:IsPurgable() return false end
+function modifier_kingdom_unit_movement:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_kingdom_unit_movement:OnCreated(keys)
+	if IsServer() then
+		if keys.player then
+			self.player = keys.player
+			EconomyManager.player_current_units[self.player] = EconomyManager.player_current_units[self.player] + 1
+			EconomyManager:UpdateIncomeForPlayer(self.player)
+		end
+	end
+end
+
+function modifier_kingdom_unit_movement:OnDestroy()
+	if IsServer() then
+		if self.player then
+			EconomyManager.player_current_units[self.player] = EconomyManager.player_current_units[self.player] - 1
+			EconomyManager:UpdateIncomeForPlayer(self.player)
+		end
+	end
+end
+
+function modifier_kingdom_unit_movement:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT
+	}
+	return funcs
+end
+
+function modifier_kingdom_unit_movement:GetModifierIgnoreMovespeedLimit()
+	return 1
+end

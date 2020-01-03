@@ -138,7 +138,11 @@ function modifier_beast_2_ability:OnAttackLanded(keys)
 				return nil
 			end
 
+			-- Proc!
 			if RollPercentage(self:GetAbility():GetSpecialValueFor("proc_chance")) then
+
+				ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = self:GetAbility():GetSpecialValueFor("proc_damage"), damage_type = DAMAGE_TYPE_PHYSICAL})
+
 				local duration = self:GetAbility():GetSpecialValueFor("proc_duration")
 				if keys.target:IsKingdomHero() then
 					duration = duration * 0.5
@@ -171,12 +175,12 @@ function modifier_beast_3_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERM
 
 function modifier_beast_3_ability:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
+		MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE
 	}
 	return funcs
 end
 
-function modifier_beast_3_ability:GetModifierConstantHealthRegen()
+function modifier_beast_3_ability:GetModifierHealthRegenPercentage()
 	return self:GetAbility():GetSpecialValueFor("bonus_regen")
 end
 
@@ -254,6 +258,7 @@ end
 
 LinkLuaModifier("modifier_beast_6_ability", "kingdom/abilities/beast", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_beast_6_ability_effect", "kingdom/abilities/beast", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_beast_6_ability_buff", "kingdom/abilities/beast", LUA_MODIFIER_MOTION_NONE)
 
 modifier_beast_6_ability = class({})
 
@@ -279,6 +284,7 @@ function modifier_beast_6_ability:OnTakeDamage(keys)
 			end
 
 			keys.attacker:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_beast_6_ability_effect", {duration = self:GetAbility():GetSpecialValueFor("duration")})
+			keys.unit:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_beast_6_ability_buff", {duration = self:GetAbility():GetSpecialValueFor("duration")})
 		end
 	end
 end
@@ -291,26 +297,6 @@ function modifier_beast_6_ability_effect:IsDebuff() return true end
 function modifier_beast_6_ability_effect:IsPurgable() return true end
 function modifier_beast_6_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
-function modifier_beast_6_ability_effect:OnCreated(keys)
-	if IsServer() then
-		self:StartIntervalThink(1.0)
-	end
-end
-
-function modifier_beast_6_ability_effect:OnIntervalThink()
-	if IsServer() then
-		local parent = self:GetParent()
-		local ability = self:GetAbility()
-		local damage_tick = parent:GetMaxHealth() * 0.01 * ability:GetSpecialValueFor("damage") / ability:GetSpecialValueFor("duration")
-		if parent:IsKingdomHero() then
-			damage_tick = damage_tick * 0.5
-		end
-
-		ApplyDamage({victim = parent, attacker = self:GetCaster(), damage = damage_tick, damage_type = DAMAGE_TYPE_PURE})
-		SendOverheadEventMessage(nil, OVERHEAD_ALERT_BONUS_POISON_DAMAGE, parent, damage_tick, nil)
-	end
-end
-
 function modifier_beast_6_ability_effect:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
@@ -320,11 +306,11 @@ function modifier_beast_6_ability_effect:DeclareFunctions()
 end
 
 function modifier_beast_6_ability_effect:GetModifierMoveSpeedBonus_Percentage()
-	return self:GetAbility():GetSpecialValueFor("slow")
+	return (-1) * self:GetAbility():GetSpecialValueFor("slow")
 end
 
 function modifier_beast_6_ability_effect:GetModifierAttackSpeedBonus_Constant()
-	return self:GetAbility():GetSpecialValueFor("slow")
+	return (-1) * self:GetAbility():GetSpecialValueFor("slow")
 end
 
 function modifier_beast_6_ability_effect:GetEffectName()
@@ -332,6 +318,38 @@ function modifier_beast_6_ability_effect:GetEffectName()
 end
 
 function modifier_beast_6_ability_effect:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
+
+modifier_beast_6_ability_buff = class({})
+
+function modifier_beast_6_ability_buff:IsHidden() return false end
+function modifier_beast_6_ability_buff:IsDebuff() return false end
+function modifier_beast_6_ability_buff:IsPurgable() return true end
+function modifier_beast_6_ability_buff:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_beast_6_ability_buff:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+	}
+	return funcs
+end
+
+function modifier_beast_6_ability_buff:GetModifierMoveSpeedBonus_Percentage()
+	return self:GetAbility():GetSpecialValueFor("slow")
+end
+
+function modifier_beast_6_ability_buff:GetModifierAttackSpeedBonus_Constant()
+	return self:GetAbility():GetSpecialValueFor("slow")
+end
+
+function modifier_beast_6_ability_buff:GetEffectName()
+	return "particles/units/heroes/hero_viper/viper_corrosive_debuff.vpcf"
+end
+
+function modifier_beast_6_ability_buff:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 

@@ -4,11 +4,16 @@ kingdom_buy_undead_melee = class({})
 
 function kingdom_buy_undead_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_undead_melee:GetGoldCost(level)
-	return 6
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
+		return 4
+	else
+		return 5
+	end
 end
 
 
@@ -17,11 +22,16 @@ kingdom_buy_undead_ranged = class({})
 
 function kingdom_buy_undead_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_undead_ranged:GetGoldCost(level)
-	return 8
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
+		return 6
+	else
+		return 7
+	end
 end
 
 
@@ -30,11 +40,16 @@ kingdom_buy_undead_cavalry = class({})
 
 function kingdom_buy_undead_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_undead_cavalry:GetGoldCost(level)
-	return 10
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
+		return 8
+	else
+		return 9
+	end
 end
 
 
@@ -43,15 +58,29 @@ kingdom_buy_hero_necromancer = class({})
 
 function kingdom_buy_hero_necromancer:OnSpellStart()
 	local caster = self:GetCaster()
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 40)
+	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
+	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
+end
 
-	local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
-	hero:EmitSound("Hero_Necrolyte.SpiritForm.Cast")
-	hero:AddNewModifier(hero, self, "modifier_hero_necromancer_spawn_fx", {duration = 4})
+function kingdom_buy_hero_necromancer:OnChannelFinish(interrupted)
+	if not interrupted then
+		local caster = self:GetCaster()
+		local region = caster:GetRegion()
+		local city = caster:GetCity()
+		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
+		if PlayerResource:GetGold(player_id) >= 60 then
+			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
+			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
+
+			local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
+			hero:EmitSound("Hero_Necrolyte.SpiritForm.Cast")
+			hero:AddNewModifier(hero, self, "modifier_hero_necromancer_spawn_fx", {duration = 4})
+		end
+	end
 end
 
 function kingdom_buy_hero_necromancer:GetGoldCost(level)
-	return 40
+	return 60
 end
 
 LinkLuaModifier("modifier_hero_necromancer_spawn_fx", "kingdom/abilities/undead", LUA_MODIFIER_MOTION_NONE)
@@ -73,19 +102,33 @@ kingdom_buy_hero_wraith_king = class({})
 
 function kingdom_buy_hero_wraith_king:OnSpellStart()
 	local caster = self:GetCaster()
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 40)
+	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
+	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
+end
 
-	local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
-	hero:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
+function kingdom_buy_hero_wraith_king:OnChannelFinish(interrupted)
+	if not interrupted then
+		local caster = self:GetCaster()
+		local region = caster:GetRegion()
+		local city = caster:GetCity()
+		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
+		if PlayerResource:GetGold(player_id) >= 60 then
+			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
+			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
 
-	local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf", PATTACH_CUSTOMORIGIN, nil)
-	ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
-	ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(2, 0, 0))
-	ParticleManager:ReleaseParticleIndex(spawn_pfx)
+			local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
+			hero:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
+
+			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
+			ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(2, 0, 0))
+			ParticleManager:ReleaseParticleIndex(spawn_pfx)
+		end
+	end
 end
 
 function kingdom_buy_hero_wraith_king:GetGoldCost(level)
-	return 40
+	return 60
 end
 
 
@@ -94,23 +137,37 @@ kingdom_buy_hero_butcher = class({})
 
 function kingdom_buy_hero_butcher:OnSpellStart()
 	local caster = self:GetCaster()
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 40)
+	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
+	PlayerResource:ModifyGold(player_id, 60, true, DOTA_ModifyGold_HeroKill)
+end
 
-	local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
-	hero:EmitSound("Hero_Pudge.DismemberSwings")
+function kingdom_buy_hero_butcher:OnChannelFinish(interrupted)
+	if not interrupted then
+		local caster = self:GetCaster()
+		local region = caster:GetRegion()
+		local city = caster:GetCity()
+		local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(region, city))
+		if PlayerResource:GetGold(player_id) >= 60 then
+			PlayerResource:SpendGold(player_id, 60, DOTA_ModifyGold_PurchaseItem)
+			EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(caster, 60)
 
-	local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf", PATTACH_CUSTOMORIGIN, nil)
-	ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
-	ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(256, 0, 0))
+			local hero = EconomyManager:SpawnHero(caster:GetRegion(), caster:GetCity())
+			hero:EmitSound("Hero_Pudge.DismemberSwings")
 
-	Timers:CreateTimer(4, function()
-		ParticleManager:DestroyParticle(spawn_pfx, false)
-		ParticleManager:ReleaseParticleIndex(spawn_pfx)
-	end)
+			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
+			ParticleManager:SetParticleControl(spawn_pfx, 1, Vector(256, 0, 0))
+
+			Timers:CreateTimer(4, function()
+				ParticleManager:DestroyParticle(spawn_pfx, false)
+				ParticleManager:ReleaseParticleIndex(spawn_pfx)
+			end)
+		end
+	end
 end
 
 function kingdom_buy_hero_butcher:GetGoldCost(level)
-	return 40
+	return 60
 end
 
 

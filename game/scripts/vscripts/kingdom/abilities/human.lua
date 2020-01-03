@@ -4,11 +4,16 @@ kingdom_buy_human_melee = class({})
 
 function kingdom_buy_human_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_human_melee:GetGoldCost(level)
-	return 6
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
+		return 4
+	else
+		return 5
+	end
 end
 
 
@@ -17,11 +22,16 @@ kingdom_buy_human_ranged = class({})
 
 function kingdom_buy_human_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_human_ranged:GetGoldCost(level)
-	return 8
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
+		return 6
+	else
+		return 7
+	end
 end
 
 
@@ -30,11 +40,16 @@ kingdom_buy_human_cavalry = class({})
 
 function kingdom_buy_human_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 9)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_human_cavalry:GetGoldCost(level)
-	return 9
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
+		return 8
+	else
+		return 9
+	end
 end
 
 
@@ -155,7 +170,6 @@ function kingdom_human_melee_ability:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier("modifier_human_melee_ability", "kingdom/abilities/human", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_human_melee_ability_effect", "kingdom/abilities/human", LUA_MODIFIER_MOTION_NONE)
 
 modifier_human_melee_ability = class({})
 
@@ -163,47 +177,6 @@ function modifier_human_melee_ability:IsHidden() return true end
 function modifier_human_melee_ability:IsDebuff() return false end
 function modifier_human_melee_ability:IsPurgable() return false end
 function modifier_human_melee_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
-
-function modifier_human_melee_ability:DeclareFunctions()
-	local funcs = {
-		MODIFIER_EVENT_ON_ATTACK_LANDED
-	}
-	return funcs
-end
-
-function modifier_human_melee_ability:OnAttackLanded(keys)
-	if IsServer() then
-		if keys.target == self:GetParent() then
-
-			-- If broken, do nothing
-			if self:GetParent():PassivesDisabled() then
-				return nil
-			end
-
-			if keys.attacker:IsRangedAttacker() then
-				self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_human_melee_ability_effect", {duration = 0.03})
-			end
-		end
-	end
-end
-
-modifier_human_melee_ability_effect = class({})
-
-function modifier_human_melee_ability_effect:IsHidden() return true end
-function modifier_human_melee_ability_effect:IsDebuff() return false end
-function modifier_human_melee_ability_effect:IsPurgable() return false end
-function modifier_human_melee_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
-
-function modifier_human_melee_ability_effect:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
-	}
-	return funcs
-end
-
-function modifier_human_melee_ability_effect:GetModifierPhysicalArmorBonus()
-	return self:GetAbility():GetSpecialValueFor("bonus_armor")
-end
 
 
 
@@ -293,6 +266,7 @@ end
 function modifier_human_cavalry_ability:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
 	return funcs
@@ -300,6 +274,10 @@ end
 
 function modifier_human_cavalry_ability:GetModifierMoveSpeedBonus_Constant()
 	return self:GetStackCount()
+end
+
+function modifier_human_cavalry_ability:GetModifierBaseDamageOutgoing_Percentage()
+	return self:GetStackCount() * 0.75
 end
 
 function modifier_human_cavalry_ability:OnAttackLanded(keys)
@@ -319,8 +297,7 @@ function modifier_human_cavalry_ability:OnAttackLanded(keys)
 					duration = duration * 0.5
 				end
 
-				ApplyDamage({victim = keys.target, attacker = caster, damage = ability:GetSpecialValueFor("bonus_damage"), damage_type = DAMAGE_TYPE_PHYSICAL})
-				caster:AddNewModifier(caster, ability, "modifier_human_cavalry_ability_marker", {duration = 18})
+				caster:AddNewModifier(caster, ability, "modifier_human_cavalry_ability_marker", {duration = 20})
 				keys.target:AddNewModifier(caster, ability, "modifier_stunned", {duration = duration})
 
 				self:SetStackCount(0)
@@ -341,60 +318,6 @@ function modifier_human_cavalry_ability_marker:OnDestroy()
 	if IsServer() then
 		self:GetParent():FindModifierByName("modifier_human_cavalry_ability"):SetStackCount(self:GetAbility():GetSpecialValueFor("bonus_ms"))
 	end
-end
-
-
-
-kingdom_magic_attack_ability = class({})
-
-function kingdom_magic_attack_ability:GetIntrinsicModifierName()
-	return "modifier_magic_attack_ability"
-end
-
-LinkLuaModifier("modifier_magic_attack_ability", "kingdom/abilities/human", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_magic_attack_ability_effect", "kingdom/abilities/human", LUA_MODIFIER_MOTION_NONE)
-
-modifier_magic_attack_ability = class({})
-
-function modifier_magic_attack_ability:IsHidden() return true end
-function modifier_magic_attack_ability:IsDebuff() return false end
-function modifier_magic_attack_ability:IsPurgable() return false end
-function modifier_magic_attack_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
-
-function modifier_magic_attack_ability:DeclareFunctions()
-	local funcs = {
-		MODIFIER_EVENT_ON_ATTACK_LANDED
-	}
-	return funcs
-end
-
-function modifier_magic_attack_ability:OnAttackLanded(keys)
-	if IsServer() then
-		if keys.attacker == self:GetParent() then
-			local ability = self:GetAbility()
-			keys.attacker:AddNewModifier(keys.attacker, ability, "modifier_magic_attack_ability_effect", {duration = 0.01})
-			keys.target:AddNewModifier(keys.attacker, ability, "modifier_magic_attack_ability_effect", {duration = 0.01})
-			ApplyDamage({attacker = keys.attacker, victim = keys.target, ability = ability, damage = keys.original_damage, damage_type = DAMAGE_TYPE_MAGICAL, damage_flag = DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS})
-		end
-	end
-end
-
-modifier_magic_attack_ability_effect = class({})
-
-function modifier_magic_attack_ability_effect:IsHidden() return true end
-function modifier_magic_attack_ability_effect:IsDebuff() return false end
-function modifier_magic_attack_ability_effect:IsPurgable() return false end
-function modifier_magic_attack_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
-
-function modifier_magic_attack_ability_effect:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL
-	}
-	return funcs
-end
-
-function modifier_magic_attack_ability_effect:GetAbsoluteNoDamagePhysical()
-	return 1
 end
 
 

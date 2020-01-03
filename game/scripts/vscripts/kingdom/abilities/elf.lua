@@ -4,11 +4,16 @@ kingdom_buy_elf_melee = class({})
 
 function kingdom_buy_elf_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_elf_melee:GetGoldCost(level)
-	return 6
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
+		return 4
+	else
+		return 5
+	end
 end
 
 
@@ -17,11 +22,16 @@ kingdom_buy_elf_ranged = class({})
 
 function kingdom_buy_elf_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 7)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_elf_ranged:GetGoldCost(level)
-	return 7
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
+		return 6
+	else
+		return 7
+	end
 end
 
 
@@ -30,11 +40,16 @@ kingdom_buy_elf_cavalry = class({})
 
 function kingdom_buy_elf_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_elf_cavalry:GetGoldCost(level)
-	return 10
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
+		return 8
+	else
+		return 9
+	end
 end
 
 
@@ -231,8 +246,9 @@ function modifier_elf_ranged_ability:OnAttackLanded(keys)
 				return nil
 			end
 
-			local bonus_damage = self:GetAbility():GetSpecialValueFor("bonus_damage") * math.min(1, (parent:GetAbsOrigin() - keys.target:GetAbsOrigin()):Length2D() / 900)
-			ApplyDamage({victim = keys.target, attacker = parent, damage = bonus_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
+			local bonus_damage = self:GetAbility():GetSpecialValueFor("bonus_damage") * math.min(1, (parent:GetAbsOrigin() - keys.target:GetAbsOrigin()):Length2D() / 900) * 0.01
+			local base_damage = 0.5 * (parent:GetBaseDamageMax() + parent:GetBaseDamageMin())
+			ApplyDamage({victim = keys.target, attacker = parent, damage = base_damage * bonus_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
 		end
 	end
 end
@@ -247,7 +263,9 @@ end
 
 function kingdom_elf_cavalry_ability:OnProjectileHit(target, location)
 	if IsServer() then
-		ApplyDamage({victim = target, attacker = self:GetCaster(), damage = 95 * self:GetSpecialValueFor("bounce_damage") * 0.01, damage_type = DAMAGE_TYPE_PHYSICAL})
+		local base_damage = 0.5 * (self:GetCaster():GetBaseDamageMax() + self:GetCaster():GetBaseDamageMin())
+		local bonus_damage = base_damage * self:GetSpecialValueFor("bounce_damage") * 0.01
+		ApplyDamage({victim = target, attacker = self:GetCaster(), damage = bonus_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
 	end
 end
 
@@ -325,7 +343,7 @@ function modifier_elf_ranger_ability:IsAura()
 end
 
 function modifier_elf_ranger_ability:GetAuraRadius() return 1200 end
-function modifier_elf_ranger_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
+function modifier_elf_ranger_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_RANGED_ONLY end
 function modifier_elf_ranger_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_elf_ranger_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
 function modifier_elf_ranger_ability:GetModifierAura() return "modifier_elf_ranger_ability_effect" end
@@ -339,23 +357,13 @@ function modifier_elf_ranger_ability_effect:GetAttributes() return MODIFIER_ATTR
 
 function modifier_elf_ranger_ability_effect:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-		MODIFIER_PROPERTY_BONUS_DAY_VISION,
-		MODIFIER_PROPERTY_BONUS_NIGHT_VISION
+		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE
 	}
 	return funcs
 end
 
-function modifier_elf_ranger_ability_effect:GetModifierMoveSpeedBonus_Percentage()
-	return self:GetAbility():GetSpecialValueFor("bonus_ms")
-end
-
-function modifier_elf_ranger_ability_effect:GetBonusDayVision()
-	return self:GetAbility():GetSpecialValueFor("bonus_vision")
-end
-
-function modifier_elf_ranger_ability_effect:GetBonusNightVision()
-	return self:GetAbility():GetSpecialValueFor("bonus_vision")
+function modifier_elf_ranger_ability_effect:GetModifierDamageOutgoing_Percentage()
+	return self:GetAbility():GetSpecialValueFor("bonus_damage")
 end
 
 
@@ -417,58 +425,42 @@ LinkLuaModifier("modifier_elf_assassin_ability_effect", "kingdom/abilities/elf",
 
 modifier_elf_assassin_ability = class({})
 
-function modifier_elf_assassin_ability:IsHidden() return true end
 function modifier_elf_assassin_ability:IsDebuff() return false end
+function modifier_elf_assassin_ability:IsHidden() return true end
 function modifier_elf_assassin_ability:IsPurgable() return false end
-function modifier_elf_assassin_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+function modifier_elf_assassin_ability:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
 
-function modifier_elf_assassin_ability:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_EVASION_CONSTANT,
-		MODIFIER_EVENT_ON_ATTACK_START
-	}
-	return funcs
+function modifier_elf_assassin_ability:IsAura()
+	return true
 end
 
-function modifier_elf_assassin_ability:GetModifierEvasion_Constant()
-	return self:GetAbility():GetSpecialValueFor("bonus_evasion")
-end
-
-function modifier_elf_assassin_ability:OnAttackStart(keys)
-	if IsServer() then
-		if keys.attacker == self:GetParent() then
-			if RollPercentage(self:GetAbility():GetSpecialValueFor("crit_chance")) then
-				self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_elf_assassin_ability_effect", {})
-			end
-		end
-	end
-end
+function modifier_elf_assassin_ability:GetAuraRadius() return 1200 end
+function modifier_elf_assassin_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
+function modifier_elf_assassin_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
+function modifier_elf_assassin_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
+function modifier_elf_assassin_ability:GetModifierAura() return "modifier_elf_assassin_ability_effect" end
 
 modifier_elf_assassin_ability_effect = class({})
 
-function modifier_elf_assassin_ability_effect:IsHidden() return true end
+function modifier_elf_assassin_ability_effect:IsHidden() return false end
 function modifier_elf_assassin_ability_effect:IsDebuff() return false end
 function modifier_elf_assassin_ability_effect:IsPurgable() return false end
 function modifier_elf_assassin_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
+function modifier_elf_assassin_ability_effect:CheckState()
+	local states = {
+		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true
+	}
+	return states
+end
+
 function modifier_elf_assassin_ability_effect:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE,
-		MODIFIER_EVENT_ON_ATTACK_LANDED
+		MODIFIER_PROPERTY_EVASION_CONSTANT
 	}
 	return funcs
 end
 
-function modifier_elf_assassin_ability_effect:GetModifierPreAttack_CriticalStrike()
-	return self:GetAbility():GetSpecialValueFor("crit_damage")
-end
-
-
-function modifier_elf_assassin_ability_effect:OnAttackLanded(keys)
-	if IsServer() then
-		if keys.attacker == self:GetParent() then
-			keys.target:EmitSound("Hero_PhantomAssassin.CoupDeGrace")
-			self:GetParent():RemoveModifierByName("modifier_elf_assassin_ability_effect")
-		end
-	end
+function modifier_elf_assassin_ability_effect:GetModifierEvasion_Constant()
+	return self:GetAbility():GetSpecialValueFor("bonus_evasion")
 end

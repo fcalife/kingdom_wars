@@ -4,11 +4,16 @@ kingdom_buy_demon_melee = class({})
 
 function kingdom_buy_demon_melee:OnSpellStart()
 	EconomyManager:SpawnDemon(self:GetCaster().portal_number, "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), 10)
+	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_demon_melee:GetGoldCost(level)
-	return 10
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
+		return 4
+	else
+		return 5
+	end
 end
 
 
@@ -17,11 +22,16 @@ kingdom_buy_demon_ranged = class({})
 
 function kingdom_buy_demon_ranged:OnSpellStart()
 	EconomyManager:SpawnDemon(self:GetCaster().portal_number, "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), 15)
+	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_demon_ranged:GetGoldCost(level)
-	return 15
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
+		return 6
+	else
+		return 7
+	end
 end
 
 
@@ -30,11 +40,16 @@ kingdom_buy_demon_cavalry = class({})
 
 function kingdom_buy_demon_cavalry:OnSpellStart()
 	EconomyManager:SpawnDemon(self:GetCaster().portal_number, "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), 20)
+	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_demon_cavalry:GetGoldCost(level)
-	return 20
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
+		return 8
+	else
+		return 9
+	end
 end
 
 

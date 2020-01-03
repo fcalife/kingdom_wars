@@ -13,6 +13,7 @@ function MapManager:Init()
 
 	-- Set up geography constants
 	self.city_capture_time = {2, 5, 10}
+	self.capital_capture_time = 10
 	self.region_count = 0
 	self.city_count = 0
 	self.demon_portal_count = 3
@@ -132,6 +133,10 @@ end
 
 function MapManager:GetRegionCityCount(region)
 	return self.region_city_count[region]
+end
+
+function MapManager:IsCapital(region, city)
+	return self.cities[region][city]:HasModifier("modifier_kingdom_capital")
 end
 
 function MapManager:GetCityRace(region, city)
@@ -261,6 +266,25 @@ function MapManager:GetPlayerCityCountInRegion(player, region)
 	return city_count
 end
 
+function MapManager:AddModifierToAllPlayerCities(player, modifier_name)
+	for region = 1, self:GetRegionCount() do
+		for city = 1, self:GetRegionCityCount(region) do
+			local city_owner = self:GetCityOwner(region, city)
+			if city_owner == player then
+				self:GetCityByNumber(region, city):AddNewModifier(self:GetCityByNumber(region, city), nil, modifier_name, {})
+			end
+		end
+	end
+end
+
+function MapManager:RemoveModifierFromAllCities(modifier_name)
+	for region = 1, self:GetRegionCount() do
+		for city = 1, self:GetRegionCityCount(region) do
+			self:GetCityByNumber(region, city):RemoveModifierByName(modifier_name)
+		end
+	end
+end
+
 function MapManager:UpdatePlayerCityCounts()
 
 	-- Reset counts
@@ -279,11 +303,21 @@ function MapManager:UpdatePlayerCityCounts()
 			local city_owner = self:GetCityOwner(region, city)
 			self.player_city_count[city_owner] = self.player_city_count[city_owner] + 1
 			self.player_city_count_by_region[city_owner][region] = self.player_city_count_by_region[city_owner][region] + 1
+			self:GetCityByNumber(region, city):RemoveModifierByName("modifier_kingdom_r"..region.."_owner_half")
+			self:GetCityByNumber(region, city):RemoveModifierByName("modifier_kingdom_r"..region.."_owner_full")
 		end
+
 		for player = 1, Kingdom:GetPlayerCount() do
+
+			-- Regional bonuses
 			if self.player_city_count_by_region[player][region] >= self:GetRegionCityCount(region) then
 				self.region_owners[region] = player
 				self.player_region_count[player] = self.player_region_count[player] + 1
+
+				self:AddModifierToAllPlayerCities(player, "modifier_kingdom_r"..region.."_owner_full")
+				self:AddModifierToAllPlayerCities(player, "modifier_kingdom_r"..region.."_owner_half")
+			elseif self.player_city_count_by_region[player][region] >= (self:GetRegionCityCount(region) * 0.5) then
+				self:AddModifierToAllPlayerCities(player, "modifier_kingdom_r"..region.."_owner_half")
 			end
 		end
 	end
@@ -295,12 +329,22 @@ function MapManager:UpdatePlayerCityCounts()
 		end
 	end
 
+	-- Update scoreboard
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		CustomNetTables:SetTableValue("player_info", "player_cities_"..player_id, {city_amount = self.player_city_count[player]})
+	end
 
-		if self.player_city_count[player] >= 48 then
-			GameRules:SetGameWinner(Kingdom:GetKingdomPlayerTeam(player))
+	-- Check for overtime win
+	if EconomyManager:IsOvertime() then
+		EconomyManager:EndGameByRoundLimit()
+	
+	-- Check for domination win
+	else
+		for player = 1, Kingdom:GetPlayerCount() do
+			if self.player_city_count[player] >= 48 then
+				GameRules:SetGameWinner(Kingdom:GetKingdomPlayerTeam(player))
+			end
 		end
 	end
 end
@@ -336,30 +380,19 @@ function MapManager:StartCaptureTracking(region, city)
 		local allies = FindUnitsInLine(city_team, start_point, end_point, nil, 288, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE)
 		local enemies = FindUnitsInLine(city_team, start_point, end_point, nil, 288, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
 		local attacking_player = 0
-		local engineer_present = false
-		local bounty_hunter_present = nil
 
 		if #enemies > 0 then
 			attacking_player = Kingdom:GetPlayerByTeam(enemies[1]:GetTeam())
 		end
 
-		for _, enemy in pairs(enemies) do
-			if enemy:HasModifier("modifier_keen_engineer_ability") and enemy:IsAlive() then
-				engineer_present = true
-			end
-			if enemy:HasModifier("modifier_keen_bounty_hunter_ability") and enemy:IsAlive() then
-				bounty_hunter_present = enemy
-			end
-		end
-
 		if attacking_player then
-			self:ProcessCapture(region, city, #allies, #enemies, attacking_player, owner_player, engineer_present, bounty_hunter_present)
+			self:ProcessCapture(region, city, #allies, #enemies, attacking_player, owner_player)
 		end
 		return 0.5
 	end)
 end
 
-function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attacking_player, owner_player, engineer_present, bounty_hunter_present)
+function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attacking_player, owner_player)
 
 	-- If there are both allies and enemies in the capture point, nothing changes
 	if ally_count > 0 and enemy_count > 0 then
@@ -378,12 +411,13 @@ function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attack
 	elseif enemy_count > 0 and self.capture_info[region][city].status then
 		local city_level = self:GetCityByNumber(region, city):GetLevel()
 
-		-- Engineer ability
-		if engineer_present then
-			self.capture_info[region][city].progress = self.capture_info[region][city].progress + 0.75 / self.city_capture_time[city_level]
-		else
-			self.capture_info[region][city].progress = self.capture_info[region][city].progress + 0.5 / self.city_capture_time[city_level]
+		-- Capture progress
+		local capture_time = self.city_capture_time[city_level]
+		if self:IsCapital(region, city) then
+			capture_time = capture_time + self.capital_capture_time
 		end
+
+		self.capture_info[region][city].progress = self.capture_info[region][city].progress + 0.5 / capture_time
 
 		local ring_color = self.capture_info[region][city].progress * Vector(attacker_color.x, attacker_color.y, attacker_color.z) + (1 - self.capture_info[region][city].progress) * Vector(owner_color.x, owner_color.y, owner_color.z)
 		ParticleManager:DestroyParticle(self.capture_info[region][city].particle, false)
@@ -397,15 +431,7 @@ function MapManager:ProcessCapture(region, city, ally_count, enemy_count, attack
 			self.capture_info[region][city].status = false
 			self.capture_info[region][city].progress = 0
 
-			if not engineer_present then
-				self:RazeCity(region, city)
-			end
-
-			if bounty_hunter_present then
-				PlayerResource:ModifyGold(Kingdom:GetPlayerID(attacking_player), 10, true, DOTA_ModifyGold_HeroKill)
-				SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD , bounty_hunter_present, 10, nil)
-			end
-
+			self:RazeCity(region, city)
 			self:CaptureCity(region, city, attacking_player)
 			EconomyManager:UpdateIncomeForPlayer(attacking_player)
 			EconomyManager:UpdateIncomeForPlayer(owner_player)
@@ -440,30 +466,19 @@ function MapManager:StartPortalCaptureTracking(portal)
 		local allies = FindUnitsInLine(city_team, start_point, end_point, nil, 288, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE)
 		local enemies = FindUnitsInLine(city_team, start_point, end_point, nil, 288, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
 		local attacking_player = 0
-		local engineer_present = false
-		local bounty_hunter_present = nil
 
 		if #enemies > 0 then
 			attacking_player = Kingdom:GetPlayerByTeam(enemies[1]:GetTeam())
 		end
 
-		for _, enemy in pairs(enemies) do
-			if enemy:HasModifier("modifier_keen_engineer_ability") and enemy:IsAlive() then
-				engineer_present = true
-			end
-			if enemy:HasModifier("modifier_keen_bounty_hunter_ability") and enemy:IsAlive() then
-				bounty_hunter_present = enemy
-			end
-		end
-
 		if attacking_player then
-			self:ProcessPortalCapture(portal, #allies, #enemies, attacking_player, owner_player, engineer_present, bounty_hunter_present)
+			self:ProcessPortalCapture(portal, #allies, #enemies, attacking_player, owner_player)
 		end
 		return 0.5
 	end)
 end
 
-function MapManager:ProcessPortalCapture(portal, ally_count, enemy_count, attacking_player, owner_player, engineer_present, bounty_hunter_present)
+function MapManager:ProcessPortalCapture(portal, ally_count, enemy_count, attacking_player, owner_player)
 
 	-- If there are both allies and enemies in the capture point, nothing changes
 	if ally_count > 0 and enemy_count > 0 then
@@ -486,12 +501,8 @@ function MapManager:ProcessPortalCapture(portal, ally_count, enemy_count, attack
 	elseif enemy_count > 0 and self.demon_portals[portal]["capture_info"].status then
 		local portal_level = self.demon_portals[portal]["portal"]:GetLevel()
 
-		-- Engineer ability
-		if engineer_present then
-			self.demon_portals[portal]["capture_info"].progress = self.demon_portals[portal]["capture_info"].progress + 0.75 / self.city_capture_time[portal_level]
-		else
-			self.demon_portals[portal]["capture_info"].progress = self.demon_portals[portal]["capture_info"].progress + 0.5 / self.city_capture_time[portal_level]
-		end
+		-- Capture progress
+		self.demon_portals[portal]["capture_info"].progress = self.demon_portals[portal]["capture_info"].progress + 0.5 / self.city_capture_time[portal_level]
 
 		local ring_color = self.demon_portals[portal]["capture_info"].progress * Vector(attacker_color.x, attacker_color.y, attacker_color.z) + (1 - self.demon_portals[portal]["capture_info"].progress) * Vector(owner_color.x, owner_color.y, owner_color.z)
 		ParticleManager:DestroyParticle(self.demon_portals[portal]["capture_info"].particle, false)
@@ -504,15 +515,6 @@ function MapManager:ProcessPortalCapture(portal, ally_count, enemy_count, attack
 			self.demon_portals[portal]["capture_info"].particle = nil
 			self.demon_portals[portal]["capture_info"].status = false
 			self.demon_portals[portal]["capture_info"].progress = 0
-
-			if not engineer_present then
-				self:RazePortal(portal)
-			end
-
-			if bounty_hunter_present then
-				PlayerResource:ModifyGold(Kingdom:GetPlayerID(attacking_player), 10, true, DOTA_ModifyGold_HeroKill)
-				SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD , bounty_hunter_present, 10, nil)
-			end
 
 			self:CapturePortal(portal, attacking_player)
 			EconomyManager:UpdateIncomeForPlayer(attacking_player)
@@ -577,15 +579,15 @@ function MapManager:RazeCity(region, city)
 		ParticleManager:DestroyParticle(city_unit.upgrade_pfx, false)
 		ParticleManager:ReleaseParticleIndex(city_unit.upgrade_pfx)
 	end
-end
 
-function MapManager:RazePortal(portal)
-	local city_unit = self.demon_portals[portal]["portal"]
-	city_unit:CreatureLevelUp(1 - city_unit:GetLevel())
+	if city_unit.upgrade_pfx_2 then
+		ParticleManager:DestroyParticle(city_unit.upgrade_pfx_2, false)
+		ParticleManager:ReleaseParticleIndex(city_unit.upgrade_pfx_2)
+	end
 
-	if city_unit.upgrade_pfx then
-		ParticleManager:DestroyParticle(city_unit.upgrade_pfx, false)
-		ParticleManager:ReleaseParticleIndex(city_unit.upgrade_pfx)
+	if city_unit:HasModifier("modifier_kingdom_capital") then
+		city_unit:RemoveAbility("kingdom_capital")
+		city_unit:RemoveModifierByName("modifier_kingdom_capital")
 	end
 end
 
@@ -594,27 +596,6 @@ function MapManager:UpgradeCity(region, city)
 	local tower_unit = self:GetTowerByNumber(region, city)
 	city_unit:CreatureLevelUp(1)
 	tower_unit:CreatureLevelUp(1)
-
-	if city_unit.upgrade_pfx then
-		ParticleManager:SetParticleControl(city_unit.upgrade_pfx, 1, Vector(400, 0, 0))
-	else
-		city_unit.upgrade_pfx = ParticleManager:CreateParticle("particles/items_fx/gem_truesight_aura.vpcf", PATTACH_CUSTOMORIGIN, nil)
-		ParticleManager:SetParticleControl(city_unit.upgrade_pfx, 0, city_unit:GetAbsOrigin())
-		ParticleManager:SetParticleControl(city_unit.upgrade_pfx, 1, Vector(300, 0, 0))
-	end
-end
-
-function MapManager:UpgradePortal(portal)
-	local portal_unit = self.demon_portals[portal]["portal"]
-	portal_unit:CreatureLevelUp(1)
-
-	if portal_unit.upgrade_pfx then
-		ParticleManager:SetParticleControl(portal_unit.upgrade_pfx, 1, Vector(400, 0, 0))
-	else
-		portal_unit.upgrade_pfx = ParticleManager:CreateParticle("particles/items_fx/gem_truesight_aura.vpcf", PATTACH_CUSTOMORIGIN, nil)
-		ParticleManager:SetParticleControl(portal_unit.upgrade_pfx, 0, portal_unit:GetAbsOrigin())
-		ParticleManager:SetParticleControl(portal_unit.upgrade_pfx, 1, Vector(300, 0, 0))
-	end
 end
 
 function MapManager:PingMinimap(region, city)
@@ -856,6 +837,7 @@ function MapManager:SpawnDemonPortalAt(region, location, commander_name)
 	portal:FaceTowards(facing_position)
 	portal:AddNewModifier(portal, nil, "modifier_kingdom_city", {})
 	portal:SetRenderColor(74, 59, 65)
+	portal:CreatureLevelUp(2)
 
 	-- Spawn demon army
 	local army_loc = Vector(portal_info["capture_zone"]["x"], portal_info["capture_zone"]["y"], 0)
@@ -878,29 +860,32 @@ function MapManager:SpawnDemonArmy(location, commander_name)
 
 	Timers:CreateTimer(10, function()
 		commander:AddNewModifier(commander, nil, "modifier_kingdom_demon_hero_marker", {ability_name = "kingdom_buy_hero_"..commander_name})
+		commander:AddNewModifier(commander, nil, "modifier_kingdom_unit_movement", {})
 	end)
 
 	local melee_positions = {}
-	melee_positions[1] = Vector(-250, -150, 0)
-	melee_positions[2] = Vector(-125, -150, 0)
-	melee_positions[3] = Vector(0, -150, 0)
-	melee_positions[4] = Vector(125, -150, 0)
-	melee_positions[5] = Vector(250, -150, 0)
+	melee_positions[1] = Vector(-200, -150, 0)
+	melee_positions[2] = Vector(-67, -150, 0)
+	melee_positions[3] = Vector(67, -150, 0)
+	melee_positions[4] = Vector(200, -150, 0)
 
-	for i = 1, 5 do
+	for i = 1, 4 do
 		local unit = CreateUnitByName("npc_kingdom_demon_melee", location + melee_positions[i], true, nil, nil, DOTA_TEAM_NEUTRALS)
 		unit.type = KINGDOM_UNIT_TYPE_MELEE
+		unit:AddAbility("kingdom_capital_unit"):SetLevel(1)
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {})
 	end
 
 	local ranged_positions = {}
 	ranged_positions[1] = Vector(-250, 0, 0)
-	ranged_positions[2] = Vector(-125, 0, 0)
-	ranged_positions[3] = Vector(125, 0, 0)
-	ranged_positions[4] = Vector(250, 0, 0)
+	ranged_positions[2] = Vector(0, 0, 0)
+	ranged_positions[3] = Vector(250, 0, 0)
 
-	for i = 1, 4 do
+	for i = 1, 3 do
 		local unit = CreateUnitByName("npc_kingdom_demon_ranged", location + ranged_positions[i], true, nil, nil, DOTA_TEAM_NEUTRALS)
 		unit.type = KINGDOM_UNIT_TYPE_RANGED
+		unit:AddAbility("kingdom_capital_unit"):SetLevel(1)
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {})
 	end
 
 	local cavalry_positions = {}
@@ -911,6 +896,8 @@ function MapManager:SpawnDemonArmy(location, commander_name)
 	for i = 1, 3 do
 		local unit = CreateUnitByName("npc_kingdom_demon_cavalry", location + cavalry_positions[i], true, nil, nil, DOTA_TEAM_NEUTRALS)
 		unit.type = KINGDOM_UNIT_TYPE_CAVALRY
+		unit:AddAbility("kingdom_capital_unit"):SetLevel(1)
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {})
 	end
 
 	Timers:CreateTimer(0.1, function()

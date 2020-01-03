@@ -1,7 +1,7 @@
 #main_message_container
 {
 	y: 60px;
-	height: 56px;
+	height: 48px;
 	flow-children: right;
 	horizontal-align: center;
 	border-radius: 10px;
@@ -15,16 +15,16 @@
 
 #main_message_player_avatar
 {
-	height: 48px;
-	width: 48px;
+	height: 36px;
+	width: 36px;
 	margin-left: 8px;
 	vertical-align: center;
 }
 
 #main_message_hero_image
 {
-	height: 48px;
-	width: 48px;
+	height: 36px;
+	width: 36px;
 	vertical-align: center;
 }
 
@@ -157,7 +157,7 @@
 	color: #F3CE4CFF;
 	horizontal-align: center;
 	vertical-align: center;
-	font-size: 18;
+	font-size: 16;
 	font-family: "DejaVu Sans";
 	text-shadow: 2px 2px 8px 3.0 #000000FF;
 }

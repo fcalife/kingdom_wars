@@ -7,6 +7,7 @@ end
 require('kingdom/map_manager')
 require('kingdom/economy_manager')
 require('kingdom/units')
+require('kingdom/modifiers/general/region_markers')
 
 -- Core kingdom functions
 function Kingdom:Init()
@@ -23,6 +24,8 @@ function Kingdom:Init()
 	LinkLuaModifier("modifier_kingdom_tower", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_tower_base", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_hero", "kingdom/modifiers/general/hero", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_hero_after_capital_selection", "kingdom/modifiers/general/hero", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_unit_movement", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_beast_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_hero_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_demon_hero_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)

@@ -90,25 +90,25 @@ function GameMode:DamageFilter(keys)
 	local attacker = EntIndexToHScript(keys.entindex_attacker_const)
 	local victim = EntIndexToHScript(keys.entindex_victim_const)
 
-	if attacker and victim and attacker.type and victim.type then
-		if attacker.type == KINGDOM_UNIT_TYPE_MELEE and victim.type == KINGDOM_UNIT_TYPE_RANGED then
-			keys.damage = keys.damage * 1.2
-			return true
+	if attacker and victim then
+		if attacker:HasModifier("modifier_normal_attack") then
+			if victim:HasModifier("modifier_light_armor") then
+				keys.damage = keys.damage * 1.5
+			elseif victim:HasModifier("kingdom_heavy_armor") then
+				keys.damage = keys.damage * 0.75
+			end
 		end
 
-		if attacker.type == KINGDOM_UNIT_TYPE_RANGED and victim.type == KINGDOM_UNIT_TYPE_BEAST then
-			keys.damage = keys.damage * 1.2
-			return true
-		end
+		if attacker:HasModifier("modifier_piercing_attack") then
+			if victim:HasModifier("modifier_no_armor") then
+				keys.damage = keys.damage * 1.5
+			elseif victim:HasModifier("kingdom_heavy_armor") then
+				keys.damage = keys.damage * 0.75
+			end
 
-		if attacker.type == KINGDOM_UNIT_TYPE_BEAST and victim.type == KINGDOM_UNIT_TYPE_CAVALRY then
-			keys.damage = keys.damage * 1.2
-			return true
-		end
-
-		if attacker.type == KINGDOM_UNIT_TYPE_CAVALRY and victim.type == KINGDOM_UNIT_TYPE_MELEE then
-			keys.damage = keys.damage * 1.2
-			return true
+			if victim:HasModifier("modifier_human_melee_ability") then
+				keys.damage = keys.damage * 0.5
+			end
 		end
 	end
 

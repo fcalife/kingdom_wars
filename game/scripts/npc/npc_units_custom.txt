@@ -17,15 +17,18 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_human_melee_ability"
+		"Ability2"					"kingdom_human_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"ArmorPhysical"				"3"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"55"
 		"AttackDamageMax"			"65"
-		"AttackRate"				"2.2"
+		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.5"
-		"AttackAcquisitionRange"	"950"
+		"AttackAcquisitionRange"	"950"	
 		"AttackRange"				"150"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
@@ -40,10 +43,10 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"285"
+		"MovementSpeed"				"470"
 		"MovementTurnRate"			"1.0"
 
-		"StatusHealth"				"450"
+		"StatusHealth"				"550"
 		"StatusHealthRegen"			"1.0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
@@ -83,14 +86,16 @@
 		"ModelScale" 				"0.75"
 
 		"Ability1"					"kingdom_human_ranged_ability"
-		"Ability2"					"kingdom_magic_attack_ability"
+		"Ability2"					"kingdom_human_unit"
+		"Ability3"					"kingdom_magic_attack"
+		"Ability4"					"kingdom_no_armor"
 
-		"ArmorPhysical"				"0"
+		"ArmorPhysical"				"1"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"75"
-		"AttackDamageMax"			"85"
-		"AttackRate"				"1.8"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
+		"AttackRate"				"1.0"
 		"AttackAnimationPoint"		"0.75"
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
@@ -107,10 +112,10 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"295"
+		"MovementSpeed"				"450"
 		"MovementTurnRate"			"1.0"
 
-		"StatusHealth"				"275"
+		"StatusHealth"				"400"
 		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
@@ -149,16 +154,19 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_human_cavalry_ability"
+		"Ability2"					"kingdom_human_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"ArmorPhysical"				"5"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"100"
-		"AttackDamageMax"			"110"
-		"AttackRate"				"2.4"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
+		"AttackRate"				"2.0"
 		"AttackAnimationPoint"		"0.3"
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"200"
+		"AttackRange"				"250"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			""
 
@@ -172,10 +180,10 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"335"
+		"MovementSpeed"				"550"
 		"MovementTurnRate"			"1.0"
 
-		"StatusHealth"				"600"
+		"StatusHealth"				"700"
 		"StatusHealthRegen"			"1.5"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
@@ -215,22 +223,24 @@
 		"ModelScale" 				"1.2"
 
 		"Ability1"					"kingdom_human_paladin_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"280"
-		"AttackDamageMax"			"300"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
 		"ArmorPhysical"				"10"
 
-		"StatusHealth"				"1700"
+		"StatusHealth"				"2200"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.85"
+		"AttackRate"				"1.65"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"310"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.433"
 		"ProjectileModel"			""
@@ -281,23 +291,24 @@
 		"ModelScale" 				"1.35"
 
 		"Ability1"					"kingdom_human_mage_ability"
-		"Ability2"					"kingdom_magic_attack_ability"
+		"Ability2"					"kingdom_magic_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"250"
-		"AttackDamageMax"			"270"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
-		"ArmorPhysical"				"3"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"1050"
+		"StatusHealth"				"1200"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"0.85"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"305"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.45"
 		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"
@@ -347,22 +358,24 @@
 		"ModelScale" 				"1.5"
 
 		"Ability1"					"kingdom_human_commander_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"315"
-		"AttackDamageMax"			"335"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
-		"ArmorPhysical"				"12"
+		"ArmorPhysical"				"10"
 
-		"StatusHealth"				"1575"
+		"StatusHealth"				"2000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.6"
+		"AttackRate"				"1.65"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"305"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.46"
 		"ProjectileModel"			""
@@ -415,23 +428,25 @@
 		"ModelScale" 				"0.75"
 
 		"Ability1"					"kingdom_elf_melee_ability"
-		"Ability2"					"kingdom_magic_attack_ability"
+		"Ability2"					"kingdom_elf_unit"
+		"Ability3"					"kingdom_magic_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"60"
-		"AttackDamageMax"			"70"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"425"
+		"StatusHealth"				"550"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
@@ -481,22 +496,25 @@
 		"ModelScale" 				"1"
 
 		"Ability1"					"kingdom_elf_ranged_ability"
+		"Ability2"					"kingdom_elf_unit"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"75"
-		"AttackDamageMax"			"85"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
 		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"275"
+		"StatusHealth"				"400"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
-		"AttackRate"				"1.6"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"325"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.4"
 		"ProjectileModel"			"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
@@ -545,14 +563,17 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_elf_cavalry_ability"
+		"Ability2"					"kingdom_elf_unit"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"90"
-		"AttackDamageMax"			"100"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"4"
+		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"550"
+		"StatusHealth"				"700"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
@@ -560,7 +581,7 @@
 		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"375"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.46"
 		"ProjectileModel"			""
@@ -610,22 +631,24 @@
 		"ModelScale" 				"1.5"
 
 		"Ability1"					"kingdom_elf_ranger_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"270"
-		"AttackDamageMax"			"290"
+		"AttackDamageMin"			"260"
+		"AttackDamageMax"			"280"
 
-		"ArmorPhysical"				"3"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"925"
+		"StatusHealth"				"1200"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"900"
 
-		"AttackRate"				"1.2"
+		"AttackRate"				"0.9"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"325"
+		"MovementSpeed"				"540"
 
 		"AttackAnimationPoint"		"0.65"
 		"ProjectileModel"			"particles/units/heroes/hero_drow/drow_base_attack.vpcf"
@@ -676,22 +699,24 @@
 		"ModelScale" 				"1.15"
 
 		"Ability1"					"kingdom_elf_druid_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"285"
-		"AttackDamageMax"			"305"
+		"AttackDamageMin"			"260"
+		"AttackDamageMax"			"270"
 
-		"ArmorPhysical"				"5"
+		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"1200"
+		"StatusHealth"				"1350"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"450"
+		"AttackRange"				"500"
 
-		"AttackRate"				"1.8"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"320"
+		"MovementSpeed"				"540"
 
 		"AttackAnimationPoint"		"0.4"
 		"ProjectileModel"			"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
@@ -741,22 +766,24 @@
 		"ModelScale" 				"1.3"
 
 		"Ability1"					"kingdom_elf_assassin_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"275"
-		"AttackDamageMax"			"295"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
-		"ArmorPhysical"				"7"
+		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"1475"
+		"StatusHealth"				"2000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.3"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"335"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			""
@@ -808,22 +835,25 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_undead_melee_ability"
+		"Ability2"					"kingdom_undead_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"60"
-		"AttackDamageMax"			"70"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"400"
+		"StatusHealth"				"550"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"275"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			""
@@ -871,22 +901,25 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_undead_ranged_ability"
+		"Ability2"					"kingdom_undead_unit"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"80"
-		"AttackDamageMax"			"90"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
-		"ArmorPhysical"				"0"
+		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"300"
+		"StatusHealth"				"400"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
-		"AttackRate"				"1.8"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"290"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.7"
 		"ProjectileModel"			"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
@@ -937,22 +970,25 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_undead_cavalry_ability"
+		"Ability2"					"kingdom_undead_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"105"
-		"AttackDamageMax"			"115"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"3"
+		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"650"
+		"StatusHealth"				"700"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"330"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.56"
 		"ProjectileModel"			""
@@ -1002,22 +1038,24 @@
 		"ModelScale" 				"1.25"
 
 		"Ability1"					"kingdom_undead_necromancer_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"230"
-		"AttackDamageMax"			"250"
+		"AttackDamageMin"			"260"
+		"AttackDamageMax"			"280"
 
 		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"1175"
+		"StatusHealth"				"1500"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"295"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.4"
 		"ProjectileModel"			"particles/units/heroes/hero_necrolyte/necrolyte_base_attack.vpcf"
@@ -1067,22 +1105,24 @@
 		"ModelScale" 				"1.35"
 
 		"Ability1"					"kingdom_undead_wraith_king_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"325"
-		"AttackDamageMax"			"345"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
-		"ArmorPhysical"				"6"
+		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"1800"
+		"StatusHealth"				"2400"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.5"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"295"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.56"
 		"ProjectileModel"			""
@@ -1133,22 +1173,24 @@
 		"ModelScale" 				"1.45"
 
 		"Ability1"					"kingdom_undead_butcher_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"330"
-		"AttackDamageMax"			"350"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"2500"
+		"StatusHealth"				"3000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.9"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
@@ -1203,22 +1245,25 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_keen_melee_ability"
+		"Ability2"					"kingdom_keen_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"50"
-		"AttackDamageMax"			"60"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"4"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"500"
+		"StatusHealth"				"550"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"280"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.33"
 		"ProjectileModel"			""
@@ -1270,22 +1315,25 @@
 		"ModelScale" 				"0.6"
 
 		"Ability1"					"kingdom_keen_ranged_ability"
+		"Ability2"					"kingdom_keen_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"95"
-		"AttackDamageMax"			"105"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"325"
+		"StatusHealth"				"400"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"450"
+		"AttackRange"				"600"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"285"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			"particles/units/heroes/hero_techies/techies_base_attack.vpcf"
@@ -1335,22 +1383,25 @@
 		"ModelScale" 				"0.9"
 
 		"Ability1"					"kingdom_keen_cavalry_ability"
+		"Ability2"					"kingdom_keen_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"95"
 		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"3"
+		"ArmorPhysical"				"5"
 
 		"StatusHealth"				"700"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"2.2"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"340"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.35"
 		"ProjectileModel"			""
@@ -1403,22 +1454,24 @@
 		"ModelScale" 				"1.45"
 
 		"Ability1"					"kingdom_keen_bounty_hunter_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"260"
-		"AttackDamageMax"			"280"
+		"AttackDamageMin"			"290"
+		"AttackDamageMax"			"310"
 
-		"ArmorPhysical"				"6"
+		"ArmorPhysical"				"12"
 
-		"StatusHealth"				"1425"
+		"StatusHealth"				"2000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.4"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"345"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.59"
 		"ProjectileModel"			""
@@ -1469,22 +1522,24 @@
 		"ModelScale" 				"1.25"
 
 		"Ability1"					"kingdom_keen_tinker_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"280"
-		"AttackDamageMax"			"300"
+		"AttackDamageMin"			"260"
+		"AttackDamageMax"			"270"
 
 		"ArmorPhysical"				"6"
 
-		"StatusHealth"				"1125"
+		"StatusHealth"				"1350"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"700"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.35"
 		"ProjectileModel"			"particles/units/heroes/hero_tinker/tinker_base_attack.vpcf"
@@ -1536,22 +1591,24 @@
 		"ModelScale" 				"1.25"
 
 		"Ability1"					"kingdom_keen_engineer_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"250"
-		"AttackDamageMax"			"270"
+		"AttackDamageMin"			"320"
+		"AttackDamageMax"			"340"
 
-		"ArmorPhysical"				"9"
+		"ArmorPhysical"				"14"
 
-		"StatusHealth"				"1500"
+		"StatusHealth"				"1800"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"2.2"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"315"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.2"
 		"ProjectileModel"			"particles/units/heroes/hero_gyrocopter/gyro_base_attack.vpcf"
@@ -1605,22 +1662,25 @@
 		"ModelScale" 				"0.9"
 
 		"Ability1"					"kingdom_orc_melee_ability"
+		"Ability2"					"kingdom_orc_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"70"
-		"AttackDamageMax"			"80"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"475"
+		"StatusHealth"				"550"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"290"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
@@ -1669,22 +1729,25 @@
 		"ModelScale" 				"0.85"
 
 		"Ability1"					"kingdom_orc_ranged_ability"
+		"Ability2"					"kingdom_orc_unit"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"90"
-		"AttackDamageMax"			"100"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
 		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"300"
+		"StatusHealth"				"400"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"450"
+		"AttackRange"				"600"
 
-		"AttackRate"				"1.8"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"315"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
@@ -1733,22 +1796,25 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_orc_cavalry_ability"
+		"Ability2"					"kingdom_orc_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_no_armor"
 
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"105"
-		"AttackDamageMax"			"115"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"575"
+		"StatusHealth"				"700"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"450"
+		"AttackRange"				"250"
 
-		"AttackRate"				"2.2"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"320"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			"particles/units/heroes/hero_batrider/batrider_base_attack.vpcf"
@@ -1796,14 +1862,16 @@
 		"ModelScale" 				"1.15"
 
 		"Ability1"					"kingdom_orc_incursor_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"240"
-		"AttackDamageMax"			"260"
+		"AttackDamageMin"			"350"
+		"AttackDamageMax"			"370"
 
-		"ArmorPhysical"				"4"
+		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"1675"
+		"StatusHealth"				"2000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
@@ -1811,7 +1879,7 @@
 		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"330"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.4"
 		"ProjectileModel"			"particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf"
@@ -1862,22 +1930,24 @@
 		"ModelScale" 				"1.15"
 
 		"Ability1"					"kingdom_orc_warlord_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"310"
-		"AttackDamageMax"			"330"
+		"AttackDamageMin"			"380"
+		"AttackDamageMax"			"400"
 
-		"ArmorPhysical"				"9"
+		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"1775"
+		"StatusHealth"				"2000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.9"
+		"AttackRate"				"2.2"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"320"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.35"
 		"ProjectileModel"			""
@@ -1926,22 +1996,24 @@
 		"ModelScale" 				"1.5"
 
 		"Ability1"					"kingdom_orc_blademaster_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"240"
-		"AttackDamageMax"			"260"
+		"AttackDamageMin"			"350"
+		"AttackDamageMax"			"370"
 
 		"ArmorPhysical"				"8"
 
-		"StatusHealth"				"1625"
+		"StatusHealth"				"2000"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"1.1"
+		"AttackRate"				"1.75"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"325"
+		"MovementSpeed"				"510"
 
 		"AttackAnimationPoint"		"0.33"
 		"ProjectileModel"			""
@@ -1993,22 +2065,25 @@
 		"ModelScale" 				"0.85"
 
 		"Ability1"					"kingdom_demon_melee_ability"
+		"Ability2"					"kingdom_demon_unit"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"80"
-		"AttackDamageMax"			"90"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
 		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"625"
+		"StatusHealth"				"550"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"1.8"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"295"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.55"
 		"ProjectileModel"			""
@@ -2057,23 +2132,25 @@
 		"ModelScale" 				"0.85"
 
 		"Ability1"					"kingdom_demon_ranged_ability"
-		"Ability2"					"kingdom_magic_attack_ability"
+		"Ability2"					"kingdom_demon_unit"
+		"Ability3"					"kingdom_magic_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"120"
-		"AttackDamageMax"			"130"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
 		"ArmorPhysical"				"1"
 
 		"StatusHealth"				"400"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"750"
+		"AttackRange"				"600"
 
-		"AttackRate"				"2.0"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"305"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.35"
 		"ProjectileModel"			"particles/units/heroes/hero_shadow_demon/shadow_demon_base_attack.vpcf"
@@ -2122,23 +2199,25 @@
 		"ModelScale" 				"0.85"
 
 		"Ability1"					"kingdom_demon_cavalry_ability"
-		"Ability2"					"kingdom_magic_attack_ability"
+		"Ability2"					"kingdom_demon_unit"
+		"Ability3"					"kingdom_magic_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"175"
-		"AttackDamageMax"			"185"
+		"AttackDamageMin"			"95"
+		"AttackDamageMax"			"105"
 
-		"ArmorPhysical"				"4"
+		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"875"
+		"StatusHealth"				"700"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"360"
+		"MovementSpeed"				"550"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
@@ -2187,22 +2266,24 @@
 		"ModelScale" 				"1.3"
 
 		"Ability1"					"kingdom_demon_nevermore_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"355"
-		"AttackDamageMax"			"375"
+		"AttackDamageMin"			"410"
+		"AttackDamageMax"			"430"
 
 		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"1300"
+		"StatusHealth"				"1850"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
-		"AttackRate"				"1.7"
+		"AttackRate"				"1.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"315"
+		"MovementSpeed"				"490"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			"particles/units/heroes/hero_nevermore/nevermore_base_attack.vpcf"
@@ -2250,23 +2331,24 @@
 		"ModelScale" 				"1.45"
 
 		"Ability1"					"kingdom_demon_duchess_ability"
-		"Ability2"					"kingdom_magic_attack_ability"
+		"Ability2"					"kingdom_magic_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"285"
-		"AttackDamageMax"			"295"
+		"AttackDamageMin"			"365"
+		"AttackDamageMax"			"385"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"1225"
+		"StatusHealth"				"1700"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"450"
 
-		"AttackRate"				"1.4"
+		"AttackRate"				"0.8"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"310"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.56"
 		"ProjectileModel"			"particles/units/heroes/hero_queenofpain/queen_base_attack.vpcf"
@@ -2314,22 +2396,24 @@
 		"ModelScale" 				"1.2"
 
 		"Ability1"					"kingdom_demon_doom_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"390"
-		"AttackDamageMax"			"410"
+		"AttackDamageMin"			"470"
+		"AttackDamageMax"			"490"
 
-		"ArmorPhysical"				"11"
+		"ArmorPhysical"				"10"
 
-		"StatusHealth"				"1875"
+		"StatusHealth"				"2400"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"250"
 
-		"AttackRate"				"2.5"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"310"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.5"
 		"ProjectileModel"			""
@@ -2383,22 +2467,24 @@
 		"ModelScale" 				"0.75"
 
 		"Ability1"					"kingdom_beast_1_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"55"
 		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"475"
+		"StatusHealth"				"550"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.2"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"295"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.53"
 		"ProjectileModel"			""
@@ -2447,22 +2533,24 @@
 		"ModelScale" 				"0.72"
 
 		"Ability1"					"kingdom_beast_2_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"65"
-		"AttackDamageMax"			"75"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"4"
 
-		"StatusHealth"				"525"
+		"StatusHealth"				"625"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"150"
+		"AttackRange"				"200"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			""
@@ -2513,22 +2601,24 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_beast_3_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"60"
-		"AttackDamageMax"			"70"
+		"AttackDamageMin"			"70"
+		"AttackDamageMax"			"80"
 
-		"ArmorPhysical"				"0"
+		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"350"
+		"StatusHealth"				"375"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"600"
 
-		"AttackRate"				"1.6"
+		"AttackRate"				"0.75"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"305"
+		"MovementSpeed"				"525"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"
@@ -2577,22 +2667,24 @@
 		"ModelScale" 				"0.85"
 
 		"Ability1"					"kingdom_beast_4_ability"
+		"Ability2"					"kingdom_piercing_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"55"
-		"AttackDamageMax"			"65"
+		"AttackDamageMin"			"40"
+		"AttackDamageMax"			"50"
 
-		"ArmorPhysical"				"3"
+		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"450"
+		"StatusHealth"				"475"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.2"
+		"AttackRate"				"1.2"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"305"
+		"MovementSpeed"				"500"
 
 		"AttackAnimationPoint"		"0.38"
 		"ProjectileModel"			""
@@ -2642,22 +2734,24 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_beast_5_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"65"
-		"AttackDamageMax"			"75"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"500"
+		"StatusHealth"				"600"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"150"
+		"AttackRange"				"200"
 
-		"AttackRate"				"2.4"
+		"AttackRate"				"2.0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"285"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.3"
 		"ProjectileModel"			""
@@ -2707,22 +2801,24 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_beast_6_ability"
+		"Ability2"					"kingdom_magic_attack"
+		"Ability3"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"65"
-		"AttackDamageMax"			"75"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"110"
 
 		"ArmorPhysical"				"1"
 
-		"StatusHealth"				"325"
+		"StatusHealth"				"425"
 
 		"AttackAcquisitionRange"	"950"
-		"AttackRange"				"550"
+		"AttackRange"				"600"
 
-		"AttackRate"				"1.8"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"325"
+		"MovementSpeed"				"470"
 
 		"AttackAnimationPoint"		"0.33"
 		"ProjectileModel"			"particles/units/heroes/hero_viper/viper_base_attack.vpcf"
@@ -2770,22 +2866,24 @@
 		"ModelScale" 				"0.75"
 
 		"Ability1"					"kingdom_beast_7_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"60"
-		"AttackDamageMax"			"70"
+		"AttackDamageMin"			"55"
+		"AttackDamageMax"			"65"
 
-		"ArmorPhysical"				"2"
+		"ArmorPhysical"				"3"
 
-		"StatusHealth"				"450"
+		"StatusHealth"				"575"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.2"
+		"AttackRate"				"1.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"290"
+		"MovementSpeed"				"450"
 
 		"AttackAnimationPoint"		"0.36"
 		"ProjectileModel"			""
@@ -2834,22 +2932,24 @@
 		"ModelScale" 				"0.8"
 
 		"Ability1"					"kingdom_beast_8_ability"
+		"Ability2"					"kingdom_normal_attack"
+		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"75"
-		"AttackDamageMax"			"85"
+		"AttackDamageMin"			"85"
+		"AttackDamageMax"			"95"
 
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"575"
+		"StatusHealth"				"600"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"150"
 
-		"AttackRate"				"2.8"
+		"AttackRate"				"2.5"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"280"
+		"MovementSpeed"				"430"
 
 		"AttackAnimationPoint"		"0.36"
 		"ProjectileModel"			""
@@ -6620,10 +6720,9 @@
 		"Ability2"					"kingdom_buy_demon_ranged"
 		"Ability3"					"kingdom_buy_demon_cavalry"
 		"Ability4"					"kingdom_portal_rally_point"
-		"Ability5"					"kingdom_upgrade_portal"
-		"Ability6"					"kingdom_buy_hero_nevermore"
-		"Ability7"					"kingdom_buy_hero_duchess"
-		"Ability8"					"kingdom_buy_hero_doom"
+		"Ability5"					"kingdom_buy_hero_nevermore"
+		"Ability6"					"kingdom_buy_hero_duchess"
+		"Ability7"					"kingdom_buy_hero_doom"
 
 		"ArmorPhysical"				"0"
 

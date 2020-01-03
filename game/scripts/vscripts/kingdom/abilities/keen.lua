@@ -4,11 +4,16 @@ kingdom_buy_keen_melee = class({})
 
 function kingdom_buy_keen_melee:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 6)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_keen_melee:GetGoldCost(level)
-	return 6
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
+		return 4
+	else
+		return 5
+	end
 end
 
 
@@ -17,11 +22,16 @@ kingdom_buy_keen_ranged = class({})
 
 function kingdom_buy_keen_ranged:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 8)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_keen_ranged:GetGoldCost(level)
-	return 8
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
+		return 6
+	else
+		return 7
+	end
 end
 
 
@@ -30,11 +40,16 @@ kingdom_buy_keen_cavalry = class({})
 
 function kingdom_buy_keen_cavalry:OnSpellStart()
 	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), 10)
+	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
 end
 
 function kingdom_buy_keen_cavalry:GetGoldCost(level)
-	return 10
+	local caster = self:GetCaster()
+	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
+		return 8
+	else
+		return 9
+	end
 end
 
 
@@ -317,9 +332,11 @@ function modifier_keen_ranged_ability:OnAttackLanded(keys)
 		if keys.attacker == self:GetParent() then
 			local parent = self:GetParent()
 			local ability = self:GetAbility()
-			local damage = ability:GetSpecialValueFor("damage")
 			local splash_radius = ability:GetSpecialValueFor("splash_radius")
 			local target_loc = keys.target:GetAbsOrigin()
+
+			local base_damage = 0.5 * (parent:GetBaseDamageMax() + parent:GetBaseDamageMin())
+			local splash_damage = base_damage * ability:GetSpecialValueFor("damage") * 0.01
 
 			-- If broken, do nothing
 			if parent:PassivesDisabled() then
@@ -333,7 +350,7 @@ function modifier_keen_ranged_ability:OnAttackLanded(keys)
 			local enemies = FindUnitsInRadius(parent:GetTeamNumber(), target_loc, nil, splash_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE, FIND_ANY_ORDER, false)
 			for _, enemy in pairs(enemies) do
 				if enemy ~= keys.target then
-					ApplyDamage({victim = enemy, attacker = parent, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL})
+					ApplyDamage({victim = enemy, attacker = parent, damage = splash_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
 				end
 			end
 		end
@@ -458,6 +475,7 @@ function kingdom_keen_bounty_hunter_ability:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier("modifier_keen_bounty_hunter_ability", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_keen_bounty_hunter_ability_effect", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
 
 modifier_keen_bounty_hunter_ability = class({})
 
@@ -466,17 +484,35 @@ function modifier_keen_bounty_hunter_ability:IsDebuff() return false end
 function modifier_keen_bounty_hunter_ability:IsPurgable() return false end
 function modifier_keen_bounty_hunter_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
-function modifier_keen_bounty_hunter_ability:DeclareFunctions()
+function modifier_keen_bounty_hunter_ability:IsAura()
+	return true
+end
+
+function modifier_keen_bounty_hunter_ability:GetAuraRadius() return 1200 end
+function modifier_keen_bounty_hunter_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_NONE end
+function modifier_keen_bounty_hunter_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_ENEMY end
+function modifier_keen_bounty_hunter_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
+function modifier_keen_bounty_hunter_ability:GetModifierAura() return "modifier_keen_bounty_hunter_ability_effect" end
+
+modifier_keen_bounty_hunter_ability_effect = class({})
+
+function modifier_keen_bounty_hunter_ability_effect:IsHidden() return true end
+function modifier_keen_bounty_hunter_ability_effect:IsDebuff() return true end
+function modifier_keen_bounty_hunter_ability_effect:IsPurgable() return false end
+function modifier_keen_bounty_hunter_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_keen_bounty_hunter_ability_effect:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_DEATH
 	}
 	return funcs
 end
 
-function modifier_keen_bounty_hunter_ability:OnDeath(keys)
+function modifier_keen_bounty_hunter_ability_effect:OnDeath(keys)
 	if IsServer() then
-		if keys.attacker == self:GetParent() then
-			local player = Kingdom:GetPlayerByTeam(keys.attacker:GetTeam())
+		if keys.unit == self:GetParent() then
+			local caster = self:GetAbility():GetCaster()
+			local player = Kingdom:GetPlayerByTeam(caster:GetTeam())
 			local player_id = Kingdom:GetPlayerID(player)
 			local gold = self:GetAbility():GetSpecialValueFor("unit_gold")
 
@@ -485,7 +521,7 @@ function modifier_keen_bounty_hunter_ability:OnDeath(keys)
 			end
 
 			PlayerResource:ModifyGold(player_id, gold, true, DOTA_ModifyGold_HeroKill)
-			SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD , keys.attacker, gold, nil)
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD, caster, gold, nil)
 		end
 	end
 end
@@ -525,15 +561,28 @@ function modifier_keen_tinker_ability_effect:IsDebuff() return false end
 function modifier_keen_tinker_ability_effect:IsPurgable() return false end
 function modifier_keen_tinker_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
 
-function modifier_keen_tinker_ability_effect:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE
-	}
-	return funcs
+function modifier_keen_tinker_ability_effect:OnCreated()
+	if IsServer() then
+		local parent = self:GetParent()
+		local base_health = parent:GetMaxHealth()
+		local health_multiplier = 1 + self:GetAbility():GetSpecialValueFor("bonus_health") * 0.01
+
+		parent:SetBaseMaxHealth(base_health * health_multiplier)
+		parent:SetMaxHealth(base_health * health_multiplier)
+		parent:SetHealth(base_health * health_multiplier)
+	end
 end
 
-function modifier_keen_tinker_ability_effect:GetModifierExtraHealthPercentage()
-	return self:GetAbility():GetSpecialValueFor("bonus_health") * 0.01
+function modifier_keen_tinker_ability_effect:OnDestroy()
+	if IsServer() then
+		local parent = self:GetParent()
+		local base_health = parent:GetMaxHealth()
+		local health_multiplier = 1 + self:GetAbility():GetSpecialValueFor("bonus_health") * 0.01
+
+		parent:SetBaseMaxHealth(base_health / health_multiplier)
+		parent:SetMaxHealth(base_health / health_multiplier)
+		parent:SetHealth(base_health / health_multiplier)
+	end
 end
 
 
@@ -545,6 +594,7 @@ function kingdom_keen_engineer_ability:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier("modifier_keen_engineer_ability", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_keen_engineer_ability_effect", "kingdom/abilities/keen", LUA_MODIFIER_MOTION_NONE)
 
 modifier_keen_engineer_ability = class({})
 
@@ -552,3 +602,35 @@ function modifier_keen_engineer_ability:IsDebuff() return false end
 function modifier_keen_engineer_ability:IsHidden() return true end
 function modifier_keen_engineer_ability:IsPurgable() return false end
 function modifier_keen_engineer_ability:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+
+function modifier_keen_engineer_ability:IsAura()
+	return true
+end
+
+function modifier_keen_engineer_ability:GetAuraRadius() return 1200 end
+function modifier_keen_engineer_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
+function modifier_keen_engineer_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
+function modifier_keen_engineer_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
+function modifier_keen_engineer_ability:GetModifierAura() return "modifier_keen_engineer_ability_effect" end
+
+modifier_keen_engineer_ability_effect = class({})
+
+function modifier_keen_engineer_ability_effect:IsHidden() return false end
+function modifier_keen_engineer_ability_effect:IsDebuff() return false end
+function modifier_keen_engineer_ability_effect:IsPurgable() return false end
+function modifier_keen_engineer_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+
+function modifier_keen_engineer_ability_effect:DeclareFunctions()
+	local funcs = {
+		MODIFIER_EVENT_ON_ATTACK_LANDED
+	}
+	return funcs
+end
+
+function modifier_keen_engineer_ability_effect:OnAttackLanded(keys)
+	if IsServer() then
+		if keys.target == self:GetParent() then
+			ApplyDamage({victim = keys.attacker, attacker = keys.target, damage = self:GetAbility():GetSpecialValueFor("return_damage"), damage_type = DAMAGE_TYPE_PHYSICAL})
+		end
+	end
+end

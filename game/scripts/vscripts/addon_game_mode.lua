@@ -85,6 +85,11 @@ function Precache(context)
 
 	-- Core particles
 	PrecacheResource("particle", "particles/econ/items/razor/razor_ti6/razor_base_attack_ti6.vpcf", context)
+	PrecacheResource("particle", "particles/upgraded_aura_2.vpcf", context)
+	PrecacheResource("particle", "particles/capital_aura.vpcf", context)
+	PrecacheResource("particle", "particles/capital_aura_2.vpcf", context)
+	PrecacheResource("particle", "particles/city_upgrade_2.vpcf", context)
+	PrecacheResource("particle", "particles/city_upgrade_capital.vpcf", context)
 
 	-- Unit particles
 	PrecacheResource("particle", "particles/units/heroes/hero_luna/luna_moon_glaive_bounce.vpcf", context)
