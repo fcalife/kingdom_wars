@@ -21,6 +21,7 @@ function Kingdom:Init()
 	LinkLuaModifier("modifier_kingdom_undead_city_animation", "kingdom/modifiers/general/undead_city_animation", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_keen_city_animation", "kingdom/modifiers/general/keen_city_animation", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_city", "kingdom/modifiers/general/city", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_city_pregame", "kingdom/modifiers/general/city", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_tower", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_capital_tower", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_tower_base", "kingdom/modifiers/general/tower", LUA_MODIFIER_MOTION_NONE)
@@ -30,6 +31,7 @@ function Kingdom:Init()
 	LinkLuaModifier("modifier_kingdom_beast_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_hero_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_kingdom_demon_hero_marker", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_kingdom_demon_spawn_leash", "kingdom/modifiers/general/unit_markers", LUA_MODIFIER_MOTION_NONE)
 
 	-- Listeners
 	--CustomGameEventManager:RegisterListener("mouse_position_think", Dynamic_Wrap(Kingdom, "MousePositionThink"))
@@ -72,7 +74,8 @@ end
 
 -- Game start
 function Kingdom:StartMatch()
-	MapManager:StartMatch()
+	MapManager:StartCapitalPhase()
+	EconomyManager:StartCapitalPhase()
 end
 
 
@@ -101,6 +104,22 @@ function Kingdom:GetKingdomPlayerTeam(player)
 	return self.player_teams[player]
 end
 
+function Kingdom:SetWinner(player)
+	local player_id = Kingdom:GetPlayerID(player)
+	GameRules:SetGameWinner(Kingdom:GetKingdomPlayerTeam(player))
+
+	for _, id in pairs(Kingdom:GetAllPlayerIDs()) do
+		if PlayerResource:GetPlayer(id) then
+			ParticleManager:CreateParticleForPlayer("particles/generic_gameplay/screen_arcane_drop.vpcf", PATTACH_EYES_FOLLOW, PlayerResource:GetSelectedHeroEntity(id), PlayerResource:GetPlayer(id))
+		end
+	end
+
+	Timers:CreateTimer(0.5, function()
+		local event = {}
+		event.steamid = PlayerResource:GetSteamID(player_id)
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_winner", {event})
+	end)
+end
 
 function Kingdom:GetDotaNameFromHeroName(hero_name)
 	local hero_to_dota = {}

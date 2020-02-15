@@ -8,12 +8,15 @@ function kingdom_buy_keen_melee:OnSpellStart()
 end
 
 function kingdom_buy_keen_melee:GetGoldCost(level)
+	local price = 5
 	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
-		return 4
-	else
-		return 5
+	if caster:HasModifier("modifier_kingdom_r1_contender") then
+		price = price - 1
 	end
+	if caster:HasModifier("modifier_kingdom_r5_owner") then
+		price = price - 1
+	end
+	return price
 end
 
 
@@ -26,12 +29,15 @@ function kingdom_buy_keen_ranged:OnSpellStart()
 end
 
 function kingdom_buy_keen_ranged:GetGoldCost(level)
+	local price = 7
 	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
-		return 6
-	else
-		return 7
+	if caster:HasModifier("modifier_kingdom_r6_contender") then
+		price = price - 1
 	end
+	if caster:HasModifier("modifier_kingdom_r5_owner") then
+		price = price - 1
+	end
+	return price
 end
 
 
@@ -44,12 +50,15 @@ function kingdom_buy_keen_cavalry:OnSpellStart()
 end
 
 function kingdom_buy_keen_cavalry:GetGoldCost(level)
+	local price = 9
 	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
-		return 8
-	else
-		return 9
+	if caster:HasModifier("modifier_kingdom_r2_contender") then
+		price = price - 1
 	end
+	if caster:HasModifier("modifier_kingdom_r5_owner") then
+		price = price - 1
+	end
+	return price
 end
 
 

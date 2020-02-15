@@ -8,7 +8,6 @@ end
 
 
 LinkLuaModifier("modifier_beast_1_ability", "kingdom/abilities/beast", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_beast_1_ability_effect", "kingdom/abilities/beast", LUA_MODIFIER_MOTION_NONE)
 
 modifier_beast_1_ability = class({})
 
@@ -19,14 +18,14 @@ function modifier_beast_1_ability:GetAttributes() return MODIFIER_ATTRIBUTE_PERM
 
 function modifier_beast_1_ability:DeclareFunctions()
 	local funcs = {
-		MODIFIER_EVENT_ON_TAKEDAMAGE
+		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
 	return funcs
 end
 
-function modifier_beast_1_ability:OnTakeDamage(keys)
+function modifier_beast_1_ability:OnAttackLanded(keys)
 	if IsServer() then
-		if keys.unit == self:GetParent() then
+		if keys.attacker == self:GetParent() then
 			local parent = self:GetParent()
 			local ability = self:GetAbility()
 
@@ -35,73 +34,52 @@ function modifier_beast_1_ability:OnTakeDamage(keys)
 				return nil
 			end
 
-			if parent:GetHealth() < parent:GetMaxHealth() * ability:GetSpecialValueFor("health_threshold") * 0.01 and ability:IsCooldownReady() then
-				parent:EmitSound("Ability.SandKing_SandStorm.start")
-				parent:AddNewModifier(parent, ability, "modifier_beast_1_ability_effect", {duration = ability:GetSpecialValueFor("duration")})
-				ProjectileManager:ProjectileDodge(parent)
-				ability:UseResources(true, false, true)
+			if ability:IsCooldownReady() then
+				local enemies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, ability:GetSpecialValueFor("range"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_FARTHEST, false)
+				if enemies[1] then
+					local target = enemies[1]
+					local origin_loc = parent:GetAbsOrigin()
+					local target_loc = target:GetAbsOrigin()
+					local final_loc = target_loc + (target_loc - origin_loc):Normalized() * 100
+
+					local burrow_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_sandking/sandking_burrowstrike.vpcf", PATTACH_CUSTOMORIGIN, nil)
+					ParticleManager:SetParticleControl(burrow_pfx, 0, origin_loc)
+					ParticleManager:SetParticleControl(burrow_pfx, 1, target_loc)
+					ParticleManager:ReleaseParticleIndex(burrow_pfx)
+
+					parent:EmitSound("Ability.SandKing_BurrowStrike")
+					ProjectileManager:ProjectileDodge(parent)
+					FindClearSpaceForUnit(parent, final_loc, true)
+					ResolveNPCPositions(final_loc, 128)
+					ability:UseResources(true, false, true)
+
+					local targets = FindUnitsInLine(parent:GetTeamNumber(), origin_loc, target_loc, nil, ability:GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE)
+					for _, enemy in pairs(targets) do
+						ApplyDamage({victim = enemy, attacker = parent, damage = ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL})
+
+						local knockback = {
+							center_x = origin_loc.x,
+							center_y = origin_loc.y,
+							center_z = origin_loc.z,
+							duration = 0.4,
+							knockback_duration = 0.4,
+							knockback_distance = 40,
+							knockback_height = 250
+						}
+					 
+						enemy:RemoveModifierByName("modifier_knockback")
+						enemy:AddNewModifier(enemy, nil, "modifier_knockback", knockback)
+
+						local duration = ability:GetSpecialValueFor("stun_duration")
+						if enemy:IsKingdomHero() then
+							duration = duration * 0.5
+						end
+						enemy:AddNewModifier(parent, ability, "modifier_stunned", {duration = duration})
+					end
+				end
 			end
 		end
 	end
-end
-
-
-modifier_beast_1_ability_effect = class({})
-
-function modifier_beast_1_ability_effect:IsHidden() return true end
-function modifier_beast_1_ability_effect:IsDebuff() return false end
-function modifier_beast_1_ability_effect:IsPurgable() return false end
-
-function modifier_beast_1_ability_effect:OnCreated(keys)
-	if IsServer() then
-		self:StartIntervalThink(1.0)
-		self.sand_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_sandking/sandking_sandstorm.vpcf", PATTACH_CUSTOMORIGIN, nil)
-		ParticleManager:SetParticleControl(self.sand_pfx, 0, self:GetParent():GetAbsOrigin())
-		ParticleManager:SetParticleControl(self.sand_pfx, 1, Vector(self:GetAbility():GetSpecialValueFor("radius")))
-	end
-end
-
-function modifier_beast_1_ability_effect:OnDestroy()
-	if IsServer() then
-		ParticleManager:DestroyParticle(self.sand_pfx, false)
-		ParticleManager:ReleaseParticleIndex(self.sand_pfx)
-	end
-end
-
-function modifier_beast_1_ability_effect:OnIntervalThink()
-	if IsServer() then
-		local parent = self:GetParent()
-		local ability = self:GetAbility()
-		local enemies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, ability:GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-		for _, enemy in pairs(enemies) do
-			ApplyDamage({victim = enemy, attacker = parent, damage = ability:GetSpecialValueFor("dps"), damage_type = DAMAGE_TYPE_MAGICAL})
-		end
-	end
-end
-
-function modifier_beast_1_ability_effect:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_INVISIBILITY_LEVEL,
-		MODIFIER_PROPERTY_OVERRIDE_ANIMATION
-	}
-	return funcs
-end
-
-function modifier_beast_1_ability_effect:CheckState()
-	local states = {
-		[MODIFIER_STATE_INVISIBLE] = true,
-		[MODIFIER_STATE_DISARMED] = true,
-		[MODIFIER_STATE_ROOTED] = true
-	}
-	return states
-end
-
-function modifier_beast_1_ability_effect:GetModifierInvisibilityLevel()
-	return 1.0
-end
-
-function modifier_beast_1_ability_effect:GetOverrideAnimation()
-	return ACT_DOTA_OVERRIDE_ABILITY_2
 end
 
 

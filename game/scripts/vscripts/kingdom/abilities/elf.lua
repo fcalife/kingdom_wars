@@ -8,12 +8,15 @@ function kingdom_buy_elf_melee:OnSpellStart()
 end
 
 function kingdom_buy_elf_melee:GetGoldCost(level)
+	local price = 5
 	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
-		return 4
-	else
-		return 5
+	if caster:HasModifier("modifier_kingdom_r1_contender") then
+		price = price - 1
 	end
+	if caster:HasModifier("modifier_kingdom_r5_owner") then
+		price = price - 1
+	end
+	return price
 end
 
 
@@ -26,12 +29,15 @@ function kingdom_buy_elf_ranged:OnSpellStart()
 end
 
 function kingdom_buy_elf_ranged:GetGoldCost(level)
+	local price = 7
 	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
-		return 6
-	else
-		return 7
+	if caster:HasModifier("modifier_kingdom_r6_contender") then
+		price = price - 1
 	end
+	if caster:HasModifier("modifier_kingdom_r5_owner") then
+		price = price - 1
+	end
+	return price
 end
 
 
@@ -44,12 +50,15 @@ function kingdom_buy_elf_cavalry:OnSpellStart()
 end
 
 function kingdom_buy_elf_cavalry:GetGoldCost(level)
+	local price = 9
 	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
-		return 8
-	else
-		return 9
+	if caster:HasModifier("modifier_kingdom_r2_contender") then
+		price = price - 1
 	end
+	if caster:HasModifier("modifier_kingdom_r5_owner") then
+		price = price - 1
+	end
+	return price
 end
 
 
@@ -446,13 +455,6 @@ function modifier_elf_assassin_ability_effect:IsHidden() return false end
 function modifier_elf_assassin_ability_effect:IsDebuff() return false end
 function modifier_elf_assassin_ability_effect:IsPurgable() return false end
 function modifier_elf_assassin_ability_effect:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
-
-function modifier_elf_assassin_ability_effect:CheckState()
-	local states = {
-		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true
-	}
-	return states
-end
 
 function modifier_elf_assassin_ability_effect:DeclareFunctions()
 	local funcs = {

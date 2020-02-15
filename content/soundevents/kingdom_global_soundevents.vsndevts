@@ -9,4 +9,13 @@
 			"sounds/items/item_handofmidas.vsnd"
 		]
 	}
+
+	"Game.Start" = {
+		type = "dota_update_vo_switch"
+		volume = "1.0"
+		vsnd_files =
+		[
+			"sounds/music/stingers/stinger01.vsnd"
+		]
+	}
 }

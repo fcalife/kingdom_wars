@@ -4,15 +4,15 @@
 	</styles>
 
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/game_hud.js" /> 
+		<include src="file://{resources}/scripts/custom_game/game_hud.js" />
+		<include src="file://{resources}/scripts/custom_game/custom_keybinds.js" />
 	</scripts>
 
 	<Panel hittest="false">
-		<Panel id="main_message_container">
-			<DOTAAvatarImage id="main_message_player_avatar" steamid="local" />
-			<Label id="main_message_pre_label" class="main_message_label" text="Black Ocelot's "/>
-			<DOTAHeroImage id="main_message_hero_image" heroname="npc_dota_hero_nevermore" heroimagestyle="icon" scaling="stretch-to-fit-x-preserve-aspect" />
-			<Label id="main_message_post_label" class="main_message_label" text=" Nevermore has been killed!"/>
+		<Panel id="top_message_feed_container">
+		</Panel>
+
+		<Panel id="bottom_message_feed_container">
 		</Panel>
 
 		<Panel id="income_container">
@@ -21,7 +21,7 @@
 			</Panel>
 			<Panel id="income_description_container">
 				<Label id="income_description_label" text="#income_timer_label"/>
-				<Label id="income_amount_label" text="+21"/>
+				<Label id="income_amount_label" text="-"/>
 				<Image id="income_gold_icon" src="file://{images}/hud/reborn/gold_large.png" scaling="stretch-to-fit-y-preserve-aspect" />
 			</Panel>
 		</Panel>
@@ -49,7 +49,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_1" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_1" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -64,7 +64,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_2" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_2" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -79,7 +79,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_3" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_3" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -94,7 +94,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_4" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_4" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -109,7 +109,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_5" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_5" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -124,7 +124,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_6" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_6" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -139,7 +139,7 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_7" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_7" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -154,12 +154,30 @@
 				</Panel>
 				<Panel class="income_player_container_income">
 					<Panel class="income_player_subcontainer_income">
-						<Label id="income_player_label_income_8" class="income_player_gold_label" text="+21"/>
+						<Label id="income_player_label_income_8" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
 			</Panel>
 
 			<Panel id="income_container_bottom_marginator" />
+		</Panel>
+
+		<Panel id="income_detail_button_container">
+			<Button id="income_detail_button" onactivate='IncomeDetail()' />
+		</Panel>
+
+		<Panel id="income_detail_container">
+			<Panel id="income_detail_full_container" class="income_detail_container_block">
+				<Panel id="income_detail_full_header" class="income_detail_row_full">
+					<Label id="income_detail_full_header_label" class="income_detail_container_header" text="#income_detail_full_header"/>
+				</Panel>
+			</Panel>
+
+			<Panel id="income_detail_half_container" class="income_detail_container_block">
+				<Panel id="income_detail_half_header" class="income_detail_row_half">
+					<Label id="income_detail_half_header_label" class="income_detail_container_header" text="#income_detail_half_header"/>
+				</Panel>
+			</Panel>
 		</Panel>
 
 		<Panel id="gold_container">

@@ -196,7 +196,7 @@ end
 function GameMode:OnGameStateGameSetup()
 	print("Game state is now: game setup")
 	if IsInToolsMode() then
-		SendToServerConsole("dota_create_fake_clients 8")
+		--SendToServerConsole("dota_create_fake_clients 8")
 	end
 end
 
@@ -223,11 +223,23 @@ end
 
 function GameMode:OnGameStatePreGame()
 	print("Game state is now: pre-game")
+
+	local time_threshold = -25
+	if IsInToolsMode() then
+		time_threshold = -10
+	end
+
+	Timers:CreateTimer(0, function()
+		if GameRules:GetDOTATime(false, true) >= time_threshold then
+			Kingdom:StartMatch()
+		else
+			return 0.03
+		end
+	end)
 end
 
 function GameMode:OnGameInProgress()
 	if IsServer() then
 		print("The game has officially begun")
-		Kingdom:StartMatch()
 	end
 end

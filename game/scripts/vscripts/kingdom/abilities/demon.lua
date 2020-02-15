@@ -8,12 +8,7 @@ function kingdom_buy_demon_melee:OnSpellStart()
 end
 
 function kingdom_buy_demon_melee:GetGoldCost(level)
-	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r1_owner_half") then
-		return 4
-	else
-		return 5
-	end
+	return 5
 end
 
 
@@ -26,12 +21,7 @@ function kingdom_buy_demon_ranged:OnSpellStart()
 end
 
 function kingdom_buy_demon_ranged:GetGoldCost(level)
-	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r6_owner_half") then
-		return 6
-	else
-		return 7
-	end
+	return 7
 end
 
 
@@ -44,12 +34,7 @@ function kingdom_buy_demon_cavalry:OnSpellStart()
 end
 
 function kingdom_buy_demon_cavalry:GetGoldCost(level)
-	local caster = self:GetCaster()
-	if caster:HasModifier("modifier_kingdom_r2_owner_half") then
-		return 8
-	else
-		return 9
-	end
+	return 9
 end
 
 

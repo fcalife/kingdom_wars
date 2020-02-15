@@ -14,13 +14,13 @@ function GameMode:_InitGameMode()
 	-- Should we let people select the same hero as each other?
 	GameRules:SetSameHeroSelectionEnabled(true)
 	-- How long should we let people select their hero?
-	GameRules:SetHeroSelectionTime(60)
+	GameRules:SetHeroSelectionTime(0)
 	-- How long should strategy time last?
 	GameRules:SetStrategyTime(0)
 	-- How long should showcase time last?
 	GameRules:SetShowcaseTime(0)
 	-- How long after people select their heroes should the horn blow and the game start?
-	GameRules:SetPreGameTime(20)
+	GameRules:SetPreGameTime(28)
 	-- How long should we let people look at the scoreboard before closing the server automatically?
 	GameRules:SetPostGameTime(60)
 	-- How long should it take individual trees to respawn after being cut down/destroyed?
@@ -93,8 +93,7 @@ function GameMode:_InitGameMode()
 
 	-- Testing adjustments
 	if IsInToolsMode() then
-		GameRules:SetPreGameTime(3)
-		GameRules:SetStartingGold(0)
+		GameRules:SetPreGameTime(12)
 	end
 
 	print("Game rules (part 1) have been set...")

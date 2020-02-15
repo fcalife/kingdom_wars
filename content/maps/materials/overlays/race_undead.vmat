@@ -1,0 +1,29 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "global_lit_simple.vfx"
+
+	//---- Fullbright ----
+	F_FULLBRIGHT 1
+
+	//---- Normal Maps ----
+	F_NORMAL_MAP 1
+
+	//---- Translucent ----
+	F_ALPHA_TEST 1
+
+	//---- Color ----
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	g_vTexCoordOffset "[0.667 0.667]"
+	g_vTexCoordScale "[0.333 0.333]"
+	TextureColor "maps/materials/overlays/race_undead.png"
+
+	//---- Normal Map ----
+	g_flBumpStrength "1.000"
+	TextureNormal "materials/default/default_normal.tga"
+
+	//---- Translucent ----
+	g_flAlphaTestReference "0.010"
+	TextureTranslucency "maps/materials/overlays/race_transparency.png"
+}

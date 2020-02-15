@@ -85,6 +85,7 @@ function Precache(context)
 
 	-- Core particles
 	PrecacheResource("particle", "particles/econ/items/razor/razor_ti6/razor_base_attack_ti6.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/heroes_underlord/abyssal_underlord_darkrift_target.vpcf", context)
 	PrecacheResource("particle", "particles/upgraded_aura_2.vpcf", context)
 	PrecacheResource("particle", "particles/capital_aura.vpcf", context)
 	PrecacheResource("particle", "particles/capital_aura_2.vpcf", context)
@@ -97,6 +98,7 @@ function Precache(context)
 	PrecacheResource("particle", "particles/units/heroes/hero_batrider/batrider_stickynapalm_debuff.vpcf", context)
 	PrecacheResource("particle", "particles/status_fx/status_effect_stickynapalm.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_4stack.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_clinkz/clinkz_death_pact.vpcf", context)
 
 	PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf", context)
 	PrecacheResource("particle", "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf", context)
@@ -120,6 +122,7 @@ function Precache(context)
 	PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context)
 
+	PrecacheResource("particle", "particles/units/heroes/hero_sandking/sandking_burrowstrike.vpcf", context)
 
 	PrecacheResource("particle", "particles/capture_ring.vpcf", context)
 	PrecacheResource("particle", "particles/returned.vpcf", context)

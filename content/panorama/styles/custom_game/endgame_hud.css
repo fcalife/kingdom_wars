@@ -1,0 +1,91 @@
+@keyframes 'endgame_anim'
+{
+	0%
+	{
+		pre-transform-scale2d: 1.0;
+		pre-transform-rotate2d: 0deg;
+	}
+
+	1%
+	{
+		pre-transform-scale2d: 1.0;
+		pre-transform-rotate2d: 0deg;
+	}
+
+	7%
+	{
+		pre-transform-scale2d: 1.25;
+		pre-transform-rotate2d: 2deg;
+	}
+
+	9%
+	{
+		pre-transform-scale2d: 1.2;
+		pre-transform-rotate2d: 0deg;
+	}
+}
+
+#endgame_container_container
+{
+	width: 1920px;
+	height: 1080px;
+}
+
+#endgame_container
+{
+	min-width: 1400px;
+	min-height: 180px;
+	max-width: 100%;
+	horizontal-align: center;
+	vertical-align: center;
+	flow-children: down;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #00000000 ), color-stop( 0.2, #000000E0 ), color-stop( 0.8, #000000E0 ), to( #00000000 ) );
+	transition-property: opacity;
+	transition-duration: 1.25s;
+	transition-delay: 0.5s;
+	opacity: 0;
+}
+
+#endgame_winner_container
+{
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	horizontal-align: center;
+	vertical-align: center;
+	flow-children: right;
+	animation-name: endgame_anim;
+	animation-duration: 120s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+}
+
+#endgame_winner_avatar
+{
+	height: 96px;
+	width: 96px;
+	border-radius: 8px;
+	border: 2px solid #D0D0D0FF;
+	vertical-align: center;
+}
+
+#endgame_winner_name
+{
+	color: #FFFFFFFF;
+	margin-left: 20px;
+	margin-right: 0px;
+	vertical-align: center;
+	font-size: 48;
+	font-weight: bold;
+	font-family: "DejaVu Sans";
+}
+
+#endgame_winner_label
+{
+	color: #FFFFFFFF;
+	vertical-align: center;
+	font-size: 48;
+	font-weight: bold;
+	font-family: "DejaVu Sans";
+}

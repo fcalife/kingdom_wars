@@ -34,7 +34,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_ms"				"50"
+				"bonus_ms"				"40"
 			}
 		}
 	}
@@ -73,7 +73,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_ms"				"100"
+				"bonus_ms"				"75"
 			}
 		}
 	}
@@ -121,7 +121,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_ms"				"20"
+				"bonus_ms"				"15"
 			}
 		}
 	}
@@ -588,7 +588,7 @@
 		"AbilityTextureName"			"custom/capital_city"
 
 		"MaxLevel"						"1"
-		"AbilityCastRange"				"25000"
+		"AbilityCastRange"				"50000"
 		"AbilityCastPoint"				"0.0"
 		"AbilityChannelTime"			"0"
 		"AbilityCooldown"				"0.01"
@@ -1588,7 +1588,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"clinkz_strafe"
+		"AbilityTextureName"			"custom/undead_ranged_black_arrows"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"0"
@@ -1602,7 +1602,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"proc_chance"			"30"
+				"duration"				"10"
 			}
 		}
 	}
@@ -1636,7 +1636,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"dark_troll_warlord_raise_dead"
+		"AbilityTextureName"			"necrolyte_heartstopper_aura"
 
 		"MaxLevel"						"1"
 		"AbilityCastRange"				"1200"
@@ -1650,11 +1650,6 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"raise_units"			"5"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"effect_radius"			"1200"
 			}
 		}
@@ -1665,12 +1660,12 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/abilities/undead.lua"
-		"AbilityTextureName"			"skeleton_king_vampiric_aura"
+		"AbilityTextureName"			"skeleton_king_reincarnation"
 
 		"MaxLevel"						"1"
-		"AbilityCastRange"				"0"
+		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"30.0"
+		"AbilityCooldown"				"0.0"
 		"AbilityManaCost"				"0"
 		"AbilityGoldCost"				"0"
 
@@ -1679,27 +1674,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"wraith_health"			"500"
+				"wraith_duration"		"3"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"wraith_duration"		"10"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_reduction"		"-50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"wraith_lifesteal"		"30"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"magic_resistance"		"-50"
+				"effect_radius"			"1200"
 			}
 		}
 	}
@@ -2323,12 +2303,12 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/abilities/beast.lua"
-		"AbilityTextureName"			"sandking_sand_storm"
+		"AbilityTextureName"			"sandking_burrowstrike"
 
 		"MaxLevel"						"1"
-		"AbilityCastRange"				"0"
+		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"15"
+		"AbilityCooldown"				"14"
 		"AbilityManaCost"				"0"
 		"AbilityGoldCost"				"0"
 
@@ -2337,22 +2317,22 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"health_threshold"		"35"
+				"damage"				"50"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"250"
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"1.0"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"				"3"
+				"range"					"600"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"dps"					"20"
+				"radius"				"100"
 			}
 		}
 	}

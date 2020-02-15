@@ -9,23 +9,23 @@ function EconomyManager:Init()
 
 	-- Set up economy constants
 	self.turn_count = 0
-	self.turn_timer = 20
+	self.turn_timer = 25
 	self.turn_duration = 45
 	self.last_turn_duration = 60
-	self.max_turns = 40
+	self.max_turns = 3
 	self.overtime_active = false
 
 	self.starting_gold = 25
 	self.base_income = 0
 	self.capital_income = 5
 	self.city_income = {1, 3, 5}
-	self.goldfield_income_bonus = {10, 20}
+	self.talneas_income_bonus = {10, 20}
 	self.lost_city_income = 10
 	self.region_income = 10
 	self.base_interest = 0.1
 	self.max_interest = 10
 	self.beast_spawns = 3
-	self.max_beast_spawns = 10
+	self.max_beast_spawns = 12
 	self.current_beasts = {}
 
 	for region = 1, MapManager:GetRegionCount() do
@@ -40,7 +40,9 @@ function EconomyManager:Init()
 	end
 
 	if IsInToolsMode() then
-		self.starting_gold = 1000
+		self.turn_timer = 12
+		self.starting_gold = 100
+		self.max_turns = 2
 	end
 
 	-- Player starting gold
@@ -50,7 +52,8 @@ function EconomyManager:Init()
 	end
 
 	-- Initialize scoreboard nettable
-	CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_timer})
+	CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_duration})
+	CustomNetTables:SetTableValue("player_info", "turn_state", {turn_state = "normal"})
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = self.base_income})
@@ -58,33 +61,57 @@ function EconomyManager:Init()
 		self:UpdateIncomeForPlayer(player)
 	end
 
-	print("- Economy manager: starting game turns")
-	Timers:CreateTimer(1, function()
-		self.turn_timer = self.turn_timer - 1
-		if self.turn_timer <= 0 then
-			self.turn_count = self.turn_count + 1
-
-			if self.turn_count > self.max_turns then
-				self:EndGameByRoundLimit()
-				return nil
-			else
-				self:GrantPlayerTurnIncome()
-			end
-
-			if self.turn_count == self.max_turns then
-				self.turn_timer = self.last_turn_duration
-			else
-				self.turn_timer = self.turn_duration
-			end
-		end
-		CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_timer})
-		return 1
-	end)
+	-- Initialize capital choice warning
+	local event = {}
+	event.time = self.turn_timer
+	CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_choice_phase", {event})
 
 	print("Economy manager: finished initializing")
 end
 
+-- Game start
+function EconomyManager:StartCapitalPhase()
+	print("- Economy manager: capital choice time")
+	Timers:CreateTimer(1, function()
+		self.turn_timer = self.turn_timer - 1
 
+		local event = {}
+		event.time = self.turn_timer
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_choice_phase", {event})
+
+		if self.turn_timer > 0 then
+			return 1
+		else
+			MapManager:StartMatch()
+			self:GrantPlayerTurnIncome()
+			self.turn_timer = self.turn_duration
+
+			print("- Economy manager: starting game turns")
+			Timers:CreateTimer(1, function()
+				self.turn_timer = self.turn_timer - 1
+				if self.turn_timer <= 0 then
+					self.turn_count = self.turn_count + 1
+
+					if self.turn_count > self.max_turns then
+						self:EndGameByRoundLimit()
+						return nil
+					else
+						self:GrantPlayerTurnIncome()
+					end
+
+					if self.turn_count == self.max_turns then
+						self.turn_timer = self.last_turn_duration
+						CustomNetTables:SetTableValue("player_info", "turn_state", {turn_state = "last_turn"})
+					else
+						self.turn_timer = self.turn_duration
+					end
+				end
+				CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_timer})
+				return 1
+			end)
+		end
+	end)
+end
 
 -- Game end via time limit
 function EconomyManager:EndGameByRoundLimit()
@@ -104,8 +131,9 @@ function EconomyManager:EndGameByRoundLimit()
 
 	if tie then
 		self.overtime_active = true
+		CustomNetTables:SetTableValue("player_info", "turn_state", {turn_state = "overtime"})
 	else
-		GameRules:SetGameWinner(Kingdom:GetKingdomPlayerTeam(winner))
+		Kingdom:SetWinner(winner)
 	end
 end
 
@@ -116,7 +144,12 @@ end
 -- Income management
 function EconomyManager:GrantPlayerTurnIncome()
 	print("- Economy manager: TURN "..self.turn_count.." INCOME")
-	EmitGlobalSound("Round.Income")
+
+	if self.turn_count > 0 then
+		EmitGlobalSound("Round.Income")
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_turn_ended", {})
+	end
+
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		local current_gold = PlayerResource:GetGold(player_id)
@@ -143,11 +176,16 @@ function EconomyManager:GrantPlayerTurnIncome()
 
 					-- Regional bonuses
 					if MapManager:GetCityByNumber(region, city):HasModifier("modifier_kingdom_r4_owner_full") then
-						bonus_income = self.goldfield_income_bonus[2]
+						bonus_income = self.talneas_income_bonus[2]
 					elseif MapManager:GetCityByNumber(region, city):HasModifier("modifier_kingdom_r4_owner_half") then
-						bonus_income = self.goldfield_income_bonus[1]
+						bonus_income = self.talneas_income_bonus[1]
 					end
 				end
+			end
+
+			-- Spawn beasts
+			if MapManager:IsRegionOwner(region, player) then
+				self:SpawnBeasts(region, player)
 			end
 		end
 
@@ -155,13 +193,6 @@ function EconomyManager:GrantPlayerTurnIncome()
 		PlayerResource:ModifyGold(player_id, math.floor(total_income), true, DOTA_ModifyGold_HeroKill)
 		print("Player "..player.." received "..total_income.." total income, "..turn_income.." base, "..interest.." from interest, "..bonus_income.." from regional bonuses, "..region_income.." from owned regions, "..city_income.." from owned cities, "..unit_income.." from unit upkeep, "..lost_city_income.." from cities lost since the last turn.")
 		self:UpdateIncomeForPlayer(player)
-	end
-
-	-- Spawn region ownership units
-	for region = 1, MapManager:GetRegionCount() do
-		if MapManager:GetRegionOwner(region) > 0 then
-			self:SpawnBeasts(region)
-		end
 	end
 end
 
@@ -189,9 +220,9 @@ function EconomyManager:UpdateIncomeForPlayer(player)
 				end
 
 				if MapManager:GetCityByNumber(region, city):HasModifier("modifier_kingdom_r4_owner_full") then
-					bonus_income = self.goldfield_income_bonus[2]
+					bonus_income = self.talneas_income_bonus[2]
 				elseif MapManager:GetCityByNumber(region, city):HasModifier("modifier_kingdom_r4_owner_half") then
-					bonus_income = self.goldfield_income_bonus[1]
+					bonus_income = self.talneas_income_bonus[1]
 				end
 			end
 		end
@@ -269,45 +300,34 @@ function EconomyManager:SpawnUnit(region, city, unit_type)
 	end
 
 	-- Regional bonuses
-	if city_unit:HasModifier("modifier_kingdom_r1_owner_full") and unit_type == "melee" then
+	if MapManager:IsRegionOwner(1, player) and unit_type == "melee" then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_melee", {})
-	end
-
-	if city_unit:HasModifier("modifier_kingdom_r2_owner_full") and unit_type == "cavalry" then
+	elseif MapManager:IsRegionOwner(2, player) and unit_type == "cavalry" then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_cavalry", {})
-	end
-
-	if city_unit:HasModifier("modifier_kingdom_r3_owner_full") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus_full", {})
-	elseif city_unit:HasModifier("modifier_kingdom_r3_owner_half") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus", {})
-	end
-
-	if city_unit:HasModifier("modifier_kingdom_r5_owner_full") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_ms_bonus_full", {})
-	elseif city_unit:HasModifier("modifier_kingdom_r5_owner_half") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_ms_bonus", {})
-	end
-
-	if city_unit:HasModifier("modifier_kingdom_r6_owner_full") and unit_type == "ranged" then
+	elseif MapManager:IsRegionOwner(6, player) and unit_type == "ranged" then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_ranged", {})
 	end
 
-	if city_unit:HasModifier("modifier_kingdom_r7_owner_full") then
+	if MapManager:IsRegionOwner(3, player) then
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus_full", {})
+	elseif MapManager:IsRegionContender(3, player) then
+		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus", {})
+	end
+
+	if MapManager:IsRegionOwner(7, player) then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus_full", {})
-	elseif city_unit:HasModifier("modifier_kingdom_r7_owner_half") then
+	elseif MapManager:IsRegionContender(7, player) then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus", {})
 	end
 
-	if city_unit:HasModifier("modifier_kingdom_r8_owner_full") then
+	if MapManager:IsRegionOwner(8, player) then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus_full", {})
-	elseif city_unit:HasModifier("modifier_kingdom_r8_owner_half") then
+	elseif MapManager:IsRegionContender(8, player) then
 		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus", {})
 	end
 end
 
-function EconomyManager:SpawnBeasts(region)
-	local player = MapManager:GetRegionOwner(region)
+function EconomyManager:SpawnBeasts(region, player)
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
 	local spawn_loc = MapManager:GetBeastSpawnPoint(region)
@@ -362,45 +382,6 @@ function EconomyManager:SpawnDemon(portal, unit_type)
 
 	-- Racial bonuses
 	unit:AddAbility("kingdom_capital_unit"):SetLevel(1)
-
-	-- Regional bonuses
-	local portal_unit = MapManager.demon_portals[portal]["portal"]
-
-	if portal_unit:HasModifier("modifier_kingdom_r1_owner_full") and unit_type == "melee" then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus", {})
-	end
-
-	if portal_unit:HasModifier("modifier_kingdom_r2_owner_full") and unit_type == "cavalry" then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus", {})
-	end
-
-	if portal_unit:HasModifier("modifier_kingdom_r3_owner_full") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus_full", {})
-	elseif portal_unit:HasModifier("modifier_kingdom_r3_owner_half") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus", {})
-	end
-
-	if portal_unit:HasModifier("modifier_kingdom_r5_owner_full") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_ms_bonus_full", {})
-	elseif portal_unit:HasModifier("modifier_kingdom_r5_owner_half") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_ms_bonus", {})
-	end
-
-	if portal_unit:HasModifier("modifier_kingdom_r6_owner_full") and unit_type == "ranged" then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus", {})
-	end
-
-	if portal_unit:HasModifier("modifier_kingdom_r7_owner_full") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus_full", {})
-	elseif portal_unit:HasModifier("modifier_kingdom_r7_owner_half") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus", {})
-	end
-
-	if portal_unit:HasModifier("modifier_kingdom_r8_owner_full") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus_full", {})
-	elseif portal_unit:HasModifier("modifier_kingdom_r8_owner_half") then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus", {})
-	end
 end
 
 function EconomyManager:SpawnHero(region, city)

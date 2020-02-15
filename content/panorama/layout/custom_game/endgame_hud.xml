@@ -1,0 +1,21 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/endgame_hud.css" />
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/endgame_hud.js" />
+	</scripts>
+
+	<Panel hittest="false">
+		<Panel id="endgame_container_container">
+			<Panel id="endgame_container">
+				<Panel id="endgame_winner_container">
+					<DOTAAvatarImage id="endgame_winner_avatar" steamid="local" />
+					<DOTAUserName id="endgame_winner_name" steamid="local" />
+					<Label id="endgame_winner_label" text="#endgame_winner"/>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

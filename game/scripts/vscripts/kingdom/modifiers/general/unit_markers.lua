@@ -67,19 +67,19 @@ function modifier_kingdom_demon_hero_marker:OnDestroy()
 		for _, ability in pairs(self.abilities) do
 			ability:SetActivated(true)
 			ability:StartCooldown(120)
-
-			local event = {}
-			event.playerid = self:GetParent():GetPlayerOwnerID()
-			if event.playerid then
-				event.playername = PlayerResource:GetPlayerName(event.playerid)
-				event.steamid = PlayerResource:GetSteamID(event.playerid)
-			end
-
-			event.unitname = self:GetParent():GetUnitName()
-			event.heroname = Kingdom:GetDotaNameFromHeroName(event.unitname)
-
-			CustomGameEventManager:Send_ServerToAllClients("kingdom_hero_killed", {event})
 		end
+
+		local event = {}
+		event.playerid = self:GetParent():GetPlayerOwnerID()
+		if event.playerid then
+			event.playername = PlayerResource:GetPlayerName(event.playerid)
+			event.steamid = PlayerResource:GetSteamID(event.playerid)
+		end
+
+		event.unitname = self:GetParent():GetUnitName()
+		event.heroname = Kingdom:GetDotaNameFromHeroName(event.unitname)
+
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_hero_killed", {event})
 	end
 end
 
@@ -111,7 +111,6 @@ modifier_kingdom_unit_movement = class({})
 function modifier_kingdom_unit_movement:IsHidden() return true end
 function modifier_kingdom_unit_movement:IsDebuff() return false end
 function modifier_kingdom_unit_movement:IsPurgable() return false end
-function modifier_kingdom_unit_movement:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
 function modifier_kingdom_unit_movement:OnCreated(keys)
 	if IsServer() then
@@ -142,3 +141,38 @@ end
 function modifier_kingdom_unit_movement:GetModifierIgnoreMovespeedLimit()
 	return 1
 end
+
+
+
+modifier_kingdom_demon_spawn_leash = modifier_kingdom_demon_spawn_leash or class({})
+
+function modifier_kingdom_demon_spawn_leash:IsHidden() return true end
+function modifier_kingdom_demon_spawn_leash:IsDebuff() return false end
+function modifier_kingdom_demon_spawn_leash:IsPurgable() return false end
+function modifier_kingdom_demon_spawn_leash:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+
+function modifier_kingdom_demon_spawn_leash:OnCreated(keys)
+	if IsServer() then
+		self.spawn_point = self:GetParent():GetAbsOrigin()
+		self.back_to_spawn = false
+		self.leash_distance = 1500
+		self:StartIntervalThink(2.0)
+	end
+end
+
+function modifier_kingdom_demon_spawn_leash:OnIntervalThink()
+	if IsServer() then
+		local distance = GridNav:FindPathLength(self:GetParent():GetAbsOrigin(), self.spawn_point)
+
+		if distance >= self.leash_distance then
+			self.back_to_spawn = true
+		else
+			self.back_to_spawn = false
+		end
+
+		if self.back_to_spawn == true then
+			self:GetParent():MoveToPosition(self.spawn_point)
+		end
+	end
+end
+

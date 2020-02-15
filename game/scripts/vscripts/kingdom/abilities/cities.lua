@@ -9,6 +9,17 @@ function kingdom_upgrade_city_2:OnSpellStart()
 	PlayerResource:ModifyGold(player_id, gold_cost, true, DOTA_ModifyGold_HeroKill)
 end
 
+function kingdom_upgrade_city_2:GetGoldCost(level)
+	local caster = self:GetCaster()
+	local gold_cost = self:GetSpecialValueFor("upgrade_cost")
+
+	if caster:HasModifier("modifier_kingdom_r5_contender") then
+		gold_cost = gold_cost * 0.5
+	end
+
+	return gold_cost
+end
+
 function kingdom_upgrade_city_2:OnChannelFinish(interrupted)
 	if not interrupted then
 		local caster = self:GetCaster()
@@ -59,6 +70,17 @@ function kingdom_upgrade_city_3:OnSpellStart()
 	local player_id = Kingdom:GetPlayerID(MapManager:GetCityOwner(caster:GetRegion(), caster:GetCity()))
 	local gold_cost = self:GetGoldCost(self:GetLevel() - 1)
 	PlayerResource:ModifyGold(player_id, gold_cost, true, DOTA_ModifyGold_HeroKill)
+end
+
+function kingdom_upgrade_city_3:GetGoldCost(level)
+	local caster = self:GetCaster()
+	local gold_cost = self:GetSpecialValueFor("upgrade_cost")
+
+	if caster:HasModifier("modifier_kingdom_r5_contender") then
+		gold_cost = gold_cost * 0.5
+	end
+
+	return gold_cost
 end
 
 function kingdom_upgrade_city_3:OnChannelFinish(interrupted)
@@ -113,15 +135,21 @@ function kingdom_upgrade_to_capital:OnSpellStart()
 		local player = MapManager:GetCityOwner(region, city)
 		local player_id = Kingdom:GetPlayerID(player)
 		local player_color = Kingdom:GetKingdomPlayerColor(player)
+		local target_loc = target:GetAbsOrigin()
 
 		EmitSoundOnClient("General.FemaleLevelUp", PlayerResource:GetPlayer(player_id))
 
 		local flash_pfx = ParticleManager:CreateParticle("particles/city_upgrade_capital.vpcf", PATTACH_CUSTOMORIGIN, nil)
-		ParticleManager:SetParticleControl(flash_pfx, 0, target:GetAbsOrigin())
+		ParticleManager:SetParticleControl(flash_pfx, 0, target_loc)
 		ParticleManager:ReleaseParticleIndex(flash_pfx)
 
+		target:Destroy()
+		MapManager:SpawnCapital(region, city)
+		target = MapManager:GetCityByNumber(region, city)
+		MapManager:SetCityControllable(region, city, player)
+
 		target.capital_pfx = ParticleManager:CreateParticle("particles/capital_aura.vpcf", PATTACH_CUSTOMORIGIN, nil)
-		ParticleManager:SetParticleControl(target.capital_pfx, 0, target:GetAbsOrigin() + Vector(0, 0, 10))
+		ParticleManager:SetParticleControl(target.capital_pfx, 0, target_loc + Vector(0, 0, 10))
 		ParticleManager:SetParticleControl(target.capital_pfx, 1, player_color)
 
 		caster:AddNewModifier(caster, nil, "modifier_kingdom_hero_after_capital_selection", {})
@@ -131,6 +159,15 @@ function kingdom_upgrade_to_capital:OnSpellStart()
 		MapManager:UpgradeCapitalTower(region, city)
 
 		EconomyManager:UpdateIncomeForPlayer(player)
+
+		local event = {}
+		event.playerid = player_id
+		event.playername = PlayerResource:GetPlayerName(player_id)
+		event.steamid = PlayerResource:GetSteamID(player_id)
+		event.cityname = "#npc_kingdom_city_"..region.."_"..city
+
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen", {event})
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_minimap_ping", {x = target_loc.x, y = target_loc.y, z = target_loc.z + 10})
 	end
 end
 
