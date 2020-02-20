@@ -12,7 +12,7 @@ function EconomyManager:Init()
 	self.turn_timer = 25
 	self.turn_duration = 45
 	self.last_turn_duration = 60
-	self.max_turns = 3
+	self.max_turns = 40
 	self.overtime_active = false
 
 	self.starting_gold = 25

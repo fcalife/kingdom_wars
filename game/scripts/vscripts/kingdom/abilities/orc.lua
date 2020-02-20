@@ -177,7 +177,6 @@ function kingdom_buy_hero_blademaster:OnChannelFinish(interrupted)
 			local spawn_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf", PATTACH_CUSTOMORIGIN, nil)
 			ParticleManager:SetParticleControl(spawn_pfx, 0, hero:GetAbsOrigin())
 			ParticleManager:SetParticleControl(spawn_pfx, 5, Vector(256, 0, 0))
-			ParticleManager:ReleaseParticleIndex(spawn_pfx)
 
 			Timers:CreateTimer(3, function()
 				ParticleManager:DestroyParticle(spawn_pfx, false)
