@@ -282,6 +282,7 @@
 	font-size: 14;
 	font-family: "DejaVu Sans";
 	font-weight: Bold;
+	text-shadow: 1px 1px 2px 3.0 #000000FF;
 }
 
 .income_player_cities_label
@@ -292,7 +293,7 @@
 	font-size: 14;
 	font-family: "DejaVu Sans";
 	font-weight: Bold;
-	text-shadow: 1px 1px 4px 3.0 #000000FF;
+	text-shadow: 1px 1px 2px 3.0 #000000FF;
 }
 
 .income_player_gold_label
@@ -303,7 +304,7 @@
 	font-size: 14;
 	font-family: "DejaVu Sans";
 	font-weight: Bold;
-	text-shadow: 1px 1px 4px 3.0 #000000FF;
+	text-shadow: 1px 1px 2px 3.0 #000000FF;
 }
 
 #income_container_bottom_marginator

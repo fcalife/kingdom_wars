@@ -261,6 +261,7 @@ function modifier_undead_melee_ability_effect:OnDeath(keys)
 				Timers:CreateTimer(2, function()
 					local unit = CreateUnitByName("npc_kingdom_undead_melee", self:GetParent():GetAbsOrigin(), true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 					unit:SetControllableByPlayer(player_id, true)
+					unit:SetDeathXP(0)
 
 					Timers:CreateTimer(0.03, function()
 						if not unit:HasModifier("modifier_undead_necromancer_ability_effect") then
@@ -359,6 +360,7 @@ function modifier_undead_ranged_ability:OnDeath(keys)
 
 				local new_unit = CreateUnitByName(unit_name, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 				new_unit:SetControllableByPlayer(player_id, true)
+				new_unit:SetDeathXP(0)
 
 				if elite_unit then
 					new_unit:AddAbility("kingdom_capital_unit"):SetLevel(1)
@@ -476,6 +478,7 @@ function modifier_undead_cavalry_ability:OnDeath(keys)
 
 				local new_unit = CreateUnitByName("npc_kingdom_undead_cavalry", spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 				new_unit:SetControllableByPlayer(player_id, true)
+				new_unit:SetDeathXP(0)
 
 				if elite_unit then
 					new_unit:AddAbility("kingdom_capital_unit"):SetLevel(1)

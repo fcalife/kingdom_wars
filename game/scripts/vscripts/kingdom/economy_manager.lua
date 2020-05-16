@@ -27,6 +27,7 @@ function EconomyManager:Init()
 	self.beast_spawns = 3
 	self.max_beast_spawns = 12
 	self.current_beasts = {}
+	self.spawned_heroes = {}
 
 	for region = 1, MapManager:GetRegionCount() do
 		self.current_beasts[region] = 0
@@ -42,7 +43,7 @@ function EconomyManager:Init()
 	if IsInToolsMode() then
 		self.turn_timer = 12
 		self.starting_gold = 100
-		self.max_turns = 2
+		self.max_turns = 20
 	end
 
 	-- Player starting gold
@@ -58,6 +59,7 @@ function EconomyManager:Init()
 		local player_id = Kingdom:GetPlayerID(player)
 		CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = self.base_income})
 		CustomNetTables:SetTableValue("player_info", "player_steam_id_"..player_id, {player_steam_id = PlayerResource:GetSteamID(player_id)})
+		CustomNetTables:SetTableValue("player_info", "player_name_"..player_id, {player_name = PlayerResource:GetPlayerName(player_id)})
 		self:UpdateIncomeForPlayer(player)
 	end
 
@@ -150,6 +152,12 @@ function EconomyManager:GrantPlayerTurnIncome()
 		CustomGameEventManager:Send_ServerToAllClients("kingdom_turn_ended", {})
 	end
 
+	if self.turn_count == 10 or self.turn_count == 20 or self.turn_count == 30 then
+		Timers:CreateTimer(10, function()
+			CustomGameEventManager:Send_ServerToAllClients("kingdom_announce_discord", {})
+		end)
+	end
+
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		local current_gold = PlayerResource:GetGold(player_id)
@@ -193,6 +201,10 @@ function EconomyManager:GrantPlayerTurnIncome()
 		PlayerResource:ModifyGold(player_id, math.floor(total_income), true, DOTA_ModifyGold_HeroKill)
 		print("Player "..player.." received "..total_income.." total income, "..turn_income.." base, "..interest.." from interest, "..bonus_income.." from regional bonuses, "..region_income.." from owned regions, "..city_income.." from owned cities, "..unit_income.." from unit upkeep, "..lost_city_income.." from cities lost since the last turn.")
 		self:UpdateIncomeForPlayer(player)
+
+		if Kingdom:IsBot(player) then
+			EconomyManager:PlanBotTurn(player)
+		end
 	end
 end
 
@@ -269,6 +281,8 @@ function EconomyManager:SpawnUnit(region, city, unit_type)
 
 	local unit = CreateUnitByName("npc_kingdom_"..city_race.."_"..unit_type, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 	unit:SetControllableByPlayer(player_id, true)
+
+	Voices:PlayLine(VOICE_EVENT_SPAWN_UNIT, unit)
 
 	-- Movement limit removal modifier
 	unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {player = player})
@@ -360,6 +374,8 @@ function EconomyManager:SpawnDemon(portal, unit_type)
 	local unit = CreateUnitByName("npc_kingdom_demon_"..unit_type, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 	unit:SetControllableByPlayer(player_id, true)
 
+	Voices:PlayLine(VOICE_EVENT_SPAWN_UNIT, unit)
+
 	-- Movement limit removal modifier
 	unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {player = player})
 
@@ -388,11 +404,22 @@ function EconomyManager:SpawnHero(region, city)
 	local player = MapManager:GetCityOwner(region, city)
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
-	local city_hero = MapManager:GetCityHero(region, city)
+	local hero_name = "npc_kingdom_hero_"..MapManager:GetCityHero(region, city)
 	local spawn_loc = MapManager:GetCityMeleeSpawnPoint(region, city)
-	local unit = CreateUnitByName("npc_kingdom_hero_"..city_hero, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+
+	if not EconomyManager.spawned_heroes[hero_name] then
+		EconomyManager.spawned_heroes[hero_name] = CreateUnitByName(hero_name, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+	end
+
+	local unit = EconomyManager.spawned_heroes[hero_name]
+
+	if not unit:IsAlive() then
+		unit:SetRespawnPosition(spawn_loc)
+		unit:RespawnHero(false, false)
+	end
+
 	unit:SetControllableByPlayer(player_id, true)
-	unit:AddNewModifier(unit, nil, "modifier_kingdom_hero_marker", {ability_name = "kingdom_buy_hero_"..city_hero, region = region, city = city})
+	unit:AddNewModifier(unit, nil, "modifier_kingdom_hero_marker", {ability_name = hero_name, region = region, city = city})
 	unit:SetHullRadius(48)
 
 	-- Movement limit removal modifier
@@ -411,7 +438,7 @@ function EconomyManager:SpawnHero(region, city)
 	event.playerid = player_id
 	event.playername = PlayerResource:GetPlayerName(player_id)
 	event.steamid = PlayerResource:GetSteamID(player_id)
-	event.unitname = "npc_kingdom_hero_"..city_hero
+	event.unitname = hero_name
 	event.heroname = Kingdom:GetDotaNameFromHeroName(event.unitname)
 
 	CustomGameEventManager:Send_ServerToAllClients("kingdom_hero_recruited", {event})
@@ -424,10 +451,21 @@ function EconomyManager:SpawnDemonHero(portal, hero_name)
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
 	local spawn_loc = MapManager.demon_portals[portal]["capture_point"]
+	hero_name = "npc_kingdom_hero_"..hero_name
 
-	local unit = CreateUnitByName("npc_kingdom_hero_"..hero_name, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+	if not EconomyManager.spawned_heroes[hero_name] then
+		EconomyManager.spawned_heroes[hero_name] = CreateUnitByName(hero_name, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+	end
+
+	local unit = EconomyManager.spawned_heroes[hero_name]
+
+	if not unit:IsAlive() then
+		unit:SetRespawnPosition(spawn_loc)
+		unit:RespawnHero(false, false)
+	end
+
 	unit:SetControllableByPlayer(player_id, true)
-	unit:AddNewModifier(unit, nil, "modifier_kingdom_demon_hero_marker", {ability_name = "kingdom_buy_hero_"..hero_name})
+	unit:AddNewModifier(unit, nil, "modifier_kingdom_demon_hero_marker", {ability_name = hero_name})
 	unit:SetHullRadius(48)
 
 	-- Movement limit removal modifier
@@ -446,10 +484,78 @@ function EconomyManager:SpawnDemonHero(portal, hero_name)
 	event.playerid = player_id
 	event.playername = PlayerResource:GetPlayerName(player_id)
 	event.steamid = PlayerResource:GetSteamID(player_id)
-	event.unitname = "npc_kingdom_hero_"..hero_name
+	event.unitname = hero_name
 	event.heroname = Kingdom:GetDotaNameFromHeroName(event.unitname)
 
 	CustomGameEventManager:Send_ServerToAllClients("kingdom_hero_recruited", {event})
 
 	return unit
+end
+
+function EconomyManager:PlanBotTurn(player)
+	if MapManager.player_eliminated[player] then
+		return nil
+	end
+
+	local bot_aggro = Kingdom:GetBotAggro(player)
+	local player_id = Kingdom:GetPlayerID(player)
+	local bot_gold = PlayerResource:GetGold(player_id)
+
+	-- Random parameters for this turn
+	local spawn_delay = self.turn_duration * 0.5 * (bot_aggro + RandomInt(0, 25)) * 0.01
+	local turn_targets = math.ceil((bot_aggro + RandomInt(0, 25)) * 0.01 * bot_gold * 0.02)
+	local attack_delay = self.turn_duration * 0.5 / (1 + turn_targets)
+	local city_budget = math.floor(bot_gold / turn_targets)
+
+	local owned_cities = {}
+	for region = 1, MapManager:GetRegionCount() do
+		for city = 1, MapManager:GetRegionCityCount(region) do
+			if MapManager:GetCityOwner(region, city) == player then
+				table.insert(owned_cities, MapManager:GetCityByNumber(region, city))
+			end
+		end
+	end
+
+	local city_units = {}
+	city_units[1] = "_melee"
+	city_units[2] = "_ranged"
+	city_units[3] = "_cavalry"
+
+	for i = 1, turn_targets do
+		Timers:CreateTimer(spawn_delay, function()
+			local spawn_city = owned_cities[RandomInt(1, #owned_cities)]
+			local current_budget = city_budget
+			local city_race = MapManager:GetCityRace(spawn_city:GetRegion(), spawn_city:GetCity())
+			local next_unit = city_units[RandomInt(1, 3)]
+			local next_unit_cost = spawn_city:FindAbilityByName("kingdom_buy_"..city_race..next_unit):GetGoldCost(1)
+
+			while next_unit_cost <= current_budget do
+				spawn_city:FindAbilityByName("kingdom_buy_"..city_race..next_unit):OnSpellStart()
+				current_budget = current_budget - next_unit_cost
+				PlayerResource:SpendGold(player_id, next_unit_cost, DOTA_ModifyGold_PurchaseItem)
+
+				next_unit = city_units[RandomInt(1, 3)]
+				next_unit_cost = spawn_city:FindAbilityByName("kingdom_buy_"..city_race..next_unit):GetGoldCost(1)
+			end
+
+			Timers:CreateTimer(i * attack_delay, function()
+				local city_location = MapManager:GetCityCaptureZoneCenter(spawn_city:GetRegion(), spawn_city:GetCity())
+				local target_loc = city_location
+				local targets = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, 20000, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_CLOSEST, false)
+				for _, enemy in pairs(targets) do
+					if enemy:HasModifier("modifier_kingdom_city") and enemy:GetUnitName() ~= "npc_kingdom_city_demon" then
+						target_loc = MapManager:GetCityCaptureZoneCenter(enemy:GetRegion(), enemy:GetCity())
+						break
+					end
+				end
+
+				local allies = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, 300, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+				for _, ally in pairs(allies) do
+					if ally:HasModifier("modifier_kingdom_unit_movement") then
+						ally:MoveToPositionAggressive(target_loc)
+					end
+				end
+			end)
+		end)
+	end
 end

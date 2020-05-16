@@ -133,13 +133,33 @@ end
 
 function modifier_kingdom_unit_movement:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT
+		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT,
+		MODIFIER_EVENT_ON_DEATH
 	}
 	return funcs
 end
 
 function modifier_kingdom_unit_movement:GetModifierIgnoreMovespeedLimit()
 	return 1
+end
+
+function modifier_kingdom_unit_movement:OnDeath(keys)
+	if IsServer() then
+		if keys.attacker == self:GetParent() and not keys.attacker:IsHero() then
+			self:IncrementStackCount()
+			if self:GetStackCount() >= 3 then
+				if (not keys.attacker:HasModifier("modifier_elite_unit")) and (not keys.attacker:HasModifier("kingdom_capital_unit")) then
+					keys.attacker:AddAbility("kingdom_elite_unit"):SetLevel(1)
+					self:SetStackCount(0)
+				elseif keys.attacker:HasModifier("modifier_elite_unit") and (not keys.attacker:HasModifier("kingdom_capital_unit")) then
+					keys.attacker:AddAbility("kingdom_capital_unit"):SetLevel(1)
+					keys.attacker:RemoveAbility("kingdom_elite_unit")
+					keys.attacker:RemoveModifierByName("modifier_elite_unit")
+					self:SetStackCount(0)
+				end
+			end
+		end
+	end
 end
 
 
@@ -175,4 +195,3 @@ function modifier_kingdom_demon_spawn_leash:OnIntervalThink()
 		end
 	end
 end
-

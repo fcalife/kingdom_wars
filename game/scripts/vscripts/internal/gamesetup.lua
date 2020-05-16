@@ -36,9 +36,9 @@ function GameMode:_InitGameMode()
 	-- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 	GameRules:SetUseBaseGoldBountyOnHeroes(false)
 	-- What icon size should we use for our heroes?
-	GameRules:SetHeroMinimapIconScale(1)
+	GameRules:SetHeroMinimapIconScale(0.4)
 	-- What icon size should we use for creeps?
-	GameRules:SetCreepMinimapIconScale(1)
+	GameRules:SetCreepMinimapIconScale(1.0)
 	-- What icon size should we use for runes?
 	GameRules:SetRuneMinimapIconScale(1)
 	-- Should we enable first blood for the first kill in this game?
@@ -175,6 +175,14 @@ function GameMode:_CaptureGameMode()
 		local exp_table = {}
 		exp_table[1] = 0
 		exp_table[2] = 100
+		exp_table[3] = 200
+		exp_table[4] = 350
+		exp_table[5] = 500
+		exp_table[6] = 700
+		exp_table[7] = 950
+		exp_table[8] = 1250
+		exp_table[9] = 1600
+		exp_table[10] = 2000
 		mode:SetCustomXPRequiredToReachNextLevel(exp_table)
 
 		-- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
@@ -198,7 +206,7 @@ function GameMode:_CaptureGameMode()
 		mode:SetAnnouncerDisabled(true)
 
 		-- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe"). Use nil to allow players to pick their own hero.
-		local force_pick_hero = "npc_dota_hero_wisp"
+		local force_pick_hero = "npc_dota_hero_legion_commander"
 		if force_pick_hero ~= nil then
 			mode:SetCustomGameForceHero(force_pick_hero)
 		end

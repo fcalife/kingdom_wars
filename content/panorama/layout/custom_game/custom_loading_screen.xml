@@ -4,6 +4,10 @@
 	</styles>
 
 	<Panel class="loading_screen_root" hittest="false" >
-		<Image id="loading_screen_image_bg" src="file://{images}/custom_game/loading_screen/loading_screen_bg.png" />
+		<Image id="loading_screen_bg" src="file://{images}/custom_game/loading_screen/loading_screen_bg.png" />
+		<Image id="loading_screen_sword" src="file://{images}/custom_game/loading_screen/logo_sword.png" />
+		<Image id="loading_screen_axe" src="file://{images}/custom_game/loading_screen/logo_axe.png" />
+		<Image id="loading_screen_shield" src="file://{images}/custom_game/loading_screen/logo_shield.png" />
+		<Image id="loading_screen_label" src="file://{images}/custom_game/loading_screen/logo_label.png" />
 	</Panel>
 </root>

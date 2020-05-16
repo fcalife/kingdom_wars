@@ -98,10 +98,41 @@ end
 function GameMode:OnPlayerPickHero(keys)
 	print("A player picked a hero")
 
-	local hero_class = keys.hero
+	local hero_name = keys.hero
 	local hero_entity = EntIndexToHScript(keys.heroindex)
-	local player = EntIndexToHScript(keys.player)
-	local player_id = player:GetPlayerID()
+	--local player = EntIndexToHScript(keys.player)
+	--local player_id = player:GetPlayerID()
+	local player_color = PLAYER_COLOR_LIST[hero_entity:GetTeam()]
+
+	if hero_name == "npc_dota_hero_legion_commander" then
+		hero_entity:AddNewModifier(hero_entity, nil, "modifier_kingdom_commander", {})
+		hero_entity:AddExperience(2000, DOTA_ModifyXP_HeroKill, false, true)
+		hero_entity:SetAbilityPoints(0)
+	else
+		hero_entity:AddNewModifier(hero_entity, nil, "modifier_kingdom_hero", {})
+	end
+
+	if hero_name == "npc_dota_hero_legion_commander" then
+		hero_entity:SetRenderColor(player_color.x, player_color.y, player_color.z)
+	end
+
+	local children = hero_entity:GetChildren()
+	for _, child in pairs(children) do
+		if child:GetClassname() == "dota_item_wearable" then
+			local model_name = child:GetModelName()
+			child:Destroy()
+		end
+	end
+
+	if Kingdom.hero_cosmetics[hero_name] then
+		for _, model in pairs(Kingdom.hero_cosmetics[hero_name]) do
+			local cosmetic = SpawnEntityFromTableSynchronous("prop_dynamic", {model = model})
+			cosmetic:FollowEntity(hero_entity, true)
+			if hero_name == "npc_dota_hero_legion_commander" then
+				cosmetic:SetRenderColor(player_color.x, player_color.y, player_color.z)
+			end
+		end
+	end
 end
 
 -- A player killed another player in a multi-team context

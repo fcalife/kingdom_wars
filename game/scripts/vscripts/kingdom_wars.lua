@@ -23,7 +23,6 @@ end
 
 function GameMode:OnHeroInGame(hero)
 	print(hero:GetUnitName() .. " spawned in game for the first time.")
-	hero:AddNewModifier(hero, nil, "modifier_kingdom_hero", {})
 end
 
 function GameMode:OnGameInProgress()
@@ -143,6 +142,8 @@ function GameMode:OrderFilter(keys)
 	-- keys.issuer_player_id_const	 ==> 	0
 
 	local order_type = keys.order_type
+	
+	-- Rally point logic
 	if keys.entindex_ability then
 		local ability = EntIndexToHScript(keys.entindex_ability)
 		if ability and ability.GetAbilityName then
@@ -180,6 +181,17 @@ function GameMode:OrderFilter(keys)
 		end
 	end
 
+	-- Voicelines
+	if keys.units["0"] and keys.order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION then
+		local unit = EntIndexToHScript(keys.units["0"])
+		Voices:PlayLine(VOICE_EVENT_MOVE_UNIT, unit)
+	end
+
+	if keys.units["0"] and (keys.order_type == DOTA_UNIT_ORDER_ATTACK_MOVE or keys.order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or keys.order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET) then
+		local unit = EntIndexToHScript(keys.units["0"])
+		Voices:PlayLine(VOICE_EVENT_ATTACK_UNIT, unit)
+	end
+
 	return true
 end
 
@@ -195,8 +207,9 @@ end
 
 function GameMode:OnGameStateGameSetup()
 	print("Game state is now: game setup")
+
 	if IsInToolsMode() then
-		--SendToServerConsole("dota_create_fake_clients 8")
+		--SendToServerConsole("dota_bot_populate")
 	end
 end
 
@@ -210,6 +223,7 @@ end
 
 function GameMode:OnGameStateHeroSelect()
 	print("Game state is now: hero selection")
+
 	Kingdom:Init()
 end
 

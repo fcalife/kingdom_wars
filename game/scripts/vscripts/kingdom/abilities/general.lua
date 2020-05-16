@@ -224,11 +224,17 @@ function modifier_capital_unit:OnCreated()
 	if IsServer() then
 		local parent = self:GetParent()
 		local base_health = parent:GetMaxHealth()
+		local damage = 0.5 * (parent:GetBaseDamageMax() + parent:GetBaseDamageMin())
+
+		if parent:HasModifier("modifier_elite_unit") then
+			base_health = base_health / 1.2
+			damage = damage / 1.2
+		end
+
 		parent:SetBaseMaxHealth(base_health * 1.4)
 		parent:SetMaxHealth(base_health * 1.4)
 		parent:SetHealth(base_health * 1.4)
 
-		local damage = 0.5 * (parent:GetBaseDamageMax() + parent:GetBaseDamageMin())
 		parent:SetBaseDamageMax(parent:GetBaseDamageMax() + 0.4 * damage)
 		parent:SetBaseDamageMin(parent:GetBaseDamageMin() + 0.4 * damage)
 	end
@@ -253,6 +259,41 @@ end
 
 function modifier_capital_unit:GetModifierModelScale()
 	return 18
+end
+
+
+
+
+
+kingdom_upgrade_hero = class({})
+
+function kingdom_upgrade_hero:GetIntrinsicModifierName()
+	return "modifier_upgrade_hero"
+end
+
+LinkLuaModifier("modifier_upgrade_hero", "kingdom/abilities/general", LUA_MODIFIER_MOTION_NONE)
+
+modifier_upgrade_hero = class({})
+
+function modifier_upgrade_hero:IsHidden() return true end
+function modifier_upgrade_hero:IsDebuff() return false end
+function modifier_upgrade_hero:IsPurgable() return false end
+function modifier_upgrade_hero:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
+
+function modifier_upgrade_hero:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
+		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE
+	}
+	return funcs
+end
+
+function modifier_upgrade_hero:GetModifierDamageOutgoing_Percentage()
+	return self:GetAbility():GetSpecialValueFor("bonus_stats")
+end
+
+function modifier_upgrade_hero:GetModifierExtraHealthPercentage()
+	return self:GetAbility():GetSpecialValueFor("bonus_stats")
 end
 
 

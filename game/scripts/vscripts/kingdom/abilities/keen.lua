@@ -425,6 +425,7 @@ function modifier_keen_cavalry_ability_effect:DeclareFunctions()
 		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
 		MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND
 	}
@@ -441,6 +442,10 @@ end
 
 function modifier_keen_cavalry_ability_effect:GetModifierMoveSpeedBonus_Percentage()
 	return self:GetAbility():GetSpecialValueFor("bonus_ms")
+end
+
+function modifier_keen_cavalry_ability_effect:GetModifierConstantHealthRegen()
+	return self:GetAbility():GetSpecialValueFor("bonus_regen")
 end
 
 function modifier_keen_cavalry_ability_effect:GetActivityTranslationModifiers()
@@ -530,7 +535,7 @@ function modifier_keen_bounty_hunter_ability_effect:OnDeath(keys)
 			end
 
 			PlayerResource:ModifyGold(player_id, gold, true, DOTA_ModifyGold_HeroKill)
-			SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD, caster, gold, nil)
+			SendOverheadEventMessage(PlayerResource:GetPlayer(player_id), OVERHEAD_ALERT_GOLD, caster, gold, nil)
 		end
 	end
 end

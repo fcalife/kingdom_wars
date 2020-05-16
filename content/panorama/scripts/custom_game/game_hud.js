@@ -32,6 +32,7 @@ income_details_half[8] = false;
 	CustomNetTables.SubscribeNetTableListener("player_info", UpdateIncomeScoreboard);
 	CustomNetTables.SubscribeNetTableListener("region_info", UpdateIncomeDetails);
 
+	GameEvents.Subscribe("kingdom_select_all_units", SelectAllUnits);
 	GameEvents.Subscribe("kingdom_minimap_ping", MinimapPing);
 	GameEvents.Subscribe("kingdom_turn_ended", PopIncomeDetail);
 
@@ -42,6 +43,11 @@ income_details_half[8] = false;
 	GameEvents.Subscribe("kingdom_new_region_contender", ShowMessageNewRegionContender);
 	GameEvents.Subscribe("kingdom_lost_region_sovereign", ShowMessageLostRegionSovereign);
 	GameEvents.Subscribe("kingdom_lost_region_contender", ShowMessageLostRegionContender);
+
+	GameEvents.Subscribe("kingdom_player_eliminated", ShowMessageEliminated);
+	GameEvents.Subscribe("kingdom_player_near_win", ShowMessageNearWin);
+	GameEvents.Subscribe("kingdom_player_very_near_win", ShowMessageVeryNearWin);
+	GameEvents.Subscribe("kingdom_announce_discord", ShowDiscordMessage);
 
 	GameEvents.Subscribe("kingdom_capital_choice_phase", ShowCapitalWarning);
 	GameEvents.Subscribe("kingdom_capital_chosen", ShowMessageCapitalChosen);
@@ -57,7 +63,7 @@ function InitializeUI() {
 		if(Players.IsValidPlayerID(id)) {
 			var player_steam_id = CustomNetTables.GetTableValue("player_info", "player_steam_id_" + id).player_steam_id
 			$('#income_player_avatar_player_' + current_row).steamid = player_steam_id
-			$('#income_player_label_player_' + current_row).steamid = player_steam_id
+			//$('#income_player_label_player_' + current_row).steamid = player_steam_id
 			$('#income_player_container_' + current_row).style["background-color"] = ColorToHexCode(Players.GetPlayerColor(id)) + "88";
 			current_row = current_row + 1;
 		} else {
@@ -145,6 +151,7 @@ function UpdateIncomeScoreboard(keys) {
 			var player_income = Math.floor("+" + CustomNetTables.GetTableValue("player_info", "player_" + id).income)
 			$('#income_player_label_income_' + current_row).text = "+" + player_income
 			$('#income_player_label_cities_' + current_row).text = CustomNetTables.GetTableValue("player_info", "player_cities_" + id).city_amount
+			$('#income_player_label_player_' + current_row).text = CustomNetTables.GetTableValue("player_info", "player_name_" + id).player_name
 			current_row = current_row + 1;
 		}
 	}
@@ -220,6 +227,21 @@ function UpdateIncomeDetails(keys) {
 
 				PopIncomeDetail();
 			}
+		}
+	}
+}
+
+function SelectAllUnits() {
+	var all_entities = Entities.GetAllEntities()
+	var local_team = Players.GetTeam(Game.GetLocalPlayerID())
+	var started_selection = false
+
+	GameUI.SelectUnit(null, false)
+
+	for (var entity_index in all_entities) {
+		if (Entities.GetTeamNumber(all_entities[entity_index]) == local_team && !Entities.IsInvulnerable(all_entities[entity_index])) {
+			GameUI.SelectUnit(all_entities[entity_index], started_selection)
+			started_selection = true
 		}
 	}
 }
@@ -553,6 +575,128 @@ function ShowMessageLostRegionContender(keys) {
 	message_body.text = data.playername + $.Localize("#region_lost_contender") + $.Localize(data.regionname) + "!"
 	message_background.style["background-color"] = ColorToHexCode(Players.GetPlayerColor(data.playerid)) + "70";
 	message_player_avatar.AddClass("top_message_player_avatar")
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(6, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowMessageEliminated(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_player_avatar = $.CreatePanel("DOTAAvatarImage", message_container, "message_player_avatar");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	var data = keys["1"]
+
+	message_player_avatar.steamid = data.steamid
+	message_body.text = data.playername + $.Localize("#player_eliminated") + data.position + $.Localize("#endgame_position_post");
+	message_background.style["background-color"] = ColorToHexCode(Players.GetPlayerColor(data.playerid)) + "70";
+	message_player_avatar.AddClass("top_message_player_avatar")
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(6, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowMessageNearWin(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_player_avatar = $.CreatePanel("DOTAAvatarImage", message_container, "message_player_avatar");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	var data = keys["1"]
+
+	message_player_avatar.steamid = data.steamid
+	message_body.text = data.playername + $.Localize("#player_near_win");
+	message_background.style["background-color"] = ColorToHexCode(Players.GetPlayerColor(data.playerid)) + "70";
+	message_player_avatar.AddClass("top_message_player_avatar")
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(6, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowMessageVeryNearWin(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	var data = keys["1"]
+
+	message_body.text = data.playername + $.Localize("#player_very_near_win");
+	message_background.style["background-color"] = ColorToHexCode(Players.GetPlayerColor(data.playerid)) + "70";
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(6, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowDiscordMessage(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	var data = keys["1"]
+
+	message_body.text = $.Localize("#visit_discord");
+	message_background.style["background-color"] = "#0070FF70";
 
 	top_message_count = top_message_count + 1
 	UpdateTopMessageFeedBorder()

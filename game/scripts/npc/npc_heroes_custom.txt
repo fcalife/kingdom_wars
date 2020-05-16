@@ -2,16 +2,16 @@
 {
 	"Version"		"1"
 
-	"npc_dota_hero_wisp"
+	"npc_dota_hero_legion_commander"
 	{
-		"ModelScale"		"1.0"
+		"ModelScale"		"1.5"
 
-		"Ability1"					"kingdom_upgrade_to_capital"
-		"Ability2"					""
-		"Ability3"					""
-		"Ability4"					""
-		"Ability5"					""
-		"Ability6"					""
+		"Ability1"					"kingdom_select_all_units"
+		"Ability2"					"kingdom_global_rally_point"
+		"Ability3"					"kingdom_ping_all_castles"
+		"Ability4"					"generic_hidden"
+		"Ability5"					"generic_hidden"
+		"Ability6"					"kingdom_upgrade_to_capital"
 		"Ability7"					""
 		"Ability8"					""
 		"Ability9"					""
