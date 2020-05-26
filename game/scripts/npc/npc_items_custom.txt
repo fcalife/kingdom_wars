@@ -1,3 +1,444 @@
 "DOTAAbilities"
 {
+	"item_dagger"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_blink"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_as"				"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_damage"			"300"
+			}
+		}
+	}
+
+	"item_hammer"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_mithril_hammer"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"proc_chance"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"1.0"
+			}
+		}
+	}
+
+	"item_god_creator"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_rapier"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_dmg"				"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"kill_restore"			"25"
+			}
+		}
+	}
+
+	"item_phantom_cape"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_glimmer_cape"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_evasion"			"40"
+			}
+		}
+	}
+
+	"item_tarrasque_hide"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_heart"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reflect"		"100"
+			}
+		}
+	}
+
+	"item_dead_staff"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_staff_of_wizardry"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"debuff_duration"		"10"
+			}
+		}
+	}
+
+	"item_eagle_boots"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_force_boots"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_ms"				"300"
+			}
+		}
+	}
+
+	"item_winter"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_skadi"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"proc_chance"			"75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"proc_duration"			"1.5"
+			}
+		}
+	}
+
+	"item_horn"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_eaglesong"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range_increase"		"100"
+			}
+		}
+	}
+
+	"item_pouch"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_hand_of_midas"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_income"			"25"
+			}
+		}
+	}
+
+	"item_ankh"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_aegis"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+		"AbilityCooldown"				"360"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+	}
+
+	"item_dark_orb"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_orb_of_venom"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"1200"
+		"AbilityCooldown"				"180"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_threshold"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1200"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"70"
+			}
+		}
+	}
+
+	"item_light_orb"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_ultimate_orb"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"1200"
+		"AbilityCooldown"				"180"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_threshold"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1200"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"100"
+			}
+		}
+	}
+
+	"item_cleaver"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_ultimate_orb"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_damage"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_starting_width"	"175"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_ending_width"	"250"
+			}			
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_distance"		"300"
+			}
+		}
+	}
+
+	"item_shadow_spear"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_dragon_lance"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"debuff_duration"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"clone_duration"		"10"
+			}			
+		}
+	}
+
+	"item_battle_suit"
+	{
+		"BaseClass"						"item_lua"
+		"AbilityTextureName" 			"item_assault"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"					"kingdom/items/items.lua"
+		"AbilityCastRange"				"0"
+
+		"ItemCost"						"0"
+		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+		"ItemDroppable"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_regen"			"3"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_slow"			"-30"
+			}
+		}
+	}
 }

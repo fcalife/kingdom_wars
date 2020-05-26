@@ -83,6 +83,10 @@ function MapManager:Init()
 	self.player_region_count = {}
 	self.player_city_count = {}
 	self.player_city_count_by_region = {}
+	self.player_eliminated = {}
+	self.is_near_win = {}
+	self.is_very_near_win = {}
+	self.players_remaining = Kingdom:GetPlayerCount()
 
 	for player_number = 1, Kingdom:GetPlayerCount() do
 		self.player_region_count[player_number] = 0
@@ -90,6 +94,9 @@ function MapManager:Init()
 		self.player_city_count_by_region[player_number] = {}
 		self.player_sovereign_regions[player_number] = {}
 		self.player_contender_regions[player_number] = {}
+		self.player_eliminated[player_number] = false
+		self.is_near_win[player_number] = false
+		self.is_very_near_win[player_number] = false
 		for region = 1, self:GetRegionCount() do
 			self.player_city_count_by_region[player_number][region] = 0
 			self.player_sovereign_regions[player_number][region] = false
@@ -515,6 +522,19 @@ function MapManager:UpdatePlayerCityCounts()
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		CustomNetTables:SetTableValue("player_info", "player_cities_"..player_id, {city_amount = self.player_city_count[player]})
+
+		-- If any players were eliminated, send a notification
+		if self.player_city_count[player] <= 0 and (not self.player_eliminated[player]) and EconomyManager.turn_count and EconomyManager.turn_count > 0 then
+			local event = {}
+			event.playerid = player_id
+			event.playername = PlayerResource:GetPlayerName(player_id)
+			event.steamid = PlayerResource:GetSteamID(player_id)
+			event.position = self.players_remaining
+			CustomGameEventManager:Send_ServerToAllClients("kingdom_player_eliminated", {event})
+
+			self.player_eliminated[player] = true
+			self.players_remaining = self.players_remaining - 1
+		end
 	end
 
 	-- Check for overtime win
@@ -524,10 +544,40 @@ function MapManager:UpdatePlayerCityCounts()
 	-- Check for domination win
 	else
 		for player = 1, Kingdom:GetPlayerCount() do
+			local player_id = Kingdom:GetPlayerID(player)
+
 			if self.player_city_count[player] >= 48 then
 				if not IsInToolsMode() then
 					Kingdom:SetWinner(player)
 				end
+			end
+
+			if self.player_city_count[player] >= 47 and (not self.is_very_near_win[player]) then
+				self.is_very_near_win[player] = true
+
+				local event = {}
+				event.playerid = player_id
+				event.playername = PlayerResource:GetPlayerName(player_id)
+				event.steamid = PlayerResource:GetSteamID(player_id)
+				CustomGameEventManager:Send_ServerToAllClients("kingdom_player_very_near_win", {event})
+			end
+
+			if self.player_city_count[player] < 47 then
+				self.is_very_near_win[player] = false
+			end
+
+			if self.player_city_count[player] >= 43 and (not self.is_near_win[player]) then
+				self.is_near_win[player] = true
+
+				local event = {}
+				event.playerid = player_id
+				event.playername = PlayerResource:GetPlayerName(player_id)
+				event.steamid = PlayerResource:GetSteamID(player_id)
+				CustomGameEventManager:Send_ServerToAllClients("kingdom_player_near_win", {event})
+			end
+
+			if self.player_city_count[player] < 43 then
+				self.is_near_win[player] = false
 			end
 		end
 	end

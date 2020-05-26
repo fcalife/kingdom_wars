@@ -38,7 +38,7 @@
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
 
-		"BountyXP"					"0"
+		"BountyXP"					"8"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 
@@ -107,7 +107,7 @@
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
 
-		"BountyXP"					"0"
+		"BountyXP"					"12"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 
@@ -175,7 +175,7 @@
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
 
-		"BountyXP"					"0"
+		"BountyXP"					"16"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 
@@ -216,15 +216,16 @@
 	"npc_kingdom_hero_paladin"
 	{
 		"Model"						"models/heroes/omniknight/omniknight.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Omniknight"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.2"
 
 		"Ability1"					"kingdom_human_paladin_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"290"
@@ -250,7 +251,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -259,40 +260,28 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"13"	}
-				"Wearable2"	{	"ItemDef"	"42"	}
-				"Wearable3"	{	"ItemDef"	"43"	}
-				"Wearable4"	{	"ItemDef"	"44"	}
-				"Wearable5"	{	"ItemDef"	"45"	}
-				"Wearable6"	{	"ItemDef"	"46"	}
-				"Wearable7"	{	"ItemDef"	"562"	}
-			}
-		}
+		"DisplayAdditionalHeroes"	"1"
 	}
 
 	"npc_kingdom_hero_mage"
 	{
 		"Model"						"models/heroes/crystal_maiden/crystal_maiden.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_CrystalMaiden"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.35"
 
 		"Ability1"					"kingdom_human_mage_ability"
-		"Ability2"					"kingdom_magic_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_magic_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"290"
@@ -318,7 +307,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -327,39 +316,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"38"	}
-				"Wearable2"	{	"ItemDef"	"39"	}
-				"Wearable3"	{	"ItemDef"	"40"	}
-				"Wearable4"	{	"ItemDef"	"41"	}
-				"Wearable5"	{	"ItemDef"	"311"	}
-				"Wearable6"	{	"ItemDef"	"502"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_commander"
 	{
-		"Model"						"models/heroes/legion_commander/legion_commander.vmdl"
-		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Hero_LegionCommander"
-		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+		"Model"						"models/heroes/mars/mars.vmdl"
+		"BaseClass"					"npc_dota_hero"
+		"SoundSet"					"Hero_Mars"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_mars.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.5"
 
 		"Ability1"					"kingdom_human_commander_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_heavy_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"290"
@@ -385,7 +362,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -394,25 +371,12 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"431"	}
-				"Wearable2"	{	"ItemDef"	"432"	}
-				"Wearable3"	{	"ItemDef"	"433"	}
-				"Wearable4"	{	"ItemDef"	"434"	}
-				"Wearable5"	{	"ItemDef"	"435"	}
-				"Wearable6"	{	"ItemDef"	"662"	}
-			}
-		}
 	}
 
 
@@ -456,7 +420,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"8"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -524,7 +488,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"12"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -591,7 +555,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"16"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -624,15 +588,16 @@
 	"npc_kingdom_hero_ranger"
 	{
 		"Model"						"models/heroes/drow/drow_base.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_DrowRanger"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.5"
 
 		"Ability1"					"kingdom_elf_ranger_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"260"
@@ -658,7 +623,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -667,40 +632,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"75"	}
-				"Wearable2"	{	"ItemDef"	"76"	}
-				"Wearable3"	{	"ItemDef"	"77"	}
-				"Wearable4"	{	"ItemDef"	"78"	}
-				"Wearable5"	{	"ItemDef"	"79"	}
-				"Wearable6"	{	"ItemDef"	"80"	}
-				"Wearable7"	{	"ItemDef"	"267"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_druid"
 	{
 		"Model"						"models/heroes/furion/furion.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Furion"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.15"
 
 		"Ability1"					"kingdom_elf_druid_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"260"
@@ -726,7 +678,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -735,39 +687,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"29"	}
-				"Wearable2"	{	"ItemDef"	"30"	}
-				"Wearable3"	{	"ItemDef"	"31"	}
-				"Wearable4"	{	"ItemDef"	"32"	}
-				"Wearable5"	{	"ItemDef"	"33"	}
-				"Wearable6"	{	"ItemDef"	"49"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_assassin"
 	{
 		"Model"						"models/heroes/phantom_assassin/phantom_assassin.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_PhantomAssassin"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.3"
 
 		"Ability1"					"kingdom_elf_assassin_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"290"
@@ -793,7 +733,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -802,24 +742,12 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"137"	}
-				"Wearable2"	{	"ItemDef"	"138"	}
-				"Wearable3"	{	"ItemDef"	"139"	}
-				"Wearable4"	{	"ItemDef"	"140"	}
-				"Wearable5"	{	"ItemDef"	"141"	}
-			}
-		}
 	}
 
 
@@ -863,7 +791,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"8"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -929,7 +857,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"12"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -998,7 +926,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"16"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1031,15 +959,16 @@
 	"npc_kingdom_hero_necromancer"
 	{
 		"Model"						"models/heroes/necrolyte/necrolyte.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Necrolyte"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.25"
 
 		"Ability1"					"kingdom_undead_necromancer_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"260"
@@ -1065,7 +994,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1074,39 +1003,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"211"	}
-				"Wearable2"	{	"ItemDef"	"212"	}
-				"Wearable3"	{	"ItemDef"	"213"	}
-				"Wearable4"	{	"ItemDef"	"214"	}
-				"Wearable5"	{	"ItemDef"	"508"	}
-				"Wearable6"	{	"ItemDef"	"659"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_wraith_king"
 	{
 		"Model"						"models/heroes/wraith_king/wraith_king.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_SkeletonKing"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.35"
 
 		"Ability1"					"kingdom_undead_wraith_king_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_heavy_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"290"
@@ -1132,7 +1049,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1141,40 +1058,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"148"	}
-				"Wearable2"	{	"ItemDef"	"149"	}
-				"Wearable3"	{	"ItemDef"	"150"	}
-				"Wearable4"	{	"ItemDef"	"151"	}
-				"Wearable5"	{	"ItemDef"	"152"	}
-				"Wearable6"	{	"ItemDef"	"483"	}
-				"Wearable7"	{	"ItemDef"	"500"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_butcher"
 	{
 		"Model"						"models/heroes/pudge/pudge.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Pudge"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.45"
 
 		"Ability1"					"kingdom_undead_butcher_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_no_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"290"
@@ -1200,7 +1104,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1209,27 +1113,12 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"47"	}
-				"Wearable2"	{	"ItemDef"	"258"	}
-				"Wearable3"	{	"ItemDef"	"259"	}
-				"Wearable4"	{	"ItemDef"	"260"	}
-				"Wearable5"	{	"ItemDef"	"261"	}
-				"Wearable6"	{	"ItemDef"	"262"	}
-				"Wearable7"	{	"ItemDef"	"391"	}
-				"Wearable8"	{	"ItemDef"	"470"	}
-			}
-		}
 	}
 
 
@@ -1273,7 +1162,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"8"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1343,7 +1232,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"12"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1411,7 +1300,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"16"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1447,15 +1336,16 @@
 	"npc_kingdom_hero_bounty_hunter"
 	{
 		"Model"						"models/heroes/bounty_hunter/bounty_hunter.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_BountyHunter"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.45"
 
 		"Ability1"					"kingdom_keen_bounty_hunter_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"290"
@@ -1481,7 +1371,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1490,40 +1380,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"50"	}
-				"Wearable2"	{	"ItemDef"	"51"	}
-				"Wearable3"	{	"ItemDef"	"52"	}
-				"Wearable4"	{	"ItemDef"	"53"	}
-				"Wearable5"	{	"ItemDef"	"54"	}
-				"Wearable6"	{	"ItemDef"	"55"	}
-				"Wearable7"	{	"ItemDef"	"564"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_tinker"
 	{
 		"Model"						"models/heroes/tinker/tinker.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Tinker"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.25"
 
 		"Ability1"					"kingdom_keen_tinker_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_heavy_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"260"
@@ -1549,7 +1426,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1558,41 +1435,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"367"	}
-				"Wearable2"	{	"ItemDef"	"463"	}
-				"Wearable3"	{	"ItemDef"	"464"	}
-				"Wearable4"	{	"ItemDef"	"465"	}
-				"Wearable5"	{	"ItemDef"	"466"	}
-				"Wearable6"	{	"ItemDef"	"467"	}
-				"Wearable7"	{	"ItemDef"	"515"	}
-				"Wearable8"	{	"ItemDef"	"618"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_engineer"
 	{
 		"Model"						"models/heroes/gyro/gyro.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Gyrocopter"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.25"
 
 		"Ability1"					"kingdom_keen_engineer_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"320"
@@ -1618,7 +1481,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1627,26 +1490,12 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"126"	}
-				"Wearable2"	{	"ItemDef"	"131"	}
-				"Wearable3"	{	"ItemDef"	"176"	}
-				"Wearable4"	{	"ItemDef"	"177"	}
-				"Wearable5"	{	"ItemDef"	"178"	}
-				"Wearable6"	{	"ItemDef"	"179"	}
-				"Wearable7"	{	"ItemDef"	"527"	}
-			}
-		}
 	}
 
 
@@ -1690,7 +1539,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"8"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1757,7 +1606,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"12"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1824,7 +1673,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"16"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1855,15 +1704,16 @@
 	"npc_kingdom_hero_incursor"
 	{
 		"Model"						"models/heroes/disruptor/disruptor.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Disruptor"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.15"
 
 		"Ability1"					"kingdom_orc_incursor_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"350"
@@ -1889,7 +1739,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1898,40 +1748,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"142"	}
-				"Wearable2"	{	"ItemDef"	"143"	}
-				"Wearable3"	{	"ItemDef"	"144"	}
-				"Wearable4"	{	"ItemDef"	"145"	}
-				"Wearable5"	{	"ItemDef"	"146"	}
-				"Wearable6"	{	"ItemDef"	"147"	}
-				"Wearable7"	{	"ItemDef"	"525"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_warlord"
 	{
 		"Model"						"models/heroes/elder_titan/elder_titan.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_ElderTitan"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.15"
 
 		"Ability1"					"kingdom_orc_warlord_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_heavy_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"380"
@@ -1957,7 +1794,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -1966,38 +1803,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"426"	}
-				"Wearable2"	{	"ItemDef"	"427"	}
-				"Wearable3"	{	"ItemDef"	"428"	}
-				"Wearable4"	{	"ItemDef"	"429"	}
-				"Wearable5"	{	"ItemDef"	"430"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_blademaster"
 	{
 		"Model"						"models/heroes/juggernaut/juggernaut.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Juggernaut"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.5"
 
 		"Ability1"					"kingdom_orc_blademaster_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"350"
@@ -2023,7 +1849,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"100"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2032,24 +1858,12 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"6"		}
-				"Wearable2"	{	"ItemDef"	"7"		}
-				"Wearable3"	{	"ItemDef"	"8"		}
-				"Wearable4"	{	"ItemDef"	"9"		}
-				"Wearable5"	{	"ItemDef"	"62"	}
-			}
-		}
 	}
 
 
@@ -2093,7 +1907,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2160,7 +1974,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"15"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2227,7 +2041,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"20"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2259,15 +2073,16 @@
 	"npc_kingdom_hero_nevermore"
 	{
 		"Model"						"models/heroes/shadow_fiend/shadow_fiend.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Nevermore"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.3"
 
 		"Ability1"					"kingdom_demon_nevermore_ability"
-		"Ability2"					"kingdom_piercing_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_piercing_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"410"
@@ -2293,7 +2108,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"150"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2302,37 +2117,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"387"	}
-				"Wearable2"	{	"ItemDef"	"486"	}
-				"Wearable3"	{	"ItemDef"	"488"	}
-				"Wearable4"	{	"ItemDef"	"509"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_duchess"
 	{
 		"Model"						"models/heroes/queenofpain/queenofpain.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Queenofpain"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.45"
 
 		"Ability1"					"kingdom_demon_duchess_ability"
-		"Ability2"					"kingdom_magic_attack"
-		"Ability3"					"kingdom_light_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_magic_attack"
+		"Ability4"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"365"
@@ -2358,7 +2163,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"150"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2367,37 +2172,27 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"26"	}
-				"Wearable2"	{	"ItemDef"	"82"	}
-				"Wearable3"	{	"ItemDef"	"83"	}
-				"Wearable4"	{	"ItemDef"	"84"	}
-			}
-		}
 	}
 
 	"npc_kingdom_hero_doom"
 	{
 		"Model"						"models/heroes/doom/doom.vmdl"
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_hero"
 		"SoundSet"					"Hero_Doombringer"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				"1.2"
 
 		"Ability1"					"kingdom_demon_doom_ability"
-		"Ability2"					"kingdom_normal_attack"
-		"Ability3"					"kingdom_heavy_armor"
+		"Ability2"					"kingdom_upgrade_hero"
+		"Ability3"					"kingdom_normal_attack"
+		"Ability4"					"kingdom_heavy_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"470"
@@ -2423,7 +2218,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
 		"RingRadius"				"100"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"150"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2432,26 +2227,12 @@
 		"StatusManaRegen"			"0"
 		"VisionDaytimeRange"		"1200"
 		"VisionNighttimeRange"		"800"
-		"HasInventory"				"0"
+		"HasInventory"				"1"
 		"TeamName"					"DOTA_TEAM_NEUTRALS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"	{	"ItemDef"	"232"	}
-				"Wearable2"	{	"ItemDef"	"233"	}
-				"Wearable3"	{	"ItemDef"	"234"	}
-				"Wearable4"	{	"ItemDef"	"235"	}
-				"Wearable5"	{	"ItemDef"	"236"	}
-				"Wearable6"	{	"ItemDef"	"237"	}
-				"Wearable7"	{	"ItemDef"	"238"	}
-			}
-		}
 	}
 
 	//=================================================================================
@@ -2494,7 +2275,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2560,7 +2341,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2628,7 +2409,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2694,7 +2475,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2761,7 +2542,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2828,7 +2609,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2893,7 +2674,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"
@@ -2959,7 +2740,7 @@
 		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		"RingRadius"				"32"
 		"HealthBarOffset"			"200"
-		"BountyXP"					"0"
+		"BountyXP"					"10"
 		"BountyGoldMin"				"0"
 		"BountyGoldMax"				"0"
 		"MovementTurnRate"			"1.0"

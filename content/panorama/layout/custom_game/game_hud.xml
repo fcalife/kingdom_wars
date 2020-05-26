@@ -42,7 +42,7 @@
 			<Panel id="income_player_container_1" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_1" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_1" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_1" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_1" class="income_player_cities_label" text="8"/>
@@ -57,7 +57,7 @@
 			<Panel id="income_player_container_2" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_2" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_2" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_2" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_2" class="income_player_cities_label" text="8"/>
@@ -72,7 +72,7 @@
 			<Panel id="income_player_container_3" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_3" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_3" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_3" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_3" class="income_player_cities_label" text="8"/>
@@ -87,7 +87,7 @@
 			<Panel id="income_player_container_4" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_4" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_4" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_4" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_4" class="income_player_cities_label" text="8"/>
@@ -102,7 +102,7 @@
 			<Panel id="income_player_container_5" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_5" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_5" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_5" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_5" class="income_player_cities_label" text="8"/>
@@ -117,7 +117,7 @@
 			<Panel id="income_player_container_6" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_6" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_6" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_6" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_6" class="income_player_cities_label" text="8"/>
@@ -132,7 +132,7 @@
 			<Panel id="income_player_container_7" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_7" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_7" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_7" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_7" class="income_player_cities_label" text="8"/>
@@ -147,7 +147,7 @@
 			<Panel id="income_player_container_8" class="income_player_container">
 				<DOTAAvatarImage id="income_player_avatar_player_8" class="income_player_player_avatar" steamid="local" />
 				<Panel class="income_player_container_player">
-					<DOTAUserName id="income_player_label_player_8" class="income_player_player_label" steamid="local" />
+					<Label id="income_player_label_player_8" class="income_player_player_label" text="" />
 				</Panel>
 				<Panel class="income_player_container_cities">
 					<Label id="income_player_label_cities_8" class="income_player_cities_label" text="8"/>
