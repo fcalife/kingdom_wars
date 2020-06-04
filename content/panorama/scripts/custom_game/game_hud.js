@@ -44,6 +44,9 @@ income_details_half[8] = false;
 	GameEvents.Subscribe("kingdom_lost_region_sovereign", ShowMessageLostRegionSovereign);
 	GameEvents.Subscribe("kingdom_lost_region_contender", ShowMessageLostRegionContender);
 
+	GameEvents.Subscribe("kingdom_announce_item_warning", ShowItemWarning);
+	GameEvents.Subscribe("kingdom_announce_item_drop", ShowItemDrop);
+
 	GameEvents.Subscribe("kingdom_player_eliminated", ShowMessageEliminated);
 	GameEvents.Subscribe("kingdom_player_near_win", ShowMessageNearWin);
 	GameEvents.Subscribe("kingdom_player_very_near_win", ShowMessageVeryNearWin);
@@ -697,6 +700,58 @@ function ShowDiscordMessage(keys) {
 
 	message_body.text = $.Localize("#visit_discord");
 	message_background.style["background-color"] = "#0070FF70";
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(6, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowItemWarning(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	message_body.text = $.Localize("#item_drop_warning") + $.Localize("#region_" + keys.region) + "!";
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(44, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowItemDrop(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	message_body.text = $.Localize("#item_drop_arrive") + $.Localize("#region_" + keys.region) + "!";
 
 	top_message_count = top_message_count + 1
 	UpdateTopMessageFeedBorder()

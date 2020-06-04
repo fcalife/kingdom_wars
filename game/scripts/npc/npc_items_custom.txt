@@ -217,7 +217,7 @@
 	"item_horn"
 	{
 		"BaseClass"						"item_lua"
-		"AbilityTextureName" 			"item_eaglesong"
+		"AbilityTextureName" 			"item_eagle"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/items/items.lua"
 		"AbilityCastRange"				"0"

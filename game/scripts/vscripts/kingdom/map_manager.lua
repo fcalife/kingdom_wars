@@ -11,6 +11,42 @@ function MapManager:Init()
 	self.map_info = LoadKeyValues("scripts/npc/KV/map.kv")
 	self.neutrals_map_info = LoadKeyValues("scripts/npc/KV/map_neutrals.kv")
 
+	if GetMapName() == "twin_kingdoms" then
+		for i = 1, 8 do
+			self.map_info[i] = self.map_info[i + 8]
+			self.neutrals_map_info["beast_spawns"][i] = self.neutrals_map_info["beast_spawns"][i + 8]
+			self.neutrals_map_info["demon_portals"][i] = self.neutrals_map_info["demon_portals"][i + 8]
+		end
+	end
+
+	-- Item drop information
+	self.match_items = {}
+	table.insert(self.match_items, "item_dagger")
+	table.insert(self.match_items, "item_hammer")
+	table.insert(self.match_items, "item_god_creator")
+	table.insert(self.match_items, "item_phantom_cape")
+	table.insert(self.match_items, "item_tarrasque_hide")
+	table.insert(self.match_items, "item_dead_staff")
+	table.insert(self.match_items, "item_eagle_boots")
+	table.insert(self.match_items, "item_winter")
+	table.insert(self.match_items, "item_horn")
+
+	self.match_portals = {}
+	--if GetMapName() == "twin_kingdoms" then
+	--	for region = 1, 16 do
+	--		table.insert(self.match_portals, self.neutrals_map_info["demon_portals"][tostring(math.min(region, 8))][tostring(1)])
+	--		self.match_portals[region].region = region
+	--	end
+	--else
+		for region = 1, 8 do
+			table.insert(self.match_portals, self.neutrals_map_info["demon_portals"][tostring(region)][tostring(RandomInt(1, 2))])
+			self.match_portals[region].region = region
+		end
+	--end
+
+	self.match_items = table.shuffle(self.match_items)
+	self.match_portals = table.shuffle(self.match_portals)
+
 	-- Set up geography constants
 	self.city_capture_time = {2, 5, 10}
 	self.capital_capture_time = 10
@@ -24,6 +60,8 @@ function MapManager:Init()
 		self.region_count = self.region_count + 1
 		self.region_city_count[region_number] = 0
 		region_number = region_number + 1
+		print("debug2:")
+		print(self.region_count)
 	end
 
 	for region = 1, self.region_count do
@@ -140,6 +178,8 @@ end
 
 -- Map startup (at match start)
 function MapManager:StartCapitalPhase()
+	print("debug:")
+	print(self:GetRegionCount())
 	for region = 1, self:GetRegionCount() do
 		for city = 1, self:GetRegionCityCount(region) do
 			self:SetCityControllable(region, city, self:GetCityOwner(region, city))
@@ -355,25 +395,27 @@ function MapManager:SetRegionOwner(region, player, value)
 end
 
 function MapManager:SetRegionContender(region, player, value)
-	if region == 1 and value then
-		MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r1_contender")
-	elseif region == 1 and (not value) then
-		MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r1_contender")
-	elseif region == 2 and value then
-		MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r2_contender")
-	elseif region == 2 and (not value) then
-		MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r2_contender")
-	elseif region == 5 and value then
-		MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r5_contender")
-	elseif region == 5 and (not value) then
-		MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r5_contender")
-	elseif region == 6 and value then
-		MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r6_contender")
-	elseif region == 6 and (not value) then
-		MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r6_contender")
-	end
+	if GetMapName() == "disputed_lands" then
+		if region == 1 and value then
+			MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r1_contender")
+		elseif region == 1 and (not value) then
+			MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r1_contender")
+		elseif region == 2 and value then
+			MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r2_contender")
+		elseif region == 2 and (not value) then
+			MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r2_contender")
+		elseif region == 5 and value then
+			MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r5_contender")
+		elseif region == 5 and (not value) then
+			MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r5_contender")
+		elseif region == 6 and value then
+			MapManager:AddModifierToAllPlayerCities(player, "modifier_kingdom_r6_contender")
+		elseif region == 6 and (not value) then
+			MapManager:RemoveModifierFromAllCities(player, "modifier_kingdom_r6_contender")
+		end
 
-	self.player_contender_regions[player][region] = value
+		self.player_contender_regions[player][region] = value
+	end
 end
 
 function MapManager:GetPlayerCityCount(player)
@@ -426,6 +468,7 @@ end
 function MapManager:UpdatePlayerCityCounts()
 
 	-- Reset counts
+	local is_disputed_lands = (GetMapName() == "disputed_lands")
 	for player = 1, Kingdom:GetPlayerCount() do
 		self.player_region_count[player] = 0
 		self.player_city_count[player] = 0
@@ -456,7 +499,7 @@ function MapManager:UpdatePlayerCityCounts()
 					CustomGameEventManager:Send_ServerToAllClients("kingdom_new_region_sovereign", {event})
 					self:SetRegionOwner(region, player, true)
 				end
-				if not self:IsRegionContender(region, player) then
+				if is_disputed_lands and (not self:IsRegionContender(region, player)) then
 					self:SetRegionContender(region, player, true)
 				end
 				self.player_region_count[player] = self.player_region_count[player] + 1
@@ -471,7 +514,7 @@ function MapManager:UpdatePlayerCityCounts()
 					event.regionname = "#region_"..region
 					CustomGameEventManager:Send_ServerToAllClients("kingdom_lost_region_sovereign", {event})
 					self:SetRegionOwner(region, player, false)
-				elseif not self:IsRegionContender(region, player) then
+				elseif is_disputed_lands and (not self:IsRegionContender(region, player)) then
 					local event = {}
 					local player_id = Kingdom:GetPlayerID(player)
 					event.playerid = player_id
@@ -483,7 +526,7 @@ function MapManager:UpdatePlayerCityCounts()
 				end
 
 			else
-				if self:IsRegionContender(region, player) then
+				if is_disputed_lands and self:IsRegionContender(region, player) then
 					local event = {}
 					local player_id = Kingdom:GetPlayerID(player)
 					event.playerid = player_id
@@ -771,6 +814,7 @@ function MapManager:ProcessPortalCapture(portal, ally_count, enemy_count, attack
 end
 
 function MapManager:CaptureCity(region, city, player)
+	local is_disputed_lands = (GetMapName() == "disputed_lands")
 	local team = Kingdom:GetKingdomPlayerTeam(player)
 	local city_unit = self:GetCityByNumber(region, city)
 
@@ -788,19 +832,19 @@ function MapManager:CaptureCity(region, city, player)
 	city_unit:RemoveModifierByName("modifier_kingdom_r5_contender")
 	city_unit:RemoveModifierByName("modifier_kingdom_r6_contender")
 
-	if self:IsRegionOwner(5, player) then
+	if is_disputed_lands and self:IsRegionOwner(5, player) then
 		city_unit:AddNewModifier(city_unit, nil, "modifier_kingdom_r5_owner", {})
 	end
-	if self:IsRegionContender(1, player) then
+	if is_disputed_lands and self:IsRegionContender(1, player) then
 		city_unit:AddNewModifier(city_unit, nil, "modifier_kingdom_r1_contender", {})
 	end
-	if self:IsRegionContender(2, player) then
+	if is_disputed_lands and self:IsRegionContender(2, player) then
 		city_unit:AddNewModifier(city_unit, nil, "modifier_kingdom_r2_contender", {})
 	end
-	if self:IsRegionContender(5, player) then
+	if is_disputed_lands and self:IsRegionContender(5, player) then
 		city_unit:AddNewModifier(city_unit, nil, "modifier_kingdom_r5_contender", {})
 	end
-	if self:IsRegionContender(6, player) then
+	if is_disputed_lands and self:IsRegionContender(6, player) then
 		city_unit:AddNewModifier(city_unit, nil, "modifier_kingdom_r6_contender", {})
 	end
 
@@ -964,7 +1008,7 @@ function MapManager:SpawnCity(region, city)
 	local race = self:GetCityRace(region, city)
 	local hero = self:GetCityHero(region, city)
 	local player = self:GetCityOwner(region, city)
-	local city_name = "npc_kingdom_city_"..region.."_"..city
+	local city_name = "npc_kingdom_city_"..math.min(region, 8).."_"..city
 	local player_id = Kingdom:GetPlayerID(player)
 	local facing_position = RotatePosition(Vector(city_loc.x, city_loc.y, 0), QAngle(0, angle, 0), Vector(city_loc.x, city_loc.y, 0) + Vector(100, 0, 0))
 
@@ -1001,7 +1045,7 @@ function MapManager:SpawnCapital(region, city)
 	local race = MapManager:GetCityRace(region, city)
 	local hero = MapManager:GetCityHero(region, city)
 	local player = MapManager:GetCityOwner(region, city)
-	local city_name = "npc_kingdom_city_"..region.."_"..city.."_capital"
+	local city_name = "npc_kingdom_city_"..math.min(region, 8).."_"..city.."_capital"
 	local player_id = Kingdom:GetPlayerID(player)
 	local facing_position = RotatePosition(Vector(city_loc.x, city_loc.y, 0), QAngle(0, angle, 0), Vector(city_loc.x, city_loc.y, 0) + Vector(100, 0, 0))
 
@@ -1141,7 +1185,6 @@ function MapManager:SpawnRegionalSpawners()
 end
 
 function MapManager:SpawnDemonPortals()
-	local remaining_regions = {1, 2, 3, 4, 5, 6, 7, 8}
 	local army_commanders = {}
 	army_commanders[1] = "doom"
 	army_commanders[2] = "duchess"
@@ -1149,15 +1192,12 @@ function MapManager:SpawnDemonPortals()
 
 	-- Pick random portal locations, never from the same region
 	for i = 1, self:GetDemonPortalCount() do
-		local chosen_region = RandomInt(1, #remaining_regions)
-		self.demon_portals[i] = self:SpawnDemonPortalAt(remaining_regions[chosen_region], RandomInt(1, 2), army_commanders[i])
+		self.demon_portals[i] = self:SpawnDemonPortalAt(table.remove(self.match_portals), army_commanders[i])
 		self.demon_portals[i]["portal"].portal_number = i
-		table.remove(remaining_regions, chosen_region)
 	end
 end
 
-function MapManager:SpawnDemonPortalAt(region, location, commander_name)
-	local portal_info = self.neutrals_map_info["demon_portals"][tostring(region)][tostring(location)]
+function MapManager:SpawnDemonPortalAt(portal_info, commander_name)
 	local portal_loc = Vector(portal_info["city"]["x"], portal_info["city"]["y"], portal_info["city"]["z"])
 	local angle = portal_info["city"]["angle"]
 	local facing_position = RotatePosition(Vector(portal_loc.x, portal_loc.y, 0), QAngle(0, angle, 0), Vector(portal_loc.x, portal_loc.y, 0) + Vector(100, 0, 0))
@@ -1199,8 +1239,10 @@ function MapManager:SpawnDemonArmy(location, commander_name)
 
 	Timers:CreateTimer(10, function()
 		commander:AddNewModifier(commander, nil, "modifier_kingdom_demon_hero_marker", {ability_name = "kingdom_buy_hero_"..commander_name})
+		commander:AddNewModifier(commander, nil, "modifier_kingdom_hero", {})
 		commander:AddNewModifier(commander, nil, "modifier_kingdom_unit_movement", {})
 		commander:AddNewModifier(commander, nil, "modifier_kingdom_demon_spawn_leash", {})
+		commander:AddItemByName(table.remove(self.match_items))
 	end)
 
 	local melee_positions = {}

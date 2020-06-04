@@ -397,7 +397,14 @@ function modifier_demon_nevermore_ability:IsAura()
 	return true
 end
 
-function modifier_demon_nevermore_ability:GetAuraRadius() return 1200 end
+function modifier_demon_nevermore_ability:GetAuraRadius()
+	if self:GetParent():HasModifier("modifier_item_horn") then
+		return 2400
+	else
+		return 1200
+	end
+end
+
 function modifier_demon_nevermore_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_NONE end
 function modifier_demon_nevermore_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_ENEMY end
 function modifier_demon_nevermore_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
@@ -443,7 +450,14 @@ function modifier_demon_duchess_ability:IsAura()
 	return true
 end
 
-function modifier_demon_duchess_ability:GetAuraRadius() return 1200 end
+function modifier_demon_duchess_ability:GetAuraRadius()
+	if self:GetParent():HasModifier("modifier_item_horn") then
+		return 2400
+	else
+		return 1200
+	end
+end
+
 function modifier_demon_duchess_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
 function modifier_demon_duchess_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_demon_duchess_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
@@ -499,7 +513,14 @@ function modifier_demon_doom_ability:IsAura()
 	return true
 end
 
-function modifier_demon_doom_ability:GetAuraRadius() return 400 end
+function modifier_demon_doom_ability:GetAuraRadius()
+	if self:GetParent():HasModifier("modifier_item_horn") then
+		return 800
+	else
+		return 400
+	end
+end
+
 function modifier_demon_doom_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_NONE end
 function modifier_demon_doom_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_ENEMY end
 function modifier_demon_doom_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end

@@ -351,7 +351,14 @@ function modifier_elf_ranger_ability:IsAura()
 	return true
 end
 
-function modifier_elf_ranger_ability:GetAuraRadius() return 1200 end
+function modifier_elf_ranger_ability:GetAuraRadius()
+	if self:GetParent():HasModifier("modifier_item_horn") then
+		return 2400
+	else
+		return 1200
+	end
+end
+
 function modifier_elf_ranger_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_RANGED_ONLY end
 function modifier_elf_ranger_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_elf_ranger_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
@@ -397,7 +404,14 @@ function modifier_elf_druid_ability:IsAura()
 	return true
 end
 
-function modifier_elf_druid_ability:GetAuraRadius() return 1200 end
+function modifier_elf_druid_ability:GetAuraRadius()
+	if self:GetParent():HasModifier("modifier_item_horn") then
+		return 2400
+	else
+		return 1200
+	end
+end
+
 function modifier_elf_druid_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
 function modifier_elf_druid_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_elf_druid_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
@@ -443,7 +457,14 @@ function modifier_elf_assassin_ability:IsAura()
 	return true
 end
 
-function modifier_elf_assassin_ability:GetAuraRadius() return 1200 end
+function modifier_elf_assassin_ability:GetAuraRadius()
+	if self:GetParent():HasModifier("modifier_item_horn") then
+		return 2400
+	else
+		return 1200
+	end
+end
+
 function modifier_elf_assassin_ability:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
 function modifier_elf_assassin_ability:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_elf_assassin_ability:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end

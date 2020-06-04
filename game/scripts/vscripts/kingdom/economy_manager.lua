@@ -20,14 +20,41 @@ function EconomyManager:Init()
 	self.capital_income = 5
 	self.city_income = {1, 3, 5}
 	self.talneas_income_bonus = {10, 20}
+	self.item_income_bonus = 25
 	self.lost_city_income = 10
 	self.region_income = 10
 	self.base_interest = 0.1
 	self.max_interest = 10
 	self.beast_spawns = 3
 	self.max_beast_spawns = 12
+
+	self.item_drop_turns = {}
+	self.item_drop_turns[5] = table.remove(MapManager.match_items)
+	self.item_drop_turns[11] = table.remove(MapManager.match_items)
+	self.item_drop_turns[17] = table.remove(MapManager.match_items)
+	self.item_drop_turns[23] = table.remove(MapManager.match_items)
+	self.item_drop_turns[29] = table.remove(MapManager.match_items)
+
+	self.item_circle_colors = {}
+	table.insert(self.item_circle_colors, Vector(255, 100, 100)	)
+	table.insert(self.item_circle_colors, Vector(255, 0, 100)	)
+	table.insert(self.item_circle_colors, Vector(255, 100, 0)	)
+	table.insert(self.item_circle_colors, Vector(100, 255, 100)	)
+	table.insert(self.item_circle_colors, Vector(0, 255, 100)	)
+	table.insert(self.item_circle_colors, Vector(100, 255, 0)	)
+	table.insert(self.item_circle_colors, Vector(100, 100, 255)	)
+	table.insert(self.item_circle_colors, Vector(0, 100, 255)	)
+	table.insert(self.item_circle_colors, Vector(100, 0, 255)	)
+	table.insert(self.item_circle_colors, Vector(255, 255, 100)	)
+	table.insert(self.item_circle_colors, Vector(255, 100, 255)	)
+	table.insert(self.item_circle_colors, Vector(100, 255, 255)	)
+
 	self.current_beasts = {}
 	self.spawned_heroes = {}
+
+	self.map_beasts = {}
+	self.map_beasts["disputed_lands"] = "npc_kingdom_beast_5"
+	self.map_beasts["twin_kingdoms"] = "npc_kingdom_beast_2"
 
 	for region = 1, MapManager:GetRegionCount() do
 		self.current_beasts[region] = 0
@@ -94,6 +121,10 @@ function EconomyManager:StartCapitalPhase()
 				if self.turn_timer <= 0 then
 					self.turn_count = self.turn_count + 1
 
+					if self.item_drop_turns[self.turn_count] then
+						self:SpawnDemonPortalItem(table.remove(MapManager.match_portals), self.item_drop_turns[self.turn_count])
+					end
+
 					if self.turn_count > self.max_turns then
 						self:EndGameByRoundLimit()
 						return nil
@@ -112,6 +143,32 @@ function EconomyManager:StartCapitalPhase()
 				return 1
 			end)
 		end
+	end)
+end
+
+-- Spawns an item in a demon portal
+function EconomyManager:SpawnDemonPortalItem(portal_data, item_name)
+	local item_loc = Vector(portal_data["capture_zone"]["x"], portal_data["capture_zone"]["y"], portal_data["capture_zone"]["height"] + 10)
+
+	local item_summoning_pfx = ParticleManager:CreateParticle("particles/item_summoning_circle.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(item_summoning_pfx, 0, item_loc)
+	ParticleManager:SetParticleControl(item_summoning_pfx, 1, table.remove(self.item_circle_colors))
+
+	EmitGlobalSound("Item.Warning")
+
+	CustomGameEventManager:Send_ServerToAllClients("kingdom_announce_item_warning", {region = portal_data.region})
+	CustomGameEventManager:Send_ServerToAllClients("kingdom_minimap_ping", {x = item_loc.x, y = item_loc.y, z = item_loc.z + 10})
+
+	Timers:CreateTimer(self.turn_duration, function()
+		ParticleManager:DestroyParticle(item_summoning_pfx, false)
+		ParticleManager:ReleaseParticleIndex(item_summoning_pfx)
+
+		EmitGlobalSound("Item.Arrive")
+
+		CreateItemOnPositionSync(item_loc, CreateItem(item_name, nil, nil))
+
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_announce_item_drop", {region = portal_data.region})
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_minimap_ping", {x = item_loc.x, y = item_loc.y, z = item_loc.z + 10})
 	end)
 end
 
@@ -314,30 +371,32 @@ function EconomyManager:SpawnUnit(region, city, unit_type)
 	end
 
 	-- Regional bonuses
-	if MapManager:IsRegionOwner(1, player) and unit_type == "melee" then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_melee", {})
-	elseif MapManager:IsRegionOwner(2, player) and unit_type == "cavalry" then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_cavalry", {})
-	elseif MapManager:IsRegionOwner(6, player) and unit_type == "ranged" then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_ranged", {})
-	end
+	if GetMapName() == "disputed_lands" then
+		if MapManager:IsRegionOwner(1, player) and unit_type == "melee" then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_melee", {})
+		elseif MapManager:IsRegionOwner(2, player) and unit_type == "cavalry" then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_cavalry", {})
+		elseif MapManager:IsRegionOwner(6, player) and unit_type == "ranged" then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_attack_bonus_ranged", {})
+		end
 
-	if MapManager:IsRegionOwner(3, player) then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus_full", {})
-	elseif MapManager:IsRegionContender(3, player) then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus", {})
-	end
+		if MapManager:IsRegionOwner(3, player) then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus_full", {})
+		elseif MapManager:IsRegionContender(3, player) then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_health_bonus", {})
+		end
 
-	if MapManager:IsRegionOwner(7, player) then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus_full", {})
-	elseif MapManager:IsRegionContender(7, player) then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus", {})
-	end
+		if MapManager:IsRegionOwner(7, player) then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus_full", {})
+		elseif MapManager:IsRegionContender(7, player) then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_as_bonus", {})
+		end
 
-	if MapManager:IsRegionOwner(8, player) then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus_full", {})
-	elseif MapManager:IsRegionContender(8, player) then
-		unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus", {})
+		if MapManager:IsRegionOwner(8, player) then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus_full", {})
+		elseif MapManager:IsRegionContender(8, player) then
+			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus", {})
+		end
 	end
 end
 
@@ -346,10 +405,11 @@ function EconomyManager:SpawnBeasts(region, player)
 	local player_hero = PlayerResource:GetSelectedHeroEntity(player_id)
 	local spawn_loc = MapManager:GetBeastSpawnPoint(region)
 	local beasts_to_spawn = math.min(self.beast_spawns, self.max_beast_spawns - self.current_beasts[region])
+	local beast_name = self.map_beasts[GetMapName()]
 
 	if beasts_to_spawn >= 1 then
 		for i = 1, beasts_to_spawn do
-			local unit = CreateUnitByName("npc_kingdom_beast_"..region, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
+			local unit = CreateUnitByName(beast_name, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 			unit:AddNewModifier(unit, nil, "modifier_kingdom_beast_marker", {region = region})
 			unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {})
 			unit:SetControllableByPlayer(player_id, true)

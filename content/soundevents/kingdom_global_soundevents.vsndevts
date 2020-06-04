@@ -18,4 +18,22 @@
 			"sounds/music/stingers/stinger01.vsnd"
 		]
 	}
+
+	"Item.Warning" = {
+		type = "dota_update_vo_switch"
+		volume = "1.0"
+		vsnd_files =
+		[
+			"sounds/music/stingers/quest_complete_01.vsnd"
+		]
+	}
+
+	"Item.Arrive" = {
+		type = "dota_update_vo_switch"
+		volume = "1.0"
+		vsnd_files =
+		[
+			"sounds/music/stingers/stinger07.vsnd"
+		]
+	}
 }

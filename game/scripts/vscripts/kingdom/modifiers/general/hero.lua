@@ -5,7 +5,7 @@ modifier_kingdom_hero = class({})
 function modifier_kingdom_hero:IsDebuff() return false end
 function modifier_kingdom_hero:IsHidden() return true end
 function modifier_kingdom_hero:IsPurgable() return false end
-function modifier_kingdom_hero:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+function modifier_kingdom_hero:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE + MODIFIER_ATTRIBUTE_PERMANENT end
 
 function modifier_kingdom_hero:OnCreated()
 	if IsServer() then
@@ -16,7 +16,25 @@ function modifier_kingdom_hero:OnCreated()
 			"kingdom_normal_attack",
 			"kingdom_no_armor",
 			"kingdom_light_armor",
-			"kingdom_heavy_armor"
+			"kingdom_heavy_armor",
+			"kingdom_human_paladin_ability",
+			"kingdom_human_mage_ability",
+			"kingdom_human_commander_ability",
+			"kingdom_elf_ranger_ability",
+			"kingdom_elf_druid_ability",
+			"kingdom_elf_assassin_ability",
+			"kingdom_undead_necromancer_ability",
+			"kingdom_undead_wraith_king_ability",
+			"kingdom_undead_butcher_ability",
+			"kingdom_keen_bounty_hunter_ability",
+			"kingdom_keen_tinker_ability",
+			"kingdom_keen_engineer_ability",
+			"kingdom_orc_incursor_ability",
+			"kingdom_orc_warlord_ability",
+			"kingdom_orc_blademaster_ability",
+			"kingdom_demon_nevermore_ability",
+			"kingdom_demon_duchess_ability",
+			"kingdom_demon_doom_ability"
 		}
 
 		for _, ability_name in pairs(hero_abilities) do
@@ -25,8 +43,41 @@ function modifier_kingdom_hero:OnCreated()
 				ability:SetLevel(1)
 			end
 		end
+
+		parent:SetAbilityPoints(0)
 	end
 end
+
+function modifier_kingdom_hero:CheckState()
+	if self:GetParent():IsAlive() then
+		return { [MODIFIER_STATE_NOT_ON_MINIMAP] = false }
+	else
+		return { [MODIFIER_STATE_NOT_ON_MINIMAP] = true	}
+	end
+end
+
+function modifier_kingdom_hero:DeclareFunctions()
+	local funcs = {
+		MODIFIER_EVENT_ON_DEATH
+	}
+	return funcs
+end
+
+function modifier_kingdom_hero:OnDeath(keys)
+	if IsServer() then
+		if keys.unit == self:GetParent() then
+			for index = 0, 8 do
+				local item = keys.unit:GetItemInSlot(index)
+				if item then
+					CreateItemOnPositionForLaunch(keys.unit:GetAbsOrigin() + RandomVector(150), CreateItem(item:GetAbilityName(), nil, nil))
+					item:Destroy()
+				end
+			end
+		end
+	end
+end
+
+
 
 modifier_kingdom_commander = class({})
 
@@ -54,6 +105,22 @@ function modifier_kingdom_commander:OnCreated()
 	end
 end
 
+function modifier_kingdom_commander:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT,
+		MODIFIER_PROPERTY_EXP_RATE_BOOST
+	}
+	return funcs
+end
+
+function modifier_kingdom_commander:GetModifierIgnoreMovespeedLimit()
+	return 1
+end
+
+function modifier_kingdom_commander:GetModifierPercentageExpRateBoost()
+	return -100
+end
+
 function modifier_kingdom_commander:CheckState()
 	local states = {
 		[MODIFIER_STATE_INVULNERABLE] = true,
@@ -67,6 +134,8 @@ function modifier_kingdom_commander:CheckState()
 	}
 	return states
 end
+
+
 
 modifier_kingdom_hero_after_capital_selection = class({})
 

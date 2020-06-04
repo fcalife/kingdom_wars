@@ -225,37 +225,16 @@ function modifier_item_tarrasque_hide:IsDebuff() return false end
 function modifier_item_tarrasque_hide:IsPurgable() return false end
 function modifier_item_tarrasque_hide:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
-function modifier_item_tarrasque_hide:OnCreated()
-	if IsServer() then
-		local parent = self:GetParent()
-		local max_health = parent:GetMaxHealth()
-		local current_health = parent:GetHealth()
-		local health_mult = 1 + 0.01 * self:GetAbility():GetSpecialValueFor("bonus_health")
-
-		parent:SetBaseMaxHealth(max_health * health_mult)
-		parent:SetMaxHealth(max_health * health_mult)
-		parent:SetHealth(current_health * health_mult)
-	end
-end
-
-function modifier_item_tarrasque_hide:OnDestroy()
-	if IsServer() then
-		local parent = self:GetParent()
-		local max_health = parent:GetMaxHealth()
-		local current_health = parent:GetHealth()
-		local health_mult = 1 / (1 + 0.01 * self:GetAbility():GetSpecialValueFor("bonus_health"))
-
-		parent:SetBaseMaxHealth(max_health * health_mult)
-		parent:SetMaxHealth(max_health * health_mult)
-		parent:SetHealth(current_health * health_mult)
-	end
-end
-
 function modifier_item_tarrasque_hide:DeclareFunctions()
 	local funcs = {
+		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE,
 		MODIFIER_EVENT_ON_TAKEDAMAGE
 	}
 	return funcs
+end
+
+function modifier_item_tarrasque_hide:GetModifierExtraHealthPercentage()
+	return self:GetAbility():GetSpecialValueFor("bonus_health")
 end
 
 function modifier_item_tarrasque_hide:OnTakeDamage(keys)
@@ -456,4 +435,40 @@ function modifier_item_winter_effect:CheckState()
 		[MODIFIER_STATE_FROZEN] = true
 	}
 	return states
+end
+
+
+
+
+
+LinkLuaModifier("modifier_item_horn", "kingdom/items/items", LUA_MODIFIER_MOTION_NONE)
+
+item_horn = class({})
+
+function item_horn:GetIntrinsicModifierName()
+	return "modifier_item_horn"
+end
+
+
+
+modifier_item_horn = class({})
+
+function modifier_item_horn:IsHidden() return true end
+function modifier_item_horn:IsDebuff() return false end
+function modifier_item_horn:IsPurgable() return false end
+function modifier_item_horn:GetAttributes() return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
+
+function modifier_item_horn:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE
+	}
+	return funcs
+end
+
+function modifier_item_horn:GetModifierAttackRangeBonusPercentage()
+	if self:GetParent():IsRangedAttacker() then
+		return self:GetAbility():GetSpecialValueFor("range_increase")
+	else
+		return 0
+	end
 end

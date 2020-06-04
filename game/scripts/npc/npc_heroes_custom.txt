@@ -6,6 +6,9 @@
 	{
 		"ModelScale"		"1.5"
 
+		"MinimapIcon"				"minimap_neutral_hard"
+		//"MinimapIcon"				"minimap_nian_dire"
+
 		"Ability1"					"kingdom_select_all_units"
 		"Ability2"					"kingdom_global_rally_point"
 		"Ability3"					"kingdom_ping_all_castles"
@@ -37,7 +40,7 @@
 		"AttributeBaseIntelligence"	"1"
 		"AttributeIntelligenceGain"	"0.0"
 
-		"MovementSpeed"				"550"
+		"MovementSpeed"				"1500"
 		"MovementTurnRate"			"1.0"
 	}
 }

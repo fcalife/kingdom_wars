@@ -1429,7 +1429,7 @@
 		"ScriptFile"					"kingdom/abilities/human.lua"
 		"AbilityTextureName"			"legion_commander_moment_of_courage"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1540,7 +1540,7 @@
 		"ScriptFile"					"kingdom/abilities/elf.lua"
 		"AbilityTextureName"			"drow_ranger_trueshot"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1569,7 +1569,7 @@
 		"ScriptFile"					"kingdom/abilities/elf.lua"
 		"AbilityTextureName"			"lone_druid_rabid"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1598,7 +1598,7 @@
 		"ScriptFile"					"kingdom/abilities/elf.lua"
 		"AbilityTextureName"			"phantom_assassin_coup_de_grace"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1704,8 +1704,8 @@
 		"ScriptFile"					"kingdom/abilities/undead.lua"
 		"AbilityTextureName"			"necrolyte_heartstopper_aura"
 
-		"MaxLevel"						"1"
-		"AbilityCastRange"				"1200"
+		"MaxLevel"						"5"
+		"AbilityCastRange"				"800"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
 		"AbilityManaCost"				"0"
@@ -1716,7 +1716,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"effect_radius"			"1200"
+				"effect_radius"			"800 1200 1600 2000 2400"
 			}
 		}
 	}
@@ -1728,7 +1728,7 @@
 		"ScriptFile"					"kingdom/abilities/undead.lua"
 		"AbilityTextureName"			"skeleton_king_reincarnation"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1740,7 +1740,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"wraith_duration"		"2 3 4 5 6"
+				"wraith_duration"		"3 4 5 6 7"
 			}
 			"02"
 			{
@@ -1757,7 +1757,7 @@
 		"ScriptFile"					"kingdom/abilities/undead.lua"
 		"AbilityTextureName"			"pudge_rot"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1891,7 +1891,7 @@
 		"ScriptFile"					"kingdom/abilities/keen.lua"
 		"AbilityTextureName"			"bounty_hunter_track"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1925,7 +1925,7 @@
 		"ScriptFile"					"kingdom/abilities/keen.lua"
 		"AbilityTextureName"			"tinker_rearm"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1954,7 +1954,7 @@
 		"ScriptFile"					"kingdom/abilities/keen.lua"
 		"AbilityTextureName"			"gyrocopter_call_down"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2085,7 +2085,7 @@
 		"ScriptFile"					"kingdom/abilities/orc.lua"
 		"AbilityTextureName"			"disruptor_thunder_strike"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2114,7 +2114,7 @@
 		"ScriptFile"					"kingdom/abilities/orc.lua"
 		"AbilityTextureName"			"elder_titan_ancestral_spirit"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2143,7 +2143,7 @@
 		"ScriptFile"					"kingdom/abilities/orc.lua"
 		"AbilityTextureName"			"nevermore_shadowraze2"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2289,7 +2289,7 @@
 		"ScriptFile"					"kingdom/abilities/demon.lua"
 		"AbilityTextureName"			"nevermore_dark_lord"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2318,7 +2318,7 @@
 		"ScriptFile"					"kingdom/abilities/demon.lua"
 		"AbilityTextureName"			"queenofpain_shadow_strike"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2347,7 +2347,7 @@
 		"ScriptFile"					"kingdom/abilities/demon.lua"
 		"AbilityTextureName"			"doom_bringer_doom"
 
-		"MaxLevel"						"1"
+		"MaxLevel"						"5"
 		"AbilityCastRange"				"400"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"

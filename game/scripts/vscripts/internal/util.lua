@@ -119,3 +119,27 @@ function ShowWearables( unit )
 		v:RemoveEffects(EF_NODRAW)
 	end
 end
+
+function table.shallowcopy(orig)
+	local orig_type = type(orig)
+	local copy
+	if orig_type == 'table' then
+		copy = {}
+		for orig_key, orig_value in pairs(orig) do
+			copy[orig_key] = orig_value
+		end
+	else -- number, string, boolean, etc
+		copy = orig
+	end
+	return copy
+end
+
+function table.shuffle(tbl)
+	-- Must be a hash table
+	local t = table.shallowcopy(tbl)
+	for i = # t, 2, - 1 do
+		local j    = RandomInt(1, i)
+		t[i], t[j] = t[j], t[i]
+	end
+	return t
+end
