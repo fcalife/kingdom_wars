@@ -42,5 +42,7 @@
 
 		"MovementSpeed"				"1500"
 		"MovementTurnRate"			"1.0"
+
+		"HasInventory"				"0"
 	}
 }

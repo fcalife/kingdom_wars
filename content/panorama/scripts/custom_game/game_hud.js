@@ -54,6 +54,7 @@ income_details_half[8] = false;
 
 	GameEvents.Subscribe("kingdom_capital_choice_phase", ShowCapitalWarning);
 	GameEvents.Subscribe("kingdom_capital_chosen", ShowMessageCapitalChosen);
+	GameEvents.Subscribe("kingdom_capital_chosen_tk", ShowMessageCapitalChosenTK);
 })();
 
 function InitializeUI() {
@@ -73,6 +74,11 @@ function InitializeUI() {
 			$('#income_player_container_' + current_row).style.visibility = 'collapse';
 			current_row = current_row + 1;
 		}
+	}
+
+	if(Game.GetMapInfo().map_display_name == "twin_kingdoms") {
+		$('#income_detail_button_container').visible = false;
+		$('#income_detail_container').visible = false;
 	}
 }
 
@@ -106,6 +112,9 @@ function UpdateIncomeScoreboard(keys) {
 	var local_player_id = Players.GetLocalPlayer()
 	var timer = CustomNetTables.GetTableValue(keys, "turn_timer").turn_timer
 	var turn_state = CustomNetTables.GetTableValue(keys, "turn_state").turn_state
+	var turn_count = CustomNetTables.GetTableValue(keys, "turn_count").turn_count
+
+	$('#turn_label').text = "Turn " + turn_count;
 	$('#income_timer_label').text = timer + "s";
 	$('#gold_amount_label').text = Players.GetGold(Players.GetLocalPlayer())
 
@@ -164,6 +173,11 @@ function UpdateIncomeScoreboard(keys) {
 }
 
 function UpdateIncomeDetails(keys) {
+	if(Game.GetMapInfo().map_display_name == "twin_kingdoms") {
+		$('#income_detail_button_container').visible = false;
+		$('#income_detail_container').visible = false;
+		return;
+	}
 
 	var player_id = Players.GetLocalPlayer()
 	var parent_full = $('#income_detail_full_container')
@@ -363,6 +377,38 @@ function ShowMessageCapitalChosen(keys) {
 
 	message_player_avatar.steamid = data.steamid
 	message_body.text = data.playername + $.Localize("#capital_picked_1") + $.Localize(data.cityname) + $.Localize("#capital_picked_2") + "!"
+	message_background.style["background-color"] = ColorToHexCode(Players.GetPlayerColor(data.playerid)) + "70";
+	message_player_avatar.AddClass("top_message_player_avatar")
+
+	top_message_count = top_message_count + 1
+	UpdateTopMessageFeedBorder()
+
+	$.Schedule(6, function() {
+		message_background.style.height = '0px';
+		$.Schedule(1, function() {
+			message_background.RemoveAndDeleteChildren()
+			top_message_count = top_message_count - 1
+			UpdateTopMessageFeedBorder();
+		})
+	})
+}
+
+function ShowMessageCapitalChosenTK(keys) {
+	var message_feed_container = $('#top_message_feed_container')
+
+	var message_background = $.CreatePanel("Panel", message_feed_container, "message_background");
+	var message_container = $.CreatePanel("Panel", message_background, "message_container");
+	var message_player_avatar = $.CreatePanel("DOTAAvatarImage", message_container, "message_player_avatar");
+	var message_body = $.CreatePanel("Label", message_container, "message_body");
+
+	message_background.AddClass("top_message_background")
+	message_container.AddClass("top_message_container")
+	message_body.AddClass("top_message_label")
+
+	var data = keys["1"]
+
+	message_player_avatar.steamid = data.steamid
+	message_body.text = data.playername + $.Localize("#capital_picked_1") + $.Localize(`#region_tk_${data.region}`) + $.Localize("#capital_picked_3") + $.Localize(data.cityname) + $.Localize("#capital_picked_2") + "!"
 	message_background.style["background-color"] = ColorToHexCode(Players.GetPlayerColor(data.playerid)) + "70";
 	message_player_avatar.AddClass("top_message_player_avatar")
 
@@ -725,7 +771,11 @@ function ShowItemWarning(keys) {
 	message_container.AddClass("top_message_container")
 	message_body.AddClass("top_message_label")
 
-	message_body.text = $.Localize("#item_drop_warning") + $.Localize("#region_" + keys.region) + "!";
+	if(Game.GetMapInfo().map_display_name == "twin_kingdoms") {
+		message_body.text = $.Localize("#item_drop_warning") + $.Localize("#region_tk_" + keys.region) + "!";
+	} else {
+		message_body.text = $.Localize("#item_drop_warning") + $.Localize("#region_" + keys.region) + "!";
+	}
 
 	top_message_count = top_message_count + 1
 	UpdateTopMessageFeedBorder()
@@ -751,7 +801,11 @@ function ShowItemDrop(keys) {
 	message_container.AddClass("top_message_container")
 	message_body.AddClass("top_message_label")
 
-	message_body.text = $.Localize("#item_drop_arrive") + $.Localize("#region_" + keys.region) + "!";
+	if(Game.GetMapInfo().map_display_name == "twin_kingdoms") {
+		message_body.text = $.Localize("#item_drop_arrive") + $.Localize("#region_tk_" + keys.region) + "!";
+	} else {
+		message_body.text = $.Localize("#item_drop_arrive") + $.Localize("#region_" + keys.region) + "!";
+	}
 
 	top_message_count = top_message_count + 1
 	UpdateTopMessageFeedBorder()

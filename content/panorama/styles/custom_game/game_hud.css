@@ -339,10 +339,35 @@
 	x: 1569px;
 }
 
+#turn_container
+{
+	width: 125px;
+	height: 48px;
+	horizontal-align: right;
+	vertical-align: bottom;
+	flow-children: right;
+	margin-right: 200px;
+	margin-bottom: 0px;
+	border-radius: 16px;
+	background-color: #000000D0;
+	border: 2px solid #111111FF;
+}
+
 #gold_amount_label
 {
 	color: #F3CE4CFF;
 	margin-right: 8px;
+	vertical-align: center;
+	font-size: 22;
+	font-weight: bold;
+	font-family: "DejaVu Sans";
+	text-shadow: 2px 2px 8px 3.0 #000000FF;
+}
+
+#turn_label
+{
+	color: #F3F3F3FF;
+	horizontal-align: center;
 	vertical-align: center;
 	font-size: 22;
 	font-weight: bold;

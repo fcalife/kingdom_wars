@@ -8,6 +8,7 @@
 		"AbilityTextureName"			"custom/upgrade_hero"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1372,6 +1373,7 @@
 		"AbilityTextureName"			"omniknight_purification"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1401,6 +1403,7 @@
 		"AbilityTextureName"			"crystal_maiden_brilliance_aura"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1427,9 +1430,10 @@
 		"BaseClass"						"ability_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ScriptFile"					"kingdom/abilities/human.lua"
-		"AbilityTextureName"			"legion_commander_moment_of_courage"
+		"AbilityTextureName"			"mars_bulwark"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1541,6 +1545,7 @@
 		"AbilityTextureName"			"drow_ranger_trueshot"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1570,6 +1575,7 @@
 		"AbilityTextureName"			"lone_druid_rabid"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1599,6 +1605,7 @@
 		"AbilityTextureName"			"phantom_assassin_coup_de_grace"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1705,6 +1712,7 @@
 		"AbilityTextureName"			"necrolyte_heartstopper_aura"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"800"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1729,6 +1737,7 @@
 		"AbilityTextureName"			"skeleton_king_reincarnation"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1758,6 +1767,7 @@
 		"AbilityTextureName"			"pudge_rot"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1892,6 +1902,7 @@
 		"AbilityTextureName"			"bounty_hunter_track"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1926,6 +1937,7 @@
 		"AbilityTextureName"			"tinker_rearm"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -1955,6 +1967,7 @@
 		"AbilityTextureName"			"gyrocopter_call_down"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2086,6 +2099,7 @@
 		"AbilityTextureName"			"disruptor_thunder_strike"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2115,6 +2129,7 @@
 		"AbilityTextureName"			"elder_titan_ancestral_spirit"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2144,6 +2159,7 @@
 		"AbilityTextureName"			"nevermore_shadowraze2"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2290,6 +2306,7 @@
 		"AbilityTextureName"			"nevermore_dark_lord"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2319,6 +2336,7 @@
 		"AbilityTextureName"			"queenofpain_shadow_strike"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"1200"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"
@@ -2348,6 +2366,7 @@
 		"AbilityTextureName"			"doom_bringer_doom"
 
 		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"1"
 		"AbilityCastRange"				"400"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.0"

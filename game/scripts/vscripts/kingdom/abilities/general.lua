@@ -177,6 +177,8 @@ function modifier_elite_unit:OnCreated()
 		local damage = 0.5 * (parent:GetBaseDamageMax() + parent:GetBaseDamageMin())
 		parent:SetBaseDamageMax(parent:GetBaseDamageMax() + 0.2 * damage)
 		parent:SetBaseDamageMin(parent:GetBaseDamageMin() + 0.2 * damage)
+
+		parent:SetDeathXP(parent:GetDeathXP() + 4)
 	end
 end
 
@@ -237,6 +239,8 @@ function modifier_capital_unit:OnCreated()
 
 		parent:SetBaseDamageMax(parent:GetBaseDamageMax() + 0.4 * damage)
 		parent:SetBaseDamageMin(parent:GetBaseDamageMin() + 0.4 * damage)
+
+		parent:SetDeathXP(parent:GetDeathXP() + 8)
 	end
 end
 

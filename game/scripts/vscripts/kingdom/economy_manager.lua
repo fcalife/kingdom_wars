@@ -22,11 +22,40 @@ function EconomyManager:Init()
 	self.talneas_income_bonus = {10, 20}
 	self.item_income_bonus = 25
 	self.lost_city_income = 10
-	self.region_income = 10
 	self.base_interest = 0.1
 	self.max_interest = 10
 	self.beast_spawns = 3
 	self.max_beast_spawns = 12
+
+	self.region_income = {}
+
+	if GetMapName() == "disputed_lands" then
+		self.region_income[1] = 10
+		self.region_income[2] = 10
+		self.region_income[3] = 10
+		self.region_income[4] = 10
+		self.region_income[5] = 10
+		self.region_income[6] = 10
+		self.region_income[7] = 10
+		self.region_income[8] = 10
+	elseif GetMapName() == "twin_kingdoms" then
+		self.region_income[1] = 10
+		self.region_income[2] = 10
+		self.region_income[3] = 15
+		self.region_income[4] = 15
+		self.region_income[5] = 10
+		self.region_income[6] = 15
+		self.region_income[7] = 15
+		self.region_income[8] = 15
+		self.region_income[9] = 10
+		self.region_income[10] = 10
+		self.region_income[11] = 10
+		self.region_income[12] = 15
+		self.region_income[13] = 15
+		self.region_income[14] = 10
+		self.region_income[15] = 15
+		self.region_income[16] = 10
+	end
 
 	self.item_drop_turns = {}
 	self.item_drop_turns[5] = table.remove(MapManager.match_items)
@@ -82,6 +111,7 @@ function EconomyManager:Init()
 	-- Initialize scoreboard nettable
 	CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_duration})
 	CustomNetTables:SetTableValue("player_info", "turn_state", {turn_state = "normal"})
+	CustomNetTables:SetTableValue("player_info", "turn_count", {turn_count = self.turn_count + 1})
 	for player = 1, Kingdom:GetPlayerCount() do
 		local player_id = Kingdom:GetPlayerID(player)
 		CustomNetTables:SetTableValue("player_info", "player_"..player_id, {income = self.base_income})
@@ -139,6 +169,7 @@ function EconomyManager:StartCapitalPhase()
 						self.turn_timer = self.turn_duration
 					end
 				end
+				CustomNetTables:SetTableValue("player_info", "turn_count", {turn_count = self.turn_count + 1})
 				CustomNetTables:SetTableValue("player_info", "turn_timer", {turn_timer = self.turn_timer})
 				return 1
 			end)
@@ -222,14 +253,18 @@ function EconomyManager:GrantPlayerTurnIncome()
 		-- Income calculation
 		local turn_income = self.base_income
 		local interest = math.min(math.floor(current_gold * self.base_interest), self.max_interest)
-		local region_income = MapManager:GetPlayerRegionCount(player) * self.region_income
 		local lost_city_income = math.max(self.player_current_city_amount[player] - MapManager:GetPlayerCityCount(player), 0) * self.lost_city_income
 		local unit_income = (-1) * math.floor(self.player_current_units[player] / 3)
 		local bonus_income = 0
 		self.player_current_city_amount[player] = MapManager:GetPlayerCityCount(player)
 
+		local region_income = 0
 		local city_income = 0
 		for region = 1, MapManager:GetRegionCount() do
+			if MapManager:IsRegionOwner(region, player) then
+				region_income = region_income + self.region_income[region]
+			end
+
 			for city = 1, MapManager:GetRegionCityCount(region) do
 				if MapManager:GetCityOwner(region, city) == player then
 					city_income = city_income + self.city_income[MapManager:GetCityByNumber(region, city):GetLevel()]
@@ -272,13 +307,17 @@ function EconomyManager:UpdateIncomeForPlayer(player)
 	-- Income calculation
 	local turn_income = self.base_income
 	local interest = math.min(math.floor(current_gold * self.base_interest), self.max_interest)
-	local region_income = MapManager:GetPlayerRegionCount(player) * self.region_income
 	local lost_city_income = math.max(self.player_current_city_amount[player] - MapManager:GetPlayerCityCount(player), 0) * self.lost_city_income
 	local unit_income = (-1) * math.floor(self.player_current_units[player] / 3)
 	local bonus_income = 0
 
+	local region_income = 0
 	local city_income = 0
 	for region = 1, MapManager:GetRegionCount() do
+		if MapManager:IsRegionOwner(region, player) then
+			region_income = region_income + self.region_income[region]
+		end
+
 		for city = 1, MapManager:GetRegionCityCount(region) do
 			if MapManager:GetCityOwner(region, city) == player then
 				city_income = city_income + self.city_income[MapManager:GetCityByNumber(region, city):GetLevel()]
@@ -479,7 +518,7 @@ function EconomyManager:SpawnHero(region, city)
 	end
 
 	unit:SetControllableByPlayer(player_id, true)
-	unit:AddNewModifier(unit, nil, "modifier_kingdom_hero_marker", {ability_name = hero_name, region = region, city = city})
+	unit:AddNewModifier(unit, nil, "modifier_kingdom_hero_marker", {ability_name = "kingdom_buy_hero_"..MapManager:GetCityHero(region, city), region = region, city = city})
 	unit:SetHullRadius(48)
 
 	-- Movement limit removal modifier
@@ -612,7 +651,11 @@ function EconomyManager:PlanBotTurn(player)
 				local allies = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, 300, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 				for _, ally in pairs(allies) do
 					if ally:HasModifier("modifier_kingdom_unit_movement") then
-						ally:MoveToPositionAggressive(target_loc)
+						ExecuteOrderFromTable({
+							UnitIndex = ally:entindex(),
+							OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+							Position = target_loc
+						})
 					end
 				end
 			end)

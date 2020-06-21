@@ -132,6 +132,7 @@ function kingdom_upgrade_to_capital:OnSpellStart()
 	if target:HasModifier("modifier_kingdom_city") then
 		local region = target:GetRegion()
 		local city = target:GetCity()
+		local race = MapManager:GetCityRace(region, city)
 		local player = MapManager:GetCityOwner(region, city)
 		local player_id = Kingdom:GetPlayerID(player)
 		local player_color = Kingdom:GetKingdomPlayerColor(player)
@@ -166,7 +167,14 @@ function kingdom_upgrade_to_capital:OnSpellStart()
 		event.steamid = PlayerResource:GetSteamID(player_id)
 		event.cityname = "#npc_kingdom_city_"..region.."_"..city
 
-		CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen", {event})
+		if GetMapName() == "twin_kingdoms" then
+			event.cityname = "#npc_kingdom_city_"..race
+			event.region = region
+			CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen_tk", {event})
+		else
+			CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen", {event})
+		end
+
 		CustomGameEventManager:Send_ServerToAllClients("kingdom_minimap_ping", {x = target_loc.x, y = target_loc.y, z = target_loc.z + 10})
 	end
 end

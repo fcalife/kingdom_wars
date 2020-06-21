@@ -4,6 +4,7 @@ require('kingdom_wars')
 -- Libraries and startup files
 require('libraries/timers')
 require('libraries/playertables')
+require('libraries/table')
 require('internal/gamesetup')
 require('internal/events')
 require('internal/util')

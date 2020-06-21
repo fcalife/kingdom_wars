@@ -12,11 +12,8 @@ function MapManager:Init()
 	self.neutrals_map_info = LoadKeyValues("scripts/npc/KV/map_neutrals.kv")
 
 	if GetMapName() == "twin_kingdoms" then
-		for i = 1, 8 do
-			self.map_info[i] = self.map_info[i + 8]
-			self.neutrals_map_info["beast_spawns"][i] = self.neutrals_map_info["beast_spawns"][i + 8]
-			self.neutrals_map_info["demon_portals"][i] = self.neutrals_map_info["demon_portals"][i + 8]
-		end
+		self.map_info = LoadKeyValues("scripts/npc/KV/map_twin_kingdoms.kv")
+		self.neutrals_map_info = LoadKeyValues("scripts/npc/KV/map_neutrals_twin_kingdoms.kv")
 	end
 
 	-- Item drop information
@@ -32,17 +29,17 @@ function MapManager:Init()
 	table.insert(self.match_items, "item_horn")
 
 	self.match_portals = {}
-	--if GetMapName() == "twin_kingdoms" then
-	--	for region = 1, 16 do
-	--		table.insert(self.match_portals, self.neutrals_map_info["demon_portals"][tostring(math.min(region, 8))][tostring(1)])
-	--		self.match_portals[region].region = region
-	--	end
-	--else
+	if GetMapName() == "twin_kingdoms" then
+		for region = 1, 16 do
+			table.insert(self.match_portals, self.neutrals_map_info["demon_portals"][tostring(region)][tostring(1)])
+			self.match_portals[region].region = region
+		end
+	else
 		for region = 1, 8 do
 			table.insert(self.match_portals, self.neutrals_map_info["demon_portals"][tostring(region)][tostring(RandomInt(1, 2))])
 			self.match_portals[region].region = region
 		end
-	--end
+	end
 
 	self.match_items = table.shuffle(self.match_items)
 	self.match_portals = table.shuffle(self.match_portals)
@@ -60,8 +57,6 @@ function MapManager:Init()
 		self.region_count = self.region_count + 1
 		self.region_city_count[region_number] = 0
 		region_number = region_number + 1
-		print("debug2:")
-		print(self.region_count)
 	end
 
 	for region = 1, self.region_count do
@@ -218,6 +213,7 @@ function MapManager:StartMatch()
 end
 
 function MapManager:ForceCapital(player_hero, city_unit, region, city, player)
+	local race = MapManager:GetCityRace(region, city)
 	local player_id = Kingdom:GetPlayerID(player)
 	local player_color = Kingdom:GetKingdomPlayerColor(player)
 	local target_loc = city_unit:GetAbsOrigin()
@@ -251,7 +247,14 @@ function MapManager:ForceCapital(player_hero, city_unit, region, city, player)
 	event.steamid = PlayerResource:GetSteamID(player_id)
 	event.cityname = "#npc_kingdom_city_"..region.."_"..city
 
-	CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen", {event})
+	if GetMapName() == "twin_kingdoms" then
+		event.cityname = "#npc_kingdom_city_"..race
+		event.region = region
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen_tk", {event})
+	else
+		CustomGameEventManager:Send_ServerToAllClients("kingdom_capital_chosen", {event})
+	end
+
 	CustomGameEventManager:Send_ServerToAllClients("kingdom_minimap_ping", {x = target_loc.x, y = target_loc.y, z = target_loc.z + 10})
 end
 
@@ -496,6 +499,9 @@ function MapManager:UpdatePlayerCityCounts()
 					event.playername = PlayerResource:GetPlayerName(player_id)
 					event.steamid = PlayerResource:GetSteamID(player_id)
 					event.regionname = "#region_"..region
+					if GetMapName() == "twin_kingdoms" then
+						event.regionname = "#region_tk_"..region
+					end
 					CustomGameEventManager:Send_ServerToAllClients("kingdom_new_region_sovereign", {event})
 					self:SetRegionOwner(region, player, true)
 				end
@@ -512,6 +518,9 @@ function MapManager:UpdatePlayerCityCounts()
 					event.playername = PlayerResource:GetPlayerName(player_id)
 					event.steamid = PlayerResource:GetSteamID(player_id)
 					event.regionname = "#region_"..region
+					if GetMapName() == "twin_kingdoms" then
+						event.regionname = "#region_tk_"..region
+					end
 					CustomGameEventManager:Send_ServerToAllClients("kingdom_lost_region_sovereign", {event})
 					self:SetRegionOwner(region, player, false)
 				elseif is_disputed_lands and (not self:IsRegionContender(region, player)) then
@@ -1008,9 +1017,13 @@ function MapManager:SpawnCity(region, city)
 	local race = self:GetCityRace(region, city)
 	local hero = self:GetCityHero(region, city)
 	local player = self:GetCityOwner(region, city)
-	local city_name = "npc_kingdom_city_"..math.min(region, 8).."_"..city
+	local city_name = "npc_kingdom_city_"..region.."_"..city
 	local player_id = Kingdom:GetPlayerID(player)
 	local facing_position = RotatePosition(Vector(city_loc.x, city_loc.y, 0), QAngle(0, angle, 0), Vector(city_loc.x, city_loc.y, 0) + Vector(100, 0, 0))
+
+	if GetMapName() == "twin_kingdoms" then
+		city_name = "npc_kingdom_city_"..race
+	end
 
 	-- Spawn city
 	local unit = CreateUnitByName(city_name, Vector(city_loc.x, city_loc.y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
@@ -1048,6 +1061,10 @@ function MapManager:SpawnCapital(region, city)
 	local city_name = "npc_kingdom_city_"..math.min(region, 8).."_"..city.."_capital"
 	local player_id = Kingdom:GetPlayerID(player)
 	local facing_position = RotatePosition(Vector(city_loc.x, city_loc.y, 0), QAngle(0, angle, 0), Vector(city_loc.x, city_loc.y, 0) + Vector(100, 0, 0))
+
+	if GetMapName() == "twin_kingdoms" then
+		city_name = "npc_kingdom_city_"..race
+	end
 
 	-- Spawn city
 	local unit = CreateUnitByName(city_name, Vector(city_loc.x, city_loc.y, 0), false, nil, nil, PlayerResource:GetTeam(player_id))
@@ -1109,65 +1126,112 @@ function MapManager:PerformInitialCityDistribution()
 		return nil
 	end
 
-	-- Give each player one city per region
-	for region = 1, self:GetRegionCount() do
-		local remaining_region_players = {}
-		for player = 1, player_count do
-			remaining_region_players[player] = player
-			city_count[player][region] = 0
-		end
-		for city, owner in pairs(self.city_owners[region]) do
-			local random_player = remaining_region_players[RandomInt(1, #remaining_region_players)]
-			self:SetCityOwner(region, city, random_player)
-			city_count[random_player][region] = city_count[random_player][region] + 1
-			for player_key, player in pairs(remaining_region_players) do
-				if player == random_player then
-					table.remove(remaining_region_players, player_key)
+	-- Give each player one city per region in disputed lands
+	if GetMapName() == "disputed_lands" then
+		for region = 1, self:GetRegionCount() do
+			local remaining_region_players = {}
+			for player = 1, player_count do
+				remaining_region_players[player] = player
+				city_count[player][region] = 0
+			end
+			for city, owner in pairs(self.city_owners[region]) do
+				local random_player = remaining_region_players[RandomInt(1, #remaining_region_players)]
+				self:SetCityOwner(region, city, random_player)
+				city_count[random_player][region] = city_count[random_player][region] + 1
+				for player_key, player in pairs(remaining_region_players) do
+					if player == random_player then
+						table.remove(remaining_region_players, player_key)
+					end
 				end
 			end
-		end
-	end
-
-	-- Perform several random swaps while respecting limits
-	local swap_count = 100
-	local region_count = self:GetRegionCount()
-	local region_max = 2
-	local sequential_fails = 0
-	while swap_count > 0 do
-		local player_1 = RandomInt(1, player_count)
-		local player_2 = RandomInt(1, player_count)
-		local region_1 = RandomInt(1, region_count)
-		local region_2 = RandomInt(1, region_count)
-		if city_count[player_1][region_1] > 0 and city_count[player_2][region_1] < region_max and city_count[player_1][region_2] < region_max and city_count[player_2][region_2] > 0 then
-			swap_count = swap_count - 1
-			sequential_fails = 0
-			city_count[player_1][region_1] = city_count[player_1][region_1] - 1
-			city_count[player_2][region_1] = city_count[player_2][region_1] + 1
-			city_count[player_1][region_2] = city_count[player_1][region_2] + 1
-			city_count[player_2][region_2] = city_count[player_2][region_2] - 1
-			--print("swaps remaining: "..swap_count)
-			for city, owner in pairs(self.city_owners[region_1]) do
-				if owner == player_1 then
-					--print("swapped city "..city.." from region "..region_1.." from player "..player_1.." to player "..player_2)
-					self:SetCityOwner(region_1, city, player_2)
-					break
-				end
-			end
-			for city, owner in pairs(self.city_owners[region_2]) do
-				if owner == player_2 then
-					--print("swapped city "..city.." from region "..region_2.." from player "..player_2.." to player "..player_1)
-					self:SetCityOwner(region_2, city, player_1)
-					break
-				end
-			end
-		else
-			--print("swap failed! trying again")
-			sequential_fails = sequential_fails + 1
 		end
 
-		if sequential_fails >= 10 then
-			--print("too many swap failures, stopping")
-			swap_count = 0
+		-- Perform several random swaps while respecting limits
+		local swap_count = 100
+		local region_count = self:GetRegionCount()
+		local region_max = 2
+		local sequential_fails = 0
+		while swap_count > 0 do
+			local player_1 = RandomInt(1, player_count)
+			local player_2 = RandomInt(1, player_count)
+			local region_1 = RandomInt(1, region_count)
+			local region_2 = RandomInt(1, region_count)
+			if city_count[player_1][region_1] > 0 and city_count[player_2][region_1] < region_max and city_count[player_1][region_2] < region_max and city_count[player_2][region_2] > 0 then
+				swap_count = swap_count - 1
+				sequential_fails = 0
+				city_count[player_1][region_1] = city_count[player_1][region_1] - 1
+				city_count[player_2][region_1] = city_count[player_2][region_1] + 1
+				city_count[player_1][region_2] = city_count[player_1][region_2] + 1
+				city_count[player_2][region_2] = city_count[player_2][region_2] - 1
+				--print("swaps remaining: "..swap_count)
+				for city, owner in pairs(self.city_owners[region_1]) do
+					if owner == player_1 then
+						--print("swapped city "..city.." from region "..region_1.." from player "..player_1.." to player "..player_2)
+						self:SetCityOwner(region_1, city, player_2)
+						break
+					end
+				end
+				for city, owner in pairs(self.city_owners[region_2]) do
+					if owner == player_2 then
+						--print("swapped city "..city.." from region "..region_2.." from player "..player_2.." to player "..player_1)
+						self:SetCityOwner(region_2, city, player_1)
+						break
+					end
+				end
+			else
+				--print("swap failed! trying again")
+				sequential_fails = sequential_fails + 1
+			end
+
+			if sequential_fails >= 10 then
+				--print("too many swap failures, stopping")
+				swap_count = 0
+			end
+		end
+
+	elseif GetMapName() == "twin_kingdoms" then
+		local regions = {}
+		local players = {}
+
+		for player = 1, 8 do
+			table.insert(players, player)
+		end
+
+		players = table.shuffle(players)
+
+		local first_players = {}
+		for player = 1, 4 do
+			table.insert(first_players, table.remove(players))
+		end
+
+		for region = 1, 16 do
+			table.insert(regions, region)
+		end
+
+		regions = table.shuffle(regions)
+
+		for region = 1, 8 do
+			local cities = {}
+			for city = 1, 4 do
+				table.insert(cities, city)
+			end
+
+			cities = table.shuffle(cities)
+			for i = 1, 4 do
+				self:SetCityOwner(regions[region], cities[i], first_players[i])
+			end
+		end
+
+		for region = 9, 16 do
+			local cities = {}
+			for city = 1, 4 do
+				table.insert(cities, city)
+			end
+
+			cities = table.shuffle(cities)
+			for i = 1, 4 do
+				self:SetCityOwner(regions[region], cities[i], players[i])
+			end
 		end
 	end
 end
