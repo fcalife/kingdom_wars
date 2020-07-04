@@ -640,7 +640,7 @@ function EconomyManager:PlanBotTurn(player)
 			Timers:CreateTimer(i * attack_delay, function()
 				local city_location = MapManager:GetCityCaptureZoneCenter(spawn_city:GetRegion(), spawn_city:GetCity())
 				local target_loc = city_location
-				local targets = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, 20000, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_CLOSEST, false)
+				local targets = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, -1, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_CLOSEST, false)
 				for _, enemy in pairs(targets) do
 					if enemy:HasModifier("modifier_kingdom_city") and enemy:GetUnitName() ~= "npc_kingdom_city_demon" then
 						target_loc = MapManager:GetCityCaptureZoneCenter(enemy:GetRegion(), enemy:GetCity())
@@ -648,7 +648,7 @@ function EconomyManager:PlanBotTurn(player)
 					end
 				end
 
-				local allies = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, 300, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+				local allies = FindUnitsInRadius(spawn_city:GetTeamNumber(), city_location, nil, 400, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 				for _, ally in pairs(allies) do
 					if ally:HasModifier("modifier_kingdom_unit_movement") then
 						ExecuteOrderFromTable({

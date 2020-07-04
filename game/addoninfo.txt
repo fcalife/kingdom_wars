@@ -1,17 +1,17 @@
 "AddonInfo"
 {
 	"TeamCount"					"8"
-	"maps"						"disputed_lands twin_kingdoms"
+	"maps"						"twin_kingdoms disputed_lands"
 	"IsPlayable"				"1"
 	"HeroGuidesSupported"		"1"
 	"ShouldForceDefaultGuide"	"1"
 
-	"disputed_lands"
+	"twin_kingdoms"
 	{
 		"MaxPlayers"	"8"
 	}
 
-	"twin_kingdoms"
+	"disputed_lands"
 	{
 		"MaxPlayers"	"8"
 	}
