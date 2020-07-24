@@ -34,7 +34,7 @@ function GameMode:_InitGameMode()
 	-- How long in seconds should we wait between rune spawns?
 	GameRules:SetRuneSpawnTime(120)
 	-- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
-	GameRules:SetUseBaseGoldBountyOnHeroes(false)
+	GameRules:SetUseBaseGoldBountyOnHeroes(true)
 	-- What icon size should we use for our heroes?
 	GameRules:SetHeroMinimapIconScale(0.4)
 	-- What icon size should we use for creeps?

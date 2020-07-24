@@ -61,6 +61,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -130,6 +131,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -198,6 +200,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -266,7 +269,6 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
-		"DisplayAdditionalHeroes"	"1"
 	}
 
 	"npc_kingdom_hero_mage"
@@ -435,6 +437,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -503,6 +506,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -570,6 +574,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -806,6 +811,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -872,6 +878,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -941,6 +948,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1177,6 +1185,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1247,6 +1256,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1315,6 +1325,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1554,6 +1565,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1621,6 +1633,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1688,6 +1701,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1922,6 +1936,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -1989,6 +2004,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2056,6 +2072,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2290,6 +2307,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2318,12 +2336,12 @@
 		"Ability3"					"kingdom_light_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"85"
-		"AttackDamageMax"			"95"
+		"AttackDamageMin"			"105"
+		"AttackDamageMax"			"115"
 
 		"ArmorPhysical"				"2"
 
-		"StatusHealth"				"900"
+		"StatusHealth"				"1100"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"200"
@@ -2356,6 +2374,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2424,6 +2443,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2490,6 +2510,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2519,12 +2540,12 @@
 		"Ability3"					"kingdom_no_armor"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"115"
-		"AttackDamageMax"			"125"
+		"AttackDamageMin"			"135"
+		"AttackDamageMax"			"145"
 
 		"ArmorPhysical"				"5"
 
-		"StatusHealth"				"850"
+		"StatusHealth"				"1025"
 
 		"AttackAcquisitionRange"	"950"
 		"AttackRange"				"200"
@@ -2557,6 +2578,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2624,6 +2646,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2689,6 +2712,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{
@@ -2755,6 +2779,7 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"IgnoreAddSummonedToSelection"	"1"
+		"PathfindingSearchDepthScale"	"0.1"
 
 		"Creature"
 		{

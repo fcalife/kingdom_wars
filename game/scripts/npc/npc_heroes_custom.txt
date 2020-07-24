@@ -4,10 +4,10 @@
 
 	"npc_dota_hero_legion_commander"
 	{
-		"ModelScale"		"1.5"
+		"Model"						"models/props_generic/tent_01a.vmdl"
+		"ModelScale"				"0.75"
 
 		"MinimapIcon"				"minimap_neutral_hard"
-		//"MinimapIcon"				"minimap_nian_dire"
 
 		"Ability1"					"kingdom_select_all_units"
 		"Ability2"					"kingdom_global_rally_point"
@@ -18,7 +18,6 @@
 		"Ability7"					""
 		"Ability8"					""
 		"Ability9"					""
-		"Ability18"					""
 		"Ability10"					""
 		"Ability11"					""
 		"Ability12"					""
@@ -27,6 +26,7 @@
 		"Ability15"					""
 		"Ability16"					""
 		"Ability17"					""
+		"Ability18"					""
 
 		"ArmorPhysical"				"0"
 

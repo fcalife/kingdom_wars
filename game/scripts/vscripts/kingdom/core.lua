@@ -235,7 +235,17 @@ function Kingdom:Init()
 			local hero = GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_legion_commander", bot_names[current_player], team, "kingdom/bot_script.lua", true)
 			hero:AddExperience(2000, DOTA_ModifyXP_HeroKill, false, true)
 			local bot_id = hero:GetPlayerID()
-			FindClearSpaceForUnit(hero, Vector(256 * (current_player - 4), 0, 0), true)
+
+			if GetMapName() == "twin_kingdoms" then
+				FindClearSpaceForUnit(hero, Vector(-13120 + 384 * (current_player - 1), 16064, 384), true)
+			elseif GetMapName() == "disputed_lands" then
+				if current_player <= 4 then
+					FindClearSpaceForUnit(hero, Vector(-13120 + 320 * (current_player - 1), 15680, 640), true)
+				else
+					FindClearSpaceForUnit(hero, Vector(-13120 + 320 * (current_player - 5), 15488, 640), true)
+				end
+			end
+
 			self:InitializeBotCommander(hero)
 
 			print("player id "..bot_id.." [BOT] is kingdom player "..current_player)
@@ -367,23 +377,23 @@ function Kingdom:InitializeBotCommander(hero_entity)
 
 	hero_entity:SetRenderColor(player_color.x, player_color.y, player_color.z)
 
-	hero_entity.bracer = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_arms.vmdl"})
-	hero_entity.bracer:FollowEntity(hero_entity, true)
-	hero_entity.bracer:SetRenderColor(player_color.x, player_color.y, player_color.z)
+	--hero_entity.bracer = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_arms.vmdl"})
+	--hero_entity.bracer:FollowEntity(hero_entity, true)
+	--hero_entity.bracer:SetRenderColor(player_color.x, player_color.y, player_color.z)
 
-	hero_entity.flag = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_back.vmdl"})
-	hero_entity.flag:FollowEntity(hero_entity, true)
-	hero_entity.flag:SetRenderColor(player_color.x, player_color.y, player_color.z)
+	--hero_entity.flag = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_back.vmdl"})
+	--hero_entity.flag:FollowEntity(hero_entity, true)
+	--hero_entity.flag:SetRenderColor(player_color.x, player_color.y, player_color.z)
 
-	hero_entity.shoulder = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_shoulders.vmdl"})
-	hero_entity.shoulder:FollowEntity(hero_entity, true)
-	hero_entity.shoulder:SetRenderColor(player_color.x, player_color.y, player_color.z)
+	--hero_entity.shoulder = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_shoulders.vmdl"})
+	--hero_entity.shoulder:FollowEntity(hero_entity, true)
+	--hero_entity.shoulder:SetRenderColor(player_color.x, player_color.y, player_color.z)
 
-	hero_entity.helmet = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_head.vmdl"})
-	hero_entity.helmet:FollowEntity(hero_entity, true)
-	hero_entity.helmet:SetRenderColor(player_color.x, player_color.y, player_color.z)
+	--hero_entity.helmet = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_head.vmdl"})
+	--hero_entity.helmet:FollowEntity(hero_entity, true)
+	--hero_entity.helmet:SetRenderColor(player_color.x, player_color.y, player_color.z)
 
-	hero_entity.weapon = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_weapon.vmdl"})
-	hero_entity.weapon:FollowEntity(hero_entity, true)
-	hero_entity.weapon:SetRenderColor(player_color.x, player_color.y, player_color.z)
+	--hero_entity.weapon = SpawnEntityFromTableSynchronous("prop_dynamic", {model = "models/heroes/legion_commander/legion_commander_weapon.vmdl"})
+	--hero_entity.weapon:FollowEntity(hero_entity, true)
+	--hero_entity.weapon:SetRenderColor(player_color.x, player_color.y, player_color.z)
 end

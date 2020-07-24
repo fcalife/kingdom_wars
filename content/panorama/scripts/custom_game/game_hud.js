@@ -164,6 +164,7 @@ function UpdateIncomeScoreboard(keys) {
 			$('#income_player_label_income_' + current_row).text = "+" + player_income
 			$('#income_player_label_cities_' + current_row).text = CustomNetTables.GetTableValue("player_info", "player_cities_" + id).city_amount
 			$('#income_player_label_player_' + current_row).text = CustomNetTables.GetTableValue("player_info", "player_name_" + id).player_name
+			$('#income_player_label_food_' + current_row).text = CustomNetTables.GetTableValue("player_info", "food_" + id).food + "/" + (10 + 3 * CustomNetTables.GetTableValue("player_info", "player_cities_" + id).city_amount)
 			current_row = current_row + 1;
 		}
 	}

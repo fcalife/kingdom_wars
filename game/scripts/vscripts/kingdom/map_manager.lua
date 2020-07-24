@@ -577,15 +577,19 @@ function MapManager:UpdatePlayerCityCounts()
 
 		-- If any players were eliminated, send a notification
 		if self.player_city_count[player] <= 0 and (not self.player_eliminated[player]) and EconomyManager.turn_count and EconomyManager.turn_count > 0 then
-			local event = {}
-			event.playerid = player_id
-			event.playername = PlayerResource:GetPlayerName(player_id)
-			event.steamid = PlayerResource:GetSteamID(player_id)
-			event.position = self.players_remaining
-			CustomGameEventManager:Send_ServerToAllClients("kingdom_player_eliminated", {event})
+			if self:CheckIfPlayerEliminated(player) then
+				local event = {}
+				event.playerid = player_id
+				event.playername = PlayerResource:GetPlayerName(player_id)
+				event.steamid = PlayerResource:GetSteamID(player_id)
+				event.position = self.players_remaining
+				CustomGameEventManager:Send_ServerToAllClients("kingdom_player_eliminated", {event})
 
-			self.player_eliminated[player] = true
-			self.players_remaining = self.players_remaining - 1
+				self.player_eliminated[player] = true
+				self.players_remaining = self.players_remaining - 1
+
+				PlayerResource:GetSelectedHeroEntity(player_id):AddNoDraw()
+			end
 		end
 	end
 
@@ -633,6 +637,18 @@ function MapManager:UpdatePlayerCityCounts()
 			end
 		end
 	end
+end
+
+function MapManager:CheckIfPlayerEliminated(player)
+	if Kingdom:GetKingdomPlayerTeam(player) then
+		local allies = FindUnitsInRadius(Kingdom:GetKingdomPlayerTeam(player), Vector(0, 0, 0), nil, -1, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, FIND_ANY_ORDER, false)
+		for _, ally in pairs(allies) do
+			if ally:IsAlive() and (ally:HasModifier("modifier_kingdom_unit_movement") or ally:HasModifier("modifier_kingdom_city")) then
+				return false
+			end
+		end
+	end
+	return true
 end
 
 function MapManager:SetCityControllable(region, city, player)

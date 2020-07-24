@@ -3,12 +3,15 @@
 kingdom_buy_demon_melee = class({})
 
 function kingdom_buy_demon_melee:OnSpellStart()
-	EconomyManager:SpawnDemon(self:GetCaster().portal_number, "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	if EconomyManager:SpawnDemon(self:GetCaster().portal_number, "melee") then
+		EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	else
+		PlayerResource:ModifyGold(Kingdom:GetPlayerID(MapManager.demon_portals[self:GetCaster().portal_number]["owner_player"]), self:GetGoldCost(0), true, DOTA_ModifyGold_HeroKill)
+	end
 end
 
 function kingdom_buy_demon_melee:GetGoldCost(level)
-	return 5
+	return 7
 end
 
 
@@ -16,12 +19,15 @@ end
 kingdom_buy_demon_ranged = class({})
 
 function kingdom_buy_demon_ranged:OnSpellStart()
-	EconomyManager:SpawnDemon(self:GetCaster().portal_number, "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	if EconomyManager:SpawnDemon(self:GetCaster().portal_number, "ranged") then
+		EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	else
+		PlayerResource:ModifyGold(Kingdom:GetPlayerID(MapManager.demon_portals[self:GetCaster().portal_number]["owner_player"]), self:GetGoldCost(0), true, DOTA_ModifyGold_HeroKill)
+	end
 end
 
 function kingdom_buy_demon_ranged:GetGoldCost(level)
-	return 7
+	return 9
 end
 
 
@@ -29,12 +35,15 @@ end
 kingdom_buy_demon_cavalry = class({})
 
 function kingdom_buy_demon_cavalry:OnSpellStart()
-	EconomyManager:SpawnDemon(self:GetCaster().portal_number, "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	if EconomyManager:SpawnDemon(self:GetCaster().portal_number, "cavalry") then
+		EconomyManager:UpdateIncomeForPlayerDueToDemonUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	else
+		PlayerResource:ModifyGold(Kingdom:GetPlayerID(MapManager.demon_portals[self:GetCaster().portal_number]["owner_player"]), self:GetGoldCost(0), true, DOTA_ModifyGold_HeroKill)
+	end
 end
 
 function kingdom_buy_demon_cavalry:GetGoldCost(level)
-	return 9
+	return 11
 end
 
 

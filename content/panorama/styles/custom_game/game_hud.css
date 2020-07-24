@@ -171,28 +171,18 @@
 
 #income_scoreboard_container
 {
-	width: 300px;
-	x: 1601px;
-	y: 82px;
+	align: right top;
+	margin-right: 0px;
+	margin-top: 80px;
 	flow-children: down;
 	border-radius: 16px;
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #00000080 ), to( #000000d0 ) );
 	border: 2px solid #111111FF;
 }
 
-.AspectRatio4x3  #income_scoreboard_container
-{
-	x: 1121px;
-}
-
-.AspectRatio16x10  #income_scoreboard_container
-{
-	x: 1409px;
-}
-
 #income_header_container
 {
-	width: 100%;
+	width: 360px;
 	height: 24px;
 	margin-top: 8px;
 	margin-bottom: 8px;
@@ -229,9 +219,16 @@
 	margin-right: 10px;
 }
 
+#income_header_container_food
+{
+	width: 60px;
+	height: 100%;
+	margin-right: 10px;
+}
+
 .income_player_container
 {
-	width: 100%;
+	width: 360px;
 	height: 24px;
 	margin-bottom: 4px;
 	flow-children: right;
@@ -262,9 +259,15 @@
 
 .income_player_container_income
 {
-	width: 80px;
+	width: 70px;
 	height: 100%;
 	margin-right: 10px;
+}
+
+.income_player_container_food
+{
+	width: 100%;
+	height: 100%;
 }
 
 .income_player_subcontainer_income
@@ -301,6 +304,19 @@
 	color: #F3CE4CFF;
 	horizontal-align: center;
 	vertical-align: center;
+	font-size: 14;
+	font-family: "DejaVu Sans";
+	font-weight: Bold;
+	text-shadow: 1px 1px 2px 3.0 #000000FF;
+}
+
+.income_player_food_label
+{
+	width: 100%;
+	color: #FFFFFFFF;
+	horizontal-align: center;
+	vertical-align: center;
+	text-align: center;
 	font-size: 14;
 	font-family: "DejaVu Sans";
 	font-weight: Bold;

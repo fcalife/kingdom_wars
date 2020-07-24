@@ -724,7 +724,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_human_ranged"
@@ -739,7 +739,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_human_cavalry"
@@ -754,7 +754,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"11"
 	}
 
 	"kingdom_buy_hero_paladin"
@@ -817,7 +817,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_elf_ranged"
@@ -832,7 +832,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_elf_cavalry"
@@ -847,7 +847,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"11"
 	}
 
 	"kingdom_buy_hero_ranger"
@@ -910,7 +910,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_undead_ranged"
@@ -925,7 +925,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_undead_cavalry"
@@ -940,7 +940,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"11"
 	}
 
 	"kingdom_buy_hero_necromancer"
@@ -1003,7 +1003,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_keen_ranged"
@@ -1018,7 +1018,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_keen_cavalry"
@@ -1033,7 +1033,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"11"
 	}
 
 	"kingdom_buy_hero_bounty_hunter"
@@ -1096,7 +1096,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_orc_ranged"
@@ -1111,7 +1111,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_orc_cavalry"
@@ -1126,7 +1126,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"11"
 	}
 
 	"kingdom_buy_hero_incursor"
@@ -1189,7 +1189,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"5"
+		"AbilityGoldCost"				"7"
 	}
 
 	"kingdom_buy_demon_ranged"
@@ -1204,7 +1204,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"7"
+		"AbilityGoldCost"				"9"
 	}
 
 	"kingdom_buy_demon_cavalry"
@@ -1219,7 +1219,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0.01"
 		"AbilityManaCost"				"0"
-		"AbilityGoldCost"				"9"
+		"AbilityGoldCost"				"11"
 	}
 
 	"kingdom_buy_hero_nevermore"

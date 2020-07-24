@@ -125,8 +125,30 @@ end
 function modifier_kingdom_unit_movement:OnDestroy()
 	if IsServer() then
 		if self.player then
+			if self:GetParent().type then
+				EconomyManager.player_current_food_use[self.player] = math.max(0, EconomyManager.player_current_food_use[self.player] - 1)
+				CustomNetTables:SetTableValue("player_info", "food_"..Kingdom:GetPlayerID(self.player), {food = EconomyManager.player_current_food_use[self.player]})
+			end
 			EconomyManager.player_current_units[self.player] = EconomyManager.player_current_units[self.player] - 1
 			EconomyManager:UpdateIncomeForPlayer(self.player)
+		end
+
+		-- If any players were eliminated, send a notification
+		local player = Kingdom:GetPlayerByTeam(self:GetParent():GetTeam())
+		if MapManager:CheckIfPlayerEliminated(player) then
+			local player_id = self:GetParent():GetPlayerOwnerID()
+
+			local event = {}
+			event.playerid = player_id
+			event.playername = PlayerResource:GetPlayerName(player_id)
+			event.steamid = PlayerResource:GetSteamID(player_id)
+			event.position = MapManager.players_remaining
+			CustomGameEventManager:Send_ServerToAllClients("kingdom_player_eliminated", {event})
+
+			MapManager.player_eliminated[player] = true
+			MapManager.players_remaining = MapManager.players_remaining - 1
+
+			PlayerResource:GetSelectedHeroEntity(player_id):AddNoDraw()
 		end
 	end
 end

@@ -16,16 +16,19 @@ function EconomyManager:Init()
 	self.overtime_active = false
 
 	self.starting_gold = 25
-	self.base_income = 0
+	self.base_income = 5
 	self.capital_income = 5
 	self.city_income = {1, 3, 5}
 	self.talneas_income_bonus = {10, 20}
 	self.item_income_bonus = 25
 	self.lost_city_income = 10
 	self.base_interest = 0.1
-	self.max_interest = 10
-	self.beast_spawns = 3
-	self.max_beast_spawns = 12
+	self.max_interest = 0
+	self.beast_spawns = 1
+	self.max_beast_spawns = 5
+
+	self.base_food = 10
+	self.food_per_city = 3
 
 	self.region_income = {}
 
@@ -91,9 +94,12 @@ function EconomyManager:Init()
 
 	self.player_current_city_amount = {}
 	self.player_current_units = {}
+	self.player_current_food_use = {}
 	for player = 1, Kingdom:GetPlayerCount() do
 		self.player_current_city_amount[player] = MapManager:GetPlayerCityCount(player)
 		self.player_current_units[player] = 0
+		self.player_current_food_use[player] = 0
+		CustomNetTables:SetTableValue("player_info", "food_"..Kingdom:GetPlayerID(player), {food = 0})
 	end
 
 	if IsInToolsMode() then
@@ -182,7 +188,7 @@ function EconomyManager:SpawnDemonPortalItem(portal_data, item_name)
 	local item_loc = Vector(portal_data["capture_zone"]["x"], portal_data["capture_zone"]["y"], portal_data["capture_zone"]["height"] + 10)
 
 	local item_summoning_pfx = ParticleManager:CreateParticle("particles/item_summoning_circle.vpcf", PATTACH_CUSTOMORIGIN, nil)
-	ParticleManager:SetParticleControl(item_summoning_pfx, 0, item_loc)
+	ParticleManager:SetParticleControl(item_summoning_pfx, 0, item_loc + Vector(0, 0, 10))
 	ParticleManager:SetParticleControl(item_summoning_pfx, 1, table.remove(self.item_circle_colors))
 
 	EmitGlobalSound("Item.Warning")
@@ -375,6 +381,15 @@ function EconomyManager:SpawnUnit(region, city, unit_type)
 		spawn_loc = MapManager:GetCityRangedSpawnPoint(region, city)
 	end
 
+	-- Food limit
+	local player_food = EconomyManager.base_food + EconomyManager.food_per_city * MapManager.player_city_count[player]
+	if EconomyManager.player_current_food_use[player] >= player_food then
+		return false
+	else
+		EconomyManager.player_current_food_use[player] = EconomyManager.player_current_food_use[player] + 1
+		CustomNetTables:SetTableValue("player_info", "food_"..player_id, {food = EconomyManager.player_current_food_use[player]})
+	end
+
 	local unit = CreateUnitByName("npc_kingdom_"..city_race.."_"..unit_type, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 	unit:SetControllableByPlayer(player_id, true)
 
@@ -437,6 +452,8 @@ function EconomyManager:SpawnUnit(region, city, unit_type)
 			unit:AddNewModifier(unit, nil, "modifier_kingdom_region_armor_bonus", {})
 		end
 	end
+
+	return true
 end
 
 function EconomyManager:SpawnBeasts(region, player)
@@ -470,6 +487,14 @@ function EconomyManager:SpawnDemon(portal, unit_type)
 		spawn_loc = spawn_loc + Vector(-192, 192, 0)
 	end
 
+	local player_food = EconomyManager.base_food + EconomyManager.food_per_city * MapManager.player_city_count[player]
+	if EconomyManager.player_current_food_use[player] >= player_food then
+		return false
+	else
+		EconomyManager.player_current_food_use[player] = EconomyManager.player_current_food_use[player] + 1
+		CustomNetTables:SetTableValue("player_info", "food_"..player_id, {food = EconomyManager.player_current_food_use[player]})
+	end
+
 	local unit = CreateUnitByName("npc_kingdom_demon_"..unit_type, spawn_loc, true, player_hero, player_hero, PlayerResource:GetTeam(player_id))
 	unit:SetControllableByPlayer(player_id, true)
 
@@ -497,6 +522,8 @@ function EconomyManager:SpawnDemon(portal, unit_type)
 
 	-- Racial bonuses
 	unit:AddAbility("kingdom_capital_unit"):SetLevel(1)
+
+	return true
 end
 
 function EconomyManager:SpawnHero(region, city)
@@ -520,6 +547,7 @@ function EconomyManager:SpawnHero(region, city)
 	unit:SetControllableByPlayer(player_id, true)
 	unit:AddNewModifier(unit, nil, "modifier_kingdom_hero_marker", {ability_name = "kingdom_buy_hero_"..MapManager:GetCityHero(region, city), region = region, city = city})
 	unit:SetHullRadius(48)
+	print(unit:GetGoldBounty())
 
 	-- Movement limit removal modifier
 	unit:AddNewModifier(unit, nil, "modifier_kingdom_unit_movement", {player = player})

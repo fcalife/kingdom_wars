@@ -37,6 +37,9 @@
 				<Panel id="income_header_container_income">
 					<Label id="income_header_label_income" class="income_header_label" text="#income_header_income"/>
 				</Panel>
+				<Panel id="income_header_container_food">
+					<Label id="income_header_label_food" class="income_header_label" text="#income_header_food"/>
+				</Panel>
 			</Panel>
 
 			<Panel id="income_player_container_1" class="income_player_container">
@@ -51,6 +54,9 @@
 					<Panel class="income_player_subcontainer_income">
 						<Label id="income_player_label_income_1" class="income_player_gold_label" text="-"/>
 					</Panel>
+				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_1" class="income_player_food_label" text="34"/>
 				</Panel>
 			</Panel>
 
@@ -67,6 +73,9 @@
 						<Label id="income_player_label_income_2" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_2" class="income_player_food_label" text="34"/>
+				</Panel>
 			</Panel>
 
 			<Panel id="income_player_container_3" class="income_player_container">
@@ -81,6 +90,9 @@
 					<Panel class="income_player_subcontainer_income">
 						<Label id="income_player_label_income_3" class="income_player_gold_label" text="-"/>
 					</Panel>
+				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_3" class="income_player_food_label" text="34"/>
 				</Panel>
 			</Panel>
 
@@ -97,6 +109,9 @@
 						<Label id="income_player_label_income_4" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_4" class="income_player_food_label" text="34"/>
+				</Panel>
 			</Panel>
 
 			<Panel id="income_player_container_5" class="income_player_container">
@@ -111,6 +126,9 @@
 					<Panel class="income_player_subcontainer_income">
 						<Label id="income_player_label_income_5" class="income_player_gold_label" text="-"/>
 					</Panel>
+				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_5" class="income_player_food_label" text="34"/>
 				</Panel>
 			</Panel>
 
@@ -127,6 +145,9 @@
 						<Label id="income_player_label_income_6" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_6" class="income_player_food_label" text="34"/>
+				</Panel>
 			</Panel>
 
 			<Panel id="income_player_container_7" class="income_player_container">
@@ -142,6 +163,9 @@
 						<Label id="income_player_label_income_7" class="income_player_gold_label" text="-"/>
 					</Panel>
 				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_7" class="income_player_food_label" text="34"/>
+				</Panel>
 			</Panel>
 
 			<Panel id="income_player_container_8" class="income_player_container">
@@ -156,6 +180,9 @@
 					<Panel class="income_player_subcontainer_income">
 						<Label id="income_player_label_income_8" class="income_player_gold_label" text="-"/>
 					</Panel>
+				</Panel>
+				<Panel class="income_player_container_food">
+					<Label id="income_player_label_food_8" class="income_player_food_label" text="34"/>
 				</Panel>
 			</Panel>
 

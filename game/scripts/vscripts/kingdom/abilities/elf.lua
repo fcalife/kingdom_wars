@@ -3,12 +3,15 @@
 kingdom_buy_elf_melee = class({})
 
 function kingdom_buy_elf_melee:OnSpellStart()
-	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	if EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "melee") then
+		EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	else
+		PlayerResource:ModifyGold(Kingdom:GetPlayerID(MapManager:GetCityOwner(self:GetCaster():GetRegion(), self:GetCaster():GetCity())), self:GetGoldCost(0), true, DOTA_ModifyGold_HeroKill)
+	end
 end
 
 function kingdom_buy_elf_melee:GetGoldCost(level)
-	local price = 5
+	local price = 7
 	local caster = self:GetCaster()
 	if caster:HasModifier("modifier_kingdom_r1_contender") then
 		price = price - 1
@@ -24,12 +27,15 @@ end
 kingdom_buy_elf_ranged = class({})
 
 function kingdom_buy_elf_ranged:OnSpellStart()
-	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	if EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "ranged") then
+		EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	else
+		PlayerResource:ModifyGold(Kingdom:GetPlayerID(MapManager:GetCityOwner(self:GetCaster():GetRegion(), self:GetCaster():GetCity())), self:GetGoldCost(0), true, DOTA_ModifyGold_HeroKill)
+	end
 end
 
 function kingdom_buy_elf_ranged:GetGoldCost(level)
-	local price = 7
+	local price = 9
 	local caster = self:GetCaster()
 	if caster:HasModifier("modifier_kingdom_r6_contender") then
 		price = price - 1
@@ -45,12 +51,15 @@ end
 kingdom_buy_elf_cavalry = class({})
 
 function kingdom_buy_elf_cavalry:OnSpellStart()
-	EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry")
-	EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	if EconomyManager:SpawnUnit(self:GetCaster():GetRegion(), self:GetCaster():GetCity(), "cavalry") then
+		EconomyManager:UpdateIncomeForPlayerDueToUnitPurchase(self:GetCaster(), self:GetGoldCost(0))
+	else
+		PlayerResource:ModifyGold(Kingdom:GetPlayerID(MapManager:GetCityOwner(self:GetCaster():GetRegion(), self:GetCaster():GetCity())), self:GetGoldCost(0), true, DOTA_ModifyGold_HeroKill)
+	end
 end
 
 function kingdom_buy_elf_cavalry:GetGoldCost(level)
-	local price = 9
+	local price = 11
 	local caster = self:GetCaster()
 	if caster:HasModifier("modifier_kingdom_r2_contender") then
 		price = price - 1

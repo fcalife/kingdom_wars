@@ -130,7 +130,9 @@ function modifier_kingdom_commander:CheckState()
 		[MODIFIER_STATE_ATTACK_IMMUNE] = true,
 		[MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY ] = true,
-		[MODIFIER_STATE_NO_UNIT_COLLISION] = true
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+		[MODIFIER_STATE_ROOTED] = true,
+		[MODIFIER_STATE_FROZEN] = true
 	}
 	return states
 end
